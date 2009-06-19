@@ -314,16 +314,16 @@ Implementations
   Note : The index 0 is related to the word “der”. So it means that “der” occurred 
   11 times in a feature sequence.
 
-Implementations
+  Implementations
   
-1) public FeatureSequence2FeatureVector (): It calls the below constructor
-   passing the false value.
+  1) public FeatureSequence2FeatureVector (): It calls the below constructor
+     passing the false value.
 
-2) public FeatureSequence2FeatureVector (boolean binary):
+  2) public FeatureSequence2FeatureVector (boolean binary):
 
 
-3) PrintInputAndTarget: Print the data and Target field of each instance. For e.g.
-   The output of the sample code.
+  3) PrintInputAndTarget: Print the data and Target field of each instance. For e.g.
+     The output of the sample code.
  
 
 
