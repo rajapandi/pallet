@@ -46,7 +46,7 @@ The purpose of the each pipe is explained below.
 
 
 = Details =
-{{{
+{{
 Now we will look into the each pipe.
         
  
@@ -201,4 +201,4 @@ Otherwise the stopwords are removed from the tokens irrespective of their cases.
 
 MarkDeletions: If it is true then it marks the token which is deleted.
 
-}}}
+}}
