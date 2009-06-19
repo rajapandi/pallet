@@ -16,6 +16,7 @@ The following pipes are used by the application. We will look into the each of t
 The purpose of the each pipe is explained below.
 
 1)Input2CharSequence::Convert Input data to character sequence
+1)Input2CharSequence::Convert Input data to character sequence
   
 2)CharSequence2TokenSequence::Convert character sequence to token sequence
   
