@@ -3,15 +3,11 @@
 
 = Introduction =
 
-*CreatePipe(new Input2CharSequence("UTF-8"), 
-				new CharSequence2TokenSequence(tokenPattern), 
-				true, 
-				new TokenSequenceRemoveStopwords(true, true), 
-				new TokenSequence2FeatureSequence(), 
-				new Target2Label(), 
-				new FeatureSequence2FeatureVector(false), 
-				true);*
-
+*CreatePipe(new Input2CharSequence("UTF-8"),new CharSequence2TokenSequence(tokenPattern), 
+	    true,new TokenSequenceRemoveStopwords(true, true), 
+	    new TokenSequence2FeatureSequence(),new Target2Label(), 
+	    new FeatureSequence2FeatureVector(false), 
+	    true);*
 
 This function will create the Pipelist by adding the instances of all the pipes.
 
@@ -23,20 +19,20 @@ The following pipes are used by the application. We will look into the each of t
 
 The purpose of the each pipe is explained below.
 
-   1)Input2CharSequence::Convert Input data to character sequence
+1)Input2CharSequence::Convert Input data to character sequence
   
-   2)CharSequence2TokenSequence::Convert character sequence to token sequence
+2)CharSequence2TokenSequence::Convert character sequence to token sequence
   
-   3)TokenSequenceLowercase::Convert all tokens to lower case.
+3)TokenSequenceLowercase::Convert all tokens to lower case.
    
-   4)TokenSequenceRemoveStopwords::Remove stop words . 
+4)TokenSequenceRemoveStopwords::Remove stop words . 
 
-   5)Target2Label::Convert object in the target field into label in the target  field.
+5)Target2Label::Convert object in the target field into label in the target  field.
  
-   6)FeatureSequence2FeatureVector::Convert the data field from feature sequence a 
-     to a FeatureSequence
+6)FeatureSequence2FeatureVector::Convert the data field from feature sequence a 
+  to a FeatureSequence
     
-   7)PrintInputAndTarget::Print the data and target field of each instance.
+7)PrintInputAndTarget::Print the data and target field of each instance.
 
 
 
