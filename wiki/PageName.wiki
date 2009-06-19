@@ -46,8 +46,181 @@ The purpose of the each pipe is explained below.
 
 
 = Details =
+{{{
+Now we will look into the each pipe.
+        
+ 
+1)Input2CharSequence :It is a Pipe that can read data from various kinds  of sources and 
+  convert the given input into character sequence Implementations.
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+a)public Input2CharSequence (): It is default constructor. If user doesn't specify any 
+  encoding then this constructor will be called.
+
+b)public Input2CharSequence( String encoding ) : Specifies the  data  form of the data.
+     
+For e.g.: Input2CharSequence("UTF-8"),tell the data to be read is in UTF-8  format.
+    
+
+     2) CharSequence2TokenSequence: It is pipe that tokenizes a character sequence. It expects a
+     character sequence and converts into tokens. For e.g. after passing through Input2CharSequence
+     you have following data. 
+
+          Der T-40 war ein sowjetischer leichter Schwimmpanzer zur Zeit des Zweiten Weltkrieges. 
+
+
+This data will be converted into following tokens after passing through CharSequence2TokenSequenc 
+             
+
+Token#0:Der  span[0..3] 
+Token#1:T  span[4..5]
+Token#2:40  span[6..8]
+Token#3:war  span[9..12]
+Token#4:ein  span[13..16]
+Token#5:sowjetischer  span[17..29]
+Token#6:leichter  span[30..38]
+Token#7:Schwimmpanzer  span[39..52]
+Token#8:zur  span[53..56]
+Token#9:Zeit  span[57..61]
+Token#10:des  span[62..65]
+Token#11:Zweiten  span[66..73]
+Token#12:Weltkrieges  span[74..85]
+
+
+
+
+
+
+
+
+
+
+                      
+Implementations
+
+The Pattern parameter which is passed as argument is used as qualifier. Only those words which can 
+qualify for the Pattern parameter is converted into the tokens. 
+
+
+a) public CharSequence2TokenSequence (String regex):-The string parameter will be 
+   converted into Pattern. If one wants to provide the string directly into the 
+   CharSequence2TokenSequence constructor without using Pattern.compile then should  use     
+   this constructor. For e.g.
+
+   CharSequence2TokenSequence("[\\p{L}\\p{N}_]+")  
+   
+
+b) public CharSequence2TokenSequence (Pattern regex):-We used this constructor of
+   CharSequence2TokenSequence in our application.
+    
+   Pattern tokenPattern = Pattern.compile("[\\p{L}\\p{N}_]+");
+   CharSequence2TokenSequence(tokenPattern)
+     
+
+c) public CharSequence2TokenSequence ():- If no pattern is given by the user ,then 
+   the default Pattern will be taken by the pipe.  The default Pattern is 
+
+   \\p{Alpha}+ which means any alphabet which can occur one or more times.
+
+
+d) public CharSequence2TokenSequence (CharSequenceLexer lexer):- 
+     CharSequence2TokenSequence constructor in reality calls the constructor of CharSequenceLexer 
+     for deciding which word will be converted into token.
+
+
+    Pattern tokenPattern = Pattern.compile("[\\p{L}\\p{N}_]+");
+    CharSequenceLexer ob1=new CharSequenceLexer(tokenPattern);
+    CharSequence2TokenSequenc(tokenPattern);
+
+
+
+
+
+
+
+ 
+
+
+
+
+    3)TokenSequenceLowercase : It is pipe which converts all the tokens received through
+    previous pipes to lower case. For e.g. 
+    
+      Token#0:Der  span[0..3]     ------>     Token#0:der  span[0..3]
+      Token#1:T  span[4..5]                         Token#1:t  span[4..5]    
+      
+   Implementations
+
+   If you want your sequence to be converted into lowercase then pass true. If true is passed then the 
+   following code is executed internally.
+   
+   TokenSequenceLowercase lowercase =  new TokenSequenceLowercase ();
+      
+         The object of TokenSequenceLowercase class is created and is added to the pipe list
+
+    a) public TokenSequenceLowercase(): It simply create the object of the TokeSequenceLowercase 
+       which is added to the pipe list.
+
+  
+  4)TokenSequenceRemoveStopwords : It is the pipe which is used to remove the stop 
+    words from the tokens. The program contains a list of stopword(which are basically useless). 
+     If tokens contains these  stopwords than that tokens are removed from  the TokenList. For e.g. 
+     the stopword list of English language contains 
+
+                        “a",
+		"able",
+		"about",
+		"above",
+		"according",
+		"accordingly",
+		"across",
+		"actually",
+		"after",
+		"afterwards",
+		"again",
+		"against",
+		"all"
+       //stopwords for French, added by Limin Yao
+		"fut",
+		"S",
+		"ces",
+		"ral",
+		"new",
+		"tr",
+		"apr",
+		"sous",
+		"ans",
+		
+Note: This is not complete list which is used by Mallet.
+	 
+        
+
+
+If our TokenList contains words which are also there in stopword list than that  words are removed from the TokenList.
+
+Implementations
+
+1)public TokenSequenceRemoveStopwords (boolean caseSensitive,boolean markDeletions)
+(TokenSequenceRemoveStopwords(true, true)):-
+
+CaseSensitve: If this is true than the removing of the stopwords are CaseSensitive.
+MarkDeletions: If it is true then it marks the token which is deleted.
+
+2)public TokenSequenceRemoveStopwords (boolean caseSensitive):- If this is true than the removing of the stopwords are CaseSensitive
+
+3)public TokenSequenceRemoveStopwords():-This will in turn call the above constructor with the value false.
+
+4)public TokenSequenceRemoveStopwords(File stoplistFile, String encoding, boolean includeDefault,boolean caseSensitive, boolean markDeletions):-
+
+stopListFile: If users want to provide own set of stopwords list then pass the name of file which
+contain the list of stopwords.
+
+Encoding: Pass the encoding of the file for e.g. (“UTF-8”)
+
+includeDefault: If user also wants to use the Mallet default stopword list then  pass true else false.
+               
+
+CaseSensitve: If this is true than the removing of the stopwords are CaseSensitive.
+Otherwise the stopwords are removed from the tokens irrespective of their cases.
+
+MarkDeletions: If it is true then it marks the token which is deleted.
+
