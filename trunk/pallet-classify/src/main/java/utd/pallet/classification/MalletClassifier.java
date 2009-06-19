@@ -1,3 +1,5 @@
+package utd.pallet.classification;
+
 import java.io.IOException;
 
 import java.io.*;
@@ -12,6 +14,8 @@ import cc.mallet.classify.NaiveBayesTrainer;
 import cc.mallet.pipe.*;
 import cc.mallet.pipe.iterator.*;
 import cc.mallet.types.*;
+
+import utd.pallet.data.BuildPipe;
 
 /**
  * @author sharath

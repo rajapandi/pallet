@@ -1,3 +1,5 @@
+package utd.pallet.classification;
+
 import java.io.*;
 import java.util.*;
 import java.util.regex.*;
