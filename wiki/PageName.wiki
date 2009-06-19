@@ -168,7 +168,7 @@ If tokens contains these  stopwords than that tokens are removed from  the Token
 		"tr",
 		"apr",
 		"sous",
-		"ans"
+		"ans""
 		
 Note: This is not complete list which is used by Mallet.
 	 
