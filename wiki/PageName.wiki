@@ -2,7 +2,7 @@
 
 
 = Introduction =
-*CreatePipenew Input2CharSequence("UTF-8"),new CharSequence2TokenSequence(tokenPattern), true,new TokenSequenceRemoveStopwords(true, true),new TokenSequence2FeatureSequence(),new Target2Label(),new FeatureSequence2FeatureVector(false),true);*
+*CreatePipe(new Input2CharSequence("UTF-8"),new CharSequence2TokenSequence(tokenPattern), true,new TokenSequenceRemoveStopwords(true, true),new TokenSequence2FeatureSequence(),new Target2Label(),new FeatureSequence2FeatureVector(false),true);
 
 This function will create the Pipelist by adding the instances of all the pipes.
 
