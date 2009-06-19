@@ -16,7 +16,8 @@ To checkout the code from svn see instruction [http://code.google.com/p/pallet/s
 
 = Before building the code =
 Before building the code:
-*Mallet is not currently hosted in a maven repository.  So download it and install it like so:
+* Mallet is not currently hosted in a maven repository.  So download it and install it:
+
 {{{mm@ubuntu:~/pkg/pallet$ mvn install:install-file -DgroupId=umass.mallet -DartifactId=mallet -Dversion=2.0 -Dpackaging=jar -Dfile=/home/mm/pkg/mallet/dist/mallet.jar}}}
 
 = Building the code =
