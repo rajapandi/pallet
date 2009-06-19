@@ -62,10 +62,10 @@ For e.g.: Input2CharSequence("UTF-8"),tell the data to be read is in UTF-8  form
     
 
 2) CharSequence2TokenSequence: It is pipe that tokenizes a character sequence. It expects a
-     character sequence and converts into tokens. For e.g. after passing through Input2CharSequence
-     you have following data. 
+character sequence and converts into tokens. For e.g. after passing through Input2CharSequence
+you have following data. 
 
-          Der T-40 war ein sowjetischer leichter Schwimmpanzer zur Zeit des Zweiten Weltkrieges. 
+Der T-40 war ein sowjetischer leichter Schwimmpanzer zur Zeit des Zweiten Weltkrieges. 
 
 
 This data will be converted into following tokens after passing through CharSequence2TokenSequenc 
@@ -132,18 +132,18 @@ d) public CharSequence2TokenSequence (CharSequenceLexer lexer):-
 Implementations
 
 If you want your sequence to be converted into lowercase then pass true. If true is passed then the 
-   following code is executed internally.
+following code is executed internally.
    
-   TokenSequenceLowercase lowercase =  new TokenSequenceLowercase ();
+TokenSequenceLowercase lowercase =  new TokenSequenceLowercase ();
       
 The object of TokenSequenceLowercase class is created and is added to the pipe list
 
 a) public TokenSequenceLowercase(): It simply create the object of the TokeSequenceLowercase 
-       which is added to the pipe list.
+which is added to the pipe list.
 
 4)TokenSequenceRemoveStopwords : It is the pipe which is used to remove the stop 
-    words from the tokens. The program contains a list of stopword(which are basically useless). 
-     If tokens contains these  stopwords than that tokens are removed from  the TokenList. For e.g. 
+words from the tokens. The program contains a list of stopword(which are basically useless). 
+If tokens contains these  stopwords than that tokens are removed from  the TokenList. For e.g. 
      the stopword list of English language contains 
 
                 “a",
