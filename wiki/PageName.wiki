@@ -61,7 +61,7 @@ b)public Input2CharSequence( String encoding ) : Specifies the  data  form of th
 For e.g.: Input2CharSequence("UTF-8"),tell the data to be read is in UTF-8  format.
     
 
-     2) CharSequence2TokenSequence: It is pipe that tokenizes a character sequence. It expects a
+2) CharSequence2TokenSequence: It is pipe that tokenizes a character sequence. It expects a
      character sequence and converts into tokens. For e.g. after passing through Input2CharSequence
      you have following data. 
 
@@ -84,15 +84,6 @@ Token#9:Zeit  span[57..61]
 Token#10:des  span[62..65]
 Token#11:Zweiten  span[66..73]
 Token#12:Weltkrieges  span[74..85]
-
-
-
-
-
-
-
-
-
 
                       
 Implementations
@@ -132,41 +123,30 @@ d) public CharSequence2TokenSequence (CharSequenceLexer lexer):-
     CharSequence2TokenSequenc(tokenPattern);
 
 
-
-
-
-
-
- 
-
-
-
-
-    3)TokenSequenceLowercase : It is pipe which converts all the tokens received through
-    previous pipes to lower case. For e.g. 
+3)TokenSequenceLowercase : It is pipe which converts all the tokens received through
+  previous pipes to lower case. For e.g. 
     
       Token#0:Der  span[0..3]     ------>     Token#0:der  span[0..3]
       Token#1:T  span[4..5]                         Token#1:t  span[4..5]    
       
-   Implementations
+Implementations
 
-   If you want your sequence to be converted into lowercase then pass true. If true is passed then the 
+If you want your sequence to be converted into lowercase then pass true. If true is passed then the 
    following code is executed internally.
    
    TokenSequenceLowercase lowercase =  new TokenSequenceLowercase ();
       
-         The object of TokenSequenceLowercase class is created and is added to the pipe list
+The object of TokenSequenceLowercase class is created and is added to the pipe list
 
-    a) public TokenSequenceLowercase(): It simply create the object of the TokeSequenceLowercase 
+a) public TokenSequenceLowercase(): It simply create the object of the TokeSequenceLowercase 
        which is added to the pipe list.
 
-  
-  4)TokenSequenceRemoveStopwords : It is the pipe which is used to remove the stop 
+4)TokenSequenceRemoveStopwords : It is the pipe which is used to remove the stop 
     words from the tokens. The program contains a list of stopword(which are basically useless). 
      If tokens contains these  stopwords than that tokens are removed from  the TokenList. For e.g. 
      the stopword list of English language contains 
 
-                        “a",
+                “a",
 		"able",
 		"about",
 		"above",
@@ -192,9 +172,6 @@ d) public CharSequence2TokenSequence (CharSequenceLexer lexer):-
 		
 Note: This is not complete list which is used by Mallet.
 	 
-        
-
-
 If our TokenList contains words which are also there in stopword list than that  words are removed from the TokenList.
 
 Implementations
@@ -224,3 +201,4 @@ Otherwise the stopwords are removed from the tokens irrespective of their cases.
 
 MarkDeletions: If it is true then it marks the token which is deleted.
 
+}}}
