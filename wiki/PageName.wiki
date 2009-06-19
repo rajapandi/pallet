@@ -22,7 +22,9 @@ Note: The first and second argument are must for this method. We can provide nul
 in the application.
 
 
-The following pipes are used by the application. We will look into the each of the pipe one by one and explains what each one do.
+The following pipes are used by the application. We will look into the each of the pipe 
+
+one by one and explains what each one do.
 
 The purpose of the each pipe is explained below.
 
