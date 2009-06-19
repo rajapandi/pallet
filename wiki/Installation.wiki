@@ -15,11 +15,11 @@ If you are running Ubuntu, all of these are available through the package manage
 To checkout the code from svn see instruction [http://code.google.com/p/pallet/source/checkout here]
 
 = Before building the code =
-Before building the code:
-  * Mallet is not currently hosted in a maven repository.  So download it and install it:
+Mallet is not currently hosted in a maven repository.  So download it and install it:
 
 {{{mm@ubuntu:~/pkg/pallet$ mvn install:install-file -DgroupId=umass.mallet -DartifactId=mallet -Dversion=2.0 -Dpackaging=jar -Dfile=/home/mm/pkg/mallet/dist/mallet.jar}}}
 
 = Building the code =
 To build the code, go into the root Pallet folder and type:
+
 {{{mm@ubuntu:~/pkg/pallet$ mvn clean install}}}
