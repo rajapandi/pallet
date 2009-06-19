@@ -289,7 +289,7 @@ Implementations
  null  and an instance of LabelAlphabet created implicitly. Here we assumes that an object of 
  dataAlphabet is already created by previous pipes.
 
- 2)public Target2Label (LabelAlphabet labelAlphabet): If user want to create it's own 
+ 2)public Target2Label (LabelAlphabet labelAlphabet): If user want to create it is own 
  instance of LabelAlphabet (which indexes Labels)then use this constructor.
 
  3)public Target2Label (Alphabet dataAlphabet, LabelAlphabet labelAlphabet): If user
