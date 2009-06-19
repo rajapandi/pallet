@@ -4,9 +4,9 @@
 = Introduction =
 
 Pallet is a maven project, versioned in an svn repository and developed in java.  Therefore you will need:
-*[http://subversion.tigris.org/ svn client].
-*[http://maven.apache.org/ maven2].
-*[http://java.sun.com/javase/downloads/index.jsp java 6].
+  * [http://subversion.tigris.org/ svn client].
+  * [http://maven.apache.org/ maven2].
+  * [http://java.sun.com/javase/downloads/index.jsp java 6].
 
 If you are running Ubuntu, all of these are available through the package manager.
 
@@ -16,7 +16,7 @@ To checkout the code from svn see instruction [http://code.google.com/p/pallet/s
 
 = Before building the code =
 Before building the code:
-* Mallet is not currently hosted in a maven repository.  So download it and install it:
+  * Mallet is not currently hosted in a maven repository.  So download it and install it:
 
 {{{mm@ubuntu:~/pkg/pallet$ mvn install:install-file -DgroupId=umass.mallet -DartifactId=mallet -Dversion=2.0 -Dpackaging=jar -Dfile=/home/mm/pkg/mallet/dist/mallet.jar}}}
 
