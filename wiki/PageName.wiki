@@ -17,7 +17,9 @@ CreatePipe(new Input2CharSequence("UTF-8"),
 This function will create the Pipelist by adding the instances of all the pipes.
 
 
-*Note*: The first and second argument are must for this method. We can provide null for 4,5,6 and 7 arguments. This depends on the user ,that which pipes he/she wants to use in the application.
+Note: The first and second argument are must for this method. We can provide null for 
+
+4,5,6 and 7 arguments. This depends on the user ,that which pipes he/she wants to use in the application.
 
 
 The following pipes are used by the application. We will look into the each of the pipe one by one and explains what each one do.
