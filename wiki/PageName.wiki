@@ -293,7 +293,7 @@ Implementations
  instance of LabelAlphabet (which indexes Labels)then use this constructor.
 
  3)public Target2Label (Alphabet dataAlphabet, LabelAlphabet labelAlphabet): If user
- want to create it's own objects of DataAlphabet and LabelAlphabet then uses this constructor. 
+ want to create it is  own objects of DataAlphabet and LabelAlphabet then uses this constructor. 
  Note in this case user assumes that dataAlpabet object is not already created implicitly by the 
  Mallet. 
  
@@ -422,7 +422,9 @@ addThruPipe (new ArrayIterator (trainingdata[i][0],trainingdata[i][1][0]));
 
 
 
-Mallet provides different types of Iterater for different forms of data. For e.g. of the data is stored in the Array forms than ArrayIteraor must be used and if the data is in the File then FileIterator must be used.
+Mallet provides different types of Iterater for different forms of data. For e.g. of the
+data is stored in the Array forms than ArrayIteraor must be used and if the data is in 
+the File then FileIterator must be used.
 
 Here in the sample application ,we have used ArrayIterator as we stored the data in String array.
 
