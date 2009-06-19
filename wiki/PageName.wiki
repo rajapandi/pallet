@@ -3,6 +3,13 @@
 
 = Introduction =
 
+
+
+
+
+
+= Details =
+
 *CreatePipe(new Input2CharSequence("UTF-8"),new CharSequence2TokenSequence(tokenPattern), 
 	    true,new TokenSequenceRemoveStopwords(true, true), 
 	    new TokenSequence2FeatureSequence(),new Target2Label(), 
@@ -34,11 +41,6 @@ The purpose of the each pipe is explained below.
     
 7)PrintInputAndTarget::Print the data and target field of each instance.
 
-
-
-
-
-= Details =
 
 Add your content here.  Format your content with:
   * Text in *bold* or _italic_
