@@ -53,7 +53,7 @@ Now we will look into the each pipe.
 1)Input2CharSequence :It is a Pipe that can read data from various kinds  of sources and 
   convert the given input into character sequence Implementations.
 
-a)public Input2CharSequence (): It is default constructor. If user doesn't specify any 
+a)public Input2CharSequence (): It is default constructor.If user doesn't specify any 
   encoding then this constructor will be called.
 
 b)public Input2CharSequence( String encoding ) : Specifies the  data  form of the data.
