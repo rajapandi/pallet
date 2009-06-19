@@ -127,7 +127,7 @@ d) public CharSequence2TokenSequence (CharSequenceLexer lexer):-
   previous pipes to lower case. For e.g. 
     
       Token#0:Der  span[0..3]     ------>     Token#0:der  span[0..3]
-      Token#1:T  span[4..5]                         Token#1:t  span[4..5]    
+      Token#1:T  span[4..5]                   Token#1:t  span[4..5]    
       
 Implementations
 
@@ -168,7 +168,7 @@ If tokens contains these  stopwords than that tokens are removed from  the Token
 		"tr",
 		"apr",
 		"sous",
-		"ans",
+		"ans"
 		
 Note: This is not complete list which is used by Mallet.
 	 
