@@ -201,4 +201,269 @@ Otherwise the stopwords are removed from the tokens irrespective of their cases.
 
 MarkDeletions: If it is true then it marks the token which is deleted.
 
+5)TokenSequence2FeatureSequence:  It converts the Token Sequence to FeatureSequence. 
+It indexes the each token.
+
+0: der (0)                Index of the Word. If this word occur somewhere in this  
+1: 40 (1)                 file or some other file than it is also indexed with 0. 
+2: war (2)                 
+3: ein (3)
+4: sowjetischer (4)
+5: leichter (5)
+6: schwimmpanzer (6)
+7: zur (7)
+8: zeit (8)
+9: zweiten (9)
+10: weltkrieges (10)
+11: die (11)
+12: damalige (12)
+13: sowjetische (13)
+14: klassifikation (14)
+15: ordnete (15)
+16: ihn (16)
+17: als (17)
+18: kleinen (18)
+19: panzer (19)
+20: ein (3)
+21: das (20)
+22: konstruktionsbÃ¼ro (21)
+23: werks (22)
+24: nr (23)
+25: 37 (24)
+26: moskau (25)
+27: entwickelte (26)
+28: den (27)
+29: 40 (1)
+30: der (0)     
+31: ersten (28)
+32: hÃ¤lfte (29)
+
+
+
+
+
+
+
+
+
+
+Implementations
+
+1) public TokenSequence2FeatureSequence ():-Create an instance of Alphabet class by    
+   itslef.Integers are assigned consecutively, starting at zero ,as objects(tokens)  are added
+   to the Alphabet.
+
+
+   Objects cannot be deleted from the Alphabet and thus the integers are never reused. In a
+   simple document classification usage ,each unique word in a  document would be unique 
+   entry in the Alphabet with unique features added to it.
+   
+   Therefore TokenSequence2featureSequence assigned unique index to each unique words.
+   
+  
+2) public TokenSequence2FeatureSequence (Alphabet dataDict):-If user wants to use   
+    own Alphabet instance then uses this constructor.
+
+
+
+6)  Target2Label:- Convert Object in the target field into the label. For e.g. 
+                 
+    The object into the target field for sample code is 
+
+    Labels              Data(which in reality is in the forms of Tokens)
+
+    "africa"    for      "on the plains of africa the lions roar",
+		       "in swahili ngoma means to dance",
+	                   "nelson mandela became president of south africa",
+		       "the saraha dessert is expanding"
+
+ 
+    "asia"     for        "panda bears eat bamboo",
+	                    "china's one child policy has resulted 
+                                 in a surplus of boys",
+		          "tigers live in the jungle"
+
+
+
+   "australia"   for      "home of kangaroos",
+		          "Autralian's for beer - Foster",
+		          "Steve Irvin is a herpetologist"
+           
+     Note: Labels of instances are used at the time of classification.  
+
+  
+
+
+
+Implementations
+
+ 1) public Target2Label (): Calls the Third constructor with the values as  dataAlphabet as 
+ null  and an instance of LabelAlphabet created implicitly. Here we assumes that an object of 
+ dataAlphabet is already created by previous pipes.
+
+ 2)public Target2Label (LabelAlphabet labelAlphabet): If user want to create it's own 
+ instance of LabelAlphabet (which indexes Labels)then use this constructor.
+
+ 3)public Target2Label (Alphabet dataAlphabet, LabelAlphabet labelAlphabet): If user
+ want to create it's own objects of DataAlphabet and LabelAlphabet then uses this constructor. 
+ Note in this case user assumes that dataAlpabet object is not already created implicitly by the 
+ Mallet. 
+ 
+
+ LabelAlphabet is similar class like Alphabet which is used to map arbitrary objects like Labels 
+ object into integers and back. So Labels are also indexed like the data.
+
+
+   7)FeatureSequence2FeatureVector : Convert a data field from Feature Sequence to Feature 
+  vector. This class does not insist on getting its own Alphabet  because it rely on  getting from
+  the FeatureSequence input.
+
+  For e.g.  Feature vector counts the number of times index 0  occurred in a featureSequence
+ . 
+
+  [0]=11.0 
+
+  Note : The index 0 is related to the word “der”. So it means that “der” occurred 
+  11 times in a feature sequence.
+
+  Implementations
+  
+1) public FeatureSequence2FeatureVector (): It calls the below constructor
+   passing the false value.
+
+2) public FeatureSequence2FeatureVector (boolean binary):
+
+
+
+
+
+
+
+
+
+
+
+ 3) PrintInputAndTarget: Print the data and Target field of each instance. For e.g.
+   The output of the sample code.
+ 
+
+
+   
+name: array:0   
+target: africa
+input: plains(0)=1.0               
+africa(1)=1.0
+lions(2)=1.0
+roar(3)=1.0
+
+name: array:1
+target: africa
+input: swahili(4)=1.0
+ngoma(5)=1.0
+means(6)=1.0
+dance(7)=1.0                 
+
+name: array:2
+target: africa
+input: africa(1)=1.0
+nelson(8)=1.0
+mandela(9)=1.0
+president(10)=1.0
+south(11)=1.0                        
+                                          
+name: array:3
+target: africa
+input: saraha(12)=1.0                          
+dessert(13)=1.0
+expanding(14)=1.0
+
+name: array:0
+target: asia
+input: panda(15)=1.0
+bears(16)=1.0
+eat(17)=1.0
+bamboo(18)=1.0
+
+name: array:1
+target: asia
+input: china(19)=1.0
+child(20)=1.0
+policy(21)=1.0
+resulted(22)=1.0
+surplus(23)=1.0
+boys(24)=1.0
+
+name: array:2
+target: asia
+input: tigers(25)=1.0
+live(26)=1.0
+jungle(27)=1.0
+
+name: array:0
+target: australia
+input: home(28)=1.0
+kangaroos(29)=1.0
+
+name: array:1
+target: australia
+input: autralian(30)=1.0
+beer(31)=1.0
+foster(32)=1.0
+
+name: array:2
+target: australia
+input: steve(33)=1.0
+irvin(34)=1.0
+herpetologist(35)=1.0
+
+
+If you passed true in createPipe as last argument then constructor of PrintInputAndTarget is called.
+
+Implementations
+
+public PrintInputAndTarget (String prefix): If user want to add some prefix before the actual 
+output then should cal this constructor.
+
+PrintInputAndTarget(): This is the constructor which simply creates the object of PrintInputAndTarget without any prefix. 
+
+_____________________________________________________________________________________
+
+Code
+
+addThruPipe (new ArrayIterator (trainingdata[i][0],trainingdata[i][1][0]));
+
+
+addThruPipe(Iterator<Instance> iterator)
+
+
+This function will add all the instances generated by the iterator. The instances are generated passing the Data through the above mentioned list of pipes.
+
+addThruPipe (new ArrayIterator (trainingdata[i][0],trainingdata[i][1][0]));
+
+
+
+Mallet provides different types of Iterater for different forms of data. For e.g. of the data is stored in the Array forms than ArrayIteraor must be used and if the data is in the File then FileIterator must be used.
+
+Here in the sample application ,we have used ArrayIterator as we stored the data in String array.
+
+
+ArrayIterator
+
+Implementations
+
+1)public ArrayIterator (List data, Object target):ArrayIterator (trainingdata[i][0],trainingdata[i][1][0]) :- 
+
+data: It contains the data which is to be imported into Mallet instances.
+Target: It is label or target on the basis of which classification of data occur.
+  
+
+2)public ArrayIterator (List data):It calls the above constructor with arguments
+(data,null). If user just want to import the data and do not want to do any classification then should go with this constructor.
+
+3)public ArrayIterator (Object[] data, Object target):It calls the first constructor with arguments this (java.util.Arrays.asList (data), target).
+
+4)public ArrayIterator (Object[] data): It will call the above constructor with arguments (data,null).
+
+
+
 }}}
