@@ -1,0 +1,19 @@
+#labels Phase-Deploy,Phase-Implementation
+#Instructions for installing and running Pallet.
+
+= Introduction =
+
+Pallet is a maven project, versioned in an svn repository and developed in java.  Therefore you will need:
+*[http://subversion.tigris.org/ svn client].
+*[http://maven.apache.org/ maven2].
+*[http://java.sun.com/javase/downloads/index.jsp java 6].
+
+If you are running Ubuntu, all of these are available through the package manager.
+
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
