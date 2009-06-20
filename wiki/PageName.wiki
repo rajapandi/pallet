@@ -204,7 +204,7 @@ MarkDeletions: If it is true then it marks the token which is deleted.
 5)TokenSequence2FeatureSequence:  It converts the Token Sequence to FeatureSequence. 
 It indexes the each token.
 
-0: der (0)                Index of the Word. If this word occur somewhere in this  
+0: der (0)------>         Index of the Word. If this word occur somewhere in this  
 1: 40 (1)                 file or some other file than it is also indexed with 0. 
 2: war (2)                 
 3: ein (3)
@@ -233,8 +233,8 @@ It indexes the each token.
 26: moskau (25)
 27: entwickelte (26)
 28: den (27)
-29: 40 (1)
-30: der (0)     
+29: 40 (1)                                         
+30: der (0)  ------------------- "Der" is again indexed with 0.   
 31: ersten (28)
 32: hÃ¤lfte (29)
 
