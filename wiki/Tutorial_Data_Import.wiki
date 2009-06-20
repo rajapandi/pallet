@@ -431,6 +431,8 @@ ________________________________________________________________________________
 
 Sample Code
 
+The next thing which user should do is to add all the instances to the instanceList.
+
 addThruPipe (new ArrayIterator (trainingdata[i][0],trainingdata[i][1][0]));
 
 addThruPipe(Iterator<Instance> iterator)
