@@ -1,5 +1,4 @@
-#summary One-sentence summary of this page.
-Document demonstrating the Document Classification algorithms of MALLET
+#summary Document demonstrating the Document Classification algorithms of MALLET
 = Introduction =
 MALLET supports rich set of Document Classification Algorithms:
 {{{
@@ -20,7 +19,7 @@ MALLET supports rich set of Document Classification Algorithms:
 Every Classifier is implemented as a Trainer and Classifier, and performs classification only on the instances processed with the pipe (import data pipe) associated with this classifier. Instances are generally Feature Vectors. Trainer is responsible for training data and the Classifier performs the classification based on the trained data.
 
 Every Trainer consists train () method, which is used to train the data. A call to this train() method instantiates the Classifier which can classify the data based on its training.
-Further, all Trainers and Classifiers can be found in cc.mallet.classify. Also, each trainer and classifier is implemented as an object in the MALLET. All the trainer mentioned above extends ClassifierTrainer class and the trainers mentioned extends Classifier respectively, both of which can be found at cc.mallet.classify
+Further, all Trainers and Classifiers can be found in cc.mallet.classify. Also, each trainer and classifier is implemented as an object in the MALLET. All the trainer mentioned above extends _ClassifierTrainer_ class and the trainers mentioned extends Classifier respectively, both of which can be found at *cc.mallet.classify*
 
 Given, the general introduction on Classifier, let us proceed to explore each of the Algorithms.
 
