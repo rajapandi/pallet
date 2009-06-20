@@ -143,8 +143,9 @@ which is added to the pipe list.
 
 4)TokenSequenceRemoveStopwords : It is the pipe which is used to remove the stop 
 words from the tokens. The program contains a list of stopword(which are basically useless). 
-If tokens contains these  stopwords than that tokens are removed from  the TokenList. For e.g. 
-     the stopword list of English language contains 
+If tokens contains these  stopwords than that tokens are removed from  the TokenList. For 
+e.g. 
+the stopword list of English language contains 
 
                 “a",
 		"able",
