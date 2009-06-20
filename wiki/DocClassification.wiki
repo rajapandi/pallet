@@ -2,7 +2,8 @@
 Document demonstrating the Document Classification algorithms of MALLET
 = Introduction =
 MALLET supports rich set of Document Classification Algorithms:
-{{{1.	Naïve Bayes.
+{{{
+1.	Naïve Bayes.
 2.	Maximum Entropy (Multivariate Logistic Regression).
 3.	C4.5 Decision Trees.
 4.	Decision Trees.
@@ -13,7 +14,8 @@ MALLET supports rich set of Document Classification Algorithms:
 9.	Rank Maximum Entropy
 10.	Winnow
 11.	Confidence Predicting.
-12.	Maximum Entropy models with Generalized Expectation Criteria.}}}
+12.	Maximum Entropy models with Generalized Expectation Criteria.
+}}}
 
 Every Classifier is implemented as a Trainer and Classifier, and performs classification only on the instances processed with the pipe (import data pipe) associated with this classifier. Instances are generally Feature Vectors. Trainer is responsible for training data and the Classifier performs the classification based on the trained data.
 
