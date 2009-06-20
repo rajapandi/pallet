@@ -1,5 +1,5 @@
 #summary Document demonstrating the Document Classification algorithms of MALLET
-#labels DocumentClassification,MalletClassificationtutorial,PalletClassification
+#labels DocumentClassification
 = Introduction =
 MALLET supports rich set of Document Classification Algorithms:
 {{{
