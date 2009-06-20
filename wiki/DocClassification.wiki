@@ -24,12 +24,27 @@ Further, all Trainers and Classifiers can be found in cc.mallet.classify. Also, 
 Given, the general introduction on Classifier, let us proceed to explore each of the Algorithms.
 
 
-Add your content here.
+*Naïve Bayes:*
+As with every classifier Naïve Bayes is also implemented as a trainer and classifier. Naïve Bayes assumes the Conditional Model to classify data.
+
+		p(Classification|Data) = p(Data|Classification)p(Classification)/p(Data)
+
+Further, Naïve Bayes also assumes the conditional independence between the data.
+
+		p(Data|Classification) = p(d1,d2,..dn | Classification)
+		p(d1,d2,...dn | Classification) = p(d1|Classification)p(d2|Classification)
+
+Now time to look at the APIs that Naïve Bayes Trainer and Classifier exposes.
+Naïve Bayes Trainer and classifier are under the nomenclature NaiveBayesTrainer and NaiveBayesClassifier respectively and can be found at cc.mallet.classify.
 
 
-= Details =
+*NaïveBayes Trainer:*
+Extends - ClassifierTrainer<NaiveBayes>
+Implements - ClassifierTrainer.ByInstanceIncrements<NaiveBayes>, 
+	   Boostable, 
+   	   AlphabetCarrying and java.io.Serializable.
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+ClassifierTrainer 			– Abstract Parent of all Concrete Classifier Trainer.
+ClassifierTrainer.ByInstanceIncrements 	– Interface that supports online learning.
+Boostable 			– Interface for instance tagging, currently not used.
+AlphabetCarrying 			– An Interface for objects that contain one or more alphabets.
