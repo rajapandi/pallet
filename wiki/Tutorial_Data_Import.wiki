@@ -56,12 +56,14 @@ Now we will look into the each pipe.
         
  
 1)Input2CharSequence :It is a Pipe that can read data from various kinds  of sources and 
-  convert the given input into character sequence Implementations.
+  convert the given input into character sequence. 
+
+Implementation
 
 a)public Input2CharSequence (): It is default constructor.If user does not specify any 
   encoding then this constructor will be called.
 
-b)public Input2CharSequence( String encoding ) : Specifies the  data  form of the data.
+b)public Input2CharSequence( String encoding ) : Specifies the encoding form of the data.
      
 For e.g.: Input2CharSequence("UTF-8"),tell the data to be read is in UTF-8  format.
     
@@ -93,6 +95,15 @@ Token#12:Weltkrieges  span[74..85]
                       
 Implementations
 
+Pattern tokenPattern = Pattern.compile("[\\p{L}\\p{N}_]+")
+
+This Pattern will select all the words which includes alphabets and Numericals.
+}}}
+
+For Pattern class please look 
+*[http://java.sun.com/j2se/1.4.2/docs/api/java/util/regex/Pattern.html] 
+
+{{{
 The Pattern parameter which is passed as argument is used as qualifier. Only those words which can 
 qualify for the Pattern parameter is converted into the tokens. 
 
@@ -102,7 +113,8 @@ a) public CharSequence2TokenSequence (String regex):-The string parameter will b
    CharSequence2TokenSequence constructor without using Pattern.compile then should  use     
    this constructor. For e.g.
 
-   CharSequence2TokenSequence("[\\p{L}\\p{N}_]+")  
+   CharSequence2TokenSequence("[\\p{L}\\p{N}_]+") 
+  
    
 
 b) public CharSequence2TokenSequence (Pattern regex):-We used this constructor of
