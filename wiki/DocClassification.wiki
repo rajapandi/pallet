@@ -36,3 +36,10 @@ Further, Naïve Bayes also assumes the conditional independence between the data
 
 Now time to look at the APIs that Naïve Bayes Trainer and Classifier exposes.
 Naïve Bayes Trainer and classifier are under the nomenclature NaiveBayesTrainer and NaiveBayesClassifier respectively and can be found at *cc.mallet.classify*.
+
+*NaïveBayes Trainer:*
+Extends    - ClassifierTrainer<NaiveBayes>
+Implements - ClassifierTrainer.ByInstanceIncrements<NaiveBayes>, 
+	     Boostable, 
+   	     AlphabetCarrying and java.io.Serializable.
+
