@@ -100,8 +100,7 @@ Pattern tokenPattern = Pattern.compile("[\\p{L}\\p{N}_]+")
 This Pattern will select all the words which includes alphabets and Numericals.
 }}}
 
-      For Pattern class please look 
-*[http://java.sun.com/j2se/1.4.2/docs/api/java/util/regex/Pattern.html here] 
+      For Pattern class please look *[http://java.sun.com/j2se/1.4.2/docs/api/java/util/regex/Pattern.html here] 
 
 {{{
 The Pattern parameter which is passed as argument is used as qualifier. Only those words which can 
