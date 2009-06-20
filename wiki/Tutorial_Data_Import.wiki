@@ -1,4 +1,4 @@
-#It tells "How data Import works in Mallet"
+#summary Document demonstrating the Data Import in MALLET
 
 = Introduction =
 
