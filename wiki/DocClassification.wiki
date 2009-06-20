@@ -43,3 +43,73 @@ Extends    - ClassifierTrainer<NaiveBayes>
 Implements - ClassifierTrainer.ByInstanceIncrements<NaiveBayes>, 
 	     Boostable,AlphabetCarrying and java.io.Serializable.
 }}}
+
+Before, getting into details of Naïve Bayes Classifier, Let us look at a sample code for NaiveBayes classification (should also work for all the other classification algorithms).
+
+{{{
+class AppNaiveBayes
+{
+           // Look at Import Data Document for BuildPipe and Instance Lists description
+public static BuildPipe buildPipe ()
+	{
+		String [][][] trainingdata = new String [][][] {
+		{{ "on the plains of africa the lions roar",
+		"in swahili ngoma means to dance",
+		"nelson mandela became president of south africa",
+		"the saraha dessert is expanding"}, {"africa"}},					{{ "panda bears eat bamboo",
+		"china's one child policy has resulted in a surplus of boys",
+		"tigers live in the jungle"}, {"asia"}},
+		{{ "home of kangaroos",
+		"Autralian's for beer - Foster",
+		"Steve Irvin is a herpetologist"}, {"australia"}}};
+		
+		BuildPipe bpipe = new BuildPipe ();		
+		Pattern tokenPattern = Pattern.compile("[\\p{L}\\p{N}_]+");
+		try {
+			bpipe.CreatePipe( new Input2CharSequence("UTF-8"),
+				new CharSequence2TokenSequence(tokenPattern), 
+				true, 
+				new TokenSequenceRemoveStopwords(true, true), 
+				new TokenSequence2FeatureSequence(), 
+				new Target2Label(), 
+				new FeatureSequence2FeatureVector(), 
+				false);
+		} catch (IOException e ) {};
+		
+		for (int i = 0; i < 3; i++) 
+{
+			try {
+			 bpipe.addThruPipe (new ArrayIterator (
+trainingdata[i][0],		trainingdata[i][1][0]));
+			} catch (Exception e) { }
+		}
+		return bpipe;
+	}
+
+	public static void main (String Args []) {			
+		
+		// 1. Create the instance list
+		BuildPipe bpipe = AppNaiveBayes.buildPipe();
+
+		// 2. Create NaiveBayes Trainer
+		NaiveBayesTrainer trainer = new NaiveBayesTrainer ();
+
+		// 3. Train the trainer with the data
+		NaiveBayes cl = trainer.train(bpipe.GetInstanceList());
+
+		// 4. Classify the sample data based on the trained data
+	    Classification c = cl.classify("nelson Mandela never eats lion");
+
+	    // 5. Validation of correctness
+	    System.out.println (“Class Name – “ + 
+					c.getLabeling().getBestLabel());
+}
+
+Above source code shows the steps involved in the MALLET document classification.  
+
+1.	Instance list of training data is created using the BuildPipe object.
+2.	Instantiation of NaiveBayesTrainer.
+3.	Training the classifier with the instance list created, as you can see the train method returns an instance of NaiveBayes Classifier (more detailed explanation in Instance method section of this document).
+4.	Classification of new data on the trained data is achieved using the method: NaiveBayes.classify (Object obj) (more detailed explanation in Instance method section of this document). 
+5.	Last step is just the validation.
+}}}
