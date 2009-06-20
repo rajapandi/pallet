@@ -448,7 +448,8 @@ Target: It is label or target on the basis of which classification of data occur
   
 
 2)public ArrayIterator (List data):It calls the above constructor with arguments
-(data,null). If user just want to import the data and do not want to do any classification then should go with this constructor.
+(data,null). If user just want to import the data and do not want to do any 
+classification then should go with this constructor.
 
 3)public ArrayIterator (Object[] data, Object target):It calls the first constructor with 
 arguments this (java.util.Arrays.asList (data), target).
