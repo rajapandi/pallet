@@ -4,7 +4,8 @@
 __________________________________________________________________________________________
 
 Sample Code
-
+The pipeList is created in Mallet by calling CreatePipe method. The CreatePipe method 
+must be called in the following way.
 {{{
 CreatePipe(new Input2CharSequence("UTF-8"), 
 				new CharSequence2TokenSequence(tokenPattern), 
