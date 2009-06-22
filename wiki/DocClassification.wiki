@@ -104,6 +104,7 @@ class AppNaiveBayes
 	        System.out.println (“Class Name – “ + 
 					c.getLabeling().getBestLabel());
         }
+}
 }}}
 
 Above source code shows the steps involved in the MALLET document classification.  
