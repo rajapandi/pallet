@@ -19,6 +19,9 @@ Pallet depends on the Mallet library.  Mallet is not currently hosted in a maven
 
 {{{mm@ubuntu:~/pkg/pallet$ mvn install:install-file -DgroupId=umass.mallet -DartifactId=mallet -Dversion=2.0 -Dpackaging=jar -Dfile=/home/mm/pkg/mallet/dist/mallet.jar}}}
 
+Similarly [http://pallet.googlecode.com/files/External_jars.rar download all] External 
+jars and then install into your local maven repository:
+
 = Building the code =
 To build the code, go into the root Pallet folder and type:
 
