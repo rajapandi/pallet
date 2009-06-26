@@ -117,3 +117,15 @@ Above source code shows the steps involved in the MALLET document classification
 (more detailed explanation in Instance method section of this document).
 5.Last step is just the validation.
 }}}
+
+*Note - look at the Import Data document for more info on Importing Data, Instance Lists, and Iterators.
+
+{{{
+*Instance Methods:*
+}}}
+{{{
+Constructors:
+1.NaiveBayesTrainer ().
+2.NaiveBayesTrainer (Pipe instancePipe).
+3.NaiveBayesTrainer (NaiveBayes initialClassifier) – Used to initialize trainer with an existing Classifier. When initialized with an existing classifier, a trainer need not train on the same training data
+}}}
