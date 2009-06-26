@@ -127,4 +127,8 @@ Instance Methods:
 *Constructors:*
 {{{
 1.NaiveBayesTrainer ()
+2.NaiveBayesTrainer (Pipe instancePipe)
+3.NaiveBayesTrainer (NaiveBayes initialClassifier)
+
+
 }}}
