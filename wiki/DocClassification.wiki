@@ -121,11 +121,17 @@ Above source code shows the steps involved in the MALLET document classification
 *Note - look at the Import Data document for more info on Importing Data, Instance Lists, and Iterators.
 
 {{{
-*Instance Methods:*
+Instance Methods:
 }}}
 {{{
 Constructors:
 1.NaiveBayesTrainer ().
 2.NaiveBayesTrainer (Pipe instancePipe).
-3.NaiveBayesTrainer (NaiveBayes initialClassifier) – Used to initialize trainer with an existing Classifier. When initialized with an existing classifier, a trainer need not train on the same training data
+3.NaiveBayesTrainer (NaiveBayes initialClassifier)
+Used to initialize trainer with an existing Classifier. 
+When initialized with an existing classifier, a trainer need not train on the same training data.
 }}}
+{{{
+Public Instance Methods:
+}}}
+1.NaiveBayes getClassifier () - Returns instance of the classifier. 
