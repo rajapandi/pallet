@@ -172,9 +172,9 @@ Alphabet maps integers and objects where the mapping in each direction is effici
 {{{
 Code snippet for incremental training:
 
-// Create Feature Vector Instance List as shown in the code above
-// Refer Import Data document for more info
-// Assume classifier is trained with the data shown in previous code snippets
+   // Create Feature Vector Instance List as shown in the code above
+   // Refer Import Data document for more info
+   // Assume Instance list as shown in previous code snippet
 
    NaiveBayesTrainer trainer = new NaiveBayesTrainer ();
    NaiveBayes classifier = trainer.train(pipe.GetInstanceList());
@@ -186,7 +186,7 @@ Code snippet for incremental training:
    System.out.println("Class Name - " + c.getLabeling().getBestLabel());
 		
    String [][][] incTrainingdata = new String [][][] {
-     {{ "Christopher Columbus discovered USA",
+     {{ "Christopher Columbus discovered American Continents",
      "The Niagara Falls are voluminous waterfalls on the Niagara River",
      "Tiger woods is golf master"}, {"America"}}};
 		
@@ -196,4 +196,5 @@ Code snippet for incremental training:
    classifier = trainer.trainIncremental(pipe.GetInstanceList());
    c = classifier.classify("Woods has won American golf championships");
    System.out.println("Class Name - " + c.getLabeling().getBestLabel());	
+
 }}}
