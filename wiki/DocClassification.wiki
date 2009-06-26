@@ -143,5 +143,8 @@ Same as the train method but does not resets the internal state.
 Incrementally adds the count of the training data and Training data is lnstance list of Feature Vector.
 4.NaiveBayes trainIncremental(Instance instance)
 Same as  previous incremental trainer with training data as an Instance.
+5.NaiveBayesTrainer setDocLengthNormalization(double d) – Sets Documentation Length Normalization.
+
+
 
 }}}
