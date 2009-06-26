@@ -131,4 +131,6 @@ Constructors:
 3.NaiveBayesTrainer (NaiveBayes initialClassifier)
 Used to initialize trainer with an existing Classifier.
 When initialized with an existing classifier, a trainer need not train on the same training data
+
+Public Instance Methods:
 }}}
