@@ -162,7 +162,8 @@ Returns the multinomial Estimator that is used for document classification.
 10.Alphabet[] getAlphabets()
 
 11.alphabetsMatch(AlphabetCarrying object) 
-Alphabet maps integers and objects where the mapping in each direction is efficient. (Will be explained in detail under the section Alphabet.
+Alphabet maps integers and objects where the mapping in each direction is efficient.
+(Will be explained in detail under the section Alphabet.
 
 12.String toString()
 }}}
