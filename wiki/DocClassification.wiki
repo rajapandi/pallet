@@ -133,4 +133,6 @@ Used to initialize trainer with an existing Classifier.
 When initialized with an existing classifier, a trainer need not train on the same training data
 
 Public Instance Methods:
+1.NaiveBayes getClassifier () - Returns instance of the classifier
+
 }}}
