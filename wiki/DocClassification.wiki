@@ -135,20 +135,27 @@ When initialized with an existing classifier, a trainer need not train on the sa
 Public Instance Methods:
 1.NaiveBayes getClassifier ()
 Returns instance of the NaiveBayes classifier.
+
 2.NaiveBayes train (InstanceList trainingList)
 Trains the naivebayes trainer with the training list passed as an Instance List of Feature Vector, 
 all previous internal states are reset when train returns.
+
 3.NaiveBayes trainIncremental (InstanceList trainingList)
 Same as the train method but does not resets the internal state.
 Incrementally adds the count of the training data and Training data is lnstance list of Feature Vector.
+
 4.NaiveBayes trainIncremental(Instance instance)
 Same as  previous incremental trainer with training data as an Instance.
+
 5.NaiveBayesTrainer setDocLengthNormalization(double d)
 Sets Documentation Length Normalization.
+
 6.Multinomial.Estimator getFeatureMultinomialEstimator()
 Returns the multinomial Estimator that is used for document classification.
+
 7.Multinomial.Estimator getPriorMultinomialEstimator()
 
+8.NaiveBayesTrainer setPriorMultinomialEstimator(Multinomial.Estimator me)
 
 
 
