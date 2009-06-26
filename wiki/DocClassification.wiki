@@ -171,27 +171,29 @@ Alphabet maps integers and objects where the mapping in each direction is effici
 
 {{{
 Code snippet for incremental training:
+
 // Create Feature Vector Instance List as shown in the code above
 // Refer Import Data document for more info
 // Assume classifier is trained with the data shown in previous code snippets
-NaiveBayesTrainer trainer = new NaiveBayesTrainer ();
-NaiveBayes classifier = trainer.train(pipe.GetInstanceList());
+
+   NaiveBayesTrainer trainer = new NaiveBayesTrainer ();
+   NaiveBayes classifier = trainer.train(pipe.GetInstanceList());
 		
-Classification c = classifier.classify("nelson mandela never eats lions");
-System.out.println("Class Name - " + c.getLabeling().getBestLabel());
+   Classification c = classifier.classify("nelson mandela never eats lions");
+   System.out.println("Class Name - " + c.getLabeling().getBestLabel());
 		
-c = classifier.classify("Steve irvin stays in australia");
-System.out.println("Class Name - " + c.getLabeling().getBestLabel());
+   c = classifier.classify("Steve irvin stays in australia");
+   System.out.println("Class Name - " + c.getLabeling().getBestLabel());
 		
-String [][][] incTrainingdata = new String [][][] {
-{{ "Christopher Columbus discovered USA",
-"The Niagara Falls are voluminous waterfalls on the Niagara River",
-"Tiger woods is golf master"}, {"America"}}};
+   String [][][] incTrainingdata = new String [][][] {
+     {{ "Christopher Columbus discovered USA",
+     "The Niagara Falls are voluminous waterfalls on the Niagara River",
+     "Tiger woods is golf master"}, {"America"}}};
 		
-pipe.addThruPipe (
+   pipe.addThruPipe (
     new ArrayIterator (incTrainingdata[0][0],incTrainingdata[0][1][0]));		
 	
-classifier = trainer.trainIncremental(pipe.GetInstanceList());
-c = classifier.classify("Woods has won American golf championships");
-System.out.println("Class Name - " + c.getLabeling().getBestLabel());	
+   classifier = trainer.trainIncremental(pipe.GetInstanceList());
+   c = classifier.classify("Woods has won American golf championships");
+   System.out.println("Class Name - " + c.getLabeling().getBestLabel());	
 }}}
