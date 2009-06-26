@@ -123,5 +123,8 @@ Above source code shows the steps involved in the MALLET document classification
 {{{
 Instance Methods:
 }}}
-Constructors:
+
+*Constructors:*
+{{{
 1.NaiveBayesTrainer ()
+}}}
