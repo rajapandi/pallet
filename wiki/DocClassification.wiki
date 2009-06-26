@@ -111,7 +111,8 @@ Above source code shows the steps involved in the MALLET document classification
 {{{
 1.Instance list of training data is created using the BuildPipe object.
 2.Instantiation of NaiveBayesTrainer.
-3.Training the classifier with the instance list created, as you can see the train method returns an instance of NaiveBayes Classifier.
+3.Training the classifier with the instance list created. 
+As you can see the train method returns an instance of NaiveBayes Classifier.
 (more detailed explanation in Instance method section of this document).
 4.Classification of new data on the trained data is achieved using the method: NaiveBayes.classify (Object obj).
 (more detailed explanation in Instance method section of this document).
