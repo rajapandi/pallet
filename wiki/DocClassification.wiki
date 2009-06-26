@@ -186,13 +186,13 @@ Code snippet for incremental training:
    System.out.println("Class Name - " + c.getLabeling().getBestLabel());
 		
    String [][][] incTrainingdata = new String [][][] {
-     {{ "Christopher Columbus discovered American Continents",
+   {{"Tiger woods is golf master",
      "The Niagara Falls are voluminous waterfalls on the Niagara River",
-     "Tiger woods is golf master"}, {"America"}}};
+     "Christopher Columbus discovered American Continents"}, {"America"}}};
 		
    pipe.addThruPipe (
     new ArrayIterator (incTrainingdata[0][0],incTrainingdata[0][1][0]));		
-	
+	 
    classifier = trainer.trainIncremental(pipe.GetInstanceList());
    c = classifier.classify("Woods has won American golf championships");
    System.out.println("Class Name - " + c.getLabeling().getBestLabel());	
