@@ -175,7 +175,7 @@ Code snippet for incremental training:
 
    // Create Feature Vector Instance List as shown in the code above
    // Refer Import Data document for more info
-   // Assume Instance list as shown in previous code snippet
+   // Assume Instance list is created by previous code snippet
 
    NaiveBayesTrainer trainer = new NaiveBayesTrainer ();
    NaiveBayes classifier = trainer.train(pipe.GetInstanceList());
