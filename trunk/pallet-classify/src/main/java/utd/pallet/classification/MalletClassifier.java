@@ -28,8 +28,8 @@ import cc.mallet.types.Instance;
  */
 public class MalletClassifier {
     /**
-     * An instance of Pipe is created which will be used to call the CreatePipe
-     * method of the BuildPipe class.
+     * An instance of BuildPipe is created which will be used to call the
+     * CreatePipe method of the BuildPipe class.
      **/
     private BuildPipe bpipe = null;
 
