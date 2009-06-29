@@ -199,3 +199,13 @@ Code snippet for incremental training:
    System.out.println("Class Name - " + c.getLabeling().getBestLabel());	
 
 }}}
+{{{
+Code Snippet for Reusing the existing Trained Classifier
+
+   NaiveBayesTrainer reuse_trainer = new NaiveBayesTrainer (classifier);
+   NaiveBayes reuse_classifier = trainer.getClassifier();
+   c = reuse_classifier.classify("Woods has won American golf championships");
+   System.out.println("Class Name - " + c.getLabeling().getBestLabel());
+}}}
+
+*Yet to be completed*
