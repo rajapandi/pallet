@@ -24,7 +24,7 @@ Further, all Trainers and Classifiers can be found in cc.mallet.classify. Also, 
 
 Given, the general introduction on Classifier, let us proceed to explore each of the Algorithms.
 
-[[Before proceeding any further, I want you to keep this in mind:This tutorial is not intended to describe the algorithms, it just aims at exposing the MALLET interfaces]]
+[Before proceeding any further, I want you to keep this in mind:This tutorial is not intended to describe the algorithms, it just aims at exposing the MALLET interfaces.]
 
 ==Naïve Bayes==
 As with every classifier Naïve Bayes is also implemented as a trainer and classifier. Naïve Bayes assumes the Conditional Model to classify data.
@@ -108,7 +108,7 @@ class AppNaiveBayes
 }
 }}}
 
-Above source code shows the steps involved in the MALLET document classification.  
+====Above source code shows the steps involved in the MALLET document classification.====
 {{{
 1.Instance list of training data is created using the BuildPipe object.
 2.Instantiation of NaiveBayesTrainer.
@@ -122,8 +122,8 @@ As you can see the train method returns an instance of NaiveBayes Classifier.
 
 *Note - look at the Import Data document for more info on Importing Data, Instance Lists, and Iterators.
 
-
 ===Instance Methods:===
+
 ====Constructors:====
 {{{
 1.NaiveBayesTrainer ()
@@ -132,6 +132,7 @@ As you can see the train method returns an instance of NaiveBayes Classifier.
 Used to initialize trainer with an existing Classifier.
 When initialized with an existing classifier, a trainer need not train on the same training data
 }}}
+
 ====Public Instance Methods:====
 {{{
 1.NaiveBayes getClassifier ()
@@ -170,9 +171,8 @@ Alphabet maps integers and objects where the mapping in each direction is effici
 12.String toString()
 }}}
 
+===Code snippet for incremental training:===
 {{{
-Code snippet for incremental training:
-
    // Create Feature Vector Instance List as shown in the code above
    // Refer Import Data document for more info
    // Assume Instance list is created by previous code snippet
@@ -199,9 +199,9 @@ Code snippet for incremental training:
    System.out.println("Class Name - " + c.getLabeling().getBestLabel());	
 
 }}}
-{{{
-Code Snippet for Reusing the existing Trained Classifier
 
+===Code Snippet for Reusing the existing Trained Classifier===
+{{{
    NaiveBayesTrainer reuse_trainer = new NaiveBayesTrainer (classifier);
    NaiveBayes reuse_classifier = trainer.getClassifier();
    c = reuse_classifier.classify("Woods has won American golf championships");
