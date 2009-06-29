@@ -214,6 +214,7 @@ Ok!!!!
 Time to move on to next Trainer - *Maximum Entropy Algorithm*
 
 ==Maximum Entropy==
-<ref www.kamalnigam.com/papers/maxent-ijcaiws99.pdf /ref>
-
+{{{
+www.kamalnigam.com/papers/maxent-ijcaiws99.pdf
+}}}
 *Yet to be completed*
