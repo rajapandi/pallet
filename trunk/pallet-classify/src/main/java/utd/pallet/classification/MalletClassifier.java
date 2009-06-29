@@ -32,7 +32,7 @@ public class MalletClassifier {
      * method of the BuildPipe class.
      **/
     private BuildPipe bpipe = null;
-    // private ClassifierTrainer trainer = null;
+
     /**
      *An instance of classifier is created which will be used for
      * classification
