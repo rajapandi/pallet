@@ -237,12 +237,11 @@ Both [http://mallet.cs.umass.edu/api/ MaxEntTrainer] and [http://mallet.cs.umass
 Maximum entropy is a general technique for estimating probability distributions from data.
 It works by identifying all possible states in which the system can exists and all parameters involved in the constraints. It is not assumed in which particular state the system is in (This uncertainty is known as entropy)and instead deal with probability that each state is being occupied (assumes distribution to be uniform). For more info refer [http://www.kamalnigam.com/papers/maxent-ijcaiws99.pdf using Maximum Entropy for Document classification]
 
+// More info will be provided for max entropy algorithm
 
 
-
-*Yet to be completed*
-
-
+==MaxEntTrainer==
+==MaxEnt==
 
 
 
