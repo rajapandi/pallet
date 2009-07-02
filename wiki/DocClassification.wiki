@@ -217,4 +217,6 @@ Time to move on to next Trainer - *Maximum Entropy Algorithm*
 {{{
  [ http://www.kamalnigam.com/papers/maxent-ijcaiws99.pdf Maximum Entropy ]
 }}}
+Again, as every other Classifier 
+
 *Yet to be completed*
