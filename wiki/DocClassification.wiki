@@ -29,12 +29,10 @@ Given, the general introduction on Classifier, let us proceed to explore each of
 =Naïve Bayes=
 As with every classifier Naïve Bayes is also implemented as a trainer and classifier. Naïve Bayes assumes the Conditional Model to classify data.
 
-
-	p(Classification|Data) = p(Data|Classification)p(Classification)/p(Data)
-        Further, Naïve Bayes also assumes the conditional independence between the data.
-	p(Data|Classification) = p(d1,d2,..dn | Classification)
-	p(d1,d2,...dn | Classification) = p(d1|Classification)p(d2|Classification)
-
+         p(Classification|Data) = p(Data|Classification)p(Classification)/p(Data)
+Further, Naïve Bayes also assumes the conditional independence between the data.
+	 p(Data|Classification) = p(d1,d2,..dn | Classification)
+	 p(d1,d2,...dn | Classification) = p(d1|Classification)p(d2|Classification)
 
 Naïve Bayes Trainer and classifier are under the nomenclature NaiveBayesTrainer and NaiveBayesClassifier respectively and can be found at *cc.mallet.classify*.
 
