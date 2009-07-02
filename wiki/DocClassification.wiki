@@ -1,21 +1,22 @@
 #summary Document demonstrating the Document Classification algorithms of MALLET
 #labels MalletDocumentClassification
+
+Before proceeding any further, I want you to keep this in, This tutorial is not intended to describe the algorithms, it just aims at exposing the MALLET interfaces. 
+
 = Introduction =
 MALLET supports rich set of Document Classification Algorithms:
-{{{
-1.	Naïve Bayes.
-2.	Maximum Entropy (Multivariate Logistic Regression).
-3.	C4.5 Decision Trees.
-4.	Decision Trees.
-5.	Balanced Winnow.
-6.	AdaBoost.
-7.	Bootstrap Aggregating (bagging)
-8.	Machine Learning Ensemble.
-9.	Rank Maximum Entropy
-10.	Winnow
-11.	Confidence Predicting.
-12.	Maximum Entropy models with Generalized Expectation Criteria.
-}}}
+ * Naïve Bayes.
+ * Maximum Entropy (Multivariate Logistic Regression).
+ * C4.5 Decision Trees.
+ * Decision Trees.
+ * Balanced Winnow.
+ * AdaBoost.
+ * Bootstrap Aggregating (bagging)
+ * Machine Learning Ensemble.
+ * Rank Maximum Entropy
+ * Winnow
+ * Confidence Predicting.
+ * Maximum Entropy models with Generalized Expectation Criteria.
 
 Every Classifier is implemented as a Trainer and Classifier, and performs classification only on the instances processed with the pipe (import data pipe) associated with this classifier. Instances are generally Feature Vectors. Trainer is responsible for training data and the Classifier performs the classification based on the trained data.
 
@@ -24,9 +25,8 @@ Further, all Trainers and Classifiers can be found in cc.mallet.classify. Also, 
 
 Given, the general introduction on Classifier, let us proceed to explore each of the Algorithms.
 
-====Before proceeding any further, I want you to keep this in mind:This tutorial is not intended to describe the algorithms, it just aims at exposing the MALLET interfaces.====
 
-==Naïve Bayes==
+=Naïve Bayes=
 As with every classifier Naïve Bayes is also implemented as a trainer and classifier. Naïve Bayes assumes the Conditional Model to classify data.
 {{{
 	p(Classification|Data) = p(Data|Classification)p(Classification)/p(Data)
@@ -47,7 +47,9 @@ Implements - ClassifierTrainer.ByInstanceIncrements<NaiveBayes>,
 	     Boostable,AlphabetCarrying and java.io.Serializable.
 }}}
 
+
 Before, getting into details of Naïve Bayes Classifier, Let us look at a sample code for NaiveBayes classification (should also work for all the other classification algorithms).
+
 
 {{{
 class AppNaiveBayes
@@ -108,7 +110,8 @@ class AppNaiveBayes
 }
 }}}
 
-====Above source code shows the steps involved in the MALLET document classification.====
+
+Above source code shows the steps involved in the MALLET document classification.
 {{{
 1.Instance list of training data is created using the BuildPipe object.
 2.Instantiation of NaiveBayesTrainer.
@@ -117,12 +120,13 @@ As you can see the train method returns an instance of NaiveBayes Classifier.
 (more detailed explanation in Instance method section of this document).
 4.Classification of new data on the trained data is achieved using the method: NaiveBayes.classify (Object obj).
 (more detailed explanation in Instance method section of this document).
-5.Last step is just the validation.
 }}}
 
 *Note - look at the Import Data document for more info on Importing Data, Instance Lists, and Iterators.
 
+
 ===Instance Methods:===
+
 
 ====Constructors:====
 {{{
@@ -132,6 +136,7 @@ As you can see the train method returns an instance of NaiveBayes Classifier.
 Used to initialize trainer with an existing Classifier.
 When initialized with an existing classifier, a trainer need not train on the same training data
 }}}
+
 
 ====Public Instance Methods:====
 {{{
@@ -171,7 +176,9 @@ Alphabet maps integers and objects where the mapping in each direction is effici
 12.String toString()
 }}}
 
+
 ===Code snippet for incremental training:===
+
 {{{
    // Create Feature Vector Instance List as shown in the code above
    // Refer Import Data document for more info
@@ -200,7 +207,9 @@ Alphabet maps integers and objects where the mapping in each direction is effici
 
 }}}
 
+
 ===Code Snippet for Reusing the existing Trained Classifier===
+
 {{{
    NaiveBayesTrainer reuse_trainer = new NaiveBayesTrainer (classifier);
    NaiveBayes reuse_classifier = trainer.getClassifier();
@@ -208,12 +217,12 @@ Alphabet maps integers and objects where the mapping in each direction is effici
    System.out.println("Class Name - " + c.getLabeling().getBestLabel());
 }}}
 
-All the other Trainer also works the same way.
+All Trainers works the same way!!!
 
-Ok!!!!
-Time to move on to next Trainer - *Maximum Entropy Algorithm*
+Ok,time to move on to next Trainer - *Maximum Entropy Algorithm*
 
-==Maximum Entropy==
+
+=Maximum Entropy=
 
 Again, as every other Classifier Maximum Entropy is also implemented as Trainer and Classifier. Nomenclature used in MALLET for Maximum Entropy:
  * Trainer - MaxEntTrainer 
