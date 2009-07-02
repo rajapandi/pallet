@@ -186,20 +186,25 @@ Alphabet maps integers and objects where the mapping in each direction is effici
 
    NaiveBayesTrainer trainer = new NaiveBayesTrainer ();
    NaiveBayes classifier = trainer.train(pipe.GetInstanceList());
+
 		
    Classification c = classifier.classify("nelson mandela never eats lions");
    System.out.println("Class Name - " + c.getLabeling().getBestLabel());
+
 		
    c = classifier.classify("Steve irvin stays in australia");
    System.out.println("Class Name - " + c.getLabeling().getBestLabel());
+
 		
    String [][][] incTrainingdata = new String [][][] {
    {{"Tiger woods is golf master",
      "The Niagara Falls are voluminous waterfalls on the Niagara River",
      "Christopher Columbus discovered American Continents"}, {"America"}}};
+
 		
    pipe.addThruPipe (
     new ArrayIterator (incTrainingdata[0][0],incTrainingdata[0][1][0]));		
+
 	 
    classifier = trainer.trainIncremental(pipe.GetInstanceList());
    c = classifier.classify("Woods has won American golf championships");
