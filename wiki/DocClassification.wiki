@@ -223,6 +223,7 @@ All Trainers works the same way!!!
 Ok,time to move on to next Trainer - *Maximum Entropy Algorithm*
 
 
+=
 =Maximum Entropy=
 
 Again, as every other Classifier Maximum Entropy is also implemented as Trainer and Classifier. Nomenclature used in MALLET for Maximum Entropy:
@@ -231,6 +232,15 @@ Again, as every other Classifier Maximum Entropy is also implemented as Trainer 
 
 Both [http://mallet.cs.umass.edu/api/ MaxEntTrainer] and [http://mallet.cs.umass.edu/api/ MaxEnt] could be found in [http://mallet.cs.umass.edu/api/ cc.mallet.classify]
 
+
+==Overview of Maximum Entropy==
+Maximum entropy is a general technique for estimating probability distributions from data.
+It works by identifying all possible states in which the system can exists and all parameters involved in the constraints. It is not assumed in which particular state the system is in (This uncertainty is known as entropy)and instead deal with probability that each state is being occupied (assumes distribution to be uniform). For more info refer [http://www.kamalnigam.com/papers/maxent-ijcaiws99.pdf using Maximum Entropy for Document classification]
+
+
+
+
+*Yet to be completed*
 
 
 
