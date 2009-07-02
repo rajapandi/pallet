@@ -216,8 +216,8 @@ Time to move on to next Trainer - *Maximum Entropy Algorithm*
 ==Maximum Entropy==
 
 Again, as every other Classifier Maximum Entropy is also implemented as Trainer and Classifier. Nomenclature used in MALLET for Maximum Entropy:
-* Trainer - MaxEntTrainer
-* Classifier - MaxEnt
+ * Trainer - MaxEntTrainer 
+ * Classifier - MaxEnt
 
 Both [http://mallet.cs.umass.edu/api/ MaxEntTrainer] and [http://mallet.cs.umass.edu/api/ MaxEnt] could be found in [http://mallet.cs.umass.edu/api/ cc.mallet.classify]
 
