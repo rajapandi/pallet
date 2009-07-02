@@ -247,7 +247,7 @@ implements ClassifierTrainer.ByOptimization<MaxEnt>, Boostable, java.io.Serializ
 }}}
 
 ===Constructors===
- * MaxEntTrainer ()
+ * *MaxEntTrainer ()*
 
  * MaxEntTrainer (MaxEnt theClassifierToTrain)
     Constructs a MaxEnt Trainer using a trained classifier as initial values
