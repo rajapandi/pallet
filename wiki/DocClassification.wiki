@@ -118,7 +118,7 @@ As you can see the train method returns an instance of NaiveBayes Classifier.
 (more detailed explanation in Instance method section of this document).
 }}}
 
-*Note - look at the Import Data document for more info on Importing Data, Instance Lists, and Iterators.
+#Note - look at the Import Data document for more info on Importing Data, Instance Lists, and Iterators.
 
 
 ===Instance Methods:===
