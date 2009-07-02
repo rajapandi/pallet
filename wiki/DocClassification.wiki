@@ -241,6 +241,9 @@ It works by identifying all possible states in which the system can exists and a
 
 
 ==MaxEntTrainer==
+ extends ClassifierTrainer<MaxEnt>
+ implements ClassifierTrainer.ByOptimization<MaxEnt>, Boostable, java.io.Serializable
+
 ==MaxEnt==
 
 
