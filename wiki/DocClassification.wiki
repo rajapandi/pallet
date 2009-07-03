@@ -288,7 +288,23 @@ implements ClassifierTrainer.ByOptimization<MaxEnt>, Boostable, java.io.Serializ
 
 
 ==MaxEnt==
+{{{
+public class MaxEnt
+extends Classifier
+implements java.io.Serializable
+}}}
 
+===Constructors===
+
+ * [http://mallet.cs.umass.edu/api/ MaxEnt (Pipe dataPipe,double[] parameters, FeatureSelection featureSelection, FeatureSelection[] perClassFeatureSelection)]
+
+ * [http://mallet.cs.umass.edu/api/ ]
+
+===Instance Methods===
+ * [http://mallet.cs.umass.edu/api/ ]
+ * [http://mallet.cs.umass.edu/api/ ]
+
+* [http://mallet.cs.umass.edu/api/ ]
 
 
 *Yet to be completed*
