@@ -213,7 +213,16 @@ As you can see the train method returns an instance of NaiveBayes Classifier.
 
 All Trainers works the same way!!!
 
-Ok,time to move on to next Trainer
+==NaiveBayes Classifier==
+
+{{{
+public class NaiveBayes
+extends Classifier
+implements java.io.Serializable
+}}}
+
+===Constructors===
+===Instance Methods===
 
 =Maximum Entropy=
 
