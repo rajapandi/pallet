@@ -124,7 +124,9 @@ As you can see the train method returns an instance of NaiveBayes Classifier.
 ===Constructors:===
 
  * [http://mallet.cs.umass.edu/api/ NaiveBayesTrainer ()]
+
  * [http://mallet.cs.umass.edu/api/ NaiveBayesTrainer (Pipe instancePipe)]
+
  * [http://mallet.cs.umass.edu/api/ NaiveBayesTrainer (NaiveBayes initialClassifier)]
     Used to initialize trainer with an existing Classifier.
     When initialized with an existing classifier, a trainer need not train on the same training data
@@ -236,12 +238,12 @@ implements ClassifierTrainer.ByOptimization<MaxEnt>, Boostable, java.io.Serializ
 }}}
 
 ===Constructors===
- * *MaxEntTrainer ()*
+ * [http://mallet.cs.umass.edu/api/MaxEntTrainer ()]
 
- * *MaxEntTrainer (MaxEnt theClassifierToTrain)*
+ * [http://mallet.cs.umass.edu/api/ MaxEntTrainer (MaxEnt theClassifierToTrain)]
     Constructs a MaxEnt Trainer using a trained classifier as initial values
 
- * *MaxEntTrainer (double gaussianPriorVariance)*
+ * [http://mallet.cs.umass.edu/api/ MaxEntTrainer (double gaussianPriorVariance)]
     Constructs a Max Ent Trainer by explicitly specifying the Guassian Prior Value
     default value is 1.0
 
@@ -272,10 +274,15 @@ implements ClassifierTrainer.ByOptimization<MaxEnt>, Boostable, java.io.Serializ
  * [http://mallet.cs.umass.edu/api/ Optimizer getOptimizer ()]
 
  * [http://mallet.cs.umass.edu/api/ Optimizer getOptimizer (InstanceList trainingSet)]
+
  * [http://mallet.cs.umass.edu/api/ MaxEntTrainer setNumIterations (int i)]
+
  * [http://mallet.cs.umass.edu/api/ int getIteration ()]
+
  * [http://mallet.cs.umass.edu/api/ MaxEntTrainer setGaussianPriorVariance (double gaussianPriorVariance)]
+
  * [http://mallet.cs.umass.edu/api/ MaxEntTrainer setL1Weight(double l1Weight)]
+
  * 
 
 
