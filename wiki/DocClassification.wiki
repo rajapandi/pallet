@@ -1,5 +1,5 @@
 #summary Document demonstrating the Document Classification algorithms of MALLET
-#labels MalletDocumentClassification
+#labels Phase-Requirements,Phase-Design,Phase-Implementation
 
 Before proceeding any further, I want you to keep this in, This tutorial is not intended to describe the algorithms, it just aims at exposing the MALLET interfaces. 
 
@@ -211,10 +211,8 @@ As you can see the train method returns an instance of NaiveBayes Classifier.
 
 All Trainers works the same way!!!
 
-Ok,time to move on to next Trainer - *Maximum Entropy Algorithm*
+Ok,time to move on to next Trainer
 
-
-=
 =Maximum Entropy=
 
 Again, as every other Classifier Maximum Entropy is also implemented as Trainer and Classifier. Nomenclature used in MALLET for Maximum Entropy:
@@ -248,36 +246,36 @@ implements ClassifierTrainer.ByOptimization<MaxEnt>, Boostable, java.io.Serializ
     default value is 1.0
 
 ===Instance Methods===
- * *MaxEnt train (InstanceList trainingSet)*
+ * [http://mallet.cs.umass.edu/api/ MaxEnt train (InstanceList trainingSet)]
     Creates MaxEnt classifier from a set of Training Data.
     Returns MaxEnt classifier as trained on the trainingList.
 
- * *MaxEnt train (InstanceList trainingSet, int numIterations)*
+ * [http://mallet.cs.umass.edu/api/ MaxEnt train (InstanceList trainingSet, int numIterations)]
     Creates MaxEnt classifier from a set of Training Data.
     Number of Iterations are explicitly mentioned, default value is Integer.MAX_VALUE
     Returns MaxEnt classifier as trained on the trainingList.
 
- * *MaxEnt getClassifier ()*
+ * [http://mallet.cs.umass.edu/api/ MaxEnt getClassifier ()]
     Returns MaxEnt Classifier
 
- * *void setClassifier (MaxEnt theClassifierToTrain)*
+ * [http://mallet.cs.umass.edu/api/ void setClassifier (MaxEnt theClassifierToTrain)]
     Creates MaxEnt Trainer from an existing Trained Classifier.
     Use getClassifier() to get the trainer created not train ()
     Creating a classifier using setClassifier () is similar to Constructing the classifier using the trained Classifier
 
- * *Optimizable getOptimizable ()*
+ * [http://mallet.cs.umass.edu/api/ Optimizable getOptimizable ()]
 
- * *MaxEntOptimizableByLabelLikelihood getOptimizable (InstanceList trainingSet)*
+ * [http://mallet.cs.umass.edu/api/ MaxEntOptimizableByLabelLikelihood getOptimizable (InstanceList trainingSet)]
 
- * *MaxEntOptimizableByLabelLikelihood getOptimizable (InstanceList trainingSet, MaxEnt initialClassifier)*
+ * [http://mallet.cs.umass.edu/api/ MaxEntOptimizableByLabelLikelihood getOptimizable (InstanceList trainingSet, MaxEnt initialClassifier)]
 
- * *Optimizer getOptimizer ()*
+ * [http://mallet.cs.umass.edu/api/ Optimizer getOptimizer ()]
 
- * *Optimizer getOptimizer (InstanceList trainingSet)*
- * *MaxEntTrainer setNumIterations (int i)*
- * *int getIteration ()*
- * *MaxEntTrainer setGaussianPriorVariance (double gaussianPriorVariance)*
- * *MaxEntTrainer setL1Weight(double l1Weight)*
+ * [http://mallet.cs.umass.edu/api/ Optimizer getOptimizer (InstanceList trainingSet)]
+ * [http://mallet.cs.umass.edu/api/ MaxEntTrainer setNumIterations (int i)]
+ * [http://mallet.cs.umass.edu/api/ int getIteration ()]
+ * [http://mallet.cs.umass.edu/api/ MaxEntTrainer setGaussianPriorVariance (double gaussianPriorVariance)]
+ * [http://mallet.cs.umass.edu/api/ MaxEntTrainer setL1Weight(double l1Weight)]
  * 
 
 
