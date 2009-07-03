@@ -121,20 +121,15 @@ As you can see the train method returns an instance of NaiveBayes Classifier.
 #Note - look at the Import Data document for more info on Importing Data, Instance Lists, and Iterators.
 
 
-===Instance Methods:===
+===Constructors:===
 
+ 1. *NaiveBayesTrainer ()*
+ 2. *NaiveBayesTrainer (Pipe instancePipe)*
+ 3. *NaiveBayesTrainer (NaiveBayes initialClassifier)*
+    Used to initialize trainer with an existing Classifier.
+    When initialized with an existing classifier, a trainer need not train on the same training data
 
-====Constructors:====
-{{{
-1.NaiveBayesTrainer ()
-2.NaiveBayesTrainer (Pipe instancePipe)
-3.NaiveBayesTrainer (NaiveBayes initialClassifier)
-Used to initialize trainer with an existing Classifier.
-When initialized with an existing classifier, a trainer need not train on the same training data
-}}}
-
-
-====Public Instance Methods:====
+===Public Instance Methods:===
 {{{
 1.NaiveBayes getClassifier ()
   Returns instance of the NaiveBayes classifier.
@@ -249,40 +244,44 @@ implements ClassifierTrainer.ByOptimization<MaxEnt>, Boostable, java.io.Serializ
 ===Constructors===
  * *MaxEntTrainer ()*
 
- * MaxEntTrainer (MaxEnt theClassifierToTrain)
+ * *MaxEntTrainer (MaxEnt theClassifierToTrain)*
     Constructs a MaxEnt Trainer using a trained classifier as initial values
 
- * MaxEntTrainer (double gaussianPriorVariance)
+ * *MaxEntTrainer (double gaussianPriorVariance)*
     Constructs a Max Ent Trainer by explicitly specifying the Guassian Prior Value
     default value is 1.0
 
 ===Instance Methods===
- * MaxEnt train (InstanceList trainingSet)
+ * *MaxEnt train (InstanceList trainingSet)*
     Creates MaxEnt classifier from a set of Training Data.
     Returns MaxEnt classifier as trained on the trainingList.
 
- * MaxEnt train (InstanceList trainingSet, int numIterations)
+ * *MaxEnt train (InstanceList trainingSet, int numIterations)*
     Creates MaxEnt classifier from a set of Training Data.
     Number of Iterations are explicitly mentioned, default value is Integer.MAX_VALUE
     Returns MaxEnt classifier as trained on the trainingList.
 
- * MaxEnt getClassifier ()
+ * *MaxEnt getClassifier ()*
     Returns MaxEnt Classifier
 
- * void setClassifier (MaxEnt theClassifierToTrain)
+ * *void setClassifier (MaxEnt theClassifierToTrain)*
     Creates MaxEnt Trainer from an existing Trained Classifier.
     Use getClassifier() to get the trainer created not train ()
     Creating a classifier using setClassifier () is similar to Constructing the classifier using the trained Classifier
 
- * Optimizable getOptimizable ()
- * MaxEntOptimizableByLabelLikelihood getOptimizable (InstanceList trainingSet)
- * MaxEntOptimizableByLabelLikelihood getOptimizable (InstanceList trainingSet, MaxEnt initialClassifier) 
- * Optimizer getOptimizer ()
- * Optimizer getOptimizer (InstanceList trainingSet)
- * MaxEntTrainer setNumIterations (int i)
- * int getIteration ()
- * MaxEntTrainer setGaussianPriorVariance (double gaussianPriorVariance)
- * MaxEntTrainer setL1Weight(double l1Weight)
+ * *Optimizable getOptimizable ()*
+
+ * *MaxEntOptimizableByLabelLikelihood getOptimizable (InstanceList trainingSet)*
+
+ * *MaxEntOptimizableByLabelLikelihood getOptimizable (InstanceList trainingSet, MaxEnt initialClassifier)*
+
+ * *Optimizer getOptimizer ()*
+
+ * *Optimizer getOptimizer (InstanceList trainingSet)*
+ * *MaxEntTrainer setNumIterations (int i)*
+ * *int getIteration ()*
+ * *MaxEntTrainer setGaussianPriorVariance (double gaussianPriorVariance)*
+ * *MaxEntTrainer setL1Weight(double l1Weight)*
  * 
 
 
