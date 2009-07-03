@@ -295,16 +295,12 @@ implements java.io.Serializable
 }}}
 
 ===Constructors===
+<pre>
+ * [http://mallet.cs.umass.edu/api/ MaxEnt (Pipe dataPipe, double[] parameters, FeatureSelection featureSelection, FeatureSelection[] perClassFeatureSelection)]
+</pre>
 
- * [http://mallet.cs.umass.edu/api/ MaxEnt (Pipe dataPipe, double[|]| parameters, FeatureSelection featureSelection, FeatureSelection[] perClassFeatureSelection)]
-
- * [http://mallet.cs.umass.edu/api/ ]
 
 ===Instance Methods===
- * [http://mallet.cs.umass.edu/api/ ]
- * [http://mallet.cs.umass.edu/api/ ]
-
-* [http://mallet.cs.umass.edu/api/ ]
 
 
 *Yet to be completed*
