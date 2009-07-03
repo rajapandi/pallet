@@ -123,9 +123,9 @@ As you can see the train method returns an instance of NaiveBayes Classifier.
 
 ===Constructors:===
 
- * *NaiveBayesTrainer ()*
- * *NaiveBayesTrainer (Pipe instancePipe)*
- * *NaiveBayesTrainer (NaiveBayes initialClassifier)*
+ * [http://mallet.cs.umass.edu/api/ NaiveBayesTrainer ()]
+ * [http://mallet.cs.umass.edu/api/ NaiveBayesTrainer (Pipe instancePipe)]
+ * [http://mallet.cs.umass.edu/api/ NaiveBayesTrainer (NaiveBayes initialClassifier)]
     Used to initialize trainer with an existing Classifier.
     When initialized with an existing classifier, a trainer need not train on the same training data
 
