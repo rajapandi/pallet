@@ -36,13 +36,6 @@ Further, Naïve Bayes also assumes the conditional independence between the data
 
 Naïve Bayes Trainer and classifier are under the nomenclature NaiveBayesTrainer and NaiveBayesClassifier respectively and can be found at *cc.mallet.classify*.
 
-{{{
-NaïveBayes Trainer:
-Extends    - ClassifierTrainer<NaiveBayes>
-Implements - ClassifierTrainer.ByInstanceIncrements<NaiveBayes>, 
-	     Boostable,AlphabetCarrying and java.io.Serializable.
-}}}
-
 
 Before, getting into details of Naïve Bayes Classifier, Let us look at a sample code for NaiveBayes classification (should also work for all the other classification algorithms).
 
@@ -120,6 +113,13 @@ As you can see the train method returns an instance of NaiveBayes Classifier.
 
 #Note - look at the Import Data document for more info on Importing Data, Instance Lists, and Iterators.
 
+==NaïveBayes Trainer==
+
+{{{
+Extends    - ClassifierTrainer<NaiveBayes>
+Implements - ClassifierTrainer.ByInstanceIncrements<NaiveBayes>, 
+	     Boostable,AlphabetCarrying and java.io.Serializable.
+}}}
 
 ===Constructors:===
 
@@ -222,6 +222,8 @@ implements java.io.Serializable
 }}}
 
 ===Constructors===
+
+
 ===Instance Methods===
 
 =Maximum Entropy=
