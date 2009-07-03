@@ -130,43 +130,39 @@ As you can see the train method returns an instance of NaiveBayes Classifier.
     When initialized with an existing classifier, a trainer need not train on the same training data
 
 ===Public Instance Methods:===
-{{{
-1.NaiveBayes getClassifier ()
-  Returns instance of the NaiveBayes classifier.
 
-2.NaiveBayes train (InstanceList trainingList)
-  Trains the naivebayes trainer with the training list passed as an Instance List of
-  Feature Vector, all previous internal states are reset when train returns.
+ * [http://mallet.cs.umass.edu/api/ NaiveBayes getClassifier ()]
+    Returns instance of the NaiveBayes classifier.
 
-3.NaiveBayes trainIncremental (InstanceList trainingList)
-  Same as the train method but does not resets the internal state.
-  Incrementally adds the count of the training data and Training data is lnstance list of
-  Feature Vector.
+ * [http://mallet.cs.umass.edu/api/ NaiveBayes train (InstanceList trainingList)]
+    Trains the naivebayes trainer with the training list passed as an Instance List of
+    Feature Vector, all previous internal states are reset when train returns.
 
-4.NaiveBayes trainIncremental(Instance instance)
-  Same as previous incremental trainer with training data as an Instance.
+ * [http://mallet.cs.umass.edu/api/ NaiveBayes trainIncremental (InstanceList trainingList)]
+    Same as the train method but does not resets the internal state.
+    Incrementally adds the count of the training data and Training data is lnstance list of
+    Feature Vector.
 
-5.NaiveBayesTrainer setDocLengthNormalization(double d)
-  Sets Documentation Length Normalization.
+ * [http://mallet.cs.umass.edu/api/ NaiveBayes trainIncremental(Instance instance)]
+    Same as previous incremental trainer with training data as an Instance.
 
-6.Multinomial.Estimator getFeatureMultinomialEstimator()
-  Returns the multinomial Estimator that is used for document classification.
+ * [http://mallet.cs.umass.edu/api/ NaiveBayesTrainer setDocLengthNormalization(double d)]
+    Sets Documentation Length Normalization.
 
-7.Multinomial.Estimator getPriorMultinomialEstimator()
+ * [http://mallet.cs.umass.edu/api/ Multinomial.Estimator getFeatureMultinomialEstimator()]
+    Returns the multinomial Estimator that is used for document classification.
 
-8.NaiveBayesTrainer setPriorMultinomialEstimator(Multinomial.Estimator me)
+ * [http://mallet.cs.umass.edu/api/ Multinomial.Estimator getPriorMultinomialEstimator()]
 
-9.Alphabet getAlphabet()
+ * [http://mallet.cs.umass.edu/api/ NaiveBayesTrainer setPriorMultinomialEstimator(Multinomial.Estimator me)]
 
-10.Alphabet[] getAlphabets()
+ * [http://mallet.cs.umass.edu/api/ Alphabet getAlphabet()]
 
-11.alphabetsMatch(AlphabetCarrying object) 
-Alphabet maps integers and objects where the mapping in each direction is efficient.
-(Will be explained in detail under the section Alphabet.
+ * [http://mallet.cs.umass.edu/api/ Alphabet[] getAlphabets()]
 
-12.String toString()
-}}}
-
+ * [http://mallet.cs.umass.edu/api/ alphabetsMatch(AlphabetCarrying object)]
+    Alphabet maps integers and objects where the mapping in each direction is efficient.
+    (Will be explained in detail under the section Alphabet.
 
 ===Code snippet for incremental training:===
 
