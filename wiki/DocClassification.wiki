@@ -296,7 +296,7 @@ implements java.io.Serializable
 
 ===Constructors===
 
- * [http://mallet.cs.umass.edu/api/ MaxEnt (Pipe dataPipe, double|[|] parameters, FeatureSelection featureSelection, FeatureSelection[] perClassFeatureSelection)]
+ * [http://mallet.cs.umass.edu/api/ MaxEnt (Pipe dataPipe, double[|]| parameters, FeatureSelection featureSelection, FeatureSelection[] perClassFeatureSelection)]
 
  * [http://mallet.cs.umass.edu/api/ ]
 
