@@ -238,7 +238,7 @@ implements ClassifierTrainer.ByOptimization<MaxEnt>, Boostable, java.io.Serializ
 }}}
 
 ===Constructors===
- * [http://mallet.cs.umass.edu/api/MaxEntTrainer ()]
+ * [http://mallet.cs.umass.edu/api/ MaxEntTrainer ()]
 
  * [http://mallet.cs.umass.edu/api/ MaxEntTrainer (MaxEnt theClassifierToTrain)]
     Constructs a MaxEnt Trainer using a trained classifier as initial values
@@ -295,9 +295,8 @@ implements java.io.Serializable
 }}}
 
 ===Constructors===
-<pre>
- * [http://mallet.cs.umass.edu/api/ MaxEnt (Pipe dataPipe, double[] parameters, FeatureSelection featureSelection, FeatureSelection[] perClassFeatureSelection)]
-</pre>
+
+ * *MaxEnt (Pipe dataPipe, double[] parameters, FeatureSelection featureSelection, FeatureSelection[] perClassFeatureSelection)*
 
 
 ===Instance Methods===
