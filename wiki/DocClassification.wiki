@@ -25,6 +25,8 @@ Further, all Trainers and Classifiers can be found in cc.mallet.classify. Also, 
 
 Given, the general introduction on Classifier, let us proceed to explore each of the Algorithms.
 
+ ----------------------------------------------------------------------------------------
+ ----------------------------------------------------------------------------------------
 
 =Naïve Bayes=
 As with every classifier Naïve Bayes is also implemented as a trainer and classifier. Naïve Bayes assumes the Conditional Model to classify data.
