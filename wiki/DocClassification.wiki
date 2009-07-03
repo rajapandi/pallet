@@ -311,23 +311,41 @@ MaxEnt (Pipe dataPipe, double[] parameters,
 ===Instance Methods===
 {{{
  * Classification classify(Instance instance)
+
  * void getClassificationScores(Instance instance, double[] scores)
+
  * void getClassificationScoresWithTemperature(Instance instance, double temperature, double[] scores)
+
  * int getDefaultFeatureIndex()           
- * FeatureSelection getFeatureSelection()           
- * int getNumParameters()           
- * static int getNumParameters(Pipe instancePipe)           
- * double[] getParameters()           
- * FeatureSelection[] getPerClassFeatureSelection()           
+
+ * FeatureSelection getFeatureSelection()
+
+ * int getNumParameters()
+
+ * static int getNumParameters(Pipe instancePipe)
+
+ * double[] getParameters()
+
+ * FeatureSelection[] getPerClassFeatureSelection()
+
  * void getUnnormalizedClassificationScores(Instance instance, double[] scores)           
           Outputs human-readable description of classifier (e.g., list of weights, decision tree) to System.out
+
  * void print(java.io.PrintStream out)          
+
  * void printExtremeFeatures(java.io.PrintWriter out, int num)           
+
  * void printRank(java.io.PrintWriter out)           
+
  * void setDefaultFeatureIndex(int defaultFeatureIndex)           
+
  * MaxEnt setFeatureSelection(FeatureSelection fs)           
+
  * void setParameter(int classIndex, int featureIndex, double value)           
+
  * void	setParameters(double[] parameters)           
+
  * MaxEnt setPerClassFeatureSelection(FeatureSelection[] fss) 
 }}}
+
 *Yet to be completed*
