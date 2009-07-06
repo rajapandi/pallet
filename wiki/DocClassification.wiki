@@ -383,4 +383,10 @@ MaxEnt (Pipe dataPipe, double[] parameters,
  * MaxEnt setPerClassFeatureSelection(FeatureSelection[] fss) 
 }}}
 
+
+
+ ----------------------------------------------------------------------------------------
+ ----------------------------------------------------------------------------------------
+
+==Decision trees==
 *Yet to be completed*
