@@ -1,7 +1,7 @@
 #summary Document demonstrating the Document Classification algorithms of MALLET
 #labels Phase-Requirements,Phase-Design,Phase-Implementation
 
-Before proceeding any further, I want you to keep this in, This tutorial is not intended to describe the algorithms, it just aims at exposing the MALLET interfaces. 
+Before proceeding any further, this tutorial is not intended to describe the algorithms, it just aims at exposing the MALLET interfaces. 
 
 = Introduction =
 MALLET supports rich set of Document Classification Algorithms:
