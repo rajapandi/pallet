@@ -10,6 +10,18 @@ Any task listed here should take 1 hour to no more than 2 weeks work.  If a task
   * Sample Application using Data Import functionality.
   * Data Import pipe's unit test (%)
   * Data Classification 
+    * Decision Trees
+      * Code Review.
+      * Documentation and Tutorials.
+    * C4.5 Decision Trees.
+    * Balanced Winnow.
+    * Bootstrap Aggregating (bagging).
+    * AdaBoost.
+    * Machine Learning Ensemble.
+    * Rank Maximum Entropy.
+    * Winnow.
+    * Confidence Predicting.
+    * Maximum Entropy models with Generalized Expectation Criteria
   * Some classifier unit test (%)
   * Real Application to show the Data Import and Classification functionality.
 
@@ -18,6 +30,8 @@ Any task listed here should take 1 hour to no more than 2 weeks work.  If a task
   * Maximum Entropy 
     * Code Review - Currently have paused this work and have moved onto Decision Tree
     * Documentation and Tutorials
+  * Decision Trees
+    * Understanding algorithm.
 
 == Completed ==
   * 60% of Data Import pipe documentation (%)
