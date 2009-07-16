@@ -3,6 +3,7 @@ package utd.pallet.classification;
 import java.io.IOException;
 import java.util.regex.Pattern;
 
+import utd.pallet.data.Mallet_Data_Import;
 import cc.mallet.pipe.AugmentableFeatureVectorLogScale;
 import cc.mallet.pipe.CharSequence2TokenSequence;
 import cc.mallet.pipe.CharSequenceRemoveHTML;
