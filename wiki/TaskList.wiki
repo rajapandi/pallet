@@ -6,52 +6,49 @@ Any task listed here should take 1 hour to no more than 2 weeks work.  If a task
 = Tasks =
 (%) - means the task needs to be broken down into several sub-tasks
 == Not started (In order of priority) ==
-{{{
 
-* The documentation of the following pipes have not started (%)
-  * AddClassifierTokenPredictions
-  * AddClassifierTokenPredictions.TokenClassifiers
-  * AugmentableFeatureVectorAddConjunctions
-  * Classification2ConfidencePredictingFeatureVector
-  * Directory2FileIterator
-  * FeatureCountPipe
-  * FeatureValueString2FeatureVector
-  * FeatureVectorSequence2FeatureVectors
-  * FilterEmptyFeatureVectors
-  * InstanceListTrimFeaturesByCount
-  * Noop
-  * Pipe
-  * PrintInput
-  * PrintTokenSequenceFeatures
-  * SaveDataInSource
-  * SelectiveSGML2TokenSequence
-  * SimpleTaggerSentence2StringTokenization
-  * Token2FeatureVector
-  * TokenSequence2TokenInstances
-  * TokenSequenceParseFeatureString 
-}}}
-
-  * The unit testing of all the pipes.(%) 
-  * Sample Application using Data Import functionality.  
-  * Data Classification
-  * Some classifier unit test
+ 
+ * The documentation of the following pipes have not started(%) 
+   * AddClassifierTokenPredictions
+   * AddClassifierTokenPredictions.TokenClassifiers
+   * AugmentableFeatureVectorAddConjunctions
+   * Classification2ConfidencePredictingFeatureVector
+   * Directory2FileIterator
+   * FeatureCountPipe
+   * FeatureValueString2FeatureVector
+   * FeatureVectorSequence2FeatureVectors
+   * FilterEmptyFeatureVectors
+   * InstanceListTrimFeaturesByCount
+   * Noop
+   * Pipe
+   * PrintInput
+   * PrintTokenSequenceFeatures
+   * SaveDataInSource
+   * SelectiveSGML2TokenSequence
+   * SimpleTaggerSentence2StringTokenization
+   * Token2FeatureVector
+   * TokenSequence2TokenInstances
+   * TokenSequenceParseFeatureString 
+ * The unit testing of all the pipes.(%)
+ * Sample Application using Data Import functionality.
+ * Data Classification 
+  * Some classifier unit test (%)
   * Real Application to show the Data Import and Classification functionality.
 
 == Currently being worked on ==
   * Currently working on the following pipes.
- {{{
-  * TokenSequenceRemoveNonAlpha
-  * TokenSequenceNGrams
-  * SGML2TokenSequence
-  * Target2FeatureSequence
-  * Target2LabelSequence
-  * TokenSequence2FeatureVectorSequence
-  * TokenSequenceFeatureParseFeatureString
-  * TokenSequenceMatchDataAndTarget
-  * TokenSequence2FeatureSequenceWithBigrams
-  * TargetRemeberLastLabel
-  * SourceLocation2TokenSequence 
-  }}}
+   * TokenSequenceRemoveNonAlpha
+   * TokenSequenceNGrams
+   * SGML2TokenSequence
+   * Target2FeatureSequence
+   * Target2LabelSequence
+   * TokenSequence2FeatureVectorSequence
+   * TokenSequenceFeatureParseFeatureString
+   * TokenSequenceMatchDataAndTarget
+   * TokenSequence2FeatureSequenceWithBigrams
+   * TargetRemeberLastLabel
+   * SourceLocation2TokenSequence 
+  
   * Maximum Entropy 
     * Code Review - Currently have paused this work and have moved onto Decision Tree
     * Documentation and Tutorials
@@ -62,46 +59,46 @@ Any task listed here should take 1 hour to no more than 2 weeks work.  If a task
     * Documenting them
     * Small sample source code for each pipe.
     * Documenting everything in the form of small tutorials
-    * Source code and Documentation and Reviewed
+    * Source code and Documentation Reviewed
+     * Filename2CharSequence
+     * CharSequenceArray2TokenSequence 
+     * Csv2Array
+     * Array2FeatureVector
+     * Csv2FeatureVector
+     * TargetStringToFeatures
+     * SimpleTaggerSentence2TokenSequence
+     * SimpleTokenizer
+     * Pipeutils
+     * StringAddNewLineDelimiter
+     * CharSequenceRemoveUUEncodedBlocks
+     * StringList2FeatureSequence
+     * FeatureSequenceConvolution
+     * FeatureVectorConjunction
+     * Input2CharSequence
+     * CharSequenceReplace 
+     * CharSequenceRemoveHTML 
+     * CharSequence2TokenSequence
+     * TokenSequenceRemoveStopwords
+     * MakeAmpersandXMLFriendly
+     * TokenSequence2FeatureSequence
+     * Target2Label
+     * FeatureSequence2AugmentableFeatureVector
+     * AugmentableFeatureVectorLogScale
+     * Charsequence2charngrams
+     * CharSequenceLowercase
+     * CharSubsequence
+     * LineGroupString2TokenSequence
+     * Input2CharSequence
+     * CharSequence2TokenSequence
+     * TokenSequenceLowercase
+     * TokenSequenceRemoveStopwords
+     * Target2Label
+     * FeatureSequence2FeatureVector
+     * PrintInputAndTarget 
 
-    * Filename2CharSequence
-    * CharSequenceArray2TokenSequence 
-    * Csv2Array
-    * Array2FeatureVector
-    * Csv2FeatureVector
-    * TargetStringToFeatures
-    * SimpleTaggerSentence2TokenSequence
-    * SimpleTokenizer
-    * Pipeutils
-    * StringAddNewLineDelimiter
-    * CharSequenceRemoveUUEncodedBlocks
-    * StringList2FeatureSequence
-    * FeatureSequenceConvolution
-    * FeatureVectorConjunction
-    * Input2CharSequence
-    * CharSequenceReplace 
-    * CharSequenceRemoveHTML 
-    * CharSequence2TokenSequence
-    * TokenSequenceRemoveStopwords
-    * MakeAmpersandXMLFriendly
-    * TokenSequence2FeatureSequence
-    * Target2Label
-    * FeatureSequence2AugmentableFeatureVector
-    * AugmentableFeatureVectorLogScale
-    * Charsequence2charngrams
-    * CharSequenceLowercase
-    * CharSubsequence
-    * LineGroupString2TokenSequence
-    * Input2CharSequence
-    * CharSequence2TokenSequence
-    * TokenSequenceLowercase
-    * TokenSequenceRemoveStopwords
-    * Target2Label
-    * FeatureSequence2FeatureVector
-    * PrintInputAndTarget
   * Naive Bayes Algorithm
     * Understanding the algorithm
     * Reviewing Mallet code to understand the implementation.
     * Documentation of the mallet implementation of the algorithm and its tutorials.
   * Maximum Entropy
-    * Understanding the algorithm.
+    * Understnading the algorithm.
