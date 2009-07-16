@@ -46,8 +46,6 @@ Any task listed here should take 1 hour to no more than 2 weeks work.  If a task
    * Maximum Entropy models with Generalized Expectation Criteria.
   * Data classification unit tests
   * Real Application to show the Data Import and Classification functionality.
-  * Some classifier unit test (%)
-  * Real Application to show the Data Import and Classification functionality.
 
 == Currently being worked on ==
   * Currently working on the following pipes.
