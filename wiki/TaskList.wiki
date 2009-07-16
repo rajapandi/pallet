@@ -6,9 +6,9 @@ Any task listed here should take 1 hour to no more than 2 weeks work.  If a task
 = Tasks =
 (%) - means the task needs to be broken down into several sub-tasks
 == Not started (In order of priority) ==
-  * The documentation of the following pipes have not started (%)
-
-   * AddClassifierTokenPredictions
+{{{
+* The documentation of the following pipes have not started (%)
+  * AddClassifierTokenPredictions
   * AddClassifierTokenPredictions.TokenClassifiers
   * AugmentableFeatureVectorAddConjunctions
   * Classification2ConfidencePredictingFeatureVector
@@ -27,7 +27,7 @@ Any task listed here should take 1 hour to no more than 2 weeks work.  If a task
   * SimpleTaggerSentence2StringTokenization
   * Token2FeatureVector
   * TokenSequence2TokenInstances
-  * TokenSequenceParseFeatureString
+  * TokenSequenceParseFeatureString }}}
 
   * The unit testing of all the pipes.(%) 
   * Sample Application using Data Import functionality.
