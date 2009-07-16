@@ -10,25 +10,25 @@ Any task listed here should take 1 hour to no more than 2 weeks work.  If a task
  
  * The documentation of the following pipes have not started(%) 
    * Add Classifier Token Predictions
-   * Add Classifier Token Predictions.TokenClassifiers
+   * Add Classifier Token Predictions . TokenClassifiers
    * Augmentable Feature Vector Add Conjunctions
-   * Classification 2 ConfidencePredicting FeatureVector
+   * Classification 2 Confidence Predicting Feature Vector
    * Directory 2 FileIterator
    * Feature Count Pipe
-   * FeatureValueString 2 FeatureVector
-   * FeatureVectorSequence 2 FeatureVectors
-   * FilterEmptyFeatureVectors
-   * InstanceListTrimFeaturesByCount
+   * Feature Value String 2 Feature Vector
+   * Feature Vector Sequence 2 Feature Vectors
+   * Filter Empty Feature Vectors
+   * InstanceList Trim FeaturesByCount
    * Noop
    * Pipe
-   * PrintInput
-   * PrintTokenSequenceFeatures
-   * SaveDataInSource
-   * SelectiveSGML2TokenSequence
-   * SimpleTaggerSentence2StringTokenization
-   * Token2FeatureVector
-   * TokenSequence2TokenInstances
-   * TokenSequenceParseFeatureString 
+   * Print Input
+   * Print Token Sequence Features
+   * Save Data In Source
+   * Selective SGML 2 Token Sequence
+   * Simple Tagger Sentence 2 String Tokenization
+   * Token 2 Feature Vector
+   * Token Sequence 2 Token Instances
+   * Token Sequence Parse Feature String 
  * The unit testing of all the pipes.(%)
  * Sample Application using Data Import functionality.  
  * Data Classification:
