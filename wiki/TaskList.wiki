@@ -96,12 +96,12 @@ Any task listed here should take 1 hour to no more than 2 weeks work.  If a task
      * Target 2 Label
      * Feature Sequence 2 Augmentable FeatureVector
      * Augmentable Feature Vector Log Scale
-     * Charsequence 2 charngrams
-     * CharSequence Lower case
+     * Char Sequence 2 charngrams
+     * Char Sequence Lower case
      * Char Sub sequence
      * Line Group String 2 Token Sequence
      * Input 2 Char Sequence
-     * CharSequence 2 TokenSequence
+     * Char Sequence 2 Token Sequence
      * Token Sequence Lower case
      * Token Sequence Remove Stopwords
      * Target 2 Label
