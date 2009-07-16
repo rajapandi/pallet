@@ -32,8 +32,7 @@ Any task listed here should take 1 hour to no more than 2 weeks work.  If a task
 }}}
 
   * The unit testing of all the pipes.(%) 
-  * Sample Application using Data Import functionality.
-  
+  * Sample Application using Data Import functionality.  
   * Data Classification 
   * Some classifier unit test (%)
   * Real Application to show the Data Import and Classification functionality.
@@ -105,4 +104,4 @@ Any task listed here should take 1 hour to no more than 2 weeks work.  If a task
     * Reviewing Mallet code to understand the implementation.
     * Documentation of the mallet implementation of the algorithm and its tutorials.
   * Maximum Entropy
-    * Understnading the algorithm.
+    * Understanding the algorithm.
