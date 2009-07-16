@@ -9,7 +9,7 @@ Any task listed here should take 1 hour to no more than 2 weeks work.  If a task
 
  
  * The documentation of the following pipes have not started(%) 
-   * AddClassifierTokenPredictions
+   * Add Classifier Token Predictions
    * AddClassifierTokenPredictions.TokenClassifiers
    * AugmentableFeatureVectorAddConjunctions
    * Classification2ConfidencePredictingFeatureVector
