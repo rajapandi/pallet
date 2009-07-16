@@ -1,0 +1,19 @@
+#Our task list from which we coordinate with one another and generate release notes.
+
+= Reduce Complexity =
+Any task listed here should take 1 hour to no more than 2 weeks work.  If a task listed will take more than 2 weeks work then it should be broken into sub-tasks that take less time.
+
+= Tasks =
+== Not started (In order of priority) ==
+*  Some data pipe documentation
+*  Some data pipe unit test
+*  Some classifier documentation (%)  
+*  Some classifier unit test (%)
+
+== Currently being worked on ==
+*  A data pipe documentation
+*  A classifier documentation (%)
+
+== Completed ==
+*  Some data pipe documentation
+*  Some classifier documentation (%)
