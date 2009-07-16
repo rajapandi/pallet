@@ -49,17 +49,17 @@ Any task listed here should take 1 hour to no more than 2 weeks work.  If a task
 
 == Currently being worked on ==
   * Currently working on the following pipes.
-   * TokenSequenceRemoveNonAlpha
-   * TokenSequenceNGrams
-   * SGML2TokenSequence
-   * Target2FeatureSequence
-   * Target2LabelSequence
-   * TokenSequence2FeatureVectorSequence
-   * TokenSequenceFeatureParseFeatureString
-   * TokenSequenceMatchDataAndTarget
-   * TokenSequence2FeatureSequenceWithBigrams
-   * TargetRemeberLastLabel
-   * SourceLocation2TokenSequence 
+   * Token Sequence Remove Non Alpha
+   * Token Sequence NGrams
+   * SGML2 Token Sequence
+   * Target 2 Feature Sequence
+   * Target 2 Label Sequence
+   * Token Sequence 2 Feature Vector Sequence
+   * Token Sequence Feature Parse Feature String
+   * Token Sequence Match Data And Target
+   * Token Sequence 2FeatureSequenceWithBigrams
+   * Target Remeber Last Label
+   * Source Location 2 Token Sequence 
   
   * Maximum Entropy 
     * Code Review - Currently have paused this work and have moved onto Decision Tree
@@ -72,41 +72,41 @@ Any task listed here should take 1 hour to no more than 2 weeks work.  If a task
     * Small sample source code for each pipe.
     * Documenting everything in the form of small tutorials
     * Source code and Documentation Reviewed
-     * Filename2CharSequence
-     * CharSequenceArray2TokenSequence 
-     * Csv2Array
-     * Array2FeatureVector
-     * Csv2FeatureVector
-     * TargetStringToFeatures
-     * SimpleTaggerSentence2TokenSequence
-     * SimpleTokenizer
-     * Pipeutils
-     * StringAddNewLineDelimiter
-     * CharSequenceRemoveUUEncodedBlocks
-     * StringList2FeatureSequence
-     * FeatureSequenceConvolution
-     * FeatureVectorConjunction
-     * Input2CharSequence
-     * CharSequenceReplace 
-     * CharSequenceRemoveHTML 
-     * CharSequence2TokenSequence
-     * TokenSequenceRemoveStopwords
-     * MakeAmpersandXMLFriendly
-     * TokenSequence2FeatureSequence
-     * Target2Label
-     * FeatureSequence2AugmentableFeatureVector
-     * AugmentableFeatureVectorLogScale
-     * Charsequence2charngrams
-     * CharSequenceLowercase
-     * CharSubsequence
-     * LineGroupString2TokenSequence
-     * Input2CharSequence
-     * CharSequence2TokenSequence
-     * TokenSequenceLowercase
-     * TokenSequenceRemoveStopwords
-     * Target2Label
-     * FeatureSequence2FeatureVector
-     * PrintInputAndTarget 
+     * File name 2 Char Sequence
+     * Char Sequence Array 2 Token Sequence 
+     * Csv 2 Array
+     * Array 2 Feature Vector
+     * Csv 2 Feature Vector
+     * Target String To Features
+     * Simple Tagger Sentence 2 Token Sequence
+     * Simple Tokenizer
+     * Pipe utils
+     * String Add New Line Delimiter
+     * CharSequence Remove UUEncodedBlocks
+     * String List 2 Feature Sequence
+     * Feature Sequence Convolution
+     * Feature Vector Conjunction
+     * Input 2 Char Sequence
+     * Char Sequence Replace 
+     * Char Sequence Remove HTML 
+     * Char Sequence 2 Token Sequence
+     * Token Sequence Remove Stopwords
+     * Make Ampersand XML Friendly
+     * Token Sequence 2 Feature Sequence
+     * Target 2 Label
+     * Feature Sequence 2 Augmentable FeatureVector
+     * Augmentable Feature Vector Log Scale
+     * Charsequence 2 charngrams
+     * CharSequence Lower case
+     * Char Sub sequence
+     * Line Group String 2 Token Sequence
+     * Input 2 Char Sequence
+     * CharSequence 2 TokenSequence
+     * Token Sequence Lower case
+     * Token Sequence Remove Stopwords
+     * Target 2 Label
+     * Feature Sequence 2 Feature Vector
+     * Print Input And Target 
 
   * Naive Bayes Algorithm
     * Understanding the algorithm
