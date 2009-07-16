@@ -9,14 +9,21 @@ Any task listed here should take 1 hour to no more than 2 weeks work.  If a task
   * Data Import pipes documentation (%)
   * Sample Application using Data Import functionality.
   * Data Import pipe's unit test (%)
-  * Some classifier documentation (%)  
+  * Data Classification 
   * Some classifier unit test (%)
   * Real Application to show the Data Import and Classification functionality.
 
 == Currently being worked on ==
   * Documentation and coding of Data Import pipes (%)
-  * A classifier documentation (%)
+  * Maximum Entropy 
+    * Code Review - Currently have paused this work and have moved onto Decision Tree
+    * Documentation and Tutorials
 
 == Completed ==
   * 60% of Data Import pipe documentation (%)
-  * Some classifier documentation (%)
+  * Naive Bayes Algorithm
+    * Understanding the algorithm
+    * Reviewing Mallet code to understand the implementation.
+    * Documentation of the mallet implementation of the algorithm and its tutorials.
+  * Maximum Entropy
+    * Understnading the algorithm.
