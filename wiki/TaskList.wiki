@@ -22,7 +22,7 @@ Any task listed here should take 1 hour to no more than 2 weeks work.  If a task
     * Winnow.
     * Confidence Predicting.
     * Maximum Entropy models with Generalized Expectation Criteria
-  * Some classifier unit test (%)
+  * Data Classification Unit Tests.
   * Real Application to show the Data Import and Classification functionality.
 
 == Currently being worked on ==
@@ -37,7 +37,9 @@ Any task listed here should take 1 hour to no more than 2 weeks work.  If a task
   * 60% of Data Import pipe documentation (%)
   * Naive Bayes Algorithm
     * Understanding the algorithm
+      * Sample application development to understand the behavior
     * Reviewing Mallet code to understand the implementation.
     * Documentation of the mallet implementation of the algorithm and its tutorials.
   * Maximum Entropy
-    * Understnading the algorithm.
+    * Understanding the algorithm.
+      * Sample application development to understand the behavior.
