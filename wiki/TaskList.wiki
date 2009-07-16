@@ -10,15 +10,15 @@ Any task listed here should take 1 hour to no more than 2 weeks work.  If a task
  
  * The documentation of the following pipes have not started(%) 
    * Add Classifier Token Predictions
-   * Add Classifier Token Predictions . TokenClassifiers
+   * Add Classifier Token Predictions . Token Classifiers
    * Augmentable Feature Vector Add Conjunctions
    * Classification 2 Confidence Predicting Feature Vector
-   * Directory 2 FileIterator
+   * Directory 2 File Iterator
    * Feature Count Pipe
    * Feature Value String 2 Feature Vector
    * Feature Vector Sequence 2 Feature Vectors
    * Filter Empty Feature Vectors
-   * InstanceList Trim FeaturesByCount
+   * Instance List Trim Features By Count
    * Noop
    * Pipe
    * Print Input
