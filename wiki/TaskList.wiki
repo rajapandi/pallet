@@ -5,15 +5,15 @@ Any task listed here should take 1 hour to no more than 2 weeks work.  If a task
 
 = Tasks =
 == Not started (In order of priority) ==
-*  Some data pipe documentation
-*  Some data pipe unit test
-*  Some classifier documentation (%)  
-*  Some classifier unit test (%)
+  * Some data pipe documentation
+  * Some data pipe unit test
+  * Some classifier documentation (%)  
+  * Some classifier unit test (%)
 
 == Currently being worked on ==
-*  A data pipe documentation
-*  A classifier documentation (%)
+  * A data pipe documentation
+  * A classifier documentation (%)
 
 == Completed ==
-*  Some data pipe documentation
-*  Some classifier documentation (%)
+  * Some data pipe documentation
+  * Some classifier documentation (%)
