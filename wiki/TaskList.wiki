@@ -11,7 +11,7 @@ Any task listed here should take 1 hour to no more than 2 weeks work.  If a task
   * Data Import pipe's unit test (%)
   * Data Classification 
     * Decision Trees
-      * Code Review.
+      * Code Review and bug fix.
       * Documentation and Tutorials.
     * C4.5 Decision Trees.
     * Balanced Winnow.
