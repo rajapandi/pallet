@@ -30,8 +30,22 @@ Any task listed here should take 1 hour to no more than 2 weeks work.  If a task
    * TokenSequence2TokenInstances
    * TokenSequenceParseFeatureString 
  * The unit testing of all the pipes.(%)
- * Sample Application using Data Import functionality.
- * Data Classification 
+ * Sample Application using Data Import functionality.  
+ * Data Classification:
+   * Decision Trees.
+     * Code Review.
+     * Documentation and Tutorials.
+   * C4.5 Decision Trees.
+   * Balanced Winnow.
+   * AdaBoost?.
+   * Bootstrap Aggregating (bagging)
+   * Machine Learning Ensemble.
+   * Rank Maximum Entropy
+   * Winnow
+   * Confidence Predicting.
+   * Maximum Entropy models with Generalized Expectation Criteria.
+  * Data classification unit tests
+  * Real Application to show the Data Import and Classification functionality.
   * Some classifier unit test (%)
   * Real Application to show the Data Import and Classification functionality.
 
