@@ -6,15 +6,17 @@ Any task listed here should take 1 hour to no more than 2 weeks work.  If a task
 = Tasks =
 (%) - means the task needs to be broken down into several sub-tasks
 == Not started (In order of priority) ==
-  * Some data pipe documentation
-  * Some data pipe unit test
+  * Data Import pipes documentation (%)
+  * Sample Application using Data Import functionality.
+  * Data Import pipe's unit test (%)
   * Some classifier documentation (%)  
   * Some classifier unit test (%)
+  * Real Application to show the Data Import and Classification functionality.
 
 == Currently being worked on ==
-  * A data pipe documentation
+  * Documentation of Data Import pipes (%)
   * A classifier documentation (%)
 
 == Completed ==
-  * Some data pipe documentation
+  * 60% of Data Import pipe documentation (%)
   * Some classifier documentation (%)
