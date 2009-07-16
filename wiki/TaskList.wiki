@@ -82,7 +82,7 @@ Any task listed here should take 1 hour to no more than 2 weeks work.  If a task
      * Simple Tokenizer
      * Pipe utils
      * String Add New Line Delimiter
-     * CharSequence Remove UUEncodedBlocks
+     * Char Sequence Remove UUEncodedBlocks
      * String List 2 Feature Sequence
      * Feature Sequence Convolution
      * Feature Vector Conjunction
@@ -94,7 +94,7 @@ Any task listed here should take 1 hour to no more than 2 weeks work.  If a task
      * Make Ampersand XML Friendly
      * Token Sequence 2 Feature Sequence
      * Target 2 Label
-     * Feature Sequence 2 Augmentable FeatureVector
+     * Feature Sequence 2 Augmentable Feature Vector
      * Augmentable Feature Vector Log Scale
      * Char Sequence 2 charngrams
      * Char Sequence Lower case
