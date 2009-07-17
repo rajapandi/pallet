@@ -252,14 +252,17 @@ NaiveBayes(Pipe dataPipe, Multinomial prior, Multinomial[] classIndex2FeaturePro
 
 
 =Decision trees=
-I accept it is kind of nagging, but I have to remind it to you, even Decision tree is implemented as a Trainer and a Classifier.
 
+
+I accept it is kind of nagging, but I have to remind it to you, even Decision tree is implemented as a Trainer and a Classifier.
 MALLET calls its decision tree trainer as  [http://mallet.cs.umass.edu/api/ DecisionTreeTrainer] and classifier as [http://mallet.cs.umass.edu/api/ DecisionTree].
 
 ==Overview of Decision Trees==
 
-
 Decision Tree Learning uses a decision tree as a predictive model which maps observations about an item to conclusions about the item's target value. In these tree structures, leaves represent classifications and branches represent conjunctions of features that lead to those classifications.<Thanks to wiki>
+
+In MALLET internal node in the decision tree looks at whether the vector contains a feature and if it does, sends it to the right child of that node (if the feature is absent it sends it to the left child). If the node is a leaf it labels the vector x with a
+label given to that leaf.
 
 More info on Decision trees and decision tree learning can be found at:
  * [http://www.decisiontrees.net Decision Trees]
@@ -267,8 +270,13 @@ More info on Decision trees and decision tree learning can be found at:
  * [http://onlamp.com/pub/a/python/2006/02/09/ai_decision_trees.html Building Decision Trees]
  * [http://www.cs.ubc.ca/~poole/aibook/html/ArtInt_165.html AI and decision trees]
 
+Limitations of Decision Tree Learning in MALLET:
+ * Does not create pure leaves.
+ * Does not support pruning.
 
-[more info on decision trees will be updated as and when I learn more about it ;)]
+As kedar Bellare(MALLET research team member) says MALLET is more tailored towards NaiveBayes and MaxEnt models. Other classifiers have better implementations in [http://www.cs.waikato.ac.nz/ml/weka/ Weka].
+
+[more info on decision trees will be updated as and when I learn "more" about it ;)]
 
 
  ----------------------------------------------------------------------------------------
