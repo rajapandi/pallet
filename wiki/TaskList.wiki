@@ -75,40 +75,39 @@ Any task listed here should take 1 hour to no more than 2 weeks work.  If a task
     * Documenting everything in the form of small tutorials
     * Source code and Documentation Reviewed
      * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_3 Filename2CharSequence]
-     * Char Sequence Array 2 Token Sequence 
-     * Csv 2 Array
-     * Array 2 Feature Vector
-     * Csv 2 Feature Vector
-     * Target String To Features
-     * Simple Tagger Sentence 2 Token Sequence
-     * Simple Tokenizer
-     * Pipe utils
-     * String Add New Line Delimiter
-     * Char Sequence Remove UUEncodedBlocks
-     * String List 2 Feature Sequence
-     * Feature Sequence Convolution
-     * Feature Vector Conjunction
-     * Input 2 Char Sequence
-     * Char Sequence Replace 
-     * Char Sequence Remove HTML 
-     * Char Sequence 2 Token Sequence
-     * Token Sequence Remove Stopwords
-     * Make Ampersand XML Friendly
-     * Token Sequence 2 Feature Sequence
-     * Target 2 Label
-     * Feature Sequence 2 Augmentable Feature Vector
-     * Augmentable Feature Vector Log Scale
-     * Char Sequence 2 charngrams
-     * Char Sequence Lower case
-     * Char Sub sequence
-     * Line Group String 2 Token Sequence
-     * Input 2 Char Sequence
-     * Char Sequence 2 Token Sequence
-     * Token Sequence Lower case
-     * Token Sequence Remove Stopwords
-     * Target 2 Label
-     * Feature Sequence 2 Feature Vector
-     * Print Input And Target 
+     * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_3 CharSequenceArray2TokenSequence]
+     * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_3 Csv2Array]
+     * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_3 Array2FeatureVector]
+     * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_3 Csv2FeatureVector]
+     * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_3 TargetStringToFeatures]
+     * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_3 SimpleTaggerSentence2TokenSequence]
+     * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_3 SimpleTokenizer]
+     * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_3 Pipeutils]
+     * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_3 StringAddNewLineDelimiter]
+     * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_3 CharSequenceRemoveUUEncodedBlocks]
+     * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_3 StringList2FeatureSequence]
+     * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_3 FeatureSequenceConvolution]
+     * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_3 FeatureVectorConjunction]
+     * [http://code.google.com/p/pallet/wiki/Tutorial_Data_Import Input2CharSequence]
+     * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_2 CharSequenceReplace] 
+     * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_2 CharSequenceRemoveHTML] 
+     * [http://code.google.com/p/pallet/wiki/Tutorial_Data_Import CharSequence2TokenSequence]
+     * [http://code.google.com/p/pallet/wiki/Tutorial_Data_Import TokenSequenceRemoveStopwords]
+     * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_2 MakeAmpersandXMLFriendly]
+     * [http://code.google.com/p/pallet/wiki/Tutorial_Data_Import TokenSequence2Feature Sequence]
+     * [http://code.google.com/p/pallet/wiki/Tutorial_Data_Import Target2Label]
+     * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_2 FeatureSequence2AugmentableFeatureVector]
+     * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_2 AugmentableFeatureVectorLogScale]
+     * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_2 CharSequence2charngrams]
+     * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_2 CharSequenceLowecase]
+     * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_2 CharSubsequence]
+     * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_2 LineGroupString2TokenSequence]
+     * [http://code.google.com/p/pallet/wiki/Tutorial_Data_Import CharSequence2TokenSequence]
+     * [http://code.google.com/p/pallet/wiki/Tutorial_Data_Import TokenSequenceLowercase]
+     * [http://code.google.com/p/pallet/wiki/Tutorial_Data_Import TokenSequenceRemoveStopwords]
+     * [http://code.google.com/p/pallet/wiki/Tutorial_Data_Import Target2Label]
+     * [http://code.google.com/p/pallet/wiki/Tutorial_Data_Import FeatureSequence2FeatureVector]
+     * [http://code.google.com/p/pallet/wiki/Tutorial_Data_Import PrintInputAndTarget] 
 
   * Naive Bayes Algorithm
     * Understanding the algorithm
