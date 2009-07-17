@@ -33,7 +33,7 @@ Any task listed here should take 1 hour to no more than 2 weeks work.  If a task
  * Sample Application using Data Import functionality.  
  * Data Classification:
    * Decision Trees.
-     * Code Review.
+     * Code Review and planned extension to support pruning.
    * C4.5 Decision Trees.
    * Balanced Winnow.
    * AdaBoost?.
