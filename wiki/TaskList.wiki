@@ -74,7 +74,7 @@ Any task listed here should take 1 hour to no more than 2 weeks work.  If a task
     * Small sample source code for each pipe.
     * Documenting everything in the form of small tutorials
     * Source code and Documentation Reviewed
-     * File name 2 Char Sequence
+     * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_3 Filename2CharSequence]
      * Char Sequence Array 2 Token Sequence 
      * Csv 2 Array
      * Array 2 Feature Vector
