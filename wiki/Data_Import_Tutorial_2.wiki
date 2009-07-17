@@ -14,7 +14,7 @@ demonstration of the Tutorial 2 is Data_Import.java
 }}}
 = Details =
 
-=====Note: Please go through the Tutorial 1 before starting Tutorial 2.=====
+=====Note: Please go through the [http://code.google.com/p/pallet/wiki/Tutorial_Data_Import Tutorial 1] before starting Tutorial 2.=====
 {{{
 Sample Code  
 __________________________________________________________________
@@ -323,4 +323,3 @@ input: the saraha dessert is expanding
 
 
 }}}
-
