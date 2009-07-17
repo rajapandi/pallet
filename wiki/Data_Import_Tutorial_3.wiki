@@ -34,7 +34,7 @@ Implementation
 
   A) Filename2CharSequence() : It has one constructor with no arguments.
      
-     Sample code
+                       Sample code
 
 Instance i=new Instance("sci_spec.txt","sci_spec","Instance-1",null); ------>1
 Filename2CharSequence i2cs=new Filename2CharSequence();----------------->2
@@ -51,7 +51,7 @@ b)null: The value of the source
 
 3)The created instance “i” is passed through the Filename2CharSequence Pipe.
 
-      Output
+                          Output
 
 The data of the given file is converted to the char sequence
 }}}
@@ -65,7 +65,7 @@ Implementation
   CharSequenceArray2TokenSequence(): This pipe also contains only the single constructor 
   with no arguments.
 
-       Sample Code
+              Sample Code
 
      import cc.mallet.pipe.*;
      import cc.mallet.types.*;
@@ -84,7 +84,7 @@ Implementation
      }
         }
        
-      Output
+                  Output
 
    TokenSequence [on the plains of africa the lions roar, in swahili ngoma means to 
                   dance,the saraha dessert saraha expanding]
@@ -108,9 +108,10 @@ Implementation
     then directly pass the reference of charSequenceLexer.
   3)Csv2Array(java.lang.String regex) : If user wants to process the string in its own 
     way than provide the matching pattern in form of String.
-
-*Pattern : Pattern is the java inbuild class. For further explanation about Pattern  [http://java.sun.com/j2se/1.4.2/docs/api/java/util/regex/Pattern.html please_see]
-
+}}}
+*Pattern : Pattern is the java inbuild class. For further explanation about Pattern  
+[http://java.sun.com/j2se/1.4.2/docs/api/java/util/regex/Pattern.html please_see]
+{{{
 Note: The sample code and sample output of this pipe is explained after describing
 Array2FeatureVector.
 }}}
@@ -182,7 +183,7 @@ input: 0(0)=1.0--------->provided data
 3(3)=1.0
 4(4)=1.0
 5(5)=1.0
-target: data_bmp--------Target or Label
+target: data_bmp-------->Target or Label
 name: array:1
 input: 0(0)=1.0
 1(1)=1.0
@@ -295,7 +296,7 @@ The code is similar to the code provided for the Csv2Array. Here we only added t
            pipeList.add(new PrintInputAndTarget());
 
 
-           Output
+                   Output
 
 name: array:0 ---->Name of the Instance
 input: 1(0)=3.0---> feature 1 occurred 3 times in array 0 and indexed at 0.
@@ -363,13 +364,14 @@ target: africa(0)=1.0 -->Target is also converted into feature vector.
 
 ====7) SimpleTaggerSentence2TokenSequence:====
 {{{
-It Converts an external encoding of a sequence of elements with binary features to a TokenSequence. If target processing is on (training or labeled test data),
+It Converts an external encoding of a sequence of elements with binary features to a 
+TokenSequence. If target processing is on (training or labeled test data),
 it extracts element labels from the external encoding to create a target LabelSequence. 
 Two external encodings are supported:
   1. A String containing lines of whitespace-separated tokens.
   2. a String[][].
 Both represent rows of tokens. When target processing is on, the last token in each row 
-is the label of the sequence element represented by this row. All other tokens in the 
+s the label of the sequence element represented by this row. All other tokens in the 
 row, or all tokens in the row if not target processing, are the names of features that 
 are on for the sequence element described by the row.
                                                                  (Source: Mallet javadoc)
@@ -396,7 +398,8 @@ Instance i5=piat.pipe(i);
 }
 }
 
-1)A Mallet instance is created with data as the array trainingdata, Target as null(target processing is on),Instance name is “array-1” and Source is null.
+1)A Mallet instance is created with data as the array trainingdata, Target as null(target 
+processing is on),Instance name is “array-1” and Source is null.
 2)An object of the desired pipe is created.
 3)The already created instance is passed through the SimpleTaggerSentence2TokenSequence 
 pipe.
@@ -406,9 +409,11 @@ pipe.
                    OUTPUT
 
 name: array-1
-input: TokenSequence [on feature(lions)=1.0 feature(the)=1.0 feature(africa)=1.0 feature(of)=1.0 feature(plains)=1.0
+input: TokenSequence [on feature(lions)=1.0 feature(the)=1.0 feature(africa)=1.0 
+feature(of)=1.0 feature(plains)=1.0
 feature(the)=1.0 feature(on)=1.0]---->1
-Token#0:on feature(lions)=1.0 feature(the)=1.0 feature(africa)=1.0 feature(of)=1.0 feature(plains)=1.0 feature(the)=1.0
+Token#0:on feature(lions)=1.0 feature(the)=1.0 feature(africa)=1.0 feature(of)=1.0 
+feature(plains)=1.0 feature(the)=1.0
 feature(on)=1.0---->2
 target: 0: roar (0)---->3
 
@@ -495,7 +500,8 @@ target: australia
 
 ====9) Pipeutils:====
 {{{
-This is a very special type of pipe which is used to combine two different pipes. This pipe has one static function which is used for this purpose.
+This is a very special type of pipe which is used to combine two different pipes. This 
+pipe has one static function which is used for this purpose.
 
 Implementation
   1) static Pipe concatenatePipes(Pipe p1,Pipe p2): This method is called in order to  
@@ -510,11 +516,11 @@ static Pipe pipe=null;
 static InstanceList instancelist = null;
 public static void main(String args[])
 {
-String trainingdata[]={"on the plains of africa the lions roar”, “in swahili ngoma means to dance”, “the saraha
-dessert saraha expanding"};
-Pipe p1=new SimpleTaggerSentence2TokenSequence();------1
-Pipe p2=new PrintInputAndTarget();-------------2
-pipe=PipeUtils.concatenatePipes(p1, p2);----------3
+String trainingdata[]={"on the plains of africa the lions roar”, “in swahili ngoma means 
+to dance”, “the saraha dessert saraha expanding"};
+Pipe p1=new SimpleTaggerSentence2TokenSequence();------>1
+Pipe p2=new PrintInputAndTarget();------------->2
+pipe=PipeUtils.concatenatePipes(p1, p2);---------->3
 InstanceList instances = new InstanceList(pipe);
 try {
 instances.addThruPipe (new ArrayIterator (trainingdata));
@@ -572,10 +578,15 @@ This pipe is used to remove the UU Encoded blocks.
 Implementation
   1)CharSequenceRemoceUUEncodedBlocks(): The pipe is created by calling no argument
     constructor.
-
-Note: It remove lines from the given input string that begin with M and are 61 characters 
-long. The start of every UUEncoded block is started with M. For further reading about UUEncodedBlocks [http://www.skypoint.com/members/gimonca/uuencode.html please_read].
 }}}
+{{{
+Note: It remove lines from the given input string that begin with M and are 61 
+characters long. The start of every UUEncoded block is started with M. For further 
+reading about UUEncodedBlocks 
+}}}
+[http://www.skypoint.com/members/gimonca/uuencode.html please_read].
+
+
 
 ====12) StringList2FeatureSequence:====
 {{{ 
@@ -656,7 +667,7 @@ TokenSequenceRemoveStopwords tsrs=new TokenSequenceRemoveStopwords(false, false)
 Instance i8=tsrs.pipe(i2);
 TokenSequence2FeatureSequence ts2fs=new TokenSequence2FeatureSequence();
 Instance i3=ts2fs.pipe(i8);
-FeatureSequenceConvolution fcp=new FeatureSequenceConvolution();----Pipe is created
+FeatureSequenceConvolution fcp=new FeatureSequenceConvolution();---->Pipe is created
 Instance i4=fcp.pipe(i3);--->An instance is passed through this pipe.
 FeatureSequence2AugmentableFeatureVector fs2afv=new
 FeatureSequence2AugmentableFeatureVector();
