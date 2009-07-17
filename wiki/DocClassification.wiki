@@ -274,7 +274,7 @@ Limitations of Decision Tree Learning in MALLET:
  * Does not create pure leaves.
  * Does not support pruning.
 
-As kedar Bellare(MALLET research team member) says MALLET is more tailored towards NaiveBayes and MaxEnt models. Other classifiers have better implementations in [http://www.cs.waikato.ac.nz/ml/weka/ Weka].
+As kedar Bellare(MALLET research team member) says MALLET is more tailored towards [http://mallet.cs.umass.edu/api/ NaiveBayes] and [http://mallet.cs.umass.edu/api/ DecisionTree MaxEnt] models. Other classifiers have better implementations in [http://www.cs.waikato.ac.nz/ml/weka/ Weka].
 
 [more info on decision trees will be updated as and when I learn "more" about it ;)]
 
