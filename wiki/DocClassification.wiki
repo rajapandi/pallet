@@ -293,30 +293,58 @@ As kedar Bellare(MALLET research team member) says MALLET is more tailored towar
 
 ===Public Methods===
  * [http://mallet.cs.umass.edu/api/cc/mallet/classify/DecisionTreeTrainer.html DecisionTree train(InstanceList trainingList)]
-     Creates a Decision tree classifier from a set of trained data, look at Data Import tutorials for more information on Instance List
+     Creates a Decision tree classifier from a set of trained data, look at Data Import tutorials for more information on Instance List.
+
+     Parameters:
+       # trainingList - Instance of [http://mallet.cs.umass.edu/api/cc/mallet/types/InstanceList.html InstanceList], Training data in form of instance lists ((look at [http://code.google.com/p/pallet/wiki/Tutorial_Data_Import Data Import tutorials] for [http://mallet.cs.umass.edu/api/cc/mallet/types/InstanceList.html InstanceList])
+
+     Return value:
+       # [http://mallet.cs.umass.edu/api/cc/mallet/classify/DecisionTree.html DecisionTree] - Instance of Decision Tree Classifier
 
  * [http://mallet.cs.umass.edu/api/cc/mallet/classify/DecisionTreeTrainer.html DecisionTree getClassifier()]
-     Returns an instance of Decision tree classifier if trainer was trained with the training data else returns null
+     Returns an instance of Decision tree classifier if trainer was trained with the training data else returns null.
+
+     Return value:
+       # [http://mallet.cs.umass.edu/api/cc/mallet/classify/DecisionTree.html DecisionTree] - Instance of Decision Tree Classifier
 
  * [http://mallet.cs.umass.edu/api/cc/mallet/classify/DecisionTreeTrainer.html boolean 	isFinishedTraining()]
      Returns true if the classifier is already trained with training data else true, generally useful in conjunction with [http://mallet.cs.umass.edu/api/cc/mallet/classify/DecisionTreeTrainer.html DecisionTree 	getClassifier()]
 
+     Return value:
+       # True if Training is finished else false
+
  * [http://mallet.cs.umass.edu/api/cc/mallet/classify/DecisionTreeTrainer.html DecisionTreeTrainer setMaxDepth (int maxDepth)]
      Sets the maximum depth of the decision tree.
 
+     Parameters:
+       # maxDepth - integer type, Max depth of the decision tree to be constructed.
+
+     Return value:
+       # Instance of [[http://mallet.cs.umass.edu/api/cc/mallet/classify/DecisionTreeTrainer.html DecisionTree Trainer].
+
  * [http://mallet.cs.umass.edu/api/cc/mallet/classify/DecisionTreeTrainer.html DecisionTreeTrainer setMinInfoGainSplit(double m)]
      Sets the minimum info-gain, default is .001.look at the above decision tree links for more information on info-gain
+
+     Parameters:
+       # m - double type, Minimum info gain to be used with decision tree construction.
+
+     Return value:
+       # Instance of [[http://mallet.cs.umass.edu/api/cc/mallet/classify/DecisionTreeTrainer.html DecisionTree Trainer].
           
 ===Protected Methods===
- * [http://mallet.cs.umass.edu/api/cc/mallet/classify/DecisionTreeTrainer.html protected  void splitTree(DecisionTree.Node node, FeatureSelection selectedFeatures, int depth)]
+ * [http://mallet.cs.umass.edu/api/cc/mallet/classify/DecisionTreeTrainer.html protected  void splitTree([http://mallet.cs.umass.edu/api/cc/mallet/classify/DecisionTree.html DecisionTree.Node node], FeatureSelection selectedFeatures, int depth)]
      Splits the node(attributes) into two childs, one with the feature another without feature.
+
+     Parameters:
+       # node - [http://mallet.cs.umass.edu/api/cc/mallet/classify/DecisionTree.html DecisionTree.Node] type (explained below), Instance of node.
+       # selectedFeatures - FeatureSelection type, Instance of FeatureSelection (look at [http://code.google.com/p/pallet/wiki/Tutorial_Data_Import Data Import tutorials] for FeatureSelection)
      
 ==Decision Tree Classifier==
 ===Constructors===
  * [http://mallet.cs.umass.edu/api/cc/mallet/classify/DecisionTree.html DecisionTree(Pipe instancePipe, [http://mallet.cs.umass.edu/api/cc/mallet/classify/DecisionTree.html DecisionTree.Node] root)]
    Initializes Decision tree classifier.
-   parameters include:
-      # Instance pipe used for training
+   Parameters include:
+      # Instance pipe used for training (look at [http://code.google.com/p/pallet/wiki/Tutorial_Data_Import Import Data tutorials] for Pipe.)
       # Root node of the decision tree constructed by trainer([http://mallet.cs.umass.edu/api/cc/mallet/classify/DecisionTree.html DecisionTree.Node] is explained below).
 
 ===Public Methods===
