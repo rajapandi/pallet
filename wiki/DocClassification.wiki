@@ -324,7 +324,7 @@ As kedar Bellare(MALLET research team member) says MALLET is more tailored towar
        # Instance of [http://mallet.cs.umass.edu/api/cc/mallet/classify/DecisionTreeTrainer.html DecisionTree Trainer].
           
 ===Protected Methods===
- * [http://mallet.cs.umass.edu/api/cc/mallet/classify/DecisionTreeTrainer.htmlprotected  void splitTree]([http://mallet.cs.umass.edu/api/cc/mallet/classify/DecisionTree.html DecisionTree.Node] node, [http://mallet.cs.umass.edu/api/cc/mallet/types/FeatureSelection.html FeatureSelection] selectedFeatures, int depth)
+ * [http://mallet.cs.umass.edu/api/cc/mallet/classify/DecisionTreeTrainer.htmlprotected  void splitTree(DecisionTree.Node node, FeatureSelection selectedFeatures, int depth)]
  Splits the node(attributes) into two childs, one with the feature another without feature.
  ====Parameters:====
        # node - [http://mallet.cs.umass.edu/api/cc/mallet/classify/DecisionTree.html DecisionTree.Node] type (explained below), Instance of node.
