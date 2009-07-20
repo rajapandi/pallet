@@ -282,7 +282,7 @@ As kedar Bellare(MALLET research team member) says MALLET is more tailored towar
 
 ==Decision Tree Trainer==
 
- public class [http://mallet.cs.umass.edu/api/cc/mallet/classify/DecisionTreeTrainer.html DecisionTreeTrainer] extends [http://mallet.cs.umass.edu/api/cc/mallet/classify/ClassifierTrainer.html ClassifierTrainer]<http://mallet.cs.umass.edu/api/cc/mallet/classify/DecisionTree.html DecisionTree]> implements [http://mallet.cs.umass.edu/api/cc/mallet/classify/Boostable.html Boostable]
+ public class [http://mallet.cs.umass.edu/api/cc/mallet/classify/DecisionTreeTrainer.html DecisionTreeTrainer] extends [http://mallet.cs.umass.edu/api/cc/mallet/classify/ClassifierTrainer.html ClassifierTrainer]<[http://mallet.cs.umass.edu/api/cc/mallet/classify/DecisionTree.html DecisionTree]> implements [http://mallet.cs.umass.edu/api/cc/mallet/classify/Boostable.html Boostable]
 
 ===Constructors===
  * [http://mallet.cs.umass.edu/api/cc/mallet/classify/DecisionTreeTrainer.html DecisionTreeTrainer()]
