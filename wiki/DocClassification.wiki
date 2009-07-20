@@ -321,7 +321,7 @@ As kedar Bellare(MALLET research team member) says MALLET is more tailored towar
  ====Parameters:====
        # m - double type, Minimum info gain to be used with decision tree construction.
  ====Return value:====
-       # Instance of [[http://mallet.cs.umass.edu/api/cc/mallet/classify/DecisionTreeTrainer.html DecisionTree Trainer].
+       # Instance of [http://mallet.cs.umass.edu/api/cc/mallet/classify/DecisionTreeTrainer.html DecisionTree Trainer].
           
 ===Protected Methods===
  * [http://mallet.cs.umass.edu/api/cc/mallet/classify/DecisionTreeTrainer.htmlprotected  void splitTree]([http://mallet.cs.umass.edu/api/cc/mallet/classify/DecisionTree.html DecisionTree.Node] node, [http://mallet.cs.umass.edu/api/cc/mallet/types/FeatureSelection.html FeatureSelection] selectedFeatures, int depth)
@@ -335,7 +335,7 @@ As kedar Bellare(MALLET research team member) says MALLET is more tailored towar
 ===Constructors===
  * [http://mallet.cs.umass.edu/api/cc/mallet/classify/DecisionTree.html DecisionTree]([http://mallet.cs.umass.edu/api/cc/mallet/pipe/Pipe.html Pipe] instancePipe, [http://mallet.cs.umass.edu/api/cc/mallet/classify/DecisionTree.html DecisionTree.Node] root)
  Initializes Decision tree classifier.
-     ====Parameters:====
+ ====Parameters:====
       # Instance pipe used for training (look at [http://code.google.com/p/pallet/wiki/Tutorial_Data_Import Import Data tutorials] for Pipe.)
       # Root node of the decision tree constructed by trainer([http://mallet.cs.umass.edu/api/cc/mallet/classify/DecisionTree.html DecisionTree.Node] is explained below).
 
@@ -349,15 +349,15 @@ As kedar Bellare(MALLET research team member) says MALLET is more tailored towar
 
  * [http://mallet.cs.umass.edu/api/cc/mallet/classify/DecisionTree.html DecisionTree.Node getRoot()]
  ====Parameters:====
-      # 
+      #  - 
  ====Return value:====
-      # 
+      # Returns root node of the tree constructed, Type - [http://mallet.cs.umass.edu/api/cc/mallet/classify/DecisionTree.html DecisionTree.Node] (Explained Below) 
 
  * [http://mallet.cs.umass.edu/api/cc/mallet/classify/DecisionTree.html void induceFeatures(InstanceList ilist, boolean withFeatureShrinkage, boolean inducePerClassFeatures)]
  ====Parameters:====
-      # 
+      # -
  ====Return value:====
-      # 
+      # -
 
 
  ----------------------------------------------------------------------------------------
