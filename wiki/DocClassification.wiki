@@ -294,7 +294,7 @@ As kedar Bellare(MALLET research team member) says MALLET is more tailored towar
 ===Public Methods===
  * [http://mallet.cs.umass.edu/api/cc/mallet/classify/DecisionTreeTrainer.html DecisionTree train(InstanceList trainingList)]
  Creates a Decision tree classifier from a set of trained data, look at Data Import tutorials for more information on Instance List.
-     ====Parameters:====
+====Parameters:====
        # trainingList - Instance of [http://mallet.cs.umass.edu/api/cc/mallet/types/InstanceList.html InstanceList], Training data in form of instance lists ((look at [http://code.google.com/p/pallet/wiki/Tutorial_Data_Import Data Import tutorials] for [http://mallet.cs.umass.edu/api/cc/mallet/types/InstanceList.html InstanceList])
 
      Return value:
