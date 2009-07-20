@@ -261,7 +261,9 @@ MALLET calls its decision tree trainer as  [http://mallet.cs.umass.edu/api/ Deci
 
 Decision Tree Learning uses a decision tree as a predictive model which maps observations about an item to conclusions about the item's target value. In these tree structures, leaves represent classifications and branches represent conjunctions of features that lead to those classifications.<Thanks to wiki>
 
-In MALLET internal node in the decision tree looks at whether the vector contains a feature and if it does, sends it to the right child of that node (if the feature is absent it sends it to the left child). If the node is a leaf it labels the vector x with a
+Main Principle: Entropy at the root of the tree is maximum and the goal is to reduce the entropy for every child node created.
+
+In MALLET internal node in the decision tree looks at whether the vector contains a feature and if it does, sends it to the right child of that node (if the feature is absent it sends it to the left child). If the node is a leaf it labels the vector with a
 label given to that leaf.
 
 More info on Decision trees and decision tree learning can be found at:
