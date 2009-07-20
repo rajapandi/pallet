@@ -281,20 +281,37 @@ As kedar Bellare(MALLET research team member) says MALLET is more tailored towar
 [more info on decision trees will be updated as and when I learn "more" about it ;)]
 
 ==Decision Tree Trainer==
-public class DecisionTreeTrainer
-extends ClassifierTrainer<DecisionTree>
-implements Boostable
+
+ public class DecisionTreeTrainer
+ extends ClassifierTrainer<DecisionTree>
+ implements Boostable
 
 ===Constructors===
-DecisionTreeTrainer()
-  Default constructor with depth 4.
-           
-DecisionTreeTrainer(int maxDepth) 
-  Constructor specifying the tree depth explicitly specified.
+ * [http://mallet.cs.umass.edu/api/cc/mallet/classify/DecisionTreeTrainer.html DecisionTreeTrainer()]
+    Default constructor with depth 5
+
+ * [http://mallet.cs.umass.edu/api/cc/mallet/classify/DecisionTreeTrainer.html DecisionTreeTrainer(int maxDepth)]
+    Constructor specifying the tree depth explicitly
 
 ===Public Methods===
+ * [http://mallet.cs.umass.edu/api/cc/mallet/classify/DecisionTreeTrainer.html DecisionTree train(InstanceList trainingList)]
+	Creates a Decision tree classifier from a set of trained data, look at Data Import tutorials for more information on Instance List
 
+ * [http://mallet.cs.umass.edu/api/cc/mallet/classify/DecisionTreeTrainer.html DecisionTree 	getClassifier()]
+    Returns an instance of Decision tree classifier if trainer was trained with the training data else returns null
 
+ * [http://mallet.cs.umass.edu/api/cc/mallet/classify/DecisionTreeTrainer.html boolean 	isFinishedTraining()]
+    Returns true if the classifier is already trained with training data else true, generally useful in conjunction with [http://mallet.cs.umass.edu/api/cc/mallet/classify/DecisionTreeTrainer.html DecisionTree 	getClassifier()]
+
+ * [http://mallet.cs.umass.edu/api/cc/mallet/classify/DecisionTreeTrainer.html DecisionTreeTrainer 	setMaxDepth (int maxDepth)]
+    Sets the maximum depth of the decision tree.
+
+ * [http://mallet.cs.umass.edu/api/cc/mallet/classify/DecisionTreeTrainer.html DecisionTreeTrainer 	setMinInfoGainSplit(double m)]
+	Sets the minimum info-gain, default is .001
+    look at the above decision tree links for more information on info-gain
+          
+===Protected Methods===
+ * [http://mallet.cs.umass.edu/api/cc/mallet/classify/DecisionTreeTrainer.html protected  void 	splitTree(DecisionTree.Node node, FeatureSelection selectedFeatures, int depth)]
 
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
