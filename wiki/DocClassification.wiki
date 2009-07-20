@@ -280,6 +280,21 @@ As kedar Bellare(MALLET research team member) says MALLET is more tailored towar
 
 [more info on decision trees will be updated as and when I learn "more" about it ;)]
 
+==Decision Tree Trainer==
+public class DecisionTreeTrainer
+extends ClassifierTrainer<DecisionTree>
+implements Boostable
+
+===Constructors===
+DecisionTreeTrainer()
+  Default constructor with depth 4.
+           
+DecisionTreeTrainer(int maxDepth) 
+  Constructor specifying the tree depth explicitly specified.
+
+===Public Methods===
+
+
 
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
