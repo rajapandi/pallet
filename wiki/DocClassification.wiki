@@ -313,7 +313,11 @@ As kedar Bellare(MALLET research team member) says MALLET is more tailored towar
      
 ==Decision Tree Classifier==
 ===Constructors===
- * [http://mallet.cs.umass.edu/api/cc/mallet/classify/DecisionTree.html DecisionTree(Pipe instancePipe, DecisionTree.Node root)]
+ * [http://mallet.cs.umass.edu/api/cc/mallet/classify/DecisionTree.html DecisionTree(Pipe instancePipe, [http://mallet.cs.umass.edu/api/cc/mallet/classify/DecisionTree.html DecisionTree.Node] root)]
+     Initializes Decision tree classifier.
+     parameters include:
+     # Instance pipe used for training
+     # Root node of the decision tree constructed by trainer([http://mallet.cs.umass.edu/api/cc/mallet/classify/DecisionTree.html DecisionTree.Node] is explained below).
 
 ===Public Methods===
  * [http://mallet.cs.umass.edu/api/cc/mallet/classify/DecisionTree.html Classification classify(Instance instance)]
