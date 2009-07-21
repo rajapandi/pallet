@@ -33,8 +33,7 @@ Any task listed here should take 1 hour to no more than 2 weeks work.  If a task
  * Sample Application using Data Import functionality.  
  * Data Classification:
    * Decision Trees.
-     * Code Review and planned extension to support pruning.
-   * C4.5 Decision Trees.
+     * planned extension to support pruning.
    * Balanced Winnow.
    * AdaBoost?.
    * Bootstrap Aggregating (bagging)
@@ -64,8 +63,9 @@ Any task listed here should take 1 hour to no more than 2 weeks work.  If a task
     * Code Review - Currently have paused this work and have moved onto Decision Tree
     * Documentation and Tutorials
 
-  * Decision Trees
-     * Documentation and Tutorials.
+  * C4.5 Decision Tree
+    * Code Review.
+    * Documentation and Tutorials.
 
 == Completed ==
   * The following task has been completed on the pipes(mentioned below)
@@ -115,3 +115,5 @@ Any task listed here should take 1 hour to no more than 2 weeks work.  If a task
     * Documentation of the mallet implementation of the algorithm and its tutorials.
   * Maximum Entropy
     * Understanding the algorithm.
+  * Decision Tree
+    * Code review and Tutorial.
