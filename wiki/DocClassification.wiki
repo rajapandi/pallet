@@ -348,16 +348,9 @@ As kedar Bellare(MALLET research team member) says MALLET is more tailored towar
       # Returns instance of [http://mallet.cs.umass.edu/api/cc/mallet/classify/Classification.html Classification](explained below).
 
  * [http://mallet.cs.umass.edu/api/cc/mallet/classify/DecisionTree.html DecisionTree.Node getRoot()]
- ====Parameters:==== -
  ====Return value:====
       # Returns root node of the tree constructed, Type - [http://mallet.cs.umass.edu/api/cc/mallet/classify/DecisionTree.html DecisionTree.Node] (Explained Below) 
 
- * [http://mallet.cs.umass.edu/api/cc/mallet/classify/DecisionTree.html void induceFeatures(InstanceList ilist, boolean withFeatureShrinkage, boolean inducePerClassFeatures)]
- ====Parameters:====
-      # ilist - Instance of [http://mallet.cs.umass.edu/api/cc/mallet/types/InstanceList.html InstanceList].
-      # withFeatureShrinkage - Boolean type, should be true if <to be done> else false.
-      # inducePerClassFeatures - Boolean type, should be true if <to be done> else false.
- ====Return value:==== -
 
 
  ----------------------------------------------------------------------------------------
