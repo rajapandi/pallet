@@ -33,6 +33,42 @@ Any task listed here should take 1 hour to no more than 2 weeks work.  If a task
  * Sample Application using Data Import functionality.  
  * Data Classification:
    * Types - includes feature vector, instance labels.
+     * Alphabet
+     * ArrayListSequence
+     * ArraySequence
+     * AugmentableFeatureVector
+     * ChainedInstanceIterator
+     * CrossValidationIterator
+     * DenseMatrix
+     * DenseVector
+     * Dirichlet
+     * Dirichlet.Estimator
+     * Dirichlet.MethodOfMomentsEstimator
+     * ExpGain 	 
+     * ExpGain.Factory 	 
+     * FeatureConjunction 	 
+     * FeatureConjunction.List 	 
+     * FeatureCounter
+     * FeatureCounts 	 
+     * FeatureCounts.Factory 	 
+     * FeatureInducer 	 
+     * FeatureSelection 	 
+     * FeatureSelector
+     * FeatureSequence
+     * FeatureSequenceWithBigrams
+     * FeatureVector
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * FeatureVectorSequence
+     * 
+     * 
+     * 
    * Decision Trees.
      * planned extension to support pruning.
    * Balanced Winnow.
