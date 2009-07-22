@@ -32,6 +32,7 @@ Any task listed here should take 1 hour to no more than 2 weeks work.  If a task
  * The unit testing of all the pipes.(%)
  * Sample Application using Data Import functionality.  
  * Data Classification:
+   * Types - includes feature vector, instance labels.
    * Decision Trees.
      * planned extension to support pruning.
    * Balanced Winnow.
