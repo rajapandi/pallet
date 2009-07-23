@@ -124,18 +124,7 @@ Any task listed here should take 1 hour to no more than 2 weeks work.  If a task
 
 == Currently being worked on ==
   * Currently working on the following pipes.
-   * Token Sequence Remove Non Alpha
-   * Token Sequence NGrams
-   * SGML2 Token Sequence
-   * Target 2 Feature Sequence
-   * Target 2 Label Sequence
-   * Token Sequence 2 Feature Vector Sequence
-   * Token Sequence Feature Parse Feature String
-   * Token Sequence Match Data And Target
-   * Token Sequence 2FeatureSequenceWithBigrams
-   * Target Remeber Last Label
-   * Source Location 2 Token Sequence 
-  
+    
   * Maximum Entropy 
     * Code Review - Currently have paused this work and have moved onto Decision Tree
     * Documentation and Tutorials
@@ -185,6 +174,22 @@ Any task listed here should take 1 hour to no more than 2 weeks work.  If a task
      * [http://code.google.com/p/pallet/wiki/Tutorial_Data_Import Target2Label]
      * [http://code.google.com/p/pallet/wiki/Tutorial_Data_Import FeatureSequence2FeatureVector]
      * [http://code.google.com/p/pallet/wiki/Tutorial_Data_Import PrintInputAndTarget] 
+     * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_4 Token Sequence Remove Non Alpha]
+     * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_4 Token Sequence NGrams]
+     * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_4 SGML2 Token Sequence]
+     * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_4 Target 2 Feature Sequence]
+     * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_4 Target 2 Label Sequence]
+     * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_4 Token Sequence 2 Feature Vector Sequence]
+     * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_4 Token Sequence Feature Parse Feature String]
+     * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_4 Token Sequence Match Data And Target]
+     * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_4 Token Sequence 2FeatureSequenceWithBigrams]
+     * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_4 Target Remeber Last Label]
+    * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_4 Source Location 2 Token Sequence] 
+
+
+
+
+
 
   * Naive Bayes Algorithm
     * Understanding the algorithm
