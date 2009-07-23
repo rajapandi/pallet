@@ -27,9 +27,9 @@ The following pipes we are going to discuss here
 }}}
 ====1)TokenSequenceRemoveNonAlpha :====
 {{{
-This pipe removes all the non Alphabet words from the
-Token Sequence. For eg if the Token Sequence contains tokens like abc123, then these words are
-removed from the Token Sequence.
+This pipe removes all the non Alphabet words from the Token Sequence. For eg if the 
+Token Sequence contains tokens like abc123, then these words are removed from the Token 
+Sequence.
 
 Implementation
 
@@ -43,7 +43,8 @@ Implementation
 
                                 Sample Code
 
-Note: This pipe uses the Tokens as the input ,so please convert the raw into the Token before applying this pipe.
+Note: This pipe uses the Tokens as the input ,so please convert the raw into the Token 
+before applying this pipe.
 
 
 String trainingdata="on the plains of africa the lions123 roar";---->1
@@ -72,8 +73,7 @@ still contains token “lions123” which will be removed by this pipe.
 
 ====2)TokenSequenceNGrams :====
 {{{
-It converts the token sequence in the data fields to the token
-sequence of N grams.
+It converts the token sequence in the data fields to the token sequence of N grams.
 
 Implementation
 
@@ -120,9 +120,9 @@ africa_roar
 ====3) SGML2TokenSequence:====
 {{{
 It converts a string containing simple SGML tags into a dta TokenSequence of words, 
-paired with a target TokenSequence containing the SGML tags in effect for each word. It 
-does not handle nested SGML tags, nor gracefully handle malformed
-SGML. (Source : Mallet javadoc)
+paired with a target TokenSequence containing the SGML tags in effect for each word.
+It does not handle nested SGML tags, nor gracefully handle malformed SGML. 
+                                                            (Source : Mallet javadoc)
 
 Implementation
 
@@ -152,12 +152,12 @@ public class ImportExample45 {
 static Pipe pipe=null;
 public static void main(String args[])
 {
-String trainingdata="<abc> on the plains of </abc> africa the <a> lions123 </a> roar";-1
+String trainingdata="<abc> on the plains of </abc> africa the <a> lions123 </a> roar";-->1
 Instance i=new Instance(trainingdata,"africa","Instance-1",null);
 Input2CharSequence i2cs=new Input2CharSequence();
 Instance i1=i2cs.pipe(i);
-SGML2TokenSequence cs2ts=new SGML2TokenSequence("[\\p{L}\\p{N}_]+","pallet");2
-//SGML2TokenSequence cs2ts=new SGML2TokenSequence();----3
+SGML2TokenSequence cs2ts=new SGML2TokenSequence("[\\p{L}\\p{N}_]+","pallet");---->2
+//SGML2TokenSequence cs2ts=new SGML2TokenSequence();---->3
 Instance i2=cs2ts.pipe(i1);
 TokenSequence2FeatureSequence ts2fs=new TokenSequence2FeatureSequence();
 Instance i3=ts2fs.pipe(i2);
@@ -167,8 +167,7 @@ Instance i6=fs2afv.pipe(i3);
 PrintInputAndTarget piat=new PrintInputAndTarget();
 Instance i5=piat.pipe(i6);}}
 
-1)Trainingdata is provided in the form of String and also processed through 
-Input2charSequence.
+1)Trainingdata is provided in the form of String and also processed through Input2charSequence.
 
 2)SGML constructor is used with two arguments "[\\p{L}\\p{N}_]+" : It means that take all 
 the characters as the input.
@@ -201,7 +200,7 @@ Token#7:pallet
 
 1)Data which is inside SGML tags are has target sequence corresponding to the name of the 
 tag.
-For eg "<abc> on the plains of </abc> is having ” abc” tag in the target field.
+For eg "<abc> on the plains of </abc>" is having ”abc” tag in the target field.
 2)The data which is not inside any of SGML tags have a background tag in the target field
 provided by the user(Pallet).
 
@@ -228,8 +227,7 @@ Token#7:O
 }}}
 ====4)Target2FeatureSequence:====
 {{{
-It converts the token sequence in the target field into the Feature
-Sequence.
+It converts the token sequence in the target field into the Feature Sequence.
 
  Implementation
    1) Target2FeatureSequence(): It is simple constructor which converts the token sequence
@@ -291,7 +289,8 @@ target: 0: abc (0)------------->Target is indexed and hence converted into
 {{{
 It a simple pipe which converts the data in the target field into LabelSequence. 
 LabelSequence is similar to the feature sequence. Its usage is similar to
-Target2FeatureSequence.It has just one constructor with no arguments. Its output is also similar to the Target2FeatureSequence.
+Target2FeatureSequence.It has just one constructor with no arguments. Its output is also 
+similar to the Target2FeatureSequence.
 
 Note: Just replace the Target2FeatureSequence to Target2LabelSequence in the above code.
 }}}
@@ -301,7 +300,8 @@ Note: Just replace the Target2FeatureSequence to Target2LabelSequence in the abo
 It parses Token Sequence and convert it into Feature String. It adds each string as a 
 Feature to the token.If your data consists of feature/value pairs (eg height=10.7 
 width=3.6 length=1.7), use new TokenSequenceParseFeatureString(true, true, "="). This 
-format is typically used for sparse data,in which most features are equal to 0 in any given instance.
+format is typically used for sparse data,in which most features are equal to 0 in any 
+given instance.
 
 If your data consists only of values, and the position determines which feature the value 
 is for (eg 10.7 3.6 1.7), use new TokenSequenceParseFeatureString(true). This format is 
@@ -323,7 +323,8 @@ Implementation
     3) TokenSequenceParseFeatureString(boolean realvalued, boolean
                                              feature_name,String namevalue Seperator):
 
-If realValued is true ,then pipe treat the position in the list as the feature name and value as double. Otherwise feature name is the String itself and the value is 1.0
+If realValued is true ,then pipe treat the position in the list as the feature name and 
+value as double. Otherwise feature name is the String itself and the value is 1.0
 
 
                                        Sample Code:
@@ -351,8 +352,9 @@ Instance i5=piat.pipe(i120);
 }
 }
 
-Here we use training data as “10 11 12” and
-TokenSequenceParseFeatureString tspf=new TokenSequenceParseFeatureString(false);----->3
+Here we use training data as “10 11 12” and TokenSequenceParseFeatureString tspf=new 
+TokenSequenceParseFeatureString(false);----->3
+
 Now realvalued is false here ,so feature name is the string itself and the value is 1.0
 
                              
@@ -366,7 +368,8 @@ Token#1:11 feature(11)=1.0 span[3..5]
 Token#2:12 feature(12)=1.0 span[6..8]
 target: africa
 
-Note: Now here if you see 10 is a feature name(String itself) and the value given to it is 1.0.If we have used realValued as true then 
+Note: Now here if you see 10 is a feature name(String itself) and the value given to it 
+is 1.0.If we have used realValued as true then 
 
 TokenSequenceParseFeatureString tspf=new TokenSequenceParseFeatureString(true);
 then the output will be
@@ -396,7 +399,8 @@ Token#1:height=11 feature(height)=11.0 span[9..18]
 Token#2:length=12 feature(length)=12.0 span[19..28]
 target: africa
 
-Now here string is converted into featurename and value is allotted to them (what they had in the original string(separated by equal “=”).)
+Now here string is converted into featurename and value is allotted to them (what they 
+had in the original string(separated by equal “=”).)
 }}}
 
 ====7) TokenSequenceMatchDataAndTarget :====
@@ -577,7 +581,7 @@ Note: Here in label Sequence of target column 1 represents the original target o
 data and column 2 represents the last data’s labels.
 
 If instead of no argument constructor of the pipe ,the following constructor is used
-TargetRememberLastLabel trll=new TargetRememberLastLabel("pallet”, true);
+TargetRememberLastLabel trll=new TargetRememberLastLabel("pallet", true);
 then the output would be
 
 name: Instance-1
@@ -600,7 +604,7 @@ target: LabelsSequence:
 
 Note: Here the background label “Pallet” is not used as the last remembered label.
 If the pipe is used as 
-TargetRememberLastLabel trll=new TargetRememberLastLabel("pallet”, false);
+TargetRememberLastLabel trll=new TargetRememberLastLabel("pallet", false);
 
 name: Instance-1
 input: on(0)=1.0
@@ -667,4 +671,3 @@ Instance i5=piat.pipe(i6);
 The output will contain the raw data contain in the file”sci_spec.txt “in token sequence
 
 }}}
-
