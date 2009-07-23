@@ -1,0 +1,11 @@
+#summary Data Import Tutorial 4
+
+= Introduction =
+{{{ 
+This Tutorial is in the continuation of the Data_Import Tutorial 1, Data_Import Tutorial 2 
+and Data_Import_Tutorial 3.This tutorial further explores the Data Import features of the 
+Mallet.
+}}}
+
+= Details =
+=====Note: Please go through the [http://code.google.com/p/pallet/wiki/Tutorial_Data_Import Tutorial_1],[http://code.google.com/p/pallet/w/edit/Data_Import_Tutorial_2 Tutorial_2] and Tutorial 3 [http://code.google.com/p/pallet/w/edit/Data_Import_Tutorial_3 Tutorial_3].=====
