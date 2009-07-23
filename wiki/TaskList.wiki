@@ -184,7 +184,7 @@ Any task listed here should take 1 hour to no more than 2 weeks work.  If a task
      * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_4 Token Sequence Match Data And Target]
      * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_4 Token Sequence 2FeatureSequenceWithBigrams]
      * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_4 Target Remeber Last Label]
-    * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_4 Source Location 2 Token Sequence] 
+     * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_4 Source Location 2 Token Sequence] 
 
 
 
