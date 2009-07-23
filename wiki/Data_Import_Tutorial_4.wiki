@@ -8,7 +8,7 @@ Mallet.
 }}}
 
 = Details =
-=====Note: Please go through the [http://code.google.com/p/pallet/wiki/Tutorial_Data_Import Tutorial_1],[http://code.google.com/p/pallet/w/edit/Data_Import_Tutorial_2 Tutorial_2] and [http://code.google.com/p/pallet/w/edit/Data_Import_Tutorial_3 Tutorial_3].=====
+=====Note: Please go through the [http://code.google.com/p/pallet/wiki/Tutorial_Data_Import Tutorial_1],[http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_2 Tutorial_2] and [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_3 Tutorial_3].=====
 
 {{{
 
