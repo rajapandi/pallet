@@ -8,27 +8,7 @@ Any task listed here should take 1 hour to no more than 2 weeks work.  If a task
 == Not started (In order of priority) ==
 
  
- * The documentation of the following pipes have not started(%) 
-   * Add Classifier Token Predictions
-   * Add Classifier Token Predictions . Token Classifiers
-   * Augmentable Feature Vector Add Conjunctions
-   * Classification 2 Confidence Predicting Feature Vector
-   * Directory 2 File Iterator
-   * Feature Count Pipe
-   * Feature Value String 2 Feature Vector
-   * Feature Vector Sequence 2 Feature Vectors
-   * Filter Empty Feature Vectors
-   * Instance List Trim Features By Count
-   * Noop
-   * Pipe
-   * Print Input
-   * Print Token Sequence Features
-   * Save Data In Source
-   * Selective SGML 2 Token Sequence
-   * Simple Tagger Sentence 2 String Tokenization
-   * Token 2 Feature Vector
-   * Token Sequence 2 Token Instances
-   * Token Sequence Parse Feature String 
+  
  * The unit testing of all the pipes.(%)
  * Sample Application using Data Import functionality.  
  * Data Classification:
@@ -124,6 +104,26 @@ Any task listed here should take 1 hour to no more than 2 weeks work.  If a task
 
 == Currently being worked on ==
   * Currently working on the following pipes.
+    * Add Classifier Token Predictions
+    * Add Classifier Token Predictions . Token Classifiers
+    * Augmentable Feature Vector Add Conjunctions
+    * Classification 2 Confidence Predicting Feature Vector
+    * Directory 2 File Iterator
+    * Feature Count Pipe
+    * Feature Value String 2 Feature Vector
+    * Feature Vector Sequence 2 Feature Vectors
+    * Filter Empty Feature Vectors
+    * Instance List Trim Features By Count
+    * Noop
+    * Pipe
+    * Print Input
+    * Print Token Sequence Features
+    * Save Data In Source
+    * Selective SGML 2 Token Sequence
+    * Simple Tagger Sentence 2 String Tokenization
+    * Token 2 Feature Vector
+    * Token Sequence 2 Token Instances
+    * Token Sequence Parse Feature String 
     
   * Maximum Entropy 
     * Code Review - Currently have paused this work and have moved onto Decision Tree
