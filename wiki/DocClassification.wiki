@@ -5,7 +5,7 @@ Before proceeding any further, this tutorial is not intended to describe the alg
 
 = Introduction =
 MALLET supports rich set of Document Classification Algorithms:
- * [#Naïve Bayes].
+ * [ DocClassification #Naïve Bayes].
  * Maximum Entropy (Multivariate Logistic Regression).
  * C4.5 Decision Trees.
  * Decision Trees.
