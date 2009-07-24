@@ -8,7 +8,7 @@ MALLET supports rich set of Document Classification Algorithms:
  * [ DocClassification#Naïve_Bayes].
  * [ DocClassification#Maximum_Entropy].
  * [ DocClassification#C4.5 Decision Trees].
- * [ DocClassification#Decision Trees]
+ * [ DocClassification#Decision_trees]
  * Balanced Winnow.
  * AdaBoost.
  * Bootstrap Aggregating (bagging)
