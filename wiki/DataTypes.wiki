@@ -114,6 +114,7 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  * *Ranked-Feature-Vector.Per-Label-Factory: *[http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html]
  * *Sequence`<E>`: *[http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html]
 
+ [DataTypes#Contents Contents]
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 = Classes =
