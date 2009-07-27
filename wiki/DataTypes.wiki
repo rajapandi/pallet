@@ -156,7 +156,11 @@ The most common use of an alphabet is as a dictionary of feature names associate
  }}}
 
  * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html Alphabet(java.lang.Object[] entries)]
-
+ Instantiates Alphabet object from array of "Object"s
+ {{{
+ String [] s = new String [] {"string1", "string2"};
+ Alphabet dict = new Alphabet(s);
+ }}}
 
 ==Public methods==
  * static boolean alphabetsMatch(AlphabetCarrying object1, AlphabetCarrying object2)
