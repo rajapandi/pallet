@@ -109,8 +109,7 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
 
 = Array-Sequence =
 
- == Package==
- [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
+ == Package== [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
