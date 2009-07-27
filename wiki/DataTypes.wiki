@@ -101,18 +101,18 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 = Interfaces =
  * *Alphabet-Carrying: *[http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html AlphabetCarrying]
-*Cached-Metric: *[http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html CachedMetric]
-*Constant-Matrix: *[http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html ConstantMatrix]
-*Labeler: *[http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html Labeler]
-*Labeling: *[http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html Labeling]
-*Matrix: *[http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html Matrix]
-*Metric: *[http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html Metric]
-*Partially-Ranked-Feature-Vector.Factory: *[http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html PartiallyRankedFeatureVector.Factory]
-*Partially-Ranked-Feature-Vector.Per-Label-Factory: *[http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html PartiallyRankedFeatureVector.PerLabelFactory]
-*Property-Holder: *[http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html PropertyHolder]
-*Ranked-Feature-Vector.Factory: *[http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html RankedFeatureVector.Factory]
-*Ranked-Feature-Vector.Per-Label-Factory: *[http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html]
-*Sequence<E>: *[http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html]
+ * *Cached-Metric: *[http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html CachedMetric]
+ * *Constant-Matrix: *[http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html ConstantMatrix]
+ * *Labeler: *[http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html Labeler]
+ * *Labeling: *[http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html Labeling]
+ * *Matrix: *[http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html Matrix]
+ * *Metric: *[http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html Metric]
+ * *Partially-Ranked-Feature-Vector.Factory: *[http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html PartiallyRankedFeatureVector.Factory]
+ * *Partially-Ranked-Feature-Vector.Per-Label-Factory: *[http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html PartiallyRankedFeatureVector.PerLabelFactory]
+ * *Property-Holder: *[http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html PropertyHolder]
+ * *Ranked-Feature-Vector.Factory: *[http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html RankedFeatureVector.Factory]
+ * *Ranked-Feature-Vector.Per-Label-Factory: *[http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html]
+ * *Sequence<E>: *[http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html]
 
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
