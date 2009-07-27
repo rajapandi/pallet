@@ -2,7 +2,7 @@
 
 = Introduction =
 
-Contains the data types that are defined for MALLET Data Import and Document [http://code.google.com/p/pallet/wiki/DocClassification Classification]
+Contains the data types that are defined for MALLET <wiki: comment></wiki: comment>Data Import and [http://code.google.com/p/pallet/wiki/DocClassification Document Classification]
 
 = Contents =
  * [DataTypes#Alphabet Alphabet]
