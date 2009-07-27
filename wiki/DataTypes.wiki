@@ -5,7 +5,7 @@
 
 = Contents =
  * [DataTypes#Alphabet Alphabet]
- * [DataTypes#ArrayListSequence ArrayListSequence]
+ * [DataTypes#Array-List-Sequence ArrayListSequence]
  * [DataTypes#ArraySequence ArraySequence]
  * [DataTypes#AugmentableFeatureVector AugmentableFeatureVector]
  * [DataTypes#ChainedInstanceIterator ChainedInstanceIterator]
