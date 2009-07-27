@@ -138,7 +138,7 @@ The most common use of an alphabet is as a dictionary of feature names associate
  * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html Alphabet(java.lang.Class entryClass)]
  * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html Alphabet(int capacity)]
  * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html Alphabet(int capacity, java.lang.Class entryClass)]
- * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html Alphabet(java.lang.Object`[]` entries)]
+ * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html Alphabet(java.lang.Object[] entries)]
 
 
  [DataTypes#Contents Contents]
