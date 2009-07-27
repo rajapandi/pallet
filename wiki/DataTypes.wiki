@@ -112,7 +112,7 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  * *Property-Holder: *[http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html PropertyHolder]
  * *Ranked-Feature-Vector.Factory: *[http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html RankedFeatureVector.Factory]
  * *Ranked-Feature-Vector.Per-Label-Factory: *[http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html]
- * *Sequenc`<E>`: *[http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html]
+ * *Sequence`<E>`: *[http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html]
 
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
