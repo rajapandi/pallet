@@ -140,7 +140,7 @@ The most common use of an alphabet is as a dictionary of feature names associate
  * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html Alphabet(java.lang.Class entryClass)]
  Instantiates Alphabet object with default capacity and specified entry class
  ===Parameters===
- # entryClass - class of an object, type - java.lang.Class
+  # entryClass - class of an object, type - java.lang.Class
  {{{
  Alphabet dict = new Alphabet(String.class);
  }}}
@@ -148,7 +148,7 @@ The most common use of an alphabet is as a dictionary of feature names associate
  * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html Alphabet(int capacity)]
  Instantiates Alphabet object with specified capacity
  ===Parameters===
- # capacity - Initial Capacity of [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html Alphabet], type - int
+  # capacity - Initial Capacity of [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html Alphabet], type - int
  {{{
  Alphabet dict = new Alphabet(10);
  }}}
@@ -156,8 +156,8 @@ The most common use of an alphabet is as a dictionary of feature names associate
  * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html Alphabet(int capacity, java.lang.Class entryClass)]
  Instantiates Alphabet object with specified capacity and entry Class.
  ===Parameters===
- # capacity - Initial Capacity of [http://mallet.cs.umass.edu/api/cc/mallet/type/Alphabet.html Alphabet], type - int
- # entryClass - class of an object, type - java.lang.Class
+  # capacity - Initial Capacity of [http://mallet.cs.umass.edu/api/cc/mallet/type/Alphabet.html Alphabet], type - int
+  # entryClass - class of an object, type - java.lang.Class
  {{{
  Alphabet dict = new Alphabet(10, String.class);
  }}}
@@ -171,36 +171,111 @@ The most common use of an alphabet is as a dictionary of feature names associate
 
 ==Public methods==
  * int lookupIndex(java.lang.Object entry)
+ Returns the index of the entry in the Alphabet if "entry" is present else adds it to the Alphabet and returns index
+ ===Parameters===
+ # entry - Object for which the index in Alphabet needs to be found, Type - java.lang.Object
+ ===Return Value===
+ # Returns the index of the object in the Alphabet, Type - int
  
  * int lookupIndex(java.lang.Object entry, boolean addIfNotPresent)
+ ===Parameters===
+ ===Return Value===
  Return -1 if entry isn't present.
- * java.lang.Object clone()           
+
+ * java.lang.Object clone()
+ ===Parameters===
+ ===Return Value===
+
  * boolean contains(java.lang.Object entry)           
- * void dump()           
+ ===Parameters===
+ ===Return Value===
+
+ * void dump()     
+ ===Parameters===
+ ===Return Value===      
+
  * void dump(java.io.PrintStream out)           
+ ===Parameters===
+ ===Return Value===
+
  * void dump(java.io.PrintWriter out)           
+ ===Parameters===
+ ===Return Value===
+
  * java.lang.Class entryClass()           
+ ===Parameters===
+ ===Return Value===
+
  * java.rmi.dgc.VMID getInstanceId()           
+ ===Parameters===
+ ===Return Value===
+
  * boolean growthStopped()           
+ ===Parameters===
+ ===Return Value===
+
  * java.util.Iterator iterator()
+ ===Parameters===
+ ===Return Value===
+
  * int`[]` lookupIndices(java.lang.Object[] objects, boolean addIfNotPresent)           
+ ===Parameters===
+ ===Return Value===
+
  * java.lang.Object 	lookupObject(int index)           
+ ===Parameters===
+ ===Return Value===
+
  * java.lang.Object[] 	lookupObjects(int[] indices)           
+ ===Parameters===
+ ===Return Value===
+
  * java.lang.Object[] 	lookupObjects(int[] indices, java.lang.Object[] buf)
  Returns an array of the objects corresponding to
+
+ ===Parameters===
+ ===Return Value===
  * java.lang.Object readResolve()
  This gets called after readObject; it lets the object decide whether to return itself or return a previously read in version.
+
+ ===Parameters===
+ ===Return Value===
+
  * void setInstanceId(java.rmi.dgc.VMID id)           
- * int size()           
+ ===Parameters===
+ ===Return Value===
+
+ * int size()      
+ ===Parameters===
+ ===Return Value===     
+
  * void startGrowth()           
+ ===Parameters===
+ ===Return Value===
+
  * void stopGrowth()           
+ ===Parameters===
+ ===Return Value===
+
  * java.lang.Object[] toArray()           
+ ===Parameters===
+ ===Return Value===
+
  * java.lang.Object[] 	toArray(java.lang.Object[] in)
  Returns an array containing all the entries in the Alphabet.
+ ===Parameters===
+ ===Return Value===
+
  * java.lang.String toString()
  Return String representation of all Alphabet entries, each separated by a newline.
+ ===Parameters===
+ ===Return Value===
+
  * static boolean alphabetsMatch(AlphabetCarrying object1, AlphabetCarrying object2)
  Convenience method that can often implement alphabetsMatch in classes that implement the AlphabetsCarrying interface.
+ ===Parameters===
+ ===Return Value===
+
 
  [DataTypes#Contents Contents]
  ----------------------------------------------------------------------------------------
