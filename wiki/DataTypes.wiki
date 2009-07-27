@@ -135,11 +135,47 @@ The most common use of an alphabet is as a dictionary of feature names associate
 
 ==Constructors==
  * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html Alphabet()]
+ 
+
  * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html Alphabet(java.lang.Class entryClass)]
+
  * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html Alphabet(int capacity)]
+
  * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html Alphabet(int capacity, java.lang.Class entryClass)]
+
  * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html Alphabet(java.lang.Object[] entries)]
 
+==Public methods==
+ * static boolean alphabetsMatch(AlphabetCarrying object1, AlphabetCarrying object2)
+ Convenience method that can often implement alphabetsMatch in classes that implement the AlphabetsCarrying interface.
+ * java.lang.Object clone()           
+ * boolean contains(java.lang.Object entry)           
+ * void dump()           
+ * void dump(java.io.PrintStream out)           
+ * void dump(java.io.PrintWriter out)           
+ * java.lang.Class entryClass()           
+ * java.rmi.dgc.VMID getInstanceId()           
+ * boolean growthStopped()           
+ * java.util.Iterator iterator()           
+ * int lookupIndex(java.lang.Object entry)           
+ * int lookupIndex(java.lang.Object entry, boolean addIfNotPresent)
+ Return -1 if entry isn't present.
+ * int`[]` lookupIndices(java.lang.Object[] objects, boolean addIfNotPresent)           
+ * java.lang.Object 	lookupObject(int index)           
+ * java.lang.Object[] 	lookupObjects(int[] indices)           
+ * java.lang.Object[] 	lookupObjects(int[] indices, java.lang.Object[] buf)
+ Returns an array of the objects corresponding to
+ * java.lang.Object readResolve()
+ This gets called after readObject; it lets the object decide whether to return itself or return a previously read in version.
+ * void setInstanceId(java.rmi.dgc.VMID id)           
+ * int size()           
+ * void startGrowth()           
+ * void stopGrowth()           
+ * java.lang.Object[] toArray()           
+ * java.lang.Object[] 	toArray(java.lang.Object[] in)
+ Returns an array containing all the entries in the Alphabet.
+ * java.lang.String toString()
+ Return String representation of all Alphabet entries, each separated by a newline.
 
  [DataTypes#Contents Contents]
  ----------------------------------------------------------------------------------------
