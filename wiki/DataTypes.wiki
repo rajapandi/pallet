@@ -5,23 +5,23 @@
 
 = Contents =
  * [DataTypes#Alphabet Alphabet]
- * [DataTypes#ArrayList_Sequence ArrayListSequence]
- * [DataTypes#Array_Sequence ArraySequence]
- * [DataTypes#Augmentable_FeatureVector AugmentableFeatureVector]
- * [DataTypes#Chained_InstanceIterator ChainedInstanceIterator]
- * [DataTypes#CrossValidation_Iterator CrossValidationIterator]
- * [DataTypes#Dense_Matrix DenseMatrix]
- * [DataTypes#Dense_Vector DenseVector]
+ * [DataTypes#ArrayListSequence ArrayListSequence]
+ * [DataTypes#ArraySequence ArraySequence]
+ * [DataTypes#AugmentableFeatureVector AugmentableFeatureVector]
+ * [DataTypes#ChainedInstanceIterator ChainedInstanceIterator]
+ * [DataTypes#CrossValidationIterator CrossValidationIterator]
+ * [DataTypes#DenseMatrix DenseMatrix]
+ * [DataTypes#DenseVector DenseVector]
  * [DataTypes#Dirichlet Dirichlet]
- * [DataTypes#Dirichlet_Estimator Dirichlet.Estimator]
- * [DataTypes#Dirichlet_MethodOfMomentsEstimator Dirichlet.MethodOfMomentsEstimator]
+ * [DataTypes#DirichletEstimator Dirichlet.Estimator]
+ * [DataTypes#DirichletMethodOfMomentsEstimator Dirichlet.MethodOfMomentsEstimator]
  * [DataTypes#ExpGain ExpGain]
- * [DataTypes#ExpGain_Factory ExpGain.Factory]
+ * [DataTypes#ExpGainFactory ExpGain.Factory]
  * [DataTypes#FeatureConjunction FeatureConjunction]
- * [DataTypes#FeatureConjunction_List FeatureConjunction.List]	 
+ * [DataTypes#FeatureConjunctionList FeatureConjunction.List]	 
  * [DataTypes#FeatureCounter FeatureCounter]
  * [DataTypes#FeatureCounts FeatureCounts]
- * [DataTypes#FeatureCounts_Factory FeatureCounts.Factory]	 
+ * [DataTypes#FeatureCountsFactory FeatureCounts.Factory]	 
  * [DataTypes#FeatureInducer FeatureInducer]	 
  * [DataTypes#FeatureSelection FeatureSelection]	 
  * [DataTypes#FeatureSelector FeatureSelector]
@@ -89,7 +89,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= ArrayList_Sequence =
+= ArrayListSequence =
 
  To be done
 
