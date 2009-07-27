@@ -124,9 +124,9 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
 = Alphabet =
 *Package: * [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
-public class Alphabet
-extends java.lang.Object
-implements java.io.Serializable
+public class Alphabet<BR CLEAR="ALL"|"LEFT"|"RIGHT">
+extends java.lang.Object<BR CLEAR="ALL"|"LEFT"|"RIGHT">
+implements java.io.Serializable<BR CLEAR="ALL"|"LEFT"|"RIGHT">
 
 As described by the MALLET API Doc:
 
