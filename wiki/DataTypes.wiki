@@ -88,7 +88,7 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
 
 = Alphabet =
  == Package==
-   [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types] 
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
 
  To be done
@@ -99,7 +99,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
 
 = Array-List-Sequence =
  == Package==
-   [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
+
  To be done
 
  [DataTypes#Contents Contents]
@@ -108,6 +109,9 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
 
 = Array-Sequence =
 
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
+
  To be done
 
  [DataTypes#Contents Contents]
@@ -115,6 +119,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Augmentable-Feature-Vector =
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -123,6 +129,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Chained-Instance-Iterator =
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -131,6 +139,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Cross-Validation-Iterator =
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
 
  To be done
@@ -140,6 +150,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Dense-Matrix =
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -147,6 +159,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 = Dense-Vector =
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -155,6 +169,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Dirichlet =
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
 
  To be done
@@ -164,6 +180,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Dirichlet.Estimator =
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -172,6 +190,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Dirichlet.Method-Of-Moments-Estimator =
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -180,6 +200,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Exp-Gain =
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -188,6 +210,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Exp-Gain.Factory =
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -196,6 +220,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Feature-Conjunction =
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -204,6 +230,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Feature-Conjunction.List =
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -212,6 +240,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Feature-Counter =
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -220,6 +250,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Feature-Counts = 	 
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -228,6 +260,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Feature-Counts.Factory = 	 
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -236,6 +270,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Feature-Inducer = 	 
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -244,6 +280,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Feature-Selection = 	 
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -252,6 +290,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Feature-Selector =
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -260,6 +300,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Feature-Sequence =
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -268,6 +310,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Feature-Sequence-With-Bigrams =
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -276,6 +320,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Feature-Vector =
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -284,6 +330,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Feature-Vector-Sequence =
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -292,6 +340,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Gain-Ratio =
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -300,6 +350,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Gradient-Gain =
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -309,6 +361,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Gradient-Gain.Factory = 	 
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -318,6 +372,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Hashed-Sparse-Vector =
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -327,6 +383,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = ID-Sorter = 	
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -336,6 +394,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Indexed-Sparse-Vector = 	 
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -345,6 +405,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Info-Gain = 	 
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -354,6 +416,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Info-Gain.Factory = 	 
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -363,6 +427,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Instance = 	
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -372,6 +438,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Instance-List = 	
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -381,6 +449,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Instance-List-TUI = 	 
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -390,6 +460,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Inverted-Index = 	 
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -399,6 +471,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = KL-Gain = 	 
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -408,6 +482,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Label = 	 
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -417,6 +493,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Label-Alphabet = 	
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -426,6 +504,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Labelings = 	 
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -435,6 +515,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Labels = 	
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -444,6 +526,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Label-Sequence = 	 
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -453,6 +537,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Labels-Sequence = 	
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -462,6 +548,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Label-Vector = 	 
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -471,6 +559,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Matrix-2 = 	
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -480,6 +570,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Matrix-n = 	
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -489,6 +581,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Matrix-Ops = 	
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -498,6 +592,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Minkowski = 	 
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -507,6 +603,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Multi-Instance-List = 	
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -516,6 +614,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Multinomial = 	
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -525,6 +625,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Multinomial.Estimator = 	
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -534,6 +636,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Multinomial.Laplace-Estimator = 	
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -543,6 +647,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Multinomial.Logged = 	
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -552,6 +658,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Multinomial.MAP-Estimator = 	
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -561,6 +669,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Multinomial.M-Estimator = 	 
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -570,6 +680,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Multinomial.ML-Estimator = 	
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -579,6 +691,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Normalized-Dot-Product-Metric = 	
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -588,6 +702,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Paged-Instance-List = 	
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -597,6 +713,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Partially-Ranked-Feature-Vector = 	 
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -606,6 +724,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Per-Label-Feature-Counts = 	 
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -615,6 +735,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Per-Label-Feature-Counts.Factory = 	 
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -624,6 +746,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Per-Label-Info-Gain = 	 
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -633,6 +757,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Per-Label-Info-Gain.Factory = 	 
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -642,6 +768,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Ranked-Feature-Vector = 	 
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -651,6 +779,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = ROC-Data = 	
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -660,6 +790,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Sequence-Pair =
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -669,6 +801,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Sequence-Pair-Alignment =
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -678,6 +812,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Single-Instance-Iterator = 	 
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -687,6 +823,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Sparse-Matrix-n = 	
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -696,6 +834,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Sparse-Vector = 	
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -705,6 +845,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = String-Edit-Feature-Vector-Sequence = 	 
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -714,6 +856,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = String-Edit-Vector = 	 
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -723,6 +867,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = String-Kernel = 	
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -732,6 +878,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Token = 	
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
@@ -741,6 +889,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
 
 = Token-Sequence =
+ == Package==
+ [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
  To be done
 
