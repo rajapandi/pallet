@@ -667,7 +667,7 @@ Instance i5=piat.pipe(i6);
 }}
 
 
-                              Sample Outpu
+                              Sample Output
 The output will contain the raw data contain in the file”sci_spec.txt “in token sequence
 
 }}}
