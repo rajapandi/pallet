@@ -4,7 +4,6 @@
 
 
 = Contents =
-
  * [DataTypes#Alphabet Alphabet]
  * [DataTypes#ArrayListSequence ArrayListSequence]
  * [DataTypes#ArraySequence ArraySequence]
