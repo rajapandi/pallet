@@ -32,7 +32,7 @@
  * [DataTypes#GainRatio GainRatio]
  * [DataTypes#GradientGain GradientGain]
  * [DataTypes#GradientGain.Factory GradientGain.Factory]
- * [DataTypes#HashedSparseVector HashedSparseVector
+ * [DataTypes#HashedSparseVector HashedSparseVector]
  * [DataTypes#IDSorter IDSorter]
  * [DataTypes#IndexedSparseVector IndexedSparseVector]
  * [DataTypes#InfoGain InfoGain]
