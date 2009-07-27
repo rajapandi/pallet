@@ -6,12 +6,12 @@
 = Contents =
  * [DataTypes#Alphabet Alphabet]
  * [DataTypes#Array-List-Sequence ArrayListSequence]
- * [DataTypes#ArraySequence ArraySequence]
- * [DataTypes#AugmentableFeatureVector AugmentableFeatureVector]
- * [DataTypes#ChainedInstanceIterator ChainedInstanceIterator]
- * [DataTypes#CrossValidationIterator CrossValidationIterator]
- * [DataTypes#DenseMatrix DenseMatrix]
- * [DataTypes#DenseVector DenseVector]
+ * [DataTypes#Array-Sequence ArraySequence]
+ * [DataTypes#Augmentable-Feature-Vector AugmentableFeatureVector]
+ * [DataTypes#Chained-Instance-Iterator ChainedInstanceIterator]
+ * [DataTypes#CrossValidation-Iterator CrossValidationIterator]
+ * [DataTypes#Dense-Matrix DenseMatrix]
+ * [DataTypes#Dense-Vector DenseVector]
  * [DataTypes#Dirichlet Dirichlet]
  * [DataTypes#DirichletEstimator Dirichlet.Estimator]
  * [DataTypes#DirichletMethodOfMomentsEstimator Dirichlet.MethodOfMomentsEstimator]
@@ -97,7 +97,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= ArraySequence =
+= Array-Sequence =
 
  To be done
 
@@ -105,7 +105,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= AugmentableFeatureVector =
+= Augmentable-Feature-Vector =
 
  To be done
 
@@ -113,7 +113,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= ChainedInstanceIterator =
+= Chained-Instance-Iterator =
 
  To be done
 
@@ -121,7 +121,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= CrossValidationIterator =
+= Cross-Validation-Iterator =
 
 
  To be done
