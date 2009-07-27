@@ -6,81 +6,81 @@
 = Contents =
 
  * [DataTypes#Alphabet Alphabet]
- * ArrayListSequence
- * ArraySequence
- * AugmentableFeatureVector
- * ChainedInstanceIterator
- * CrossValidationIterator
- * DenseMatrix
- * DenseVector
- * Dirichlet
- * Dirichlet.Estimator
- * Dirichlet.MethodOfMomentsEstimator
- * ExpGain 	 
- * ExpGain.Factory 	 
- * FeatureConjunction 	 
- * FeatureConjunction.List 	 
- * FeatureCounter
- * FeatureCounts 	 
- * FeatureCounts.Factory 	 
- * FeatureInducer 	 
- * FeatureSelection 	 
- * FeatureSelector
- * FeatureSequence
- * FeatureSequenceWithBigrams
- * FeatureVector
- * FeatureVectorSequence
- * GainRatio
- * GradientGain
- * GradientGain.Factory 	 
- * HashedSparseVector 
- * IDSorter 	
- * IndexedSparseVector 	 
- * InfoGain 	 
- * InfoGain.Factory 	 
- * Instance 	
- * InstanceList 	
- * InstanceListTUI 	 
- * InvertedIndex 	 
- * KLGain 	 
- * Label 	 
- * LabelAlphabet 	
- * Labelings 	 
- * Labels 	
- * LabelSequence 	 
- * LabelsSequence 	
- * LabelVector 	 
- * Matrix2 	
- * Matrixn 	
- * MatrixOps 	
- * Minkowski 	 
- * MultiInstanceList 	
- * Multinomial 	
- * Multinomial.Estimator 	
- * Multinomial.LaplaceEstimator 	
- * Multinomial.Logged 	
- * Multinomial.MAPEstimator 	
- * Multinomial.MEstimator 	 
- * Multinomial.MLEstimator 	
- * NormalizedDotProductMetric 	
- * PagedInstanceList 	
- * PartiallyRankedFeatureVector 	 
- * PerLabelFeatureCounts 	 
- * PerLabelFeatureCounts.Factory 	 
- * PerLabelInfoGain 	 
- * PerLabelInfoGain.Factory 	 
- * RankedFeatureVector 	 
- * ROCData 	
- * SequencePair
- * SequencePairAlignment
- * SingleInstanceIterator 	 
- * SparseMatrixn 	
- * SparseVector 	
- * StringEditFeatureVectorSequence 	 
- * StringEditVector 	 
- * StringKernel 	
- * Token 	
- * TokenSequence
+ * [DataTypes#ArrayListSequence ArrayListSequence]
+ * [DataTypes#ArraySequence ArraySequence]
+ * [DataTypes#AugmentableFeatureVector AugmentableFeatureVector]
+ * [DataTypes#ChainedInstanceIterator ChainedInstanceIterator]
+ * [DataTypes#CrossValidationIterator CrossValidationIterator]
+ * [DataTypes#DenseMatrix DenseMatrix]
+ * [DataTypes#DenseVector DenseVector]
+ * [DataTypes#Dirichlet Dirichlet]
+ * [DataTypes#Dirichlet.Estimator Dirichlet.Estimator]
+ * [DataTypes#Dirichlet.MethodOfMomentsEstimator Dirichlet.MethodOfMomentsEstimator]
+ * [DataTypes#ExpGain ExpGain]
+ * [DataTypes#ExpGain.Factory ExpGain.Factory]
+ * [DataTypes#FeatureConjunction FeatureConjunction]
+ * [DataTypes#FeatureConjunction.List FeatureConjunction.List]	 
+ * [DataTypes#FeatureCounter FeatureCounter]
+ * [DataTypes#FeatureCounts FeatureCounts]
+ * [DataTypes#FeatureCounts.Factory FeatureCounts.Factory]	 
+ * [DataTypes#FeatureInducer FeatureInducer]	 
+ * [DataTypes#FeatureSelection FeatureSelection]	 
+ * [DataTypes#FeatureSelector FeatureSelector]
+ * [DataTypes#FeatureSequence FeatureSequence]
+ * [DataTypes#FeatureSequenceWithBigrams FeatureSequenceWithBigrams]
+ * [DataTypes#FeatureVector FeatureVector]
+ * [DataTypes#FeatureVectorSequence FeatureVectorSequence]
+ * [DataTypes#GainRatio GainRatio]
+ * [DataTypes#GradientGain GradientGain]
+ * [DataTypes#GradientGain.Factory GradientGain.Factory]
+ * [DataTypes#HashedSparseVector HashedSparseVector
+ * [DataTypes#IDSorter IDSorter]
+ * [DataTypes#IndexedSparseVector IndexedSparseVector]
+ * [DataTypes#InfoGain InfoGain]
+ * [DataTypes#InfoGain.Factory InfoGain.Factory]
+ * [DataTypes#Instance Instance]
+ * [DataTypes#InstanceList InstanceList]
+ * [DataTypes#InstanceListTUI InstanceListTUI]
+ * [DataTypes#InvertedIndex InvertedIndex] 
+ * [DataTypes#KLGain KLGain]
+ * [DataTypes#Label Label]
+ * [DataTypes#LabelAlphabet LabelAlphabet]
+ * [DataTypes#Labelings Labelings]
+ * [DataTypes#Labels Labels]
+ * [DataTypes#LabelSequence LabelSequence]
+ * [DataTypes#LabelsSequence LabelsSequence]
+ * [DataTypes#LabelVector LabelVector]
+ * [DataTypes#Matrix2 Matrix2]
+ * [DataTypes#Matrixn Matrixn]
+ * [DataTypes#MatrixOps MatrixOps]
+ * [DataTypes#Minkowski Minkowski]
+ * [DataTypes#MultiInstanceList	MultiInstanceList]
+ * [DataTypes#Multinomial Multinomial]
+ * [DataTypes#Multinomial.Estimator Multinomial.Estimator]
+ * [DataTypes#Multinomial.LaplaceEstimator Multinomial.LaplaceEstimator]
+ * [DataTypes#Multinomial.Logged Multinomial.Logged]
+ * [DataTypes#Multinomial.MAPEstimator Multinomial.MAPEstimator]
+ * [DataTypes#Multinomial.MEstimator Multinomial.MEstimator]
+ * [DataTypes#Multinomial.MLEstimator Multinomial.MLEstimator]
+ * [DataTypes#NormalizedDotProductMetric NormalizedDotProductMetric]
+ * [DataTypes#PagedInstanceList PagedInstanceList]
+ * [DataTypes#PartiallyRankedFeatureVector PartiallyRankedFeatureVector]
+ * [DataTypes#PerLabelFeatureCounts PerLabelFeatureCounts]
+ * [DataTypes#PerLabelFeatureCounts.Factory PerLabelFeatureCounts.Factory]
+ * [DataTypes#PerLabelInfoGain PerLabelInfoGain]
+ * [DataTypes#PerLabelInfoGain.Factory PerLabelInfoGain.Factory]
+ * [DataTypes#RankedFeatureVector RankedFeatureVector]
+ * [DataTypes#ROCData ROCData]
+ * [DataTypes#SequencePair SequencePair]
+ * [DataTypes#SequencePairAlignment SequencePairAlignment]
+ * [DataTypes#SingleInstanceIterator SingleInstanceIterator]
+ * [DataTypes#SparseMatrixn SparseMatrixn]
+ * [DataTypes#SparseVector SparseVector]
+ * [DataTypes#StringEditFeatureVectorSequence StringEditFeatureVectorSequence]
+ * [DataTypes#StringEditVector StringEditVector]
+ * [DataTypes#StringKernel StringKernel]
+ * [DataTypes#Token Token]
+ * [DataTypes#TokenSequence TokenSequence]
 
 
 = Alphabet =
