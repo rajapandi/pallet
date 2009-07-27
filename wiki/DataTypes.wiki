@@ -135,6 +135,8 @@ A mapping between integers and objects where the mapping in each direction is ef
 
 The most common use of an alphabet is as a dictionary of feature names associated with a [DataTypes#Feature-Vector FeatureVector] in an [DataTypes#Instance Instance]. In a simple document classification usage, each unique word in a document would be a unique entry in the Alphabet with a unique integer associated with it. [DataTypes#Feature-Vector FeatureVectors] rely on the integer part of the mapping to efficiently represent the subset of the Alphabet present in the [DataTypes#Feature-Vector FeatureVector]. 
 
+[DataTypes#Contents Contents]
+
 ==Alphabet-Constructors==
  * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html Alphabet()]
  Instantiates Alphabet object with default capacity (= 8).
@@ -171,13 +173,15 @@ The most common use of an alphabet is as a dictionary of feature names associate
  Alphabet dict = new Alphabet(s);
  }}}
 
+[DataTypes#Contents Contents]
+
 ==Alphabet-Public-Methods==
  * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html int lookupIndex(java.lang.Object entry)]
  Returns the index of the entry in the Alphabet if "entry" is present else adds it to the Alphabet and returns index
  ===Parameters===
- # entry - Object for which the index in Alphabet needs to be found, Type - java.lang.Object
+  # entry - Object for which the index in Alphabet needs to be found, Type - java.lang.Object
  ===Return Value===
- # Returns the index of the object in the Alphabet, Type - int
+  # Returns the index of the object in the Alphabet, Type - int
  
  * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html int lookupIndex(java.lang.Object entry, boolean addIfNotPresent)]
  ===Parameters===
