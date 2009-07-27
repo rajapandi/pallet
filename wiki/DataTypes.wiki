@@ -146,7 +146,6 @@ The most common use of an alphabet is as a dictionary of feature names associate
  * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html Alphabet(java.lang.Object[] entries)]
 
 
-
 ==Public methods==
  * static boolean alphabetsMatch(AlphabetCarrying object1, AlphabetCarrying object2)
  Convenience method that can often implement alphabetsMatch in classes that implement the AlphabetsCarrying interface.
