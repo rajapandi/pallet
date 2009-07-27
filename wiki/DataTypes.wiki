@@ -156,8 +156,7 @@ The most common use of an alphabet is as a dictionary of feature names associate
  * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html Alphabet(int capacity, java.lang.Class entryClass)]
  Instantiates Alphabet object with specified capacity and entry Class.
 ===Parameters===
- # capacity - Initial Capacity of [http://mallet.cs.umass.edu/api/cc/mallet/types
-/Alphabet.html Alphabet], type - int
+ # capacity - Initial Capacity of [http://mallet.cs.umass.edu/api/cc/mallet/type/Alphabet.html Alphabet], type - int
  # entryClass - class of an object, type - java.lang.Class
  {{{
  Alphabet dict = new Alphabet(10, String.class);
