@@ -22,6 +22,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
   * [DataTypes#Interfaces Sequence<E>]
  * [DataTypes#Classes Classes]
   * [DataTypes#Alphabet Alphabet]
+   * [DataTypes#Alphabet-Constructors Constructors]
+   * [DataTypes#Alphabet-Public-Methods Public Methods]
   * [DataTypes#Array-List-Sequence ArrayListSequence]
   * [DataTypes#Array-Sequence ArraySequence]
   * [DataTypes#Augmentable-Feature-Vector AugmentableFeatureVector]
@@ -133,7 +135,7 @@ A mapping between integers and objects where the mapping in each direction is ef
 
 The most common use of an alphabet is as a dictionary of feature names associated with a [DataTypes#Feature-Vector FeatureVector] in an [DataTypes#Instance Instance]. In a simple document classification usage, each unique word in a document would be a unique entry in the Alphabet with a unique integer associated with it. [DataTypes#Feature-Vector FeatureVectors] rely on the integer part of the mapping to efficiently represent the subset of the Alphabet present in the [DataTypes#Feature-Vector FeatureVector]. 
 
-==Constructors==
+==Alphabet-Constructors==
  * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html Alphabet()]
  Instantiates Alphabet object with default capacity (= 8).
 
@@ -169,68 +171,68 @@ The most common use of an alphabet is as a dictionary of feature names associate
  Alphabet dict = new Alphabet(s);
  }}}
 
-==Public methods==
- * int lookupIndex(java.lang.Object entry)
+==Alphabet-Public-Methods==
+ * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html int lookupIndex(java.lang.Object entry)]
  Returns the index of the entry in the Alphabet if "entry" is present else adds it to the Alphabet and returns index
  ===Parameters===
  # entry - Object for which the index in Alphabet needs to be found, Type - java.lang.Object
  ===Return Value===
  # Returns the index of the object in the Alphabet, Type - int
  
- * int lookupIndex(java.lang.Object entry, boolean addIfNotPresent)
+ * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html int lookupIndex(java.lang.Object entry, boolean addIfNotPresent)]
  ===Parameters===
  ===Return Value===
  Return -1 if entry isn't present.
 
- * java.lang.Object clone()
+ * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html java.lang.Object clone()]
  ===Parameters===
  ===Return Value===
 
- * boolean contains(java.lang.Object entry)           
+ * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html boolean contains(java.lang.Object entry)]
  ===Parameters===
  ===Return Value===
 
- * void dump()     
+ * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html void dump()]
  ===Parameters===
  ===Return Value===      
 
- * void dump(java.io.PrintStream out)           
+ * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html void dump(java.io.PrintStream out)]
  ===Parameters===
  ===Return Value===
 
- * void dump(java.io.PrintWriter out)           
+ * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html void dump(java.io.PrintWriter out)]
+ ===Parameters=== 
+ ===Return Value===
+
+ * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html java.lang.Class entryClass()]
  ===Parameters===
  ===Return Value===
 
- * java.lang.Class entryClass()           
+ * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html java.rmi.dgc.VMID getInstanceId()]
  ===Parameters===
  ===Return Value===
 
- * java.rmi.dgc.VMID getInstanceId()           
+ * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html boolean growthStopped()]
  ===Parameters===
  ===Return Value===
 
- * boolean growthStopped()           
+ * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html java.util.Iterator iterator()]
  ===Parameters===
  ===Return Value===
 
- * java.util.Iterator iterator()
+ * int`[]` [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html lookupIndices(java.lang.Object[] objects, boolean addIfNotPresent)]    
  ===Parameters===
  ===Return Value===
 
- * int`[]` lookupIndices(java.lang.Object[] objects, boolean addIfNotPresent)           
+ * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html java.lang.Object lookupObject(int index)]
  ===Parameters===
  ===Return Value===
 
- * java.lang.Object 	lookupObject(int index)           
+ * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html java.lang.Object[] lookupObjects(int[] indices)]
  ===Parameters===
  ===Return Value===
 
- * java.lang.Object[] 	lookupObjects(int[] indices)           
- ===Parameters===
- ===Return Value===
-
- * java.lang.Object[] 	lookupObjects(int[] indices, java.lang.Object[] buf)
+ * java.lang.Object[] [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html lookupObjects(int[] indices, java.lang.Object[] buf)]
  Returns an array of the objects corresponding to
 
  ===Parameters===
