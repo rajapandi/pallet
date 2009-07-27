@@ -5,7 +5,7 @@
 
 = Contents =
 
- * [DataTypes#Alphabet]
+ * [DataTypes#Alphabet Alphabet]
  * ArrayListSequence
  * ArraySequence
  * AugmentableFeatureVector
