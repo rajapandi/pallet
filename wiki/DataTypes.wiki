@@ -9,77 +9,77 @@
  * [DataTypes#Array-Sequence ArraySequence]
  * [DataTypes#Augmentable-Feature-Vector AugmentableFeatureVector]
  * [DataTypes#Chained-Instance-Iterator ChainedInstanceIterator]
- * [DataTypes#CrossValidation-Iterator CrossValidationIterator]
+ * [DataTypes#Cross-Validation-Iterator CrossValidationIterator]
  * [DataTypes#Dense-Matrix DenseMatrix]
  * [DataTypes#Dense-Vector DenseVector]
  * [DataTypes#Dirichlet Dirichlet]
- * [DataTypes#DirichletEstimator Dirichlet.Estimator]
- * [DataTypes#DirichletMethodOfMomentsEstimator Dirichlet.MethodOfMomentsEstimator]
- * [DataTypes#ExpGain ExpGain]
- * [DataTypes#ExpGainFactory ExpGain.Factory]
- * [DataTypes#FeatureConjunction FeatureConjunction]
- * [DataTypes#FeatureConjunctionList FeatureConjunction.List]	 
- * [DataTypes#FeatureCounter FeatureCounter]
- * [DataTypes#FeatureCounts FeatureCounts]
- * [DataTypes#FeatureCountsFactory FeatureCounts.Factory]	 
- * [DataTypes#FeatureInducer FeatureInducer]	 
- * [DataTypes#FeatureSelection FeatureSelection]	 
- * [DataTypes#FeatureSelector FeatureSelector]
- * [DataTypes#FeatureSequence FeatureSequence]
- * [DataTypes#FeatureSequenceWithBigrams FeatureSequenceWithBigrams]
- * [DataTypes#FeatureVector FeatureVector]
- * [DataTypes#FeatureVectorSequence FeatureVectorSequence]
- * [DataTypes#GainRatio GainRatio]
- * [DataTypes#GradientGain GradientGain]
- * [DataTypes#GradientGain.Factory GradientGain.Factory]
- * [DataTypes#HashedSparseVector HashedSparseVector]
- * [DataTypes#IDSorter IDSorter]
- * [DataTypes#IndexedSparseVector IndexedSparseVector]
- * [DataTypes#InfoGain InfoGain]
- * [DataTypes#InfoGain.Factory InfoGain.Factory]
+ * [DataTypes#Dirichlet-Estimator Dirichlet.Estimator]
+ * [DataTypes#Dirichlet-Method-Of-Moments-Estimator Dirichlet.MethodOfMomentsEstimator]
+ * [DataTypes#Exp-Gain ExpGain]
+ * [DataTypes#Exp-Gain.Factory ExpGain.Factory]
+ * [DataTypes#Feature-Conjunction FeatureConjunction]
+ * [DataTypes#Feature-Conjunction-List FeatureConjunction.List]	 
+ * [DataTypes#Feature-Counter FeatureCounter]
+ * [DataTypes#Feature-Counts FeatureCounts]
+ * [DataTypes#Feature-Counts-Factory FeatureCounts.Factory]	 
+ * [DataTypes#Feature-Inducer FeatureInducer]	 
+ * [DataTypes#Feature-Selection FeatureSelection]	 
+ * [DataTypes#Feature-Selector FeatureSelector]
+ * [DataTypes#Feature-Sequence FeatureSequence]
+ * [DataTypes#Feature-Sequence-With-Bigrams FeatureSequenceWithBigrams]
+ * [DataTypes#Feature-Vector FeatureVector]
+ * [DataTypes#Feature-Vector-Sequence FeatureVectorSequence]
+ * [DataTypes#Gain-Ratio GainRatio]
+ * [DataTypes#Gradient-Gain GradientGain]
+ * [DataTypes#Gradient-Gain.Factory GradientGain.Factory]
+ * [DataTypes#Hashed-Sparse-Vector HashedSparseVector]
+ * [DataTypes#ID-Sorter IDSorter]
+ * [DataTypes#Indexed-Sparse-Vector IndexedSparseVector]
+ * [DataTypes#Info-Gain InfoGain]
+ * [DataTypes#Info-Gain.Factory InfoGain.Factory]
  * [DataTypes#Instance Instance]
- * [DataTypes#InstanceList InstanceList]
- * [DataTypes#InstanceListTUI InstanceListTUI]
- * [DataTypes#InvertedIndex InvertedIndex] 
- * [DataTypes#KLGain KLGain]
+ * [DataTypes#Instance-List InstanceList]
+ * [DataTypes#Instance-List-TUI InstanceListTUI]
+ * [DataTypes#Inverted-Index InvertedIndex] 
+ * [DataTypes#KL-Gain KLGain]
  * [DataTypes#Label Label]
- * [DataTypes#LabelAlphabet LabelAlphabet]
+ * [DataTypes#Label-Alphabet LabelAlphabet]
  * [DataTypes#Labelings Labelings]
  * [DataTypes#Labels Labels]
- * [DataTypes#LabelSequence LabelSequence]
- * [DataTypes#LabelsSequence LabelsSequence]
- * [DataTypes#LabelVector LabelVector]
- * [DataTypes#Matrix2 Matrix2]
- * [DataTypes#Matrixn Matrixn]
- * [DataTypes#MatrixOps MatrixOps]
+ * [DataTypes#Label-Sequence LabelSequence]
+ * [DataTypes#Labels-Sequence LabelsSequence]
+ * [DataTypes#Label-Vector LabelVector]
+ * [DataTypes#Matrix-2 Matrix2]
+ * [DataTypes#Matrix-n Matrixn]
+ * [DataTypes#Matrix-Ops MatrixOps]
  * [DataTypes#Minkowski Minkowski]
- * [DataTypes#MultiInstanceList	MultiInstanceList]
+ * [DataTypes#Multi-Instance-List MultiInstanceList]
  * [DataTypes#Multinomial Multinomial]
  * [DataTypes#Multinomial.Estimator Multinomial.Estimator]
- * [DataTypes#Multinomial.LaplaceEstimator Multinomial.LaplaceEstimator]
+ * [DataTypes#Multinomial.Laplace-Estimator Multinomial.LaplaceEstimator]
  * [DataTypes#Multinomial.Logged Multinomial.Logged]
- * [DataTypes#Multinomial.MAPEstimator Multinomial.MAPEstimator]
- * [DataTypes#Multinomial.MEstimator Multinomial.MEstimator]
- * [DataTypes#Multinomial.MLEstimator Multinomial.MLEstimator]
- * [DataTypes#NormalizedDotProductMetric NormalizedDotProductMetric]
- * [DataTypes#PagedInstanceList PagedInstanceList]
- * [DataTypes#PartiallyRankedFeatureVector PartiallyRankedFeatureVector]
- * [DataTypes#PerLabelFeatureCounts PerLabelFeatureCounts]
- * [DataTypes#PerLabelFeatureCounts.Factory PerLabelFeatureCounts.Factory]
- * [DataTypes#PerLabelInfoGain PerLabelInfoGain]
- * [DataTypes#PerLabelInfoGain.Factory PerLabelInfoGain.Factory]
- * [DataTypes#RankedFeatureVector RankedFeatureVector]
- * [DataTypes#ROCData ROCData]
- * [DataTypes#SequencePair SequencePair]
- * [DataTypes#SequencePairAlignment SequencePairAlignment]
- * [DataTypes#SingleInstanceIterator SingleInstanceIterator]
- * [DataTypes#SparseMatrixn SparseMatrixn]
- * [DataTypes#SparseVector SparseVector]
- * [DataTypes#StringEditFeatureVectorSequence StringEditFeatureVectorSequence]
- * [DataTypes#StringEditVector StringEditVector]
- * [DataTypes#StringKernel StringKernel]
+ * [DataTypes#Multinomial.MAP-Estimator Multinomial.MAPEstimator]
+ * [DataTypes#Multinomial.M-Estimator Multinomial.MEstimator]
+ * [DataTypes#Multinomial.ML-Estimator Multinomial.MLEstimator]
+ * [DataTypes#Normalized-Dot-Product-Metric NormalizedDotProductMetric]
+ * [DataTypes#Paged-Instance-List PagedInstanceList]
+ * [DataTypes#Partially-Ranked-Feature-Vector PartiallyRankedFeatureVector]
+ * [DataTypes#Per-Label-Feature-Counts PerLabelFeatureCounts]
+ * [DataTypes#Per-Label-Feature-Counts.Factory PerLabelFeatureCounts.Factory]
+ * [DataTypes#Per-Label-Info-Gain PerLabelInfoGain]
+ * [DataTypes#Per-Label-Info-Gain.Factory PerLabelInfoGain.Factory]
+ * [DataTypes#Ranked-Feature-Vector RankedFeatureVector]
+ * [DataTypes#ROC-Data ROCData]
+ * [DataTypes#Sequence-Pair SequencePair]
+ * [DataTypes#Sequence-Pair-Alignment SequencePairAlignment]
+ * [DataTypes#Single-Instance-Iterator SingleInstanceIterator]
+ * [DataTypes#Sparse-Matrix-n SparseMatrixn]
+ * [DataTypes#Sparse-Vector SparseVector]
+ * [DataTypes#String-Edit-Feature-Vector-Sequence StringEditFeatureVectorSequence]
+ * [DataTypes#String-Edit-Vector StringEditVector]
+ * [DataTypes#String-Kernel StringKernel]
  * [DataTypes#Token Token]
- * [DataTypes#TokenSequence TokenSequence]
+ * [DataTypes#Token-Sequence TokenSequence]
 
 
 = Alphabet =
@@ -130,14 +130,14 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= DenseMatrix =
+= Dense-Matrix =
 
  To be done
 
 
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
-= DenseVector =
+= Dense-Vector =
 
  To be done
 
@@ -162,7 +162,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= Dirichlet.MethodOfMomentsEstimator =
+= Dirichlet.Method-Of-Moments-Estimator =
 
  To be done
 
@@ -170,7 +170,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= ExpGain =
+= Exp-Gain =
 
  To be done
 
@@ -178,7 +178,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= ExpGain.Factory =
+= Exp-Gain.Factory =
 
  To be done
 
@@ -186,7 +186,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= FeatureConjunction =
+= Feature-Conjunction =
 
  To be done
 
@@ -194,7 +194,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= FeatureConjunction.List =
+= Feature-Conjunction.List =
 
  To be done
 
@@ -202,7 +202,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= FeatureCounter =
+= Feature-Counter =
 
  To be done
 
@@ -210,7 +210,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= FeatureCounts = 	 
+= Feature-Counts = 	 
 
  To be done
 
@@ -218,7 +218,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= FeatureCounts.Factory = 	 
+= Feature-Counts.Factory = 	 
 
  To be done
 
@@ -226,7 +226,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= FeatureInducer = 	 
+= Feature-Inducer = 	 
 
  To be done
 
@@ -234,7 +234,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= FeatureSelection = 	 
+= Feature-Selection = 	 
 
  To be done
 
@@ -242,7 +242,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= FeatureSelector =
+= Feature-Selector =
 
  To be done
 
@@ -250,7 +250,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= FeatureSequence =
+= Feature-Sequence =
 
  To be done
 
@@ -258,7 +258,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= FeatureSequenceWithBigrams =
+= Feature-Sequence-With-Bigrams =
 
  To be done
 
@@ -266,7 +266,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= FeatureVector =
+= Feature-Vector =
 
  To be done
 
@@ -274,7 +274,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= FeatureVectorSequence =
+= Feature-Vector-Sequence =
 
  To be done
 
@@ -282,7 +282,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= GainRatio =
+= Gain-Ratio =
 
  To be done
 
@@ -290,7 +290,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= GradientGain =
+= Gradient-Gain =
 
  To be done
 
@@ -298,7 +298,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= GradientGain.Factory = 	 
+= Gradient-Gain.Factory = 	 
 
  To be done
 
@@ -306,7 +306,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= HashedSparseVector =
+= Hashed-Sparse-Vector =
 
  To be done
 
@@ -314,7 +314,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= IDSorter = 	
+= ID-Sorter = 	
 
  To be done
 
@@ -322,7 +322,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= IndexedSparseVector = 	 
+= Indexed-Sparse-Vector = 	 
 
  To be done
 
@@ -330,7 +330,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= InfoGain = 	 
+= Info-Gain = 	 
 
  To be done
 
@@ -338,7 +338,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= InfoGain.Factory = 	 
+= Info-Gain.Factory = 	 
 
  To be done
 
@@ -354,7 +354,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= InstanceList = 	
+= Instance-List = 	
 
  To be done
 
@@ -362,7 +362,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= InstanceListTUI = 	 
+= Instance-List-TUI = 	 
 
  To be done
 
@@ -370,7 +370,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= InvertedIndex = 	 
+= Inverted-Index = 	 
 
  To be done
 
@@ -378,7 +378,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= KLGain = 	 
+= KL-Gain = 	 
 
  To be done
 
@@ -394,7 +394,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= LabelAlphabet = 	
+= Label-Alphabet = 	
 
  To be done
 
@@ -418,7 +418,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= LabelSequence = 	 
+= Label-Sequence = 	 
 
  To be done
 
@@ -426,7 +426,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= LabelsSequence = 	
+= Labels-Sequence = 	
 
  To be done
 
@@ -434,7 +434,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= LabelVector = 	 
+= Label-Vector = 	 
 
  To be done
 
@@ -442,7 +442,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= Matrix2 = 	
+= Matrix-2 = 	
 
  To be done
 
@@ -450,7 +450,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= Matrixn = 	
+= Matrix-n = 	
 
  To be done
 
@@ -458,7 +458,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= MatrixOps = 	
+= Matrix-Ops = 	
 
  To be done
 
@@ -474,7 +474,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= MultiInstanceList = 	
+= Multi-Instance-List = 	
 
  To be done
 
@@ -498,7 +498,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= Multinomial.LaplaceEstimator = 	
+= Multinomial.Laplace-Estimator = 	
 
  To be done
 
@@ -514,7 +514,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= Multinomial.MAPEstimator = 	
+= Multinomial.MAP-Estimator = 	
 
  To be done
 
@@ -522,7 +522,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= Multinomial.MEstimator = 	 
+= Multinomial.M-Estimator = 	 
 
  To be done
 
@@ -530,7 +530,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= Multinomial.MLEstimator = 	
+= Multinomial.ML-Estimator = 	
 
  To be done
 
@@ -538,7 +538,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= NormalizedDotProductMetric = 	
+= Normalized-Dot-Product-Metric = 	
 
  To be done
 
@@ -546,7 +546,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= PagedInstanceList = 	
+= Paged-Instance-List = 	
 
  To be done
 
@@ -554,7 +554,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= PartiallyRankedFeatureVector = 	 
+= Partially-Ranked-Feature-Vector = 	 
 
  To be done
 
@@ -562,7 +562,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= PerLabelFeatureCounts = 	 
+= Per-Label-Feature-Counts = 	 
 
  To be done
 
@@ -570,7 +570,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= PerLabelFeatureCounts.Factory = 	 
+= Per-Label-Feature-Counts.Factory = 	 
 
  To be done
 
@@ -578,7 +578,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= PerLabelInfoGain = 	 
+= Per-Label-Info-Gain = 	 
 
  To be done
 
@@ -586,7 +586,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= PerLabelInfoGain.Factory = 	 
+= Per-Label-Info-Gain.Factory = 	 
 
  To be done
 
@@ -594,7 +594,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= RankedFeatureVector = 	 
+= Ranked-Feature-Vector = 	 
 
  To be done
 
@@ -602,7 +602,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= ROCData = 	
+= ROC-Data = 	
 
  To be done
 
@@ -610,7 +610,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= SequencePair =
+= Sequence-Pair =
 
  To be done
 
@@ -618,7 +618,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= SequencePairAlignment =
+= Sequence-Pair-Alignment =
 
  To be done
 
@@ -626,7 +626,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= SingleInstanceIterator = 	 
+= Single-Instance-Iterator = 	 
 
  To be done
 
@@ -634,7 +634,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= SparseMatrixn = 	
+= Sparse-Matrix-n = 	
 
  To be done
 
@@ -642,7 +642,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= SparseVector = 	
+= Sparse-Vector = 	
 
  To be done
 
@@ -650,7 +650,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= StringEditFeatureVectorSequence = 	 
+= String-Edit-Feature-Vector-Sequence = 	 
 
  To be done
 
@@ -658,7 +658,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= StringEditVector = 	 
+= String-Edit-Vector = 	 
 
  To be done
 
@@ -666,7 +666,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= StringKernel = 	
+= String-Kernel = 	
 
  To be done
 
@@ -682,7 +682,7 @@
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 
-= TokenSequence =
+= Token-Sequence =
 
  To be done
 
