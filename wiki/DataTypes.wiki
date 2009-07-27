@@ -100,6 +100,8 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 = Interfaces =
+*Package: * [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
+
  * Alphabet-Carrying: [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html AlphabetCarrying]
  * Cached-Metric: [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html CachedMetric]
  * Constant-Matrix: [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html ConstantMatrix]
