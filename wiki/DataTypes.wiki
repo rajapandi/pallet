@@ -128,8 +128,7 @@ public class Alphabet<BR CLEAR="ALL"|"LEFT"|"RIGHT">
 extends java.lang.Object<BR CLEAR="ALL"|"LEFT"|"RIGHT">
 implements java.io.Serializable<BR CLEAR="ALL"|"LEFT"|"RIGHT">
 
-As described by the MALLET API Doc:
-
+As described by the MALLET API Doc:<BR CLEAR="ALL"|"LEFT"|"RIGHT">
 A mapping between integers and objects where the mapping in each direction is efficient. Integers are assigned consecutively, starting at zero, as objects are added to the Alphabet. Objects can not be deleted from the Alphabet and thus the integers are never reused.
 
 The most common use of an alphabet is as a dictionary of feature names associated with a [DataTypes#Feature-Vector FeatureVector] in an [DataTypes#Instance Instance]. In a simple document classification usage, each unique word in a document would be a unique entry in the Alphabet with a unique integer associated with it. [DataTypes#Feature-Vector FeatureVectors] rely on the integer part of the mapping to efficiently represent the subset of the Alphabet present in the [DataTypes#Feature-Vector FeatureVector]. 
