@@ -139,18 +139,26 @@ The most common use of an alphabet is as a dictionary of feature names associate
 
  * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html Alphabet(java.lang.Class entryClass)]
  Instantiates Alphabet object with default capacity and specified entry class
+===Parameters===
+ # entryClass - class of an object, type - java.lang.Class
  {{{
  Alphabet dict = new Alphabet(String.class);
  }}}
 
  * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html Alphabet(int capacity)]
  Instantiates Alphabet object with specified capacity
+===Parameters===
+ # capacity - Initial Capacity of [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html Alphabet], type - int
  {{{
  Alphabet dict = new Alphabet(10);
  }}}
 
  * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html Alphabet(int capacity, java.lang.Class entryClass)]
  Instantiates Alphabet object with specified capacity and entry Class.
+===Parameters===
+ # capacity - Initial Capacity of [http://mallet.cs.umass.edu/api/cc/mallet/types
+/Alphabet.html Alphabet], type - int
+ # entryClass - class of an object, type - java.lang.Class
  {{{
  Alphabet dict = new Alphabet(10, String.class);
  }}}
@@ -163,8 +171,10 @@ The most common use of an alphabet is as a dictionary of feature names associate
  }}}
 
 ==Public methods==
- * static boolean alphabetsMatch(AlphabetCarrying object1, AlphabetCarrying object2)
- Convenience method that can often implement alphabetsMatch in classes that implement the AlphabetsCarrying interface.
+ * int lookupIndex(java.lang.Object entry)
+ 
+ * int lookupIndex(java.lang.Object entry, boolean addIfNotPresent)
+ Return -1 if entry isn't present.
  * java.lang.Object clone()           
  * boolean contains(java.lang.Object entry)           
  * void dump()           
@@ -173,10 +183,7 @@ The most common use of an alphabet is as a dictionary of feature names associate
  * java.lang.Class entryClass()           
  * java.rmi.dgc.VMID getInstanceId()           
  * boolean growthStopped()           
- * java.util.Iterator iterator()           
- * int lookupIndex(java.lang.Object entry)           
- * int lookupIndex(java.lang.Object entry, boolean addIfNotPresent)
- Return -1 if entry isn't present.
+ * java.util.Iterator iterator()
  * int`[]` lookupIndices(java.lang.Object[] objects, boolean addIfNotPresent)           
  * java.lang.Object 	lookupObject(int index)           
  * java.lang.Object[] 	lookupObjects(int[] indices)           
@@ -193,7 +200,8 @@ The most common use of an alphabet is as a dictionary of feature names associate
  Returns an array containing all the entries in the Alphabet.
  * java.lang.String toString()
  Return String representation of all Alphabet entries, each separated by a newline.
-
+ * static boolean alphabetsMatch(AlphabetCarrying object1, AlphabetCarrying object2)
+ Convenience method that can often implement alphabetsMatch in classes that implement the AlphabetsCarrying interface.
 
  [DataTypes#Contents Contents]
  ----------------------------------------------------------------------------------------
