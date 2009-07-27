@@ -133,8 +133,12 @@ A mapping between integers and objects where the mapping in each direction is ef
 
 The most common use of an alphabet is as a dictionary of feature names associated with a [DataTypes#Feature-Vector FeatureVector] in an [DataTypes#Instance Instance]. In a simple document classification usage, each unique word in a document would be a unique entry in the Alphabet with a unique integer associated with it. [DataTypes#Feature-Vector FeatureVectors] rely on the integer part of the mapping to efficiently represent the subset of the Alphabet present in the [DataTypes#Feature-Vector FeatureVector]. 
 
-
-
+==Constructors==
+ * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html Alphabet()]
+ * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html Alphabet(java.lang.Class entryClass)]
+ * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html Alphabet(int capacity)]
+ * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html Alphabet(int capacity, java.lang.Class entryClass)]
+ * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html Alphabet(java.lang.Object[] entries)]
 
 
  [DataTypes#Contents Contents]
