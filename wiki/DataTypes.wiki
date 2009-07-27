@@ -6,19 +6,19 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
 
 = Contents =
  * Interfaces
-  * [DataTypes#Alphabet-Carrying AlphabetCarrying]
-  * [DataTypes#Cached-Metric CachedMetric]
-  * [DataTypes#Constant-Matrix ConstantMatrix]
-  * [DataTypes#Labeler Labeler] 
-  * [DataTypes#Labeling Labeling]
-  * [DataTypes#Matrix Matrix]
-  * [DataTypes#Metric Metric]
-  * [DataTypes#Partially-Ranked-Feature-Vector.Factory PartiallyRankedFeatureVector.Factory]
-  * [DataTypes#Partially-Ranked-Feature-Vector.Per-Label-Factory PartiallyRankedFeatureVector.PerLabelFactory]
-  * [DataTypes#Property-Holder PropertyHolder]
-  * [DataTypes#Ranked-Feature-Vector.Factory RankedFeatureVector.Factory]
-  * [DataTypes#Ranked-Feature-Vector.Per-Label-Factory RankedFeatureVector.PerLabelFactory]
-  * [DataTypes#Sequence<E> Sequence<E>]
+  * [DataTypes#Interfaces AlphabetCarrying]
+  * [DataTypes#Interfaces CachedMetric]
+  * [DataTypes#Interfaces ConstantMatrix]
+  * [DataTypes#Interfaces Labeler] 
+  * [DataTypes#Interfaces Labeling]
+  * [DataTypes#Interfaces Matrix]
+  * [DataTypes#Interfaces Metric]
+  * [DataTypes#Interfaces PartiallyRankedFeatureVector.Factory]
+  * [DataTypes#Interfaces PartiallyRankedFeatureVector.PerLabelFactory]
+  * [DataTypes#Interfaces PropertyHolder]
+  * [DataTypes#Interfaces RankedFeatureVector.Factory]
+  * [DataTypes#Interfaces RankedFeatureVector.PerLabelFactory]
+  * [DataTypes#Interfaces Sequence<E>]
  * Classes
   * [DataTypes#Alphabet Alphabet]
   * [DataTypes#Array-List-Sequence ArrayListSequence]
@@ -100,19 +100,19 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
 = Interfaces =
-*Alphabet-Carrying: *
-Cached-Metric
-Constant-Matrix
-Labeler 
-Labeling
-Matrix
-Metric
-Partially-Ranked-Feature-Vector.Factory
-Partially-Ranked-Feature-Vector.Per-Label-Factory
-Property-Holder
-Ranked-Feature-Vector.Factory
-Ranked-Feature-Vector.Per-Label-Factory
-Sequence<E>
+ * *Alphabet-Carrying: *[http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html AlphabetCarrying]
+*Cached-Metric: *[http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html CachedMetric]
+*Constant-Matrix: *[http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html ConstantMatrix]
+*Labeler: *[http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html Labeler]
+*Labeling: *[http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html Labeling]
+*Matrix: *[http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html Matrix]
+*Metric: *[http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html Metric]
+*Partially-Ranked-Feature-Vector.Factory: *[http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html PartiallyRankedFeatureVector.Factory]
+*Partially-Ranked-Feature-Vector.Per-Label-Factory: *[http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html PartiallyRankedFeatureVector.PerLabelFactory]
+*Property-Holder: *[http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html PropertyHolder]
+*Ranked-Feature-Vector.Factory: *[http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html RankedFeatureVector.Factory]
+*Ranked-Feature-Vector.Per-Label-Factory: *[http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html]
+*Sequence<E>: *[http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html]
 
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
