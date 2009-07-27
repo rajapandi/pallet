@@ -1,7 +1,11 @@
 #summary Includes fundamental MALLET types.
 
-#sidebar Contents
- * Alphabet
+= Introduction =
+
+
+= Contents =
+
+ * [DataTypes#Alphabet]
  * ArrayListSequence
  * ArraySequence
  * AugmentableFeatureVector
@@ -78,7 +82,6 @@
  * Token 	
  * TokenSequence
 
-= Introduction =
 
 = Alphabet =
 
