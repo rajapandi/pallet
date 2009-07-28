@@ -115,9 +115,9 @@ Contains the data types that are defined for MALLET <wiki:comment> Add Link for 
  * Partially-Ranked-Feature-Vector.Factory: [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html PartiallyRankedFeatureVector.Factory]
  * Partially-Ranked-Feature-Vector.Per-Label-Factory: [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html PartiallyRankedFeatureVector.PerLabelFactory]
  * Property-Holder: [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html PropertyHolder]
- * Ranked-Feature-Vector.Factory: [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html RankedFeatureVector.Factory]
- * Ranked-Feature-Vector.Per-Label-Factory: [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html]
- * Sequence`<E>`: [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html]
+ * Ranked-Feature-Vector.Factory: [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html RankedFeatureVector.Factory RankedFeatureVector.Factory]
+ * Ranked-Feature-Vector.Per-Label-Factory: [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html RankedFeatureVector.PerLabelFactory]
+ * Sequence`<E>`: [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html Sequence<E>]
 
  [DataTypes#Contents Contents]
  ----------------------------------------------------------------------------------------
