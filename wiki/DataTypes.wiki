@@ -176,8 +176,33 @@ The most common use of an alphabet is as a dictionary of feature names associate
 [DataTypes#Contents Contents]
 
 ==Alphabet-Public-Methods==
+ * void startGrowth()
+   Starts the growth of the alphabet.
+
+ * void stopGrowth()
+   Stops the growth of the Alphabet.
+ 
+ * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html boolean growthStopped()]
+ ===Return Value===
+  # Returns true if the growth is stopped else true.
+
+ * int size()      
+ ===Return Value===
+ Returns size of the Alphabet object (# of entries).
+
  * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html int lookupIndex(java.lang.Object entry)]
- Returns the index of the entry in the Alphabet if "entry" is present else adds it to the Alphabet and returns index
+  in the Alphabet:
+ if "entry" is present<br>
+  Returns the index to the entry.
+ else<br>
+  if growth is not stopped, <br>
+   adds the "entry" to the Alphabet <br>
+   and <br>
+   returns index <br>
+  else
+   returns -1
+
+
  ===Parameters===
   # entry - Object for which the index in Alphabet needs to be found, Type - java.lang.Object
  ===Return Value===
@@ -224,9 +249,23 @@ The most common use of an alphabet is as a dictionary of feature names associate
  ===Return Value===
  true - if entry is present else false
 
- * int size()      
+ * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html java.lang.Object clone()]
+ Clones the alphabet 
  ===Return Value===
- Returns size of the Alphabet object (# of entries).
+  # Returns cloned object, type - java.lang.Object (but, essentially Alphabet object)
+ {{{
+ Alphabet cloned_alpha = (Alphabet)dict.clone();
+ System.out.println ("cloned - " + cloned_alpha.toString());
+ }}}
+
+  * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html java.rmi.dgc.VMID getInstanceId()]
+ ===Return Value===
+  # Returns VMID of the Alphabet object.
+
+ * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html java.util.Iterator iterator()]
+ ===Return Value===
+ Returns Alphabet's Iterator. type - java.util.Iterator
+
 
  [DataTypes#Contents Contents]
  ----------------------------------------------------------------------------------------
