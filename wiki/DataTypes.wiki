@@ -192,13 +192,13 @@ The most common use of an alphabet is as a dictionary of feature names associate
 
  * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html int lookupIndex(java.lang.Object entry)]
   in the Alphabet:
- if "entry" is present<br>
+ if "entry" is present<BR CLEAR="ALL"|"LEFT"|"RIGHT">
   Returns the index to the entry.
- else<br>
-  if growth is not stopped, <br>
-   adds the "entry" to the Alphabet <br>
-   and <br>
-   returns index <br>
+ else<BR CLEAR="ALL"|"LEFT"|"RIGHT">
+  if growth is not stopped,<BR CLEAR="ALL"|"LEFT"|"RIGHT">
+   adds the "entry" to the Alphabet <BR CLEAR="ALL"|"LEFT"|"RIGHT">
+   and<BR CLEAR="ALL"|"LEFT"|"RIGHT">
+   returns index<BR CLEAR="ALL"|"LEFT"|"RIGHT">
   else
    returns -1
 
