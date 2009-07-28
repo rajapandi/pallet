@@ -280,6 +280,42 @@ The most common use of an alphabet is as a dictionary of feature names associate
  * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html void dump(java.io.PrintWriter out)] - 3
   Dumps the alphabet to either stdout(1) or specified stream (2,3)
 
+ * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html java.lang.Object[] toArray()]
+ ===Return Value===
+  # Returns an array containing all the entries in the Alphabet.
+
+ * java.lang.Object[] toArray(java.lang.Object[] in)
+ Returns an array containing all the entries in the Alphabet.
+ The runtime type of the returned array is the runtime type of in.
+ If in is large enough to hold everything in the alphabet, then it
+ it used.  The returned array is such that for all entries obj,
+ ret[lookupIndex(obj)] = obj
+ ===Return Value===
+  # Returns an array containing all the entries in the Alphabet.
+
+ * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html java.lang.Object lookupObject(int index)]
+ Returns an array of the objects corresponding to indices
+ ===Parameters===
+  # indices - An array of indices to look up.
+ ===Return Value===
+  # An array of values from this Alphabet.
+
+ * java.lang.Object[] [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html lookupObjects(int[] indices, java.lang.Object[] buf)]
+ Returns an array of the objects corresponding to 
+ ===Parameters===
+  # indices - An array of indices to look up.
+  # buf - An array to store the returned objects in. 
+ ===Return Value===
+  # An array of values from this Alphabet. The runtime type of the array is the same as buf.
+
+ * static boolean alphabetsMatch(AlphabetCarrying object1, AlphabetCarrying object2)
+ Convenience method that can often implement alphabetsMatch in classes that implement the AlphabetsCarrying interface.
+ ===Parameters===
+ ===Return Value===
+
+ * java.lang.Object readResolve()
+ This gets called after readObject; it lets the object decide whether to return itself or return a previously read in version.
+
 
  [DataTypes#Contents Contents]
  ----------------------------------------------------------------------------------------
