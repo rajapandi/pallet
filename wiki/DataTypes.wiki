@@ -191,18 +191,17 @@ The most common use of an alphabet is as a dictionary of feature names associate
  Returns size of the Alphabet object (# of entries).
 
  * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html int lookupIndex(java.lang.Object entry)]
-  in the Alphabet:
+  Looks for the "entry" in the Alphabet and returns the index if success: 
+
  if "entry" is present<BR CLEAR="ALL"|"LEFT"|"RIGHT">
   Returns the index to the entry.
- else<BR CLEAR="ALL"|"LEFT"|"RIGHT">
-  if growth is not stopped,<BR CLEAR="ALL"|"LEFT"|"RIGHT">
-   adds the "entry" to the Alphabet <BR CLEAR="ALL"|"LEFT"|"RIGHT">
-   and<BR CLEAR="ALL"|"LEFT"|"RIGHT">
-   returns index<BR CLEAR="ALL"|"LEFT"|"RIGHT">
-  else
-   returns -1
-
-
+ else
+ if growth is not stopped,
+  adds the "entry" to the Alphabet 
+  and
+  returns index
+ else
+  returns -1
  ===Parameters===
   # entry - Object for which the index in Alphabet needs to be found, Type - java.lang.Object
  ===Return Value===
