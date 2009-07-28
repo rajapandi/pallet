@@ -272,10 +272,8 @@ The most common use of an alphabet is as a dictionary of feature names associate
  ===Return Value===
  Returns Alphabet's Iterator. type - java.util.Iterator
 
- * java.lang.String toString()
+ * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html java.lang.String toString()]
  Return String representation of all Alphabet entries, each separated by a newline.
-
-
 
  * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html void dump()] - 1
  * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html void dump(java.io.PrintStream out)] - 2
