@@ -182,106 +182,51 @@ The most common use of an alphabet is as a dictionary of feature names associate
   # entry - Object for which the index in Alphabet needs to be found, Type - java.lang.Object
  ===Return Value===
   # Returns the index of the object in the Alphabet, Type - int
+ {{{
+ Alphabet dict = new Alphabet(10);
+ int index = dict.lookupIndex("string1"); // index == 0
+ System.out.println ("index - " + index);
+ index = dict.lookupIndex("string2");     // index == 1
+ System.out.println ("index - " + index);
+ }}}
  
  * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html int lookupIndex(java.lang.Object entry, boolean addIfNotPresent)]
  ===Parameters===
+  # entry - Object for which the index in Alphabet needs to be found, Type - java.lang.Object
+  # addIfNotPresent - true or false
+   # if false
+    * Looks for "entry" in the alphabet, if present returns its index else -1
+   # if true
+    * Looks for "entry" in the alphabet, if present returns its index else adds "entry" to the Alphabet and returns its index
  ===Return Value===
- Return -1 if entry isn't present.
-
- * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html java.lang.Object clone()]
- ===Parameters===
- ===Return Value===
-
- * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html boolean contains(java.lang.Object entry)]
- ===Parameters===
- ===Return Value===
-
- * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html void dump()]
- ===Parameters===
- ===Return Value===      
-
- * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html void dump(java.io.PrintStream out)]
- ===Parameters===
- ===Return Value===
-
- * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html void dump(java.io.PrintWriter out)]
- ===Parameters=== 
- ===Return Value===
-
- * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html java.lang.Class entryClass()]
- ===Parameters===
- ===Return Value===
-
- * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html java.rmi.dgc.VMID getInstanceId()]
- ===Parameters===
- ===Return Value===
-
- * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html boolean growthStopped()]
- ===Parameters===
- ===Return Value===
-
- * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html java.util.Iterator iterator()]
- ===Parameters===
- ===Return Value===
+  # Returns -1 if entry isn't present  and addIfNotPresent == false
+  # Returns index of "entry" in the Alphabet if addIfNotPresent == true
+ {{{
+// addIfNotPresent == false
+ Alphabet dict = new Alphabet(10);
+ int index = dict.lookupIndex("string1", true); // index == 0
+ index = dict.lookupIndex("string2",false);     // index == -1
+ System.out.println ("index - " + index);
+ }}}
 
  * int`[]` [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html lookupIndices(java.lang.Object[] objects, boolean addIfNotPresent)]    
  ===Parameters===
+  # objects - Array of objects that needs to be added or searched, similar to the previous method.
+  # addIfNotPresent - Similar to the previous method.
  ===Return Value===
+  # Returns array of indices to the entries that were looked up, description similar to the previous method.
 
- * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html java.lang.Object lookupObject(int index)]
- ===Parameters===
+ * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html java.lang.Class entryClass()]
  ===Return Value===
+ Returns the Runtime class of the object, Type - java.lang.Class
 
- * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html java.lang.Object[] lookupObjects(int[] indices)]
- ===Parameters===
+ * [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html boolean contains(java.lang.Object entry)]
  ===Return Value===
-
- * java.lang.Object[] [http://mallet.cs.umass.edu/api/cc/mallet/types/Alphabet.html lookupObjects(int[] indices, java.lang.Object[] buf)]
- Returns an array of the objects corresponding to
-
- ===Parameters===
- ===Return Value===
- * java.lang.Object readResolve()
- This gets called after readObject; it lets the object decide whether to return itself or return a previously read in version.
-
- ===Parameters===
- ===Return Value===
-
- * void setInstanceId(java.rmi.dgc.VMID id)           
- ===Parameters===
- ===Return Value===
+ true - if entry is present else false
 
  * int size()      
- ===Parameters===
- ===Return Value===     
-
- * void startGrowth()           
- ===Parameters===
  ===Return Value===
-
- * void stopGrowth()           
- ===Parameters===
- ===Return Value===
-
- * java.lang.Object[] toArray()           
- ===Parameters===
- ===Return Value===
-
- * java.lang.Object[] 	toArray(java.lang.Object[] in)
- Returns an array containing all the entries in the Alphabet.
- ===Parameters===
- ===Return Value===
-
- * java.lang.String toString()
- Return String representation of all Alphabet entries, each separated by a newline.
- ===Parameters===
- ===Return Value===
-
- * static boolean alphabetsMatch(AlphabetCarrying object1, AlphabetCarrying object2)
- Convenience method that can often implement alphabetsMatch in classes that implement the AlphabetsCarrying interface.
- ===Parameters===
- ===Return Value===
-
+ Returns size of the Alphabet object (# of entries).
 
  [DataTypes#Contents Contents]
  ----------------------------------------------------------------------------------------
