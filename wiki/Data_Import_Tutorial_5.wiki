@@ -83,10 +83,10 @@ FeatureCountPipe fcp=new FeatureCountPipe(i3.getDataAlphabet(),i3.getTargetAlpha
                 }
 }}}
 
-1) An instance of Feature Count Pipe is created with Data Alphabet and Target Alphabet of the previous pipe(TokenSequence2FeatureSequence in this case).
-2)An instance (i6) is generated which contains the data processed by FeatureCountPipe.
-3)A file is created which contains the pruned words.
-4)writePrunedWords is called with value 2. It means the words which doesn't occur more than 2 times will be pruned.
+ * 1) An instance of Feature Count Pipe is created with Data Alphabet and Target Alphabet of the previous pipe(TokenSequence2FeatureSequence in this case).
+ * 2)An instance (i6) is generated which contains the data processed by FeatureCountPipe.
+ * 3)A file is created which contains the pruned words.
+ * 4)writePrunedWords is called with value 2. It means the words which doesn't occur more than 2 times will be pruned.
 
 ==Output==
 1)The file f200.txt will contains 
