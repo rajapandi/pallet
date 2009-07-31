@@ -5,6 +5,7 @@ This tutorial is in the continuation of Data_Import_Tutorial 1,2,3,4. This is th
 tutorial which completes the Data Import Section of the Mallet.
  * Feature Count Pipe
  * Feature Value String 2 Feature Vector
+ * Token Sequence 2 Feature Vector Sequence
  * Feature Vector Sequence 2 Feature Vectors
  * Filter Empty Feature Vector
  * Instance List Trim Features By Count
@@ -140,8 +141,30 @@ The Feature Value String is converted int Feature Vector.
 
 name: Instance-1
 input: width(0)=140.0(Two occurences of the width is added)
+
 height(1)=10.0
+
 length(2)=20.0
 
 target: africa
+
+
+==Token Sequence 2 Feature Vector Sequence==
+It is pipe which take input as Token Sequence of Instances and convert it into Feature 
+Vector Sequence.
+
+===Implementation===
+
+ * 1)TokenSequence2FeatureVectorSequence():
+
+ * 2)TokenSequence2FeatureVectorSequence(Alphabet dataDict):
+
+ * 3)TokenSequence2FeatureVectorSequence(Alphabet dataDict, boolean binary, boolean augmentable): 
+
+ * 4)TokenSequence2FeatureVectorSequence(boolean binary, boolean augmentable): 
+
+dataDict: If user explicity wants to provide data Alphabet.
+augmentable: It it is true than augmentable feature vector is created.
+  
+
  
