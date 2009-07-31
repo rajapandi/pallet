@@ -44,3 +44,56 @@ This pipe is used to prune the features which have low count.It is used in order
  * 5)Instance pipe(Instance instance): Method used to process the data.
 
 ==Sample Code==
+
+{{{
+import cc.mallet.pipe.*;
+import cc.mallet.types.*;
+import java.io.*;
+
+public class ImportExample200 {
+	static Pipe pipe=null;
+	
+	public static void main(String args[])
+	{
+         SimpleTokenizer st=new SimpleTokenizer(1);
+		
+   String trainingdata="on the plains of  africa the lions123  roar the";
+      Instance i=new Instance(trainingdata,"africa","Instance-1",null);
+	Input2CharSequence i2cs=new Input2CharSequence();
+	Instance i1=i2cs.pipe(i);
+				
+  SGML2TokenSequence cs2ts=new SGML2TokenSequence();
+		 Instance i2=cs2ts.pipe(i1);
+			 
+  TokenSequence2FeatureSequence ts2fs=new TokenSequence2FeatureSequence();
+		 Instance i3=ts2fs.pipe(i2);
+				 
+FeatureCountPipe fcp=new FeatureCountPipe(i3.getDataAlphabet(),i3.getTargetAlphabet());->1
+		Instance i6=fcp.pipe(i3);--->2
+		File f=new File("f200.txt");--->3
+		try
+		{
+		fcp.writePrunedWords(f, 2);---->4
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
+		}
+                }
+}}}
+
+1) An instance of Feature Count Pipe is created with Data Alphabet and Target Alphabet of the previous pipe(TokenSequence2FeatureSequence in this case).
+2)An instance (i6) is generated which contains the data processed by FeatureCountPipe.
+3)A file is created which contains the pruned words.
+4)writePrunedWords is called with value 2. It means the words which doesn't occur more than 2 times will be pruned.
+
+==Output==
+1)The file f200.txt will contains 
+on
+of
+africa
+lions
+roar
+
+These all words doesn't occur more than two times in the raw data so will be pruned from feature set.
