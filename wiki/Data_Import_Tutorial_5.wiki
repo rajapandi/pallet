@@ -3,7 +3,7 @@
 = Introduction =
 This tutorial is in the continuation of Data_Import_Tutorial 1,2,3,4. This is the last 
 tutorial which completes the Data Import Section of the Mallet.
- * Feature Count Pipe[Data_Import_Tutorial_5#FeatureCountPipe Feature Count Pipe]
+ * Feature Count Pipe
  * Feature Value String 2 Feature Vector
  * Feature Vector Sequence 2 Feature Vectors
  * Filter Empty Feature Vector
@@ -22,9 +22,5 @@ tutorial which completes the Data Import Section of the Mallet.
 
 
 
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+= Feature Count Pipe =
+This pipe is used to prune the features which have low count.It is used in order to save the memory which could have been occupied by low count features.This class supports a simpler method that makes two passes over the data : one to collect statistics and create an augumented "stop list",and secondly to actually create instances.
