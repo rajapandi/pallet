@@ -33,18 +33,14 @@ This pipe is used to prune the features which have low count.It is used in order
 
 ===Methods===
 
- * 1)void addPrunedWordsToStoplist(SimpleTokenizer tokenizer, int minimumCount): Add all  
-     pruned words to the internal stoplist of a SimpleTokenizer.
+ * 1)void addPrunedWordsToStoplist(SimpleTokenizer tokenizer, int minimumCount): Add all 
+pruned words to the internal stoplist of a SimpleTokenizer.
 
- * 2)Alphabet getPrunedAlphabet(int minimumcount): Return a new Alphabet that contains 
-     only features at or above the specified limit
+ * 2)Alphabet getPrunedAlphabet(int minimumcount): Return a new Alphabet that contains only features at or above the specified limit
 
- * 3)void writeCommonWords(java.io.File commonfile,int totalwords): List the most common 
-     words ,for addition to a stop file.
+ * 3)void writeCommonWords(java.io.File commonfile,int totalwords): List the most common words ,for addition to a stop file.
 
- * 4)void writePrunedWords(java.io.File prunedfile,int minimumcount): Write a list of 
-     features that do not occur at or above the specified cutoff to the pruned file,one 
-     per file.
+ * 4)void writePrunedWords(java.io.File prunedfile,int minimumcount): Write a list of features that do not occur at or above the specified cutoff to the pruned file,one per file.
 
  * 5)Instance pipe(Instance instance): Method used to process the data.
 
