@@ -1,26 +1,24 @@
 #summary One-sentence summary of this page.
 
 = Introduction =
-
-This tutorial is in the continuation of Data_Import_Tutorial 1,2,3,4. This is the 
-final Tutorial which completes the Data_Import section of the Mallet.We are going 
-to discuss following pipes here.
- *Feature Count Pipe
- *Feature Value String 2 Feature Vector
- *Feature Vector Sequence 2 Feature Vectors
- *Filter Empty Feature Vector
- *Instance List Trim Features By Count
- *Noop
- *Pipe
- *PrintInput
- *Print Token Sequence Features
- *Save Data In Source
- *Selective SGML 2 Token Sequence
- *Simple Tagger Sentence 2 String Tokenization
- *Token 2 Feature Vector
- *Token Sequence 2 Token Instances
- *Token Sequence Parse Feature String
- *Augmentable Feature Vector Add Conjunction
+This tutorial is in the continuation of Data_Import_Tutorial 1,2,3,4. This is the last 
+tutorial which completes the Data Import Section of the Mallet.
+ * Feature Count Pipe[Data_Import_Tutorial_5#FeatureCountPipe Feature Count Pipe]
+ * Feature Value String 2 Feature Vector
+ * Feature Vector Sequence 2 Feature Vectors
+ * Filter Empty Feature Vector
+ * Instance List Trim Features By Count
+ * Noop
+ * Pipe
+ * PrintInput
+ * Print Token Sequence Features
+ * Save Data In Source
+ * Selective SGML 2 Token Sequence
+ * Simple Tagger Sentence 2 String Tokenization
+ * Token 2 Feature Vector
+ * Token Sequence 2 Token Instances
+ * Token Sequence Parse Feature String
+ * Augmentable Feature Vector Add Conjunction
 
 
 
