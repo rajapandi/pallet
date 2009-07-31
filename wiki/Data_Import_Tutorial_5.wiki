@@ -1,4 +1,4 @@
-#summary One-sentence summary of this page.
+#summary Data Import Tutorial 5[Final Document for Data Import Section]
 
 = Introduction =
 This tutorial is in the continuation of Data_Import_Tutorial 1,2,3,4. This is the last 
@@ -39,7 +39,8 @@ This pipe is used to prune the features which have low count.It is used in order
 
  * 3)void writeCommonWords(java.io.File commonfile,int totalwords): List the most common words ,for addition to a stop file.
 
- * 4)void writePrunedWords(java.io.File prunedfile,int minimumcount): Write a list of features that do not occur at or above the specified cutoff to the pruned file,one per file.
+ * 4)void writePrunedWords(java.io.File prunedfile,int minimumcount): Write a 
+list of features that do not occur at or above the specified cutoff to the pruned file,one per file.
 
  * 5)Instance pipe(Instance instance): Method used to process the data.
 
@@ -145,4 +146,3 @@ length(2)=20.0
 
 target: africa
  
-
