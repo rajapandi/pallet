@@ -341,14 +341,33 @@ implements Sequence`<E>`<BR CLEAR="ALL"|"LEFT"|"RIGHT">
 
 ==Array-Sequence-Constructors==
  * [http://mallet.cs.umass.edu/api/cc/mallet/types/ArraySequence.html#ArraySequence(java.util.ArrayList) ArraySequence(java.util.ArrayList`<E>` a)]
+ ===Parameters===
+
+
  * [http://mallet.cs.umass.edu/api/cc/mallet/types/ArraySequence.html ArraySequence(E[] a)]
+ ===Parameters===
+
+
  * [http://mallet.cs.umass.edu/api/cc/mallet/types/ArraySequence.html ArraySequence(E[] a, boolean copy)]
+ ===Parameters===
+
+
  * [http://mallet.cs.umass.edu/api/cc/mallet/types/ArraySequence.html protected ArraySequence(Sequence`<E>` s, boolean copy)]
+ ===Parameters===
+
 
 ==Array-Sequence-Public-Methods==
  * [http://mallet.cs.umass.edu/api/cc/mallet/types/ArraySequence.html E get(int index)]
+ ===Parameters===
+ ===Return Value===
+
  * [http://mallet.cs.umass.edu/api/cc/mallet/types/ArraySequence.html int size()]
+ ===Parameters===
+ ===Return Value===
+
  * [http://mallet.cs.umass.edu/api/cc/mallet/types/ArraySequence.html java.lang.String toString()]
+ ===Parameters===
+ ===Return Value===
 
 
  [DataTypes#Contents Contents]
