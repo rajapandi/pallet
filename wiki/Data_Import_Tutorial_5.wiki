@@ -543,3 +543,64 @@ herpetologist(47)=1.0
 
 target: australia
 }}}
+
+==Instance List Trim Features By Count==
+This pipe is unimplemented in the Mallet as of now.
+
+==Noop==
+It is the pipe which does nothing to the instance fields but which has the side effects on the dictionary.Noop creates the Dictionary from dataAlphabet and targetAlphabet which can be used by the DictinariedPipe's.You might want to use this pipe before Parallel pipes where the previous pipe do not need dictionaries ,but later steps in each parallel paths do,and they all must share the same directory.  
+
+===Implementation===
+
+ * 1)Noop(): It is a simple constructor which does nothing.
+ * 2)Noop(Alphabet dataDict,Alphabet targetDict): It is the constructor which creates the dictionary from the given data Alphabet and target Alphabet.It forces the creation of Alphabet ,so that pipes which based on Alphabet can use it.
+
+===Sample Code===
+{{{
+
+import cc.mallet.pipe.*;
+import cc.mallet.types.*;
+import java.util.regex.*;
+
+public class ImportExample4044 {
+	static Pipe pipe=null;
+        public static void main(String args[])
+	{
+		String trainingdata="on the plains of africa the lions roar";
+		Instance i=new Instance(trainingdata,"africa","Instance-1",null);
+		Input2CharSequence i2cs=new Input2CharSequence();
+		Instance i1=i2cs.pipe(i);
+				
+		
+       Pattern tokenPattern =
+	           Pattern.compile("[\\p{L}\\p{N}_]+");
+CharSequence2TokenSequence cs2ts =new    CharSequence2TokenSequence(tokenPattern);
+			 Instance i2=cs2ts.pipe(i1);
+			 
+ TokenSequence2FeatureSequence ts2fs=new TokenSequence2FeatureSequence();
+		 Instance i3=ts2fs.pipe(i2);
+				 
+  Noop n1=new Noop(i3.getDataAlphabet(),i3.getTargetAlphabet());------>1 
+		 Instance in=n1.pipe(i3);
+		 
+	 Target2Label t2l=new Target2Label();
+	Instance i4=t2l.pipe(in);
+		 
+  FeatureSequence2FeatureVector fs2afv=new FeatureSequence2FeatureVector();
+		Instance i6=fs2afv.pipe(i4);
+		
+		
+		PrintInputAndTarget piat=new PrintInputAndTarget();
+		Instance i5=piat.pipe(i6);
+		
+	}
+
+}
+}}}
+
+ * 1)Noop forces the creation of dictionary or dataAlphabet and TargetAlphabet which can be further used by Target2Label and FeatureSequence2FeatureVector pipes.
+
+===Sample Output===
+The dataAlphabet and targetAlphabet is created by the use Noop.
+
+
