@@ -236,7 +236,13 @@ It is the pipe which converts the Feature Vector Sequence to Feature Vectors. Th
  * 1)FeatureVectorSequence2FeatureVectors(): It simply creates an instance of FeatureVectorSequence2FeatureVectors pipe.
 
 ===Method===
- * 1)Iterator<Instance> newIteratorFrom(java.util.Iterator<Instance> inputIterator): Take in input as an Instance iterator and return the Instance Iterator whose instances are already processed through FeatureVectorSequence2FeatureVectors pipe.
+ * 1)
+{{{
+Iterator<Instance> newIteratorFrom(java.util.Iterator<Instance> inputIterator): 
+}}}
+Take in input as an Instance iterator and return the Instance Iterator whose instances are already processed through FeatureVectorSequence2FeatureVectors pipe.
+
+
 
 ===Sample Code===
 
@@ -244,3 +250,296 @@ The instances which is passed through TokenSequence2FeatureVectorSequence is add
 
 ===Output===
 Output contains individual feature vectors per instance.
+
+
+==Filter Empty Feature Vector==
+This pipe provides functionality of iterating through Feature Vectors individually.
+
+===Implementation===
+
+ * 1)FilterEmptyFeatureVectors() : It simply creates an instance of FilterEmptyFeatureVectors pipe.
+
+===Method===
+
+ * 1)
+{{{
+public Iterator<Instance> newIteratorFrom (Iterator<Instance> source) 
+}}}
+
+Given an Instance Iterator , return a new Instance Iterator whose instances have also been processed by this pipe.
+
+
+===Sample Code===
+{{{
+import java.io.IOException;
+
+import java.io.*;
+import java.util.*;
+import java.util.regex.*;
+
+import cc.mallet.classify.Classification;
+import cc.mallet.classify.Classifier;
+import cc.mallet.classify.ClassifierTrainer;
+import cc.mallet.classify.NaiveBayesTrainer;
+import cc.mallet.pipe.*;
+import cc.mallet.pipe.iterator.*;
+import cc.mallet.types.*;
+
+public class ImportExample202 {
+	static Pipe pipe=null;
+	static InstanceList instancelist = null;
+	static Classifier cls=null;
+	static FeatureCountPipe ob11=null;
+	static TokenSequence2FeatureSequence ob10=null;
+	public Pipe buidPipe()
+	{
+		ArrayList pipeList = new ArrayList();
+		
+   pipeList.add(new Input2CharSequence("UTF-8"));
+       
+      Pattern tokenPattern =
+         Pattern.compile("[\\p{L}\\p{N}_]+");
+        pipeList.add(new CharSequence2TokenSequence(tokenPattern));
+   
+     pipeList.add(new TokenSequence2FeatureSequence());
+     
+   
+      pipeList.add(new Target2Label());
+   
+     pipeList.add(new FeatureSequence2FeatureVector());
+       
+   pipeList.add(new PrintInputAndTarget());
+        
+        return(new SerialPipes(pipeList));
+		
+	}
+	
+	
+	public static void main(String args[])
+	{
+		ClassifierTrainer trainer = null; 
+		String [][][] trainingdata = new String [][][] {
+				{{ "on the plains of africa the lions roar",
+				  "in swahili ngoma means to dance",
+				  "nelson mandela became president of south africa",
+				  "the saraha dessert saraha expanding"}, {"africa"}},				  
+				{{ "panda bears eat bamboo",
+				  "china's one child policy has resulted in a surplus of boys",
+				  "tigers live in the jungle"}, {"asia"}},
+				{{ "home of kangaroos",
+				  "Autralian's for beer - Foster",
+				  "Steve Irvin is a herpetologist"}, {"australia"}}				 
+		};
+		ImportExample202 ob1=new ImportExample202();
+		pipe=ob1.buidPipe();
+		InstanceList instances = new InstanceList(pipe);--------->1
+		for (int i = 0; i < 3; i++) {
+			try {
+			 instances.addThruPipe (new ArrayIterator (trainingdata[i][0],trainingdata[i][1][0]));
+			} catch (Exception e) { System.out.println(e);}
+		}
+	   Iterator<Instance> i3 = instances.iterator();---------->2
+	
+	   FilterEmptyFeatureVectors fefv=new FilterEmptyFeatureVectors ();------>3
+		Iterator<Instance>i4=fefv.newIteratorFrom(i3);------>4
+		while(i4.hasNext())
+		{
+		   Instance i8=i4.next();
+		  		   PrintInputAndTarget piat=new PrintInputAndTarget();
+			Instance i5=piat.pipe(i8);--------->5
+		
+		}
+		
+		
+		
+		
+	}
+
+}
+}}}
+
+ * 1) An InstanceList is created which contains feature vectors.
+ * 2) An Iterater is created corresponding to the above InstanceList.
+ * 3) An object of FilterEmptyFeatureVectors is created.
+ * 4) The newIteratorFrom method of the FilterEmptyFeatureVectors is called.It returns a iterator which can be used to process the feature vectors individually.
+ * 5) The feature vector is processed individually by PrintInputAndTarget pipe.
+
+===Output===
+{{{
+name: array:0
+input: on(0)=1.0
+the(1)=2.0
+plains(2)=1.0
+of(3)=1.0
+africa(4)=1.0
+lions(5)=1.0
+roar(6)=1.0
+
+target: africa
+name: array:1
+input: in(7)=1.0
+swahili(8)=1.0
+ngoma(9)=1.0
+means(10)=1.0
+to(11)=1.0
+dance(12)=1.0
+
+target: africa
+name: array:2
+input: of(3)=1.0
+africa(4)=1.0
+nelson(13)=1.0
+mandela(14)=1.0
+became(15)=1.0
+president(16)=1.0
+south(17)=1.0
+
+target: africa
+name: array:3
+input: the(1)=1.0
+saraha(18)=2.0
+dessert(19)=1.0
+expanding(20)=1.0
+
+target: africa
+name: array:0
+input: panda(21)=1.0
+bears(22)=1.0
+eat(23)=1.0
+bamboo(24)=1.0
+
+target: asia
+name: array:1
+input: of(3)=1.0
+in(7)=1.0
+china(25)=1.0
+s(26)=1.0
+one(27)=1.0
+child(28)=1.0
+policy(29)=1.0
+has(30)=1.0
+resulted(31)=1.0
+a(32)=1.0
+surplus(33)=1.0
+boys(34)=1.0
+
+target: asia
+name: array:2
+input: the(1)=1.0
+in(7)=1.0
+tigers(35)=1.0
+live(36)=1.0
+jungle(37)=1.0
+
+target: asia
+name: array:0
+input: of(3)=1.0
+home(38)=1.0
+kangaroos(39)=1.0
+
+target: australia
+name: array:1
+input: s(26)=1.0
+Autralian(40)=1.0
+for(41)=1.0
+beer(42)=1.0
+Foster(43)=1.0
+
+target: australia
+name: array:2
+input: a(32)=1.0
+Steve(44)=1.0
+Irvin(45)=1.0
+is(46)=1.0
+herpetologist(47)=1.0
+
+target: australia
+name: array:0
+input: on(0)=1.0
+the(1)=2.0
+plains(2)=1.0
+of(3)=1.0
+africa(4)=1.0
+lions(5)=1.0
+roar(6)=1.0
+
+target: africa
+name: array:1
+input: in(7)=1.0
+swahili(8)=1.0
+ngoma(9)=1.0
+means(10)=1.0
+to(11)=1.0
+dance(12)=1.0
+
+target: africa
+name: array:2
+input: of(3)=1.0
+africa(4)=1.0
+nelson(13)=1.0
+mandela(14)=1.0
+became(15)=1.0
+president(16)=1.0
+south(17)=1.0
+
+target: africa
+name: array:3
+input: the(1)=1.0
+saraha(18)=2.0
+dessert(19)=1.0
+expanding(20)=1.0
+
+target: africa
+name: array:0
+input: panda(21)=1.0
+bears(22)=1.0
+eat(23)=1.0
+bamboo(24)=1.0
+
+target: asia
+name: array:1
+input: of(3)=1.0
+in(7)=1.0
+china(25)=1.0
+s(26)=1.0
+one(27)=1.0
+child(28)=1.0
+policy(29)=1.0
+has(30)=1.0
+resulted(31)=1.0
+a(32)=1.0
+surplus(33)=1.0
+boys(34)=1.0
+
+target: asia
+name: array:2
+input: the(1)=1.0
+in(7)=1.0
+tigers(35)=1.0
+live(36)=1.0
+jungle(37)=1.0
+
+target: asia
+name: array:0
+input: of(3)=1.0
+home(38)=1.0
+kangaroos(39)=1.0
+
+target: australia
+name: array:1
+input: s(26)=1.0
+Autralian(40)=1.0
+for(41)=1.0
+beer(42)=1.0
+Foster(43)=1.0
+
+target: australia
+name: array:2     -----Feature Vectors are processed individualy.
+input: a(32)=1.0
+Steve(44)=1.0
+Irvin(45)=1.0
+is(46)=1.0
+herpetologist(47)=1.0
+
+target: australia
+}}}
