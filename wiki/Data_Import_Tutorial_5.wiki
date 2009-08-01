@@ -90,13 +90,14 @@ FeatureCountPipe fcp=new FeatureCountPipe(i3.getDataAlphabet(),i3.getTargetAlpha
  * 4)writePrunedWords is called with value 2. It means the words which doesn't occur more than 2 times will be pruned.
 
 ===Output===
+{{{
 1)The file f200.txt will contains 
 on
 of
 africa
 lions
 roar
-
+}}}
 These all words doesn't occur more than two times in the raw data so will be pruned from feature set.
 
 ==Feature Value String 2 Feature Vector==
@@ -138,7 +139,7 @@ public class ImportExample901 {
 
 ===Output===
 The Feature Value String is converted int Feature Vector.
-
+{{{
 name: Instance-1
 input: width(0)=140.0(Two occurences of the width is added)
 
@@ -148,7 +149,7 @@ length(2)=20.0
 
 target: africa
 
-
+}}}
 ==Token Sequence 2 Feature Vector Sequence==
 It is pipe which take input as Token Sequence of Instances and convert it into Feature 
 Vector Sequence.
@@ -165,6 +166,81 @@ Vector Sequence.
 
 dataDict: If user explicity wants to provide data Alphabet.
 augmentable: It it is true than augmentable feature vector is created.
-  
 
- 
+===Sample Code===
+
+{{{
+
+import cc.mallet.pipe.*;
+import cc.mallet.types.*;
+
+public class ImportExample54{
+	static Pipe pipe=null;
+	
+	
+	public static void main(String args[])
+	{
+		
+ String trainingdata="<abc> on the plains of </abc> africa the <a> lions123 has roared</a> life ";
+	Instance i=new Instance(trainingdata,"africa","Instance-1",null);
+	Input2CharSequence i2cs=new Input2CharSequence();
+	Instance i1=i2cs.pipe(i);
+	SGML2TokenSequence cs2ts=new SGML2TokenSequence();
+	Instance i2=cs2ts.pipe(i1);
+	Target2LabelSequence t2fs=new Target2LabelSequence();
+	Instance i8=t2fs.pipe(i2);
+TokenSequence2FeatureVectorSequence ts2fvs=new TokenSequence2FeatureVectorSequence();--->1
+	Instance i6=ts2fvs.pipe(i8);
+	PrintInputAndTarget piat=new PrintInputAndTarget();
+	Instance i5=piat.pipe(i6);	
+	
+	}
+}
+
+}}} 
+
+ * 1)An instance of TokenSequence2FeatureVectorSequence is created.
+
+===Output===
+{{{
+name: Instance-1
+input: cc.mallet.types.FeatureVectorSequence@1ffb8dc------>Token sequence is converted 
+0:                                                         into feature Vector Sequence
+1: 
+2: 
+3: 
+4: 
+5: 
+6: 
+7: 
+8: 
+9: 
+
+target: 0: abc (0)
+1: abc (0)
+2: abc (0)
+3: abc (0)
+4: O (1)
+5: O (1)
+6: a (2)
+7: a (2)
+8: a (2)
+9: O (1)
+}}}
+
+==Feature Vector Sequence 2 Feature Vectors==
+It is the pipe which converts the Feature Vector Sequence to Feature Vectors. The previous pipe (TokenSequence2FeatureVectorSequence) converts the token sequence to feature vector sequence and this pipe than subsequently converts the given Feature Vector Sequence to Feature Vectors.So given an instance with a Feature Vector Sequence in the data field ,it break up the sequence into the individual feature vectors producing one feature vector per instance.
+
+===Implementation===
+
+ * 1)FeatureVectorSequence2FeatureVectors(): It simply creates an instance of FeatureVectorSequence2FeatureVectors pipe.
+
+===Method===
+ * 1)Iterator<Instance> newIteratorFrom(java.util.Iterator<Instance> inputIterator): Take in input as an Instance iterator and return the Instance Iterator whose instances are already processed through FeatureVectorSequence2FeatureVectors pipe.
+
+===Sample Code===
+
+The instances which is passed through TokenSequence2FeatureVectorSequence is added to the InstanceList. Then an iterator which is used to iterate the previous InstanceList is passed to the newIteratorFrom method of the FeatureVectorSequence2FeatureVectors pipe. These methods returns the iterator which contains the individual feature vectors producing one feature vector per instance.
+
+===Output===
+Output contains individual feature vectors per instance.
