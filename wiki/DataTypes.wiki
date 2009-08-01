@@ -341,33 +341,60 @@ implements Sequence`<E>`<BR CLEAR="ALL"|"LEFT"|"RIGHT">
 
 ==Array-Sequence-Constructors==
  * [http://mallet.cs.umass.edu/api/cc/mallet/types/ArraySequence.html#ArraySequence(java.util.ArrayList) ArraySequence(java.util.ArrayList`<E>` a)]
+ Creates ArraySequence from the ArrayList
  ===Parameters===
+ array_list - Arraylist Object
 
+ {{{
+ ArrayList al = new ArrayList ();
+ for (int i = 0; i < 10; i++)
+ {			
+   al.add(i);
+ }
+ ArraySequence as = new ArraySequence(al);
+ }}}
 
  * [http://mallet.cs.umass.edu/api/cc/mallet/types/ArraySequence.html ArraySequence(E[] a)]
+ Creates ArraySequence from array of object
  ===Parameters===
+ a - Array of Objects
 
+ {{{
+ String arr[] = new String [10];
+ for (int i = 0; i < 10; i++)
+ {			
+   arr[i] = + i;
+ }
+ ArraySequence<String> as = new ArraySequence(arr);
+ }}}
 
  * [http://mallet.cs.umass.edu/api/cc/mallet/types/ArraySequence.html ArraySequence(E[] a, boolean copy)]
+ Creates ArraySequence from array object.
  ===Parameters===
-
+  # arr - Array Object for which the ArraySequence
+  # copy - if true creates copy of the arr in ArraySequence.
 
  * [http://mallet.cs.umass.edu/api/cc/mallet/types/ArraySequence.html protected ArraySequence(Sequence`<E>` s, boolean copy)]
+ Creates ArraySequence from Sequence`<E>`
  ===Parameters===
-
+  # s - Reference of Sequence object
+  # copy - if true creates copy of the arr in ArraySequence.
 
 ==Array-Sequence-Public-Methods==
  * [http://mallet.cs.umass.edu/api/cc/mallet/types/ArraySequence.html E get(int index)]
+ Fetches data at the specified index.
  ===Parameters===
+  # index - Index to the ArraySequence
  ===Return Value===
+  # Object at the specified index
 
  * [http://mallet.cs.umass.edu/api/cc/mallet/types/ArraySequence.html int size()]
- ===Parameters===
  ===Return Value===
+  # Returns size of the ArraySequence
 
  * [http://mallet.cs.umass.edu/api/cc/mallet/types/ArraySequence.html java.lang.String toString()]
- ===Parameters===
  ===Return Value===
+  # Returns stringized array object.
 
 
  [DataTypes#Contents Contents]
