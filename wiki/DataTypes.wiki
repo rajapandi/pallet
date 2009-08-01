@@ -341,14 +341,14 @@ implements Sequence`<E>`<BR CLEAR="ALL"|"LEFT"|"RIGHT">
 
 ==Array-Sequence-Constructors==
  * [http://mallet.cs.umass.edu/api/cc/mallet/types/ArraySequence.html#ArraySequence(java.util.ArrayList) ArraySequence(java.util.ArrayList`<E>` a)]
- * [http://mallet.cs.umass.edu/api/cc/mallet/types/ArraySequence.html#ArraySequence(E[]) ArraySequence(E[] a)]
- * ArraySequence(E[] a, boolean copy)           
- * protected ArraySequence(Sequence`<E>` s, boolean copy)
+ * [http://mallet.cs.umass.edu/api/cc/mallet/types/ArraySequence.html ArraySequence(E[] a)]
+ * [http://mallet.cs.umass.edu/api/cc/mallet/types/ArraySequence.html ArraySequence(E[] a, boolean copy)]
+ * [http://mallet.cs.umass.edu/api/cc/mallet/types/ArraySequence.html protected ArraySequence(Sequence`<E>` s, boolean copy)]
 
-==Alphabet-Public-Methods==
- * E get(int index)
- * int size()
- * java.lang.String toString()
+==Array-Sequence-Public-Methods==
+ * [http://mallet.cs.umass.edu/api/cc/mallet/types/ArraySequence.html E get(int index)]
+ * [http://mallet.cs.umass.edu/api/cc/mallet/types/ArraySequence.html int size()]
+ * [http://mallet.cs.umass.edu/api/cc/mallet/types/ArraySequence.html java.lang.String toString()]
 
 
  [DataTypes#Contents Contents]
