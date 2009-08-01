@@ -332,7 +332,24 @@ The most common use of an alphabet is as a dictionary of feature names associate
 
 = Array-Sequence =
 *Package: * [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
- To be done
+
+*Description -* Stores sequence of objects
+
+==Array-Sequence-Constructors==
+public class ArraySequence<E><BR CLEAR="ALL"|"LEFT"|"RIGHT">
+extends java.lang.Object<BR CLEAR="ALL"|"LEFT"|"RIGHT">
+implements Sequence<E><BR CLEAR="ALL"|"LEFT"|"RIGHT">
+
+ArraySequence(java.util.ArrayList<E> a)           
+ArraySequence(E[] a)          
+ArraySequence(E[] a, boolean copy)           
+protected ArraySequence(Sequence<E> s, boolean copy)
+
+==Alphabet-Public-Methods==
+ * E get(int index)
+ * int size()
+ * java.lang.String toString()
+
 
  [DataTypes#Contents Contents]
  ----------------------------------------------------------------------------------------
