@@ -968,7 +968,59 @@ Token#5:pallet
 Token#6:a  ----------->tag a comes to the Label Sequence.
 Token#7:pallet
 
+}}}
 
 
+==Simple Tagger Sentence 2 String Tokenization==
+This pipe extends SimpleTaggerSentence2TokenSequence to use {Slink StringTokenization} for use with the extract  package.
+
+===Implementation===
+
+ * 1)SimpleTaggerSentence2StringTokenization(): Creates a new SimpleTaggerSentence2StringTokenization instance.
+ * 2)SimpleTaggerSentence2StringTokenization(boolean inc):creates a new SimpleTaggerSentence2StringTokenization instance which includes tokens as features if the supplied argument is true.
+
+===Sample Code===
+{{{
+
+import cc.mallet.pipe.*;
+import cc.mallet.types.*;
+public class ImportExample938 {
+public static void main(String args[])
+{
+String trainingdata="on the plains of africa the lions roar";
+Instance ob2=new Instance(trainingdata,null,"array-1",null);
+SimpleTaggerSentence2TokenSequence ob31=new SimpleTaggerSentence2TokenSequence();--->1
+Instance i1=ob31.pipe(ob2);
+PrintInputAndTarget piat=new PrintInputAndTarget();
+Instance i6=piat.pipe(i1);
+System.out.println("\n\n");
+Instance ob3=new Instance(trainingdata,null,"array-1",null);
+SimpleTaggerSentence2StringTokenization sts2t=new SimpleTaggerSentence2StringTokenization(true);-------->2
+Instance i2=sts2t.pipe(ob3);
+PrintInputAndTarget piat1=new PrintInputAndTarget();
+Instance i61=piat1.pipe(i2);
+}
+}
+}}}
+1)Firstly SimpleTaggerSentence2TokenSequence is implemented 
+2)Then SimpleTaggerSentence2StringTokenization is implemented. 
+
+Note: Both pipes are implemented to show the difference between the two pipes.
+
+===Output===
+{{{
+name: array-1
+input: TokenSequence [on feature(lions)=1.0 feature(the)=1.0 feature(africa)=1.0 feature(of)=1.0 feature(plains)=1.0 feature(the)=1.0 feature(on)=1.0]
+Token#0:on feature(lions)=1.0 feature(the)=1.0 feature(africa)=1.0 feature(of)=1.0 feature(plains)=1.0 feature(the)=1.0 feature(on)=1.0
+
+target: 0: roar (0)
+
+
+cc.mallet.types.Instance@1571886
+name: array-1
+input: TokenSequence [on feature(lions)=1.0 feature(the)=1.0 feature(africa)=1.0 feature(of)=1.0 feature(plains)=1.0 feature(the)=1.0 feature(on)=1.0  span[0..2]]
+Token#0:on feature(lions)=1.0 feature(the)=1.0 feature(africa)=1.0 feature(of)=1.0 feature(plains)=1.0 feature(the)=1.0 feature(on)=1.0  span[0..2]
+
+target: 0: roar (0)
 
 }}}
