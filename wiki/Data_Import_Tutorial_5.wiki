@@ -1113,3 +1113,74 @@ name: Instance-2
 input: length(2)=12.0
 
 target: length=12
+
+==Token Sequence 2 Token Instances==
+It is pipe which converts the token sequence to token instances.
+
+===Implementation===
+
+ * 1)TokenSequence2TokenInstances(): It is simple constructor which creates the object of TokenSequence2TokenInstances.
+
+Note: This pipe also contain the newIteratorFrom method which takes an Instance Iterator and return an Instance Iterator(whose instances are processed through this pipe).
+
+===Sample Code===
+{{{
+
+import java.util.Iterator;
+import cc.mallet.pipe.*;
+import cc.mallet.types.*;
+
+public class ImportExample100{
+	static Pipe pipe=null;
+	
+	public static void main(String args[])
+	{
+		
+		
+		String trainingdata="on the plains of africa the lions123  roar";
+		Instance i=new Instance(trainingdata,"africa","Instance-1",null);
+		Input2CharSequence i2cs=new Input2CharSequence();
+		Instance i1=i2cs.pipe(i);
+				
+SGML2TokenSequence cs2ts=new SGML2TokenSequence("[\\p{L}\\p{N}_]+","pallet");
+		Instance i2=cs2ts.pipe(i1);
+		
+		Target2LabelSequence t2ls=new Target2LabelSequence();
+		Instance i3=t2ls.pipe(i2);
+		 
+		 InstanceList inst=new InstanceList();
+		 inst.add(i3);
+		 Iterator<Instance> i11=inst.iterator();
+		
+		 TokenSequence2TokenInstances ts2ti=new TokenSequence2TokenInstances();
+		 Iterator <Instance>i78=ts2ti.newIteratorFrom(i11);
+		 
+		 System.out.println("\n\n");
+try
+{
+		 while(i78.hasNext())
+		 {
+			 System.out.println(i78.next().getData());
+			 
+		 }
+		 
+}
+catch(Exception e)
+{
+	
+}
+				
+}
+}
+}}}
+===Output===
+{{{
+on  span[0..2]
+the  span[3..6]
+plains  span[7..13]
+of  span[14..16]
+africa  span[17..23]
+the  span[24..27]
+lions123  span[28..36]
+roar  span[38..42]
+}}}
