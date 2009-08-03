@@ -604,3 +604,173 @@ CharSequence2TokenSequence cs2ts =new    CharSequence2TokenSequence(tokenPattern
 The dataAlphabet and targetAlphabet is created by the use Noop.
 
 
+==Pipe==
+ * 1) It is an abstract super class which doesn't contain any abstract methods.
+ * 2) In order to use Pipe subclass you have to override either the pipe method or the newIteratorFrom method 
+ * 3) The "pipe" method is used when the pipe's processing of an Instance is one to one and "newIteratorFrom" method is used when the pipe's processing may result in more or fewer Instances than arrive through its source iterator.
+ * 4)A pipe operates on an Instance, which is a carrier of data. A pipe reads from and writes to fields in the Instance when it is requested to process the instance. It is up to the pipe which fields in the Instance it reads from and writes to, but usually a pipe will read its input from and write its output to the "data" field of an instance. 
+ * 5)A pipe doesn't have any direct notion of input or output - it merely modifies instances that are handed to it. A set of helper classes, which implement the interface Iterator, iterate over commonly encountered input data structures and feed the elements of these data structures to a pipe as instances.
+ * 6)A pipe is frequently used in conjunction with an InstanceList As instances are added to the list, they are processed by the pipe associated with the instance list and the processed Instance is kept in the list. 
+ * 7)In one common usage, a FileIterator is given a list of directories to operate over. The FileIterator walks through each directory, creating an instance for each file and putting the data from the file in the data field of the instance. The directory of the file is stored in the target field of the instance. The FileIterator feeds instances to an InstanceList, which processes the instances through its associated pipe and keeps the results.
+ * 8)Pipes can be hierachically composed. In a typical usage, a SerialPipe is created, which holds other pipes in an ordered list. Piping an instance through a SerialPipe means piping the instance through each of the child pipes in sequence. 
+ * 9)A pipe holds two separate Alphabets: one for the symbols (feature names) encountered in the data fields of the instances processed through the pipe, and one for the symbols (e.g. class labels) encountered in the target fields. 
+(Source: Mallet Javadoc) 
+
+===Implementation===
+ * 1)Pipe(): It constructs a pipe with no data and target dictionaries.
+ * 2)Pipe(Alphabet dataDict,Alphabet targetDict): It constructs a pipe with data and target dictionaries.
+
+Note : For further details about Pipe ,please see [http://mallet.cs.umass.edu/api/ following]
+
+==PrintInput==
+
+It is pipe simillar to "PrintInputAndTarget" .The difference is that it only prints data fields of Mallet instances.
+
+===Implementation===
+
+ * 1)PrintInput(): This is no argument constructor which does nothing.It prints the output on the standard output stream.
+ * 2)PrintInput(java.io.PrintStream out) :  This constructor takes the PrintStream argument and print the output on the specified output stream.
+ * 3)PrintInput(java.lang.String prefix) : It prints the output on the standard outputstream and add the specified string as the prefix to the output.
+ * 4)PrintInput(java.lang.String prefix, java.io.PrintStream out) : This constructor is the combination of the second and third constructor.
+
+===Sample Code===
+{{{
+
+import java.util.*;
+import cc.mallet.pipe.*;
+import cc.mallet.pipe.iterator.*;
+import cc.mallet.types.*;
+
+public class ImportExample {
+static Pipe pipe=null;
+static InstanceList instancelist = null;
+	
+public Pipe buidPipe()
+{
+ArrayList pipeList = new ArrayList();
+	
+ pipeList.add(new Input2CharSequence("UTF-8"));
+ pipeList.add(new SGML2TokenSequence());
+ pipeList.add(new Target2LabelSequence());
+ pipeList.add(new TokenSequence2FeatureSequence());
+ pipeList.add(new FeatureSequence2FeatureVector());
+ pipeList.add(new PrintInput("Pallet\n"));----------------->1
+ return(new SerialPipes(pipeList));
+}
+	
+	
+public static void main(String args[])
+{
+		
+	String [][][] trainingdata = new String [][][] {
+		{{ "on the plains of africa the lions roar",
+		  "in swahili ngoma means to dance",
+		  "nelson <tag>mandela became</tag> president of south africa",
+	  "the saraha dessert saraha expanding"}, {"africa"}},				  
+			{{ "panda bears eat bamboo",
+	  "china's one child policy has resulted in a surplus of boys",
+		  "tigers live in the jungle"}, {"asia"}},
+	{{ "home of kangaroos",
+				  "Autralian's for beer - Foster",
+	  "Steve Irvin is a herpetologist"}, {"australia"}}				 
+		};
+		ImportExample ob1=new ImportExample();
+		pipe=ob1.buidPipe();
+		InstanceList instances = new InstanceList(pipe);
+		for (int i = 0; i < 3; i++) {
+			try {
+ instances.addThruPipe (new ArrayIterator (trainingdata[i][0],trainingdata[i][1][0]));
+			} catch (Exception e) { System.out.println(e);}
+		}
+	}
+
+}
+}}}
+
+1)It calles the constructor of the PrintInput pipe with the string.
+
+===Output===
+{{{
+Pallet   ------------>String Pallet is attached as specified by the User
+on(0)=1.0
+the(1)=2.0
+plains(2)=1.0
+of(3)=1.0
+africa(4)=1.0
+lions(5)=1.0
+roar(6)=1.0
+
+------------------->Only data part is displayed by the Pipe no target part of the instances is declared.
+
+Pallet
+in(7)=1.0
+swahili(8)=1.0
+ngoma(9)=1.0
+means(10)=1.0
+to(11)=1.0
+dance(12)=1.0
+
+Pallet
+of(3)=1.0
+africa(4)=1.0
+nelson(13)=1.0
+mandela(14)=1.0
+became(15)=1.0
+president(16)=1.0
+south(17)=1.0
+
+Pallet
+the(1)=1.0
+saraha(18)=2.0
+dessert(19)=1.0
+expanding(20)=1.0
+
+Pallet
+panda(21)=1.0
+bears(22)=1.0
+eat(23)=1.0
+bamboo(24)=1.0
+
+Pallet
+of(3)=1.0
+in(7)=1.0
+china(25)=1.0
+s(26)=1.0
+one(27)=1.0
+child(28)=1.0
+policy(29)=1.0
+has(30)=1.0
+resulted(31)=1.0
+a(32)=1.0
+surplus(33)=1.0
+boys(34)=1.0
+
+Pallet
+the(1)=1.0
+in(7)=1.0
+tigers(35)=1.0
+live(36)=1.0
+jungle(37)=1.0
+
+Pallet
+of(3)=1.0
+home(38)=1.0
+kangaroos(39)=1.0
+
+Pallet
+s(26)=1.0
+Autralian(40)=1.0
+for(41)=1.0
+beer(42)=1.0
+Foster(43)=1.0
+
+Pallet
+a(32)=1.0
+Steve(44)=1.0
+Irvin(45)=1.0
+is(46)=1.0
+herpetologist(47)=1.0
+
+}}}
+
+ 
