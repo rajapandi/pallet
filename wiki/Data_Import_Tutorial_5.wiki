@@ -865,3 +865,17 @@ So we can say that the source fields of each instance to its data field.
  * 1)SaveDataInSource(): It is simple constructor which creates the object of the SaveDataInSource pipe.
 
 Note: We need to just create the pipe and pass the data through this pipe with the help of pipe method and the data is copied into the source field from data field.
+
+==Selective SGML 2 Token Sequence==
+It converts only the specified SGML tag into Labels.It is similar to SGML2TokenSequence which converts all the SGML tags into Labels.
+
+===Implementation===
+ * 1)SelectiveSGML2TokenSequence(CharSequenceLexer lex, java.util.Set allowed):
+ * 2)SelectiveSGML2TokenSequence(CharSequenceLexer lexer, java.lang.String backgroundTag, java.util.Set allowed):-
+ * 3)SelectiveSGML2TokenSequence(java.util.Set allowed) 
+ * 4)SelectiveSGML2TokenSequence(java.lang.String regex, java.lang.String backgroundTag, java.util.Set allowed):-
+
+Note : The constructor are almost similar to the SGML2Tokensequence pipe.The difference is that here we added one more arguments allowed. It tells us that which are the allowed tags  that can be converted into labels.
+
+===Sample Code===
+ 
