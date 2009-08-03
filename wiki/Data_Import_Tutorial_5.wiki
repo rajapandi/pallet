@@ -878,4 +878,97 @@ It converts only the specified SGML tag into Labels.It is similar to SGML2TokenS
 Note : The constructor are almost similar to the SGML2Tokensequence pipe.The difference is that here we added one more arguments allowed. It tells us that which are the allowed tags  that can be converted into labels.
 
 ===Sample Code===
+{{{
+
+import cc.mallet.pipe.*;
+import cc.mallet.types.*;
+import java.util.*;
+public class ImportExample45 {
+	static Pipe pipe=null;
+        public static void main(String args[])
+	{
+		
+String trainingdata="<abc> on the plains of </abc> africa the <a> lions123 </a> roar";
+		Instance i=new Instance(trainingdata,"africa","Instance-1",null);
+		Input2CharSequence i2cs=new Input2CharSequence();
+		Instance i1=i2cs.pipe(i);
+		Set s=new TreeSet();-------->1
+		s.add("abc");
+				
+SelectiveSGML2TokenSequence cs2ts=new SelectiveSGML2TokenSequence("[\\p{L}\\p{N}_]+","pallet",s);--------->2
+	//SGML2TokenSequence cs2ts=new SGML2TokenSequence("[\\p{L}\\p{N}_]+","pallet");
+	//SGML2TokenSequence cs2ts=new SGML2TokenSequence();------->3
+		 Instance i2=cs2ts.pipe(i1);
+			 
+		 
+		 TokenSequence2FeatureSequence ts2fs=new TokenSequence2FeatureSequence();
+		 Instance i3=ts2fs.pipe(i2);
+				 
+		
+          FeatureSequence2AugmentableFeatureVector fs2afv=new FeatureSequence2AugmentableFeatureVector();
+		Instance i6=fs2afv.pipe(i3);
+		
+		
+		PrintInputAndTarget piat=new PrintInputAndTarget();
+		Instance i5=piat.pipe(i6);
+		
+	}
+
+}
+}}}
  
+ * 1)A TreeSet is created to store the tags which will come in Labels
+ * 2)An object of SelectiveSGML2TokenSequence is created.
+ * 3)A commented line which will show the output when we use SGMLTokenSequence instead of
+SelectiveSGML2TokenSequence.
+
+===Output===
+{{{
+name: Instance-1
+input: on(0)=1.0
+the(1)=2.0
+plains(2)=1.0
+of(3)=1.0
+africa(4)=1.0
+a(5)=2.0
+lions123(6)=1.0
+roa(7)=1.0
+
+target: TokenSequence [abc, abc, abc, abc, pallet, pallet, pallet, pallet, pallet, pallet]
+Token#0:abc   
+Token#1:abc
+Token#2:abc
+Token#3:abc ---------->Only the allowed tags and Background tag comes in the Label 
+Token#4:pallet        Sequence. "abc" is allowed tag and "pallet" is the background tag.
+Token#5:pallet        "a" tag doesn't come in the Label Sequence.  
+Token#6:pallet
+Token#7:pallet
+Token#8:pallet
+Token#9:pallet
+
+If we had used SGML2TokenSequence instead of SelectiveSGML2TokenSequence than the output
+would have been 
+
+name: Instance-1
+input: on(0)=1.0
+the(1)=2.0
+plains(2)=1.0
+of(3)=1.0
+africa(4)=1.0
+lions123(5)=1.0
+roar(6)=1.0
+
+target: TokenSequence [abc, abc, abc, abc, pallet, pallet, a, pallet]
+Token#0:abc
+Token#1:abc
+Token#2:abc
+Token#3:abc
+Token#4:pallet
+Token#5:pallet
+Token#6:a  ----------->tag a comes to the Label Sequence.
+Token#7:pallet
+
+
+
+
+}}}
