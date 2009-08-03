@@ -773,4 +773,95 @@ herpetologist(47)=1.0
 
 }}}
 
- 
+==Print Token Sequence Features==
+It print features of the token sequence in the data field and the corressponding value (if exists) of any token sequence or feature sequence in the target field.
+
+===Implementation===
+ * 1) PrintTokenSequenceFeatures(): It is a simple no argument constructor which display the output.
+ * 2)PrintTokenSequenceFeatures(java.lang.String prefix) : It displays the output with the attached prefix given by the user.
+
+===Sample Code===
+
+{{{
+
+
+
+import java.util.regex.*;
+import cc.mallet.pipe.*;
+import cc.mallet.types.*;
+
+public class ImportExample76{
+	static Pipe pipe=null;
+	
+	
+	public static void main(String args[])
+	{
+		
+		
+		
+		String trainingdata="width=10 height=11 length=12";
+		
+		Instance i=new Instance(trainingdata,"africa","Instance-1",null);
+		Input2CharSequence i2cs=new Input2CharSequence();
+		Instance i0=i2cs.pipe(i);
+		
+		  Pattern tokenPattern =
+	            Pattern.compile("[\\p{L}\\p{N}_\\=]+");
+ CharSequence2TokenSequence cs2ts=  new CharSequence2TokenSequence(tokenPattern);
+		  Instance i2=cs2ts.pipe(i0);
+		
+			
+		
+TokenSequenceParseFeatureString tspf=new TokenSequenceParseFeatureString(true,true,"=");
+		 Instance i120=tspf.pipe(i2);
+		
+	
+	
+		
+		PrintInputAndTarget piat=new PrintInputAndTarget();-------->1
+		Instance i5=piat.pipe(i120);
+		System.out.println("\n");
+		
+	PrintTokenSequenceFeatures ptsf=new PrintTokenSequenceFeatures();------>2
+	    Instance i6=ptsf.pipe(i120);
+		
+	}
+
+}
+
+}}} 
+  
+ * 1) PrintInputAndTarget is implemented ,so that we can see what is the actual output.
+ * 2) PrintTokenSequenceFeatures is implemented ,which process the output from TokenSequenceParseFeatureString.
+
+===Output===
+{{{
+name: Instance-1
+input: TokenSequence [width=10 feature(width)=10.0  span[0..8], height=11 feature(height)=11.0  span[9..18], length=12 feature(length)=12.0  span[19..28]]
+Token#0:width=10 feature(width)=10.0  span[0..8]--->Token 0 has a feature width which has
+Token#1:height=11 feature(height)=11.0  span[9..18]    value 10.0.
+Token#2:length=12 feature(length)=12.0  span[19..28]
+
+target: africa
+_____________________________________________________________________________________
+_____________________________________________________________________________________
+name: Instance-1
+width=10.0    ------->PritnTokenSequenceFeatures prints the features of the TokenSequence
+height=11.0           in the data field.
+length=12.0 
+}}}
+
+== Save Data In Source==
+Each Mallet Instance has four part 
+ * a)Name : This field should contain a value that identifies this instance, usually a String.
+ * b)Label: The label is primarily used in classification applications. It is usually a value within a finite set of labels, a LabelAlphabet.
+ * c)Data: Generally a FeatureVector (unordered feature-value pairs) or a FeatureSequence (an ordered list of features, for example a sequence of words).
+ * d)Source: A representation of the original state of the instance. Often a File object or a String containing the original, untokenized text. Frequently null.
+
+Now if we want to save the data from the Data field to Source field then we use this pipe.
+So we can say that the source fields of each instance to its data field.
+
+===Implementation===
+ * 1)SaveDataInSource(): It is simple constructor which creates the object of the SaveDataInSource pipe.
+
+Note: We need to just create the pipe and pass the data through this pipe with the help of pipe method and the data is copied into the source field from data field.
