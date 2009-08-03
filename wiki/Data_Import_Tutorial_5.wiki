@@ -1024,3 +1024,92 @@ Token#0:on feature(lions)=1.0 feature(the)=1.0 feature(africa)=1.0 feature(of)=1
 target: 0: roar (0)
 
 }}}
+
+==Token 2 Feature Vector==
+It converts the property list on a token into feature vector.
+
+===Implementation===
+
+ * 1)Token2FeatureVector(): It converts the Token to feature Vector  using already defined data dictionary.
+ * 2)Token2FeatureVector(Alphabet dataDict): If user want to provide data dictionary explicitly then should use this constructor.
+ * 3)Token2FeatureVector(Alphabet dataDict, boolean binary, boolean augmentable) 
+ * 4)Token2FeatureVector(boolean binary, boolean augmentable) 
+ 
+ * binary : If it is true then binary (Augmentable)FeatureVector's in the sequence is created
+ * augmentable: If it is true then Augmentable FeatureVector's in the sequence is created.
+
+===Sample Code===
+
+{{{
+import java.util.regex.*;
+import cc.mallet.pipe.*;
+import cc.mallet.types.*;
+
+public class token{
+	static Pipe pipe=null;
+       public static void main(String args[])
+	{
+	 String trainingdata="width=10 height=11 length=12";
+   Instance i=new Instance(trainingdata,"africa","Instance-1",null);
+    Input2CharSequence i2cs=new Input2CharSequence();
+	Instance i0=i2cs.pipe(i);
+Pattern tokenPattern =
+	            Pattern.compile("[\\p{L}\\p{N}_\\=]+");
+  CharSequence2TokenSequence cs2ts=  new CharSequence2TokenSequence(tokenPattern);
+		  Instance i2=cs2ts.pipe(i0);
+	TokenSequence ts=new TokenSequence();----------->1
+	ts=(TokenSequence)i2.getData();------------------>2
+TokenSequenceParseFeatureString tspf=new TokenSequenceParseFeatureString(true,true,"=");
+		Instance i120=tspf.pipe(i2);
+
+PrintInputAndTarget piat=new PrintInputAndTarget();--------->3
+	Instance i5=piat.pipe(i120);
+			
+System.out.println("\n\n");
+			
+	Token2FeatureVector t2fv=new Token2FeatureVector();-------->4
+	for(Object o: ts)
+		{   
+                      Token t=(Token)o;
+	Instance i34=new Instance(t,t.getText(),"Instance-2",t.getFeatures());----->5
+			Instance i20=t2fv.pipe(i34);---------->6
+			PrintInputAndTarget piat1=new PrintInputAndTarget();
+			Instance i51=piat1.pipe(i20);------->7
+		}}
+}
+}}}
+ 
+ * 1)An instance of the type TokenSequence is created.
+ * 2)The tokens from Instance i2 is taken and assigned to the tokensequence. So tokensequence is referring to all the tokens.
+ * 3)The data is shown after processing through TokenSequenceParseFeatureString.It is to be noted that the data shown after line 3 gets executed is not processed through Token2FeatureVector.
+ * 4)An instance of Token2FeatureVector is created.
+ * 5)Each token taken from tokensequence is taken.
+ * 6)A new Instance is created which takes the data from the token and then processed through Token2FeatureVector.
+ * 7)The individual token which is converted into Feature Vector is printed on the screen.
+
+===Output===
+
+name: Instance-1
+input: TokenSequence [width=10 feature(width)=10.0  span[0..8], height=11 feature(height)=11.0  span[9..18], length=12 feature(length)=12.0  span[19..28]]
+Token#0:width=10 feature(width)=10.0  span[0..8]
+Token#1:height=11 feature(height)=11.0  span[9..18]
+Token#2:length=12 feature(length)=12.0  span[19..28]-------->The output when Token2Feature
+                                                             vector is not applied.  
+target: africa
+
+__________________________________________________________________________________________
+
+name: Instance-2     ------------->Each individual token is converted into Feature Vector.
+input: width(0)=10.0
+
+target: width=10
+
+name: Instance-2
+input: height(1)=11.0
+
+target: height=11
+
+name: Instance-2
+input: length(2)=12.0
+
+target: length=12
