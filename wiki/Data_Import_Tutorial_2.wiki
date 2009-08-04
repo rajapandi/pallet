@@ -8,7 +8,7 @@ Table of contents
   * 3)[http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_2#Make-Ampersand-XML-Friendly MakeAmpersandXMLFriendly]
   * 4)[http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_2#Feature-Sequence-2-Augmentable-Feature-Vector FeatureSequence2AugmentableFeatureVector]
   * 5)[http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_2#Augmentable-Feature-Vector-Log-Scale AugmentableFeatureVectorLogScale]
-  * 6)[http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_2#Char-sequence-2-char-n-grams Charsequence2charngrams]
+  * 6)[http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_2#Char-Sequence-2-char-n-grams Charsequence2charngrams]
   * 7)[http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_2#Char-Sequence-Lower-case CharSequenceLowercase]
   * 8)[http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_2#Char-Sub-sequence CharSubsequence]
   * 9)[http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_2#Line-Group-String-2-Token-Sequence LineGroupString2TokenSequence]
@@ -143,7 +143,7 @@ Implementation
        of a token Sequence
 
 }}}
-===Feature-Sequence-2-Augmentable-FeatureVector=== 
+===Feature-Sequence-2-Augmentable-Feature-Vector=== 
 {{{
 It converts the data field from the feature vector to Augmentable Feature Vector.
 
@@ -305,7 +305,7 @@ Implementation
     /Pattern.html site] to know more about Pattern class of java.
 }}}
 
-===Line-Group-String-2-Token-Sequence:===
+===Line-Group-String-2-Token-Sequence===
 {{{ 
 It is a pipe which takes multi-line String and creates one token for each line.
 
