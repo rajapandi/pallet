@@ -3,7 +3,7 @@
 = Introduction =
 __________________________________________________________________________________________
 
-Sample Code
+===Sample Code===
 {{{
 The pipeList is created in Mallet by calling CreatePipe method. The CreatePipe method 
 must be called in the following way.
@@ -57,7 +57,7 @@ The purpose of the each pipe is explained below.
 Now we will look into the each pipe.
         
 }}}
-==Input2CharSequence :==
+==Input-2-Char-Sequence :==
 {{{
 It is a Pipe that can read data from various kinds  of sources and convert the given input into character sequence. 
 
@@ -72,7 +72,7 @@ For e.g.: Input2CharSequence("UTF-8"),tell the data to be read is in UTF-8  form
     
 }}}
 
-==CharSequence2TokenSequence:== 
+==Char-Sequence-2-Token-Sequence:== 
 {{{
 It is pipe that tokenizes a character sequence. It expects a character sequence and 
 converts into tokens. For e.g. after passing through Input2CharSequence
@@ -145,7 +145,7 @@ d) public CharSequence2TokenSequence (CharSequenceLexer lexer):-
     CharSequence2TokenSequenc(tokenPattern);
 
 }}}
-==TokenSequenceLowercase:== 
+==Token-Sequence-Lower-case:== 
 {{{
 It is pipe which converts all the tokens received through previous pipes to lower case. 
 For e.g. 
@@ -231,7 +231,7 @@ MarkDeletions: If it is true then it marks the token which is deleted.
 
 }}}
 
-==TokenSequence2FeatureSequence:==
+==Token-Sequence-2-Feature-Sequence:==
 {{{
 It converts the Token Sequence to FeatureSequence.It indexes the each token.
 
@@ -288,7 +288,7 @@ Implementations
 
 
 }}}
-==Target2Label:==
+==Target-2-Label:==
 {{{ 
 Convert Object in the target field into the label. For e.g. 
                  
@@ -327,15 +327,15 @@ Implementations
 
  3)public Target2Label (Alphabet dataAlphabet, LabelAlphabet labelAlphabet): If user
  want to create it is  own objects of DataAlphabet and LabelAlphabet then uses this constructor. 
- Note in this case user assumes that dataAlpabet object is not already created implicitly by the 
- Mallet. 
+ Note in this case user assumes that dataAlpabet object is not already created implicitly 
+ by the Mallet. 
  
 
- LabelAlphabet is similar class like Alphabet which is used to map arbitrary objects like Labels 
- object into integers and back. So Labels are also indexed like the data.
+ LabelAlphabet is similar class like Alphabet which is used to map arbitrary objects like 
+Labels object into integers and back. So Labels are also indexed like the data.
 
 }}}
-==FeatureSequence2FeatureVector:==
+==Feature-Sequence-2-Feature-Vector:==
 {{{
 Convert a data field from Feature Sequence to Feature vector. This class does not insist 
 on getting its own Alphabet  because it rely on  getting from the FeatureSequence input.
@@ -430,7 +430,7 @@ input: steve(33)=1.0
 irvin(34)=1.0
 herpetologist(35)=1.0
 }}}
-==PrintInputAndTarget==
+==Print-Input-And-Target==
 {{{
 If you passed true in createPipe as last argument then constructor of PrintInputAndTarget is called.
 
