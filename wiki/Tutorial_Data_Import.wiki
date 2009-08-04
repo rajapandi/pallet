@@ -40,12 +40,14 @@ The purpose of the each pipe is explained below.
    
    4)TokenSequenceRemoveStopwords: Remove stop words . 
 
-   5)Target2Label: Convert object in the target field into label in the target  field.
- 
-   6)FeatureSequence2FeatureVector: Convert the data field from feature sequence to 
+   5)TokenSequence2FeatureSequence: Convert the token Sequence to feature sequence.
+
+   6)Target2Label: Convert object in the target field into label in the target  field.
+
+   7)FeatureSequence2FeatureVector: Convert the data field from feature sequence to 
      a feature vector. 
     
-   7)PrintInputAndTarget: Print the data and target field of each instance.
+   8)PrintInputAndTarget: Print the data and target field of each instance.
 
 }}}
 
@@ -54,9 +56,10 @@ The purpose of the each pipe is explained below.
 {{{
 Now we will look into the each pipe.
         
- 
-1)Input2CharSequence :It is a Pipe that can read data from various kinds  of sources and 
-  convert the given input into character sequence. 
+}}}
+==Input2CharSequence :==
+{{{
+It is a Pipe that can read data from various kinds  of sources and convert the given input into character sequence. 
 
 Implementation
 
@@ -67,9 +70,12 @@ b)public Input2CharSequence( String encoding ) : Specifies the encoding form of 
      
 For e.g.: Input2CharSequence("UTF-8"),tell the data to be read is in UTF-8  format.
     
+}}}
 
-2) CharSequence2TokenSequence: It is pipe that tokenizes a character sequence. It expects a
-character sequence and converts into tokens. For e.g. after passing through Input2CharSequence
+==CharSequence2TokenSequence:== 
+{{{
+It is pipe that tokenizes a character sequence. It expects a character sequence and 
+converts into tokens. For e.g. after passing through Input2CharSequence
 you have following data. 
 
 Der T-40 war ein sowjetischer leichter Schwimmpanzer zur Zeit des Zweiten Weltkrieges. 
@@ -130,17 +136,19 @@ c) public CharSequence2TokenSequence ():- If no pattern is given by the user ,th
 
 
 d) public CharSequence2TokenSequence (CharSequenceLexer lexer):- 
-     CharSequence2TokenSequence constructor in reality calls the constructor of CharSequenceLexer 
-     for deciding which word will be converted into token.
+     CharSequence2TokenSequence constructor in reality calls the constructor of 
+     CharSequenceLexer for deciding which word will be converted into token.
 
 
     Pattern tokenPattern = Pattern.compile("[\\p{L}\\p{N}_]+");
     CharSequenceLexer ob1=new CharSequenceLexer(tokenPattern);
     CharSequence2TokenSequenc(tokenPattern);
 
-
-3)TokenSequenceLowercase : It is pipe which converts all the tokens received through
-  previous pipes to lower case. For e.g. 
+}}}
+==TokenSequenceLowercase:== 
+{{{
+It is pipe which converts all the tokens received through previous pipes to lower case. 
+For e.g. 
     
       Token#0:Der  span[0..3]     ------>     Token#0:der  span[0..3]
       Token#1:T  span[4..5]                   Token#1:t  span[4..5]    
@@ -221,8 +229,11 @@ Otherwise the stopwords are removed from the tokens irrespective of their cases.
 
 MarkDeletions: If it is true then it marks the token which is deleted.
 
-5)TokenSequence2FeatureSequence:  It converts the Token Sequence to FeatureSequence. 
-It indexes the each token.
+}}}
+
+==TokenSequence2FeatureSequence:==
+{{{
+It converts the Token Sequence to FeatureSequence.It indexes the each token.
 
 0: der (0)------>         Index of the Word. If this word occur somewhere in this  
 1: 40 (1)                 file or some other file than it is also indexed with 0. 
@@ -265,9 +276,9 @@ Implementations
    to the Alphabet.
 
 
-   Objects cannot be deleted from the Alphabet and thus the integers are never reused. In a
-   simple document classification usage ,each unique word in a  document would be unique 
-   entry in the Alphabet with unique features added to it.
+ Objects cannot be deleted from the Alphabet and thus the integers are never reused. In a
+ simple document classification usage ,each unique word in a  document would be unique 
+ entry in the Alphabet with unique features added to it.
    
    Therefore TokenSequence2featureSequence assigned unique index to each unique words.
    
@@ -276,8 +287,10 @@ Implementations
     own Alphabet instance then uses this constructor.
 
 
-
-6)  Target2Label:- Convert Object in the target field into the label. For e.g. 
+}}}
+==Target2Label:==
+{{{ 
+Convert Object in the target field into the label. For e.g. 
                  
     The object into the target field for sample code is 
 
@@ -321,12 +334,13 @@ Implementations
  LabelAlphabet is similar class like Alphabet which is used to map arbitrary objects like Labels 
  object into integers and back. So Labels are also indexed like the data.
 
+}}}
+==FeatureSequence2FeatureVector:==
+{{{
+Convert a data field from Feature Sequence to Feature vector. This class does not insist 
+on getting its own Alphabet  because it rely on  getting from the FeatureSequence input.
 
-   7)FeatureSequence2FeatureVector : Convert a data field from Feature Sequence to Feature 
-  vector. This class does not insist on getting its own Alphabet  because it rely on  getting from
-  the FeatureSequence input.
-
-  For e.g.  Feature vector counts the number of times index 0  occurred in a featureSequence
+For e.g.  Feature vector counts the number of times index 0  occurred in a featureSequence
  . 
 
   [0]=11.0 
@@ -415,8 +429,9 @@ target: australia
 input: steve(33)=1.0
 irvin(34)=1.0
 herpetologist(35)=1.0
-
-
+}}}
+==PrintInputAndTarget==
+{{{
 If you passed true in createPipe as last argument then constructor of PrintInputAndTarget is called.
 
 Implementations
