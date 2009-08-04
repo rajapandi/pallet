@@ -19,6 +19,7 @@ tutorial which completes the Data Import Section of the Mallet.
  * Token 2 Feature Vector
  * Token Sequence 2 Token Instances
  * Augmentable Feature Vector Add Conjunction
+ * BranchingPipe
 
 
 
@@ -1197,4 +1198,6 @@ It is simple pipe which add specified conjunction to the instances.
 
  * 1) Instance 	pipe(Instance carrier) : This method is used to process the data.
 
+==Branching Pipe== 
+Thie pipe is deprecated from the Mallet-2.0-RC2.
            
