@@ -38,8 +38,7 @@ The purpose of the each pipe is explained below.
  * 4)[http://code.google.com/p/pallet/wiki/Tutorial_Data_Import#Token-Sequence-Remove-Stopwords TokenSequenceRemoveStopwords]: Remove stop words . 
  * 5)[http://code.google.com/p/pallet/wiki/Tutorial_Data_Import#Token-Sequence-2-Feature-Sequence TokenSequence2FeatureSequence]: Convert the token Sequence to feature sequence.
  * 6)[http://code.google.com/p/pallet/wiki/Tutorial_Data_Import#Target-2-Label Target2Label]: Convert object in the target field into label in the target  field.
- * 7)[http://code.google.com/p/pallet/wiki/Tutorial_Data_Import#Feature-Sequence-2-Feature-Vector FeatureSequence2FeatureVector]: Convert the data field from feature sequence to 
-     a feature vector. 
+ * 7)[http://code.google.com/p/pallet/wiki/Tutorial_Data_Import#Feature-Sequence-2-Feature-Vector FeatureSequence2FeatureVector]: Convert the data field from feature sequence to a feature vector. 
  * 8)[http://code.google.com/p/pallet/wiki/Tutorial_Data_Import#Print-Input-And-Target PrintInputAndTarget]: Print the data and target field of each instance.
 
 
