@@ -42,7 +42,7 @@ The purpose of the each pipe is explained below.
      a feature vector. 
  * 8)[http://code.google.com/p/pallet/wiki/Tutorial_Data_Import#Print-Input-And-Target PrintInputAndTarget]: Print the data and target field of each instance.
 
-{{{
+
 
 
 = Details =
