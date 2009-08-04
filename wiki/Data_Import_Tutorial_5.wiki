@@ -23,7 +23,7 @@ tutorial which completes the Data Import Section of the Mallet.
 
 
 
-==Feature_Count_Pipe ==
+==Feature-Count-Pipe ==
 This pipe is used to prune the features which have low count.It is used in order to save the memory which could have been occupied by low count features.This class supports a simpler method that makes two passes over the data : one to collect statistics and create an augumented "stop list",and secondly to actually create instances.
 
 ===Implementation===
