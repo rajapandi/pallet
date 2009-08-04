@@ -94,7 +94,7 @@ Some of the other pipes which are used in Mallet and also explained here.
 
 Now we will look into each pipe
 }}}
-====Char-Sequence-Replace====  
+===Char-Sequence-Replace===  
 {{{
 It is used to find the words which satisfy the given regex expression and then replace 
 it with the given String.
@@ -118,7 +118,7 @@ Implementation
       The data is converted to on the plains of Pallet the lions roar
 }}}
 
-====Char-Sequence-Remove-HTML:==== 
+===Char-Sequence-Remove-HTML=== 
 {{{
 This pipe is used to remove the HTML contents from the training data set.
 
@@ -133,7 +133,7 @@ Implementation
              on the plains of the lions roar
 }}}
 
-====Make-Ampersand-XML-Friendly:==== 
+===Make-Ampersand-XML-Friendly=== 
 {{{
 This pipe converts & to &amp in tokens of a token sequence.
 
@@ -143,7 +143,7 @@ Implementation
        of a token Sequence
 
 }}}
-====Feature-Sequence-2-Augmentable-FeatureVector:==== 
+===Feature-Sequence-2-Augmentable-FeatureVector=== 
 {{{
 It converts the data field from the feature vector to Augmentable Feature Vector.
 
@@ -164,7 +164,7 @@ Implementation
    2) FeatureSequence2AugmentableFeatureVector(Boolean binary):
       
 }}}
-====Augmentable-Feature-Vector-Log-Scale:==== 
+===Augmentable-Feature-Vector-Log-Scale===
 {{{
 The tokens which are occurring once or more than once ,set their value to 1+log(value). 
 For eg if token Pallet occurs two times than its value of occurrence is changed to 
@@ -194,7 +194,7 @@ Note: The value 1.69 is certainly less than 2 .We are decreasing its value so th
 classifier will not be affected much by the multiple occurrence of the token.
 }}}
 
-====Char-Sequence-2-char-n-grams==== 
+===Char-Sequence-2-char-n-grams=== 
 {{{
 This pipe is used to convert the character into a token sequence of N gram. It means , if 
 N is three than the token which is created by this pipe has length 3.
@@ -279,7 +279,7 @@ nce(60)=1.0
 CharSequence2CharNGrams(3,false) will produce exactly the same output but will not show 
 the starting of the border with (>).
 }}}
-====Char-Sequence-Lower-case==== 
+===Char-Sequence-Lower-case=== 
 {{{
 It is simple pipe which will replace the data string (or the character Sequence) with 
 its lowercased version.
@@ -290,7 +290,7 @@ Implementation
     convert the Character sequence to its lower case.
 }}}
 
-====Char-Sub-sequence====
+===Char-Sub-sequence===
 {{{
 Given a string ,it returns only the portion of the string which satisfies the regex parenthesized group.
 
@@ -305,7 +305,7 @@ Implementation
     /Pattern.html site] to know more about Pattern class of java.
 }}}
 
-====Line-Group-String-2-Token-Sequence:====
+===Line-Group-String-2-Token-Sequence:===
 {{{ 
 It is a pipe which takes multi-line String and creates one token for each line.
 
