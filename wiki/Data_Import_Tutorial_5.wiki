@@ -3,7 +3,7 @@
 = Introduction =
 This tutorial is in the continuation of Data_Import_Tutorial 1,2,3,4. This is the last 
 tutorial which completes the Data Import Section of the Mallet.
- * Feature Count Pipe [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_5#Feature Count Pipe Introduction]
+ * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_5#Feature-Count-Pipe Feature-Count-Pipe ]
  * Feature Value String 2 Feature Vector
  * Token Sequence 2 Feature Vector Sequence
  * Feature Vector Sequence 2 Feature Vectors
@@ -100,7 +100,7 @@ roar
 }}}
 These all words doesn't occur more than two times in the raw data so will be pruned from feature set.
 
-==Feature Value String 2 Feature Vector==
+==Feature-Value-String-2-Feature-Vector==
 It is simple pipe which converts the Feature Value String 2 Feature Vector.
 
 ===Implementation===
@@ -150,7 +150,7 @@ length(2)=20.0
 target: africa
 
 }}}
-==Token Sequence 2 Feature Vector Sequence==
+==Token-Sequence-2-Feature-Vector-Sequence==
 It is pipe which take input as Token Sequence of Instances and convert it into Feature 
 Vector Sequence.
 
@@ -228,7 +228,7 @@ target: 0: abc (0)
 9: O (1)
 }}}
 
-==Feature Vector Sequence 2 Feature Vectors==
+==Feature-Vector-Sequence-2-Feature-Vectors==
 It is the pipe which converts the Feature Vector Sequence to Feature Vectors. The previous pipe (TokenSequence2FeatureVectorSequence) converts the token sequence to feature vector sequence and this pipe than subsequently converts the given Feature Vector Sequence to Feature Vectors.So given an instance with a Feature Vector Sequence in the data field ,it break up the sequence into the individual feature vectors producing one feature vector per instance.
 
 ===Implementation===
@@ -252,7 +252,7 @@ The instances which is passed through TokenSequence2FeatureVectorSequence is add
 Output contains individual feature vectors per instance.
 
 
-==Filter Empty Feature Vector==
+==Filter-Empty-Feature-Vector==
 This pipe provides functionality of iterating through Feature Vectors individually.
 
 ===Implementation===
@@ -544,7 +544,7 @@ herpetologist(47)=1.0
 target: australia
 }}}
 
-==Instance List Trim Features By Count==
+==Instance-List-Trim-Features-By-Count==
 This pipe is unimplemented in the Mallet as of now.
 
 ==Noop==
@@ -622,7 +622,7 @@ The dataAlphabet and targetAlphabet is created by the use Noop.
 
 Note : For further details about Pipe ,please see [http://mallet.cs.umass.edu/api/ following]
 
-==PrintInput==
+==Print-Input==
 
 It is pipe simillar to "PrintInputAndTarget" .The difference is that it only prints data fields of Mallet instances.
 
@@ -773,7 +773,7 @@ herpetologist(47)=1.0
 
 }}}
 
-==Print Token Sequence Features==
+==Print-Token-Sequence-Features==
 It print features of the token sequence in the data field and the corressponding value (if exists) of any token sequence or feature sequence in the target field.
 
 ===Implementation===
@@ -851,7 +851,7 @@ height=11.0           in the data field.
 length=12.0 
 }}}
 
-== Save Data In Source==
+==Save-Data-In-Source==
 Each Mallet Instance has four part 
  * a)Name : This field should contain a value that identifies this instance, usually a String.
  * b)Label: The label is primarily used in classification applications. It is usually a value within a finite set of labels, a LabelAlphabet.
@@ -866,7 +866,7 @@ So we can say that the source fields of each instance to its data field.
 
 Note: We need to just create the pipe and pass the data through this pipe with the help of pipe method and the data is copied into the source field from data field.
 
-==Selective SGML 2 Token Sequence==
+==Selective-SGML-2-Token-Sequence==
 It converts only the specified SGML tag into Labels.It is similar to SGML2TokenSequence which converts all the SGML tags into Labels.
 
 ===Implementation===
@@ -971,7 +971,7 @@ Token#7:pallet
 }}}
 
 
-==Simple Tagger Sentence 2 String Tokenization==
+==Simple-Tagger-Sentence-2-String-Tokenization==
 This pipe extends SimpleTaggerSentence2TokenSequence to use {Slink StringTokenization} for use with the extract  package.
 
 ===Implementation===
@@ -1025,7 +1025,7 @@ target: 0: roar (0)
 
 }}}
 
-==Token 2 Feature Vector==
+==Token-2-Feature-Vector==
 It converts the property list on a token into feature vector.
 
 ===Implementation===
@@ -1114,7 +1114,7 @@ input: length(2)=12.0
 
 target: length=12
 
-==Token Sequence 2 Token Instances==
+==Token-Sequence-2-Token-Instances==
 It is pipe which converts the token sequence to token instances.
 
 ===Implementation===
@@ -1185,7 +1185,7 @@ lions123  span[28..36]
 roar  span[38..42]
 }}}
 
-==Augmentable Feature Vector Add Conjunction==
+==Augmentable-Feature-Vector-Add-Conjunction==
 It is simple pipe which add specified conjunction to the instances.
 
 ===Implementation===
@@ -1198,6 +1198,6 @@ It is simple pipe which add specified conjunction to the instances.
 
  * 1) Instance 	pipe(Instance carrier) : This method is used to process the data.
 
-==Branching Pipe== 
+==Branching-Pipe== 
 Thie pipe is deprecated from the Mallet-2.0-RC2.
            
