@@ -1193,5 +1193,8 @@ It is simple pipe which add specified conjunction to the instances.
 
 ===Method===
 
- * 1)AugmentableFeatureVectorAddConjunctions addConjunction(java.lang.String name, Alphabet v, int[] features, boolean[] negations)
+ * 1)AugmentableFeatureVectorAddConjunctions addConjunction(java.lang.String name, Alphabet v, int[] features, boolean[] negations) : This method is used to add the specified conjunction to the instances.
+
+ * 1) Instance 	pipe(Instance carrier) : This method is used to process the data.
+
            
