@@ -3,7 +3,7 @@
 = Introduction =
 This tutorial is in the continuation of Data_Import_Tutorial 1,2,3,4. This is the last 
 tutorial which completes the Data Import Section of the Mallet.
- * Feature Count Pipe [http://code.google.com/p/pallet/w/edit/Data_Import_Tutorial_5 Feature Count]
+ * Feature Count Pipe [DataTypes#Interfaces Interfaces]
  * Feature Value String 2 Feature Vector
  * Token Sequence 2 Feature Vector Sequence
  * Feature Vector Sequence 2 Feature Vectors
