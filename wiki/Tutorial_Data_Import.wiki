@@ -1,6 +1,20 @@
 #summary Document demonstrating the Data Import in MALLET
+Table of Contents
 
-= Introduction =
+ * [http://code.google.com/p/pallet/wiki/Tutorial_Data_Import#Introduction Introduction]
+ * [http://code.google.com/p/pallet/wiki/Tutorial_Data_Import#Details Details]
+  * 1)[http://code.google.com/p/pallet/wiki/Tutorial_Data_Import#Input-2-Char-Sequence Input2CharSequence]
+  * 2)[http://code.google.com/p/pallet/wiki/Tutorial_Data_Import#Char-Sequence-2-Token-Sequence CharSequence2TokenSequence]
+  * 3)[http://code.google.com/p/pallet/wiki/Tutorial_Data_Import#Token-Sequence-Lower-case TokenSequenceLowercase]
+  * 4)[http://code.google.com/p/pallet/wiki/Tutorial_Data_Import#Token-Sequence-Remove-Stopwords TokenSequenceRemoveStopwords]
+  * 5)[http://code.google.com/p/pallet/wiki/Tutorial_Data_Import#Token-Sequence-2-Feature-Sequence TokenSequence2FeatureSequence]
+  * 6)[http://code.google.com/p/pallet/wiki/Tutorial_Data_Import#Target-2-Label Target2Label]
+  * 7)[http://code.google.com/p/pallet/wiki/Tutorial_Data_Import#Feature-Sequence-2-Feature-Vector FeatureSequence2FeatureVector]
+  * 8)[http://code.google.com/p/pallet/wiki/Tutorial_Data_Import#Print-Input-And-Target PrintInputAndTarget]
+
+
+
+=Introduction=
 __________________________________________________________________________________________
 
 ===Sample Code===
@@ -29,22 +43,15 @@ in the application.
 The following pipes are used by the application. We will look into the each of the pipe 
 one by one and explains what each one do.
 
-The purpose of the each pipe is explained below.
+
 
 }}}
- * 1)[http://code.google.com/p/pallet/wiki/Tutorial_Data_Import#Input-2-Char-Sequence Input2CharSequence]: Convert Input data to character sequence
- * 2)[http://code.google.com/p/pallet/wiki/Tutorial_Data_Import#Char-Sequence-2-Token-Sequence CharSequence2TokenSequence]: Convert character sequence to token sequence
- * 3)[http://code.google.com/p/pallet/wiki/Tutorial_Data_Import#Token-Sequence-Lower-case TokenSequenceLowercase]: Convert all tokens to lower case.
- * 4)[http://code.google.com/p/pallet/wiki/Tutorial_Data_Import#Token-Sequence-Remove-Stopwords TokenSequenceRemoveStopwords]: Remove stop words . 
- * 5)[http://code.google.com/p/pallet/wiki/Tutorial_Data_Import#Token-Sequence-2-Feature-Sequence TokenSequence2FeatureSequence]: Convert the token Sequence to feature sequence.
- * 6)[http://code.google.com/p/pallet/wiki/Tutorial_Data_Import#Target-2-Label Target2Label]: Convert object in the target field into label in the target  field.
- * 7)[http://code.google.com/p/pallet/wiki/Tutorial_Data_Import#Feature-Sequence-2-Feature-Vector FeatureSequence2FeatureVector]: Convert the data field from feature sequence to a feature vector. 
- * 8)[http://code.google.com/p/pallet/wiki/Tutorial_Data_Import#Print-Input-And-Target PrintInputAndTarget]: Print the data and target field of each instance.
 
 
 
 
-= Details =
+
+=Details=
 {{{
 Now we will look into the each pipe.
         
