@@ -3,8 +3,8 @@ Table of contents
  
  * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_2#Introduction Introduction]
  * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_2#Details Details]
-  * 1)[http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_2#CharSequenceReplace Char-Sequence-Replace] 
-  * 2)[http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_2#CharSequenceRemoveHTML Char-Sequence-Remove-HTML]
+  * 1)[http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_2#Char-Sequence-Replace CharSequenceReplace] 
+  * 2)[http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_2#Char-Sequence-Remove-HTML CharSequenceRemoveHTML]
   * 3)[http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_2#Make-Ampersand-XML-Friendly MakeAmpersandXMLFriendly]
   * 4)[http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_2#Feature-Sequence-2-Augmentable-Feature-Vector FeatureSequence2AugmentableFeatureVector]
   * 5)[http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_2#Augmentable-Feature-Vector-Log-Scale AugmentableFeatureVectorLogScale]
