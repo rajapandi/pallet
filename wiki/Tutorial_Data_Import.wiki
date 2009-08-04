@@ -50,7 +50,7 @@ The purpose of the each pipe is explained below.
 Now we will look into the each pipe.
         
 }}}
-==Input-2-Char-Sequence :==
+==Input-2-Char-Sequence==
 {{{
 It is a Pipe that can read data from various kinds  of sources and convert the given input into character sequence. 
 
@@ -65,7 +65,7 @@ For e.g.: Input2CharSequence("UTF-8"),tell the data to be read is in UTF-8  form
     
 }}}
 
-==Char-Sequence-2-Token-Sequence:== 
+==Char-Sequence-2-Token-Sequence== 
 {{{
 It is pipe that tokenizes a character sequence. It expects a character sequence and 
 converts into tokens. For e.g. after passing through Input2CharSequence
@@ -138,7 +138,7 @@ d) public CharSequence2TokenSequence (CharSequenceLexer lexer):-
     CharSequence2TokenSequenc(tokenPattern);
 
 }}}
-==Token-Sequence-Lower-case:== 
+==Token-Sequence-Lower-case== 
 {{{
 It is pipe which converts all the tokens received through previous pipes to lower case. 
 For e.g. 
@@ -224,7 +224,7 @@ MarkDeletions: If it is true then it marks the token which is deleted.
 
 }}}
 
-==Token-Sequence-2-Feature-Sequence:==
+==Token-Sequence-2-Feature-Sequence==
 {{{
 It converts the Token Sequence to FeatureSequence.It indexes the each token.
 
@@ -281,7 +281,7 @@ Implementations
 
 
 }}}
-==Target-2-Label:==
+==Target-2-Label==
 {{{ 
 Convert Object in the target field into the label. For e.g. 
                  
@@ -328,7 +328,7 @@ Implementations
 Labels object into integers and back. So Labels are also indexed like the data.
 
 }}}
-==Feature-Sequence-2-Feature-Vector:==
+==Feature-Sequence-2-Feature-Vector==
 {{{
 Convert a data field from Feature Sequence to Feature vector. This class does not insist 
 on getting its own Alphabet  because it rely on  getting from the FeatureSequence input.
