@@ -2,7 +2,7 @@
 Table of Contents
  * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_4#Introduction Introduction]
  * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_4#Details Details]
-  * 1) [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_4#Token-Sequence-Remove-NonAlpha Token-Sequence-Remove-Non-Alpha]
+  * 1) [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_4#Token-Sequence-Remove-Non-Alpha Token-Sequence-Remove-Non-Alpha]
   * 2) [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_4#Token-Sequence-N-Grams Token-Sequence-N-Grams]
   * 3) [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_4#SGML-2-Token-Sequence SGML-2-Token-Sequence]
   * 4) [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_4#Target-2-Feature-Sequence Target-2-Feature-Sequence]
