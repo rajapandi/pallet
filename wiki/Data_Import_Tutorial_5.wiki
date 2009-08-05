@@ -19,6 +19,7 @@ Table of Contents
   * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_5#Token-Sequence-2-Token-Instances Token-Sequence-2-Token-Instances]
   * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_5#Augmentable-Feature-Vector-Add-Conjunction Augmentable-Feature-Vector-Add-Conjunction]
   * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_5#Branching-Pipe Branching-Pipe]
+  * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_5#Directory-2-File-Iterator Directory-2-File-Iterator] 
 
   
 = Introduction =
@@ -1204,4 +1205,93 @@ It is simple pipe which add specified conjunction to the instances.
 
 ==Branching-Pipe== 
 Thie pipe is deprecated from the Mallet-2.0-RC2.
+
+==Directory-2-File-Iterator==
+This pipe takes File object which refers to directory and return a File Iterator which iterates over the files in a directory matching a pattern.It extract Label from each file path to become the target field of the instance.
+
+===Implementation===
+
+ * 1)Directory2FileIterator() : It is simple constructor which does nothing except creating the object of Directory2FileIterator.
+ * 2)Directory2FileIterator(java.io.FileFilter fileFilter, java.util.regex.Pattern labelRegex): 
+       * fileFilter: This arguments tells that what kind of files will have to be taken care of for eg fileFilter can be set to taken care of only ".txt" files.
+       * labelRegex: This tells what will be the label of the instance. 
+ * 3)Directory2FileIterator(java.util.regex.Pattern absolutePathRegex, java.util.regex.Pattern filenameRegex, java.util.regex.Pattern labelRegex) 
+ * 4)Directory2FileIterator(java.lang.String filenameRegex) 
            
+===Method===
+
+ * 1) java.util.Iterator pipe(java.io.File directory) : Given a file object which refers to directory, will return Iterator which can iterates through files.
+ * 2) Instance 	pipe(Instance carrier): Given an Instance which contains data in file format,will return Instance which contains File Iterator. 
+ * 3) java.util.Iterator pipe(java.lang.String directory) : Create the file object of the name String provided by user.
+ * 4) java.util.Iterator pipe(java.net.URI directory) :Create a file object of the name java.net.URI  directory.
+
+===Sample Code===
+{{{
+
+import cc.mallet.pipe.*;
+import cc.mallet.types.*;
+import java.io.*;
+import java.util.Iterator;
+
+import cc.mallet.pipe.iterator.*;
+
+class TxtFilter implements FileFilter {
+
+    public boolean accept(File file) {
+        return file.toString().endsWith(".txt");
+    }
+}
+
+public class ImportExample1000{
+	static Pipe pipe=null;
+	
+	
+	
+	
+	public static void main(String args[])
+	{
+      File f=new File("/home/pralabh/workspace1/sample-data");
+Directory2FileIterator i1=new Directory2FileIterator(new TxtFilter(),FileIterator.LAST_DIRECTORY);-----> 1
+		Iterator<Instance> i2=i1.pipe(f);
+		while(i2.hasNext())
+		{  
+			System.out.println(i2.next().getName());---->2
+	
+		}	
+	}
+
+}
+}}}
+
+1)An instance of Directory2FileIterator is created which filter the text fine only and the Label would be the Path to the file.
+2)Each file is processed and it's name is taken as Label
+
+Note: sample-data is the name of the directory.
+
+===Output===
+{{{
+file:/home/pralabh/workspace1/sample-data/web/de/t40.txt
+file:/home/pralabh/workspace1/sample-data/web/de/apollo8.txt
+file:/home/pralabh/workspace1/sample-data/web/de/wildenstein.txt
+file:/home/pralabh/workspace1/sample-data/web/de/hoechst.txt
+file:/home/pralabh/workspace1/sample-data/web/de/ulrich.txt
+file:/home/pralabh/workspace1/sample-data/web/de/rostock.txt
+file:/home/pralabh/workspace1/sample-data/web/de/habichtsadler.txt
+file:/home/pralabh/workspace1/sample-data/web/de/fiv.txt
+file:/home/pralabh/workspace1/sample-data/web/de/sadat.txt
+file:/home/pralabh/workspace1/sample-data/web/de/indogermanische.txt
+file:/home/pralabh/workspace1/sample-data/web/de/marcellinus.txt
+file:/home/pralabh/workspace1/sample-data/web/de/konrad.txt
+file:/home/pralabh/workspace1/sample-data/web/en/thylacine.txt
+file:/home/pralabh/workspace1/sample-data/web/en/elizabeth_needham.txt
+file:/home/pralabh/workspace1/sample-data/web/en/uranus.txt
+file:/home/pralabh/workspace1/sample-data/web/en/hawes.txt
+file:/home/pralabh/workspace1/sample-data/web/en/yard.txt
+file:/home/pralabh/workspace1/sample-data/web/en/gunnhild.txt
+file:/home/pralabh/workspace1/sample-data/web/en/hill.txt
+file:/home/pralabh/workspace1/sample-data/web/en/zinta.txt--->The path will be considered
+file:/home/pralabh/workspace1/sample-data/web/en/thespis.txt   as Labels of Instances.
+file:/home/pralabh/workspace1/sample-data/web/en/shiloh.txt
+file:/home/pralabh/workspace1/sample-data/web/en/equipartition_theorem.txt
+file:/home/pralabh/workspace1/sample-data/web/en/sunderland_echo.txt
+}}}
