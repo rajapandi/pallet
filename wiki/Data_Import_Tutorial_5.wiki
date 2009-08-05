@@ -20,6 +20,7 @@ Table of Contents
   * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_5#Augmentable-Feature-Vector-Add-Conjunction Augmentable-Feature-Vector-Add-Conjunction]
   * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_5#Branching-Pipe Branching-Pipe]
   * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_5#Directory-2-File-Iterator Directory-2-File-Iterator] 
+  * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_5#Serial-Pipes Serial-Pipes] 
 
   
 = Introduction =
@@ -1295,3 +1296,34 @@ file:/home/pralabh/workspace1/sample-data/web/en/shiloh.txt
 file:/home/pralabh/workspace1/sample-data/web/en/equipartition_theorem.txt
 file:/home/pralabh/workspace1/sample-data/web/en/sunderland_echo.txt
 }}}
+
+==Serial Pipes==
+This pipe convert an instance through a sequence of pipes. We have used this pipe in the sample code of many other pipes.We added all the Pipes in the ArrayList and then pass the ArrayList as its arguments.
+
+===Implementation===
+ * 1)SerialPipes() : It is simple constructor with no arguments.
+ * 2)SerialPipes(java.util.Collection<Pipe> pipeList) : It takes the argument of the  object of the Collection type.
+ * 3)SerialPipes(Pipe[] pipes): It is similar to the above constructor but takes the array of Pipe.
+
+===Method===
+
+ *  Pipe getPipe(int index)
+           
+ * java.util.Iterator<Instance> newIteratorFrom(java.util.Iterator<Instance> source)
+Given an InstanceIterator, return a new InstanceIterator whose instances have also been 
+processed by this pipe.
+
+ * SerialPipes newSerialPipesFromRange(int start, int end)
+           
+ * SerialPipes 	newSerialPipesFromSuffix(SerialPipes.Predicate testForStartingNewPipes)
+           
+ * java.util.ArrayList<Pipe> pipes()Allows access to the underlying collection of Pipes.
+
+ * void setTargetProcessing(boolean lookForAndProcessTarget)
+   Set whether input is taken from target field of instance during processing.
+
+ * int 	size()
+           
+ * java.lang.String 	toString() 
+
+Note: This pipe is used in sample code of many other pipes.
