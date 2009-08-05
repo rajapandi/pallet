@@ -1,26 +1,30 @@
 #summary Data Import Tutorial 5[Final Document for Data Import Section]
+Table of Contents
+ * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_5#Introduction Introduction]
+ * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_5#Details Details]
+  * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_5#Feature-Count-Pipe Feature-Count-Pipe]
+  * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_5#Feature-Value-String-2-Feature-Vector Feature-Value-String-2-Feature-Vector]
+  * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_5#Token-Sequence-2-Feature-Vector-Sequence Token-Sequence-2-Feature-Vector-Sequence]
+  * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_5#Feature-Vector-Sequence-2-Feature-Vectors Feature-Vector-Sequence-2-Feature-Vectors]
+  * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_5#Filter-Empty-Feature-Vector Filter-Empty-Feature-Vector]
+  * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_5#Instance-List-Trim-Features-By-Count Instance-List-Trim-Features-By-Count]
+  * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_5#Noop Noop]
+  * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_5#Pipe Pipe]
+  * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_5#Print-Input Print-Input]
+  * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_5#Print-Token-Sequence-Features Print-Token-Sequence-Features]
+  * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_5#Save-Data-In-Source Save-Data-In-Source]
+  * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_5#Selective-SGML-2-Token-Sequence Selective-SGML-2-Token-Sequence]
+  * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_5#Simple-Tagger-Sentence-2-String-Tokenization Simple-Tagger-Sentence-2-String-Tokenization]
+  * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_5#Token-2-Feature-Vector Token-2-Feature-Vector]
+  * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_5#Token-Sequence-2-Token-Instances Token-Sequence-2-Token-Instances]
+  * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_5#Augmentable-Feature-Vector-Add-Conjunction Augmentable-Feature-Vector-Add-Conjunction]
+  * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_5#Branching-Pipe Branching-Pipe]
 
+  
 = Introduction =
 This tutorial is in the continuation of Data_Import_Tutorial 1,2,3,4. This is the last 
 tutorial which completes the Data Import Section of the Mallet.
- * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_5#Feature-Count-Pipe Feature-Count-Pipe]
- * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_5#Feature-Value-String-2-Feature-Vector Feature-Value-String-2-Feature-Vector]
- * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_5#Token-Sequence-2-Feature-Vector-Sequence Token-Sequence-2-Feature-Vector-Sequence]
- * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_5#Feature-Vector-Sequence-2-Feature-Vectors Feature-Vector-Sequence-2-Feature-Vectors]
- * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_5#Filter-Empty-Feature-Vector Filter-Empty-Feature-Vector]
- * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_5#Instance-List-Trim-Features-By-Count Instance-List-Trim-Features-By-Count]
- * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_5#Noop Noop]
- * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_5#Pipe Pipe]
- * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_5#Print-Input Print-Input]
- * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_5#Print-Token-Sequence-Features Print-Token-Sequence-Features]
- * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_5#Save-Data-In-Source Save-Data-In-Source]
- * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_5#Selective-SGML-2-Token-Sequence Selective-SGML-2-Token-Sequence]
- * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_5#Simple-Tagger-Sentence-2-String-Tokenization Simple-Tagger-Sentence-2-String-Tokenization]
- * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_5#Token-2-Feature-Vector Token-2-Feature-Vector]
- * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_5#Token-Sequence-2-Token-Instances Token-Sequence-2-Token-Instances]
- * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_5#Augmentable-Feature-Vector-Add-Conjunction Augmentable-Feature-Vector-Add-Conjunction]
- * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_5#Branching-Pipe Branching-Pipe]
-
+ 
 
 
 ==Feature-Count-Pipe ==
