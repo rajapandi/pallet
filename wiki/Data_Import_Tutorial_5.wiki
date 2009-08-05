@@ -1301,11 +1301,13 @@ file:/home/pralabh/workspace1/sample-data/web/en/sunderland_echo.txt
 This pipe convert an instance through a sequence of pipes. We have used this pipe in the sample code of many other pipes.We added all the Pipes in the ArrayList and then pass the ArrayList as its arguments.
 
 ===Implementation===
+{{{
  * 1)SerialPipes() : It is simple constructor with no arguments.
  * 2)SerialPipes(java.util.Collection<Pipe> pipeList) : It takes the argument of the  object of the Collection type.
  * 3)SerialPipes(Pipe[] pipes): It is similar to the above constructor but takes the array of Pipe.
-
+}}}
 ===Method===
+{{{
 
  *  Pipe getPipe(int index)
            
@@ -1325,5 +1327,5 @@ processed by this pipe.
  * int 	size()
            
  * java.lang.String 	toString() 
-
+}}}
 Note: This pipe is used in sample code of many other pipes.
