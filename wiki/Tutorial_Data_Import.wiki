@@ -369,5 +369,4 @@ If you passed true in createPipe as last argument then constructor of PrintInput
 
  * 1) public PrintInputAndTarget (String prefix): If user want to add some prefix before the actual output then should cal this constructor.
 
- * 2) PrintInputAndTarget(): This is the constructor which simply creates the 
-object of PrintInputAndTarget without any prefix. 
+ * 2) PrintInputAndTarget(): This is the constructor which simply creates the object of PrintInputAndTarget without any prefix. 
