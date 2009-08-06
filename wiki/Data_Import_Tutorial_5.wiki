@@ -1,4 +1,7 @@
 #summary Data Import Tutorial 5[Final Document for Data Import Section]
+
+<wiki:toc max_depth="2" />
+
 Table of Contents
  * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_5#Introduction Introduction]
  * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_5#Details Details]
