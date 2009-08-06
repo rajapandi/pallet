@@ -362,7 +362,7 @@ herpetologist(35)=1.0
 }}}
 
 ==Print-Input-And-Target==
-{{{
+
 If you passed true in createPipe as last argument then constructor of PrintInputAndTarget is called.
 
 ===Implementations===
