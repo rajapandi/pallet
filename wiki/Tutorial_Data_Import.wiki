@@ -1,18 +1,7 @@
 #summary Document demonstrating the Data Import in MALLET
-<wiki:toc max_depth="2" />
+
 Table of Contents
-
- * [http://code.google.com/p/pallet/wiki/Tutorial_Data_Import#Introduction Introduction]
- * [http://code.google.com/p/pallet/wiki/Tutorial_Data_Import#Details Details]
-  * 1)[http://code.google.com/p/pallet/wiki/Tutorial_Data_Import#Input-2-Char-Sequence Input2CharSequence]
-  * 2)[http://code.google.com/p/pallet/wiki/Tutorial_Data_Import#Char-Sequence-2-Token-Sequence CharSequence2TokenSequence]
-  * 3)[http://code.google.com/p/pallet/wiki/Tutorial_Data_Import#Token-Sequence-Lower-case TokenSequenceLowercase]
-  * 4)[http://code.google.com/p/pallet/wiki/Tutorial_Data_Import#Token-Sequence-Remove-Stopwords TokenSequenceRemoveStopwords]
-  * 5)[http://code.google.com/p/pallet/wiki/Tutorial_Data_Import#Token-Sequence-2-Feature-Sequence TokenSequence2FeatureSequence]
-  * 6)[http://code.google.com/p/pallet/wiki/Tutorial_Data_Import#Target-2-Label Target2Label]
-  * 7)[http://code.google.com/p/pallet/wiki/Tutorial_Data_Import#Feature-Sequence-2-Feature-Vector FeatureSequence2FeatureVector]
-  * 8)[http://code.google.com/p/pallet/wiki/Tutorial_Data_Import#Print-Input-And-Target PrintInputAndTarget]
-
+<wiki:toc max_depth="2" /> 
 
 
 =Introduction=
@@ -99,7 +88,7 @@ For Pattern class please look *[http://java.sun.com/j2se/1.4.2/docs/api/java/uti
 The Pattern parameter which is passed as argument is used as qualifier. Only those words which can qualify for the Pattern parameter is converted into the tokens. 
 
 
-* a) public CharSequence2TokenSequence (String regex):-The string parameter will be    converted into Pattern. If one wants to provide the string directly into the   CharSequence2TokenSequence constructor without using Pattern.compile then should use this constructor. For e.g.
+ * a) public CharSequence2TokenSequence (String regex):-The string parameter will be    converted into Pattern. If one wants to provide the string directly into the   CharSequence2TokenSequence constructor without using Pattern.compile then should use this constructor. For e.g.
 {{{
    CharSequence2TokenSequence("[\\p{L}\\p{N}_]+") 
   }}}
