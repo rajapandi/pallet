@@ -1,5 +1,5 @@
 #summary Document demonstrating the Data Import in MALLET
-<wiki:toc max_depth="1" />
+<wiki:toc max_depth="2" />
 Table of Contents
 
  * [http://code.google.com/p/pallet/wiki/Tutorial_Data_Import#Introduction Introduction]
@@ -18,7 +18,7 @@ Table of Contents
 =Introduction=
 __________________________________________________________________________________________
 
-===Sample Code===
+==Sample Code==
 {{{
 The pipeList is created in Mallet by calling CreatePipe method. The CreatePipe method 
 must be called in the following way.
@@ -36,48 +36,36 @@ CreatePipe(new Input2CharSequence("UTF-8"),
 This function will create the Pipelist by adding the instances of all the pipes.
 _________________________________________________________________________________________
 
-Note: The first and second argument are must for this method. We can provide null for 
-4,5,6 and 7 arguments. This depends on the user ,that which pipes he/she wants to use 
-in the application.
+}}}
+Note: The first and second argument are must for this method. We can provide null for 4,5,6 and 7 arguments. This depends on the user ,that which pipes he/she wants to use in the application.
 
 
 The following pipes are used by the application. We will look into the each of the pipe 
 one by one and explains what each one do.
 
-
-
-}}}
-
-
-
-
-
 =Details=
-{{{
+
 Now we will look into the each pipe.
         
-}}}
 ==Input-2-Char-Sequence==
-{{{
+
 It is a Pipe that can read data from various kinds  of sources and convert the given input into character sequence. 
 
-Implementation
+===Implementation===
 
-a)public Input2CharSequence (): It is default constructor.If user does not specify any 
-  encoding then this constructor will be called.
+ * a) public Input2CharSequence (): It is default constructor.If user does not specify any encoding then this constructor will be called.
 
-b)public Input2CharSequence( String encoding ) : Specifies the encoding form of the data.
+ * b)public Input2CharSequence( String encoding ) : Specifies the encoding form of the data.
      
 For e.g.: Input2CharSequence("UTF-8"),tell the data to be read is in UTF-8  format.
     
-}}}
+
 
 ==Char-Sequence-2-Token-Sequence== 
-{{{
-It is pipe that tokenizes a character sequence. It expects a character sequence and 
-converts into tokens. For e.g. after passing through Input2CharSequence
-you have following data. 
 
+It is pipe that tokenizes a character sequence. It expects a character sequence and 
+converts into tokens. For e.g. after passing through Input2CharSequence you have following data. 
+{{{
 Der T-40 war ein sowjetischer leichter Schwimmpanzer zur Zeit des Zweiten Weltkrieges. 
 
 
@@ -97,82 +85,65 @@ Token#9:Zeit  span[57..61]
 Token#10:des  span[62..65]
 Token#11:Zweiten  span[66..73]
 Token#12:Weltkrieges  span[74..85]
-
+}}}
                       
-Implementations
-
+===Implementations===
+{{{
 Pattern tokenPattern = Pattern.compile("[\\p{L}\\p{N}_]+")
 
 This Pattern will select all the words which includes alphabets and Numericals.
 }}}
 
-      For Pattern class please look *[http://java.sun.com/j2se/1.4.2/docs/api/java/util/regex/Pattern.html here] 
+For Pattern class please look *[http://java.sun.com/j2se/1.4.2/docs/api/java/util/regex/Pattern.html here] 
 
+The Pattern parameter which is passed as argument is used as qualifier. Only those words which can qualify for the Pattern parameter is converted into the tokens. 
+
+
+* a) public CharSequence2TokenSequence (String regex):-The string parameter will be    converted into Pattern. If one wants to provide the string directly into the   CharSequence2TokenSequence constructor without using Pattern.compile then should use this constructor. For e.g.
 {{{
-The Pattern parameter which is passed as argument is used as qualifier. Only those words which can 
-qualify for the Pattern parameter is converted into the tokens. 
-
-
-a) public CharSequence2TokenSequence (String regex):-The string parameter will be 
-   converted into Pattern. If one wants to provide the string directly into the 
-   CharSequence2TokenSequence constructor without using Pattern.compile then should  use     
-   this constructor. For e.g.
-
    CharSequence2TokenSequence("[\\p{L}\\p{N}_]+") 
-  
+  }}}
    
 
-b) public CharSequence2TokenSequence (Pattern regex):-We used this constructor of
-   CharSequence2TokenSequence in our application.
-    
+ * b) public CharSequence2TokenSequence (Pattern regex):-We used this constructor of    CharSequence2TokenSequence in our application.
+   {{{ 
    Pattern tokenPattern = Pattern.compile("[\\p{L}\\p{N}_]+");
    CharSequence2TokenSequence(tokenPattern)
-     
+     }}}
 
-c) public CharSequence2TokenSequence ():- If no pattern is given by the user ,then 
-   the default Pattern will be taken by the pipe.  The default Pattern is 
-
-   \\p{Alpha}+ which means any alphabet which can occur one or more times.
+ * c) public CharSequence2TokenSequence ():- If no pattern is given by the user ,then   the default Pattern will be taken by the pipe.  The default Pattern is \\p{Alpha}+ which means any alphabet which can occur one or more times.
 
 
-d) public CharSequence2TokenSequence (CharSequenceLexer lexer):- 
-     CharSequence2TokenSequence constructor in reality calls the constructor of 
-     CharSequenceLexer for deciding which word will be converted into token.
-
-
+ * d) public CharSequence2TokenSequence (CharSequenceLexer lexer):- CharSequence2TokenSequence constructor in reality calls the constructor of CharSequenceLexer for deciding which word will be converted into token.
+{{{
     Pattern tokenPattern = Pattern.compile("[\\p{L}\\p{N}_]+");
     CharSequenceLexer ob1=new CharSequenceLexer(tokenPattern);
     CharSequence2TokenSequenc(tokenPattern);
 
 }}}
+
 ==Token-Sequence-Lower-case== 
-{{{
+
 It is pipe which converts all the tokens received through previous pipes to lower case. 
 For e.g. 
-    
+{{{    
       Token#0:Der  span[0..3]     ------>     Token#0:der  span[0..3]
       Token#1:T  span[4..5]                   Token#1:t  span[4..5]    
-      
-Implementations
-
-If you want your sequence to be converted into lowercase then pass true. If true is passed then the 
-following code is executed internally.
-   
+}}}     
+===Implementations===
+If you want your sequence to be converted into lowercase then pass true. If true is passed then the following code is executed internally.
+{{{   
 TokenSequenceLowercase lowercase =  new TokenSequenceLowercase ();
-      
+}}}      
 The object of TokenSequenceLowercase class is created and is added to the pipe list
 
-a) public TokenSequenceLowercase(): It simply create the object of the TokeSequenceLowercase 
-which is added to the pipe list.
-}}}
-==Token-Sequence-Remove-Stopwords== 
-{{{
-It is the pipe which is used to remove the stop words from the tokens. The program 
-contains a list of stopword(which are basically useless). 
-If tokens contains these  stopwords than that tokens are removed from  the TokenList. For 
-e.g. 
-the stopword list of English language contains 
+ * a) public TokenSequenceLowercase(): It simply create the object of the TokeSequenceLowercase which is added to the pipe list.
 
+==Token-Sequence-Remove-Stopwords== 
+
+It is the pipe which is used to remove the stop words from the tokens. The program 
+contains a list of stopword(which are basically useless). If tokens contains these  stopwords than that tokens are removed from  the TokenList. For e.g. the stopword list of English language contains 
+{{{
                 “a",
 		"able",
 		"about",
@@ -196,47 +167,37 @@ the stopword list of English language contains
 		"apr",
 		"sous",
 		"ans""
-		
+}}}		
 Note: This is not complete list which is used by Mallet.
 	 
-If our TokenList contains words which are also there in stopword 
-list than that  words are removed from the TokenList.
+If our TokenList contains words which are also there in stopword list than that  words are removed from the TokenList.
 
-Implementations
+===Implementations===
 
-1)public TokenSequenceRemoveStopwords (boolean caseSensitive,boolean markDeletions)
+* 1)public TokenSequenceRemoveStopwords (boolean caseSensitive,boolean markDeletions)
 (TokenSequenceRemoveStopwords(true, true)):-
 
-CaseSensitve: If this is true than the removing of the stopwords are CaseSensitive.
-MarkDeletions: If it is true then it marks the token which is deleted.
+ * CaseSensitve: If this is true than the removing of the stopwords are CaseSensitive.
+ *  MarkDeletions: If it is true then it marks the token which is deleted.
 
-2)public TokenSequenceRemoveStopwords (boolean caseSensitive):- If this is true
-than the removing of the stopwords are CaseSensitive
+ * 2)public TokenSequenceRemoveStopwords (boolean caseSensitive):- If this is true than the removing of the stopwords are CaseSensitive
 
-3)public TokenSequenceRemoveStopwords():-This will in turn call the above constructor with the value false.
+ * 3)public TokenSequenceRemoveStopwords():-This will in turn call the above constructor with the value false.
 
-4)public TokenSequenceRemoveStopwords(File stoplistFile, String encoding, boolean 
+ * 4)public TokenSequenceRemoveStopwords(File stoplistFile, String encoding, boolean 
 includeDefault,boolean caseSensitive, boolean markDeletions):-
+   * stopListFile: If users want to provide own set of stopwords list then pass the name of file which contain the list of stopwords.
+   * Encoding: Pass the encoding of the file for e.g. (“UTF-8”)
+   * includeDefault: If user also wants to use the Mallet default stopword list then pass true else false.
+       * CaseSensitve: If this is true than the removing of the stopwords are CaseSensitive.Otherwise the stopwords are removed from the tokens irrespective of their cases.
 
-stopListFile: If users want to provide own set of stopwords list then pass the name of file which
-contain the list of stopwords.
+       * MarkDeletions: If it is true then it marks the token which is deleted.
 
-Encoding: Pass the encoding of the file for e.g. (“UTF-8”)
-
-includeDefault: If user also wants to use the Mallet default stopword list then  pass true else false.
-               
-
-CaseSensitve: If this is true than the removing of the stopwords are CaseSensitive.
-Otherwise the stopwords are removed from the tokens irrespective of their cases.
-
-MarkDeletions: If it is true then it marks the token which is deleted.
-
-}}}
 
 ==Token-Sequence-2-Feature-Sequence==
-{{{
-It converts the Token Sequence to FeatureSequence.It indexes the each token.
 
+It converts the Token Sequence to FeatureSequence.It indexes the each token.
+{{{
 0: der (0)------>         Index of the Word. If this word occur somewhere in this  
 1: 40 (1)                 file or some other file than it is also indexed with 0. 
 2: war (2)                 
@@ -270,30 +231,24 @@ It converts the Token Sequence to FeatureSequence.It indexes the each token.
 30: der (0)  ------------------- "Der" is again indexed with 0.   
 31: ersten (28)
 32: hÃ¤lfte (29)
+}}}
+===Implementations===
 
-Implementations
+ * 1) public TokenSequence2FeatureSequence ():-Create an instance of Alphabet class by    itslef.Integers are assigned consecutively, starting at zero ,as objects(tokens) are added
+to the Alphabet.
 
-1) public TokenSequence2FeatureSequence ():-Create an instance of Alphabet class by    
-   itslef.Integers are assigned consecutively, starting at zero ,as objects(tokens)  are added
-   to the Alphabet.
-
-
- Objects cannot be deleted from the Alphabet and thus the integers are never reused. In a
- simple document classification usage ,each unique word in a  document would be unique 
- entry in the Alphabet with unique features added to it.
+Objects cannot be deleted from the Alphabet and thus the integers are never reused. In a simple document classification usage ,each unique word in a  document would be unique entry in the Alphabet with unique features added to it.
    
-   Therefore TokenSequence2featureSequence assigned unique index to each unique words.
+Therefore TokenSequence2featureSequence assigned unique index to each unique words.
    
   
-2) public TokenSequence2FeatureSequence (Alphabet dataDict):-If user wants to use   
-    own Alphabet instance then uses this constructor.
+ * 2) public TokenSequence2FeatureSequence (Alphabet dataDict):-If user wants to use     own Alphabet instance then uses this constructor.
 
 
-}}}
 ==Target-2-Label==
-{{{ 
+ 
 Convert Object in the target field into the label. For e.g. 
-                 
+{{{                 
     The object into the target field for sample code is 
 
     Labels              Data(which in reality is in the forms of Tokens)
@@ -317,51 +272,41 @@ Convert Object in the target field into the label. For e.g.
            
      Note: Labels of instances are used at the time of classification.  
 
-  
-Implementations
+}}}  
+===Implementations===
 
- 1) public Target2Label (): Calls the Third constructor with the values as  dataAlphabet as 
- null  and an instance of LabelAlphabet created implicitly. Here we assumes that an object of 
- dataAlphabet is already created by previous pipes.
+ * 1) public Target2Label (): Calls the Third constructor with the values as  dataAlphabet as  null  and an instance of LabelAlphabet created implicitly. Here we assumes that an object of  dataAlphabet is already created by previous pipes.
 
- 2)public Target2Label (LabelAlphabet labelAlphabet): If user want to create it is own 
- instance of LabelAlphabet (which indexes Labels)then use this constructor.
+ * 2)public Target2Label (LabelAlphabet labelAlphabet): If user want to create it is own instance of LabelAlphabet (which indexes Labels)then use this constructor.
 
- 3)public Target2Label (Alphabet dataAlphabet, LabelAlphabet labelAlphabet): If user
- want to create it is  own objects of DataAlphabet and LabelAlphabet then uses this constructor. 
- Note in this case user assumes that dataAlpabet object is not already created implicitly 
- by the Mallet. 
+ * 3)public Target2Label (Alphabet dataAlphabet, LabelAlphabet labelAlphabet): If user  want to create it is  own objects of DataAlphabet and LabelAlphabet then uses this constructor. 
+
+Note in this case user assumes that dataAlpabet object is not already created implicitly 
+by the Mallet. 
  
-
- LabelAlphabet is similar class like Alphabet which is used to map arbitrary objects like 
+LabelAlphabet is similar class like Alphabet which is used to map arbitrary objects like 
 Labels object into integers and back. So Labels are also indexed like the data.
 
-}}}
 ==Feature-Sequence-2-Feature-Vector==
-{{{
+
 Convert a data field from Feature Sequence to Feature vector. This class does not insist 
 on getting its own Alphabet  because it rely on  getting from the FeatureSequence input.
-
+{{{
 For e.g.  Feature vector counts the number of times index 0  occurred in a featureSequence
  . 
 
   [0]=11.0 
 
-  Note : The index 0 is related to the word “der”. So it means that “der” occurred 
-  11 times in a feature sequence.
+Note : The index 0 is related to the word “der”. So it means that “der” occurred 11 times in a feature sequence.
+}}}
 
-  Implementations
+===Implementations===
   
-  1) public FeatureSequence2FeatureVector (): It calls the below constructor
-     passing the false value.
-
-  2) public FeatureSequence2FeatureVector (boolean binary):
-
-
-  3) PrintInputAndTarget: Print the data and Target field of each instance. For e.g.
-     The output of the sample code.
+ * 1) public FeatureSequence2FeatureVector (): It calls the below constructor passing the false value.
+ * 2) public FeatureSequence2FeatureVector (boolean binary):
+ * 3) PrintInputAndTarget: Print the data and Target field of each instance. For e.g.   The output of the sample code.
  
-
+{{{
 
    
 name: array:0 -------------> Represent Name of the Instance
@@ -432,65 +377,14 @@ input: steve(33)=1.0
 irvin(34)=1.0
 herpetologist(35)=1.0
 }}}
+
 ==Print-Input-And-Target==
 {{{
 If you passed true in createPipe as last argument then constructor of PrintInputAndTarget is called.
 
-Implementations
+===Implementations===
 
-public PrintInputAndTarget (String prefix): If user want to add some prefix before the actual 
-output then should cal this constructor.
+ * 1) public PrintInputAndTarget (String prefix): If user want to add some prefix before the actual output then should cal this constructor.
 
-PrintInputAndTarget(): This is the constructor which simply creates the 
+ * 2) PrintInputAndTarget(): This is the constructor which simply creates the 
 object of PrintInputAndTarget without any prefix. 
-
-_____________________________________________________________________________________
-
-Sample Code
-
-The next thing which user should do is to add all the instances to the instanceList.
-
-addThruPipe (new ArrayIterator (trainingdata[i][0],trainingdata[i][1][0]));
-
-addThruPipe(Iterator<Instance> iterator)
-_____________________________________________________________________________________
-
-
-
-This function will add all the instances generated by the iterator. 
-The instances are generated passing the Data through the above mentioned 
-list of pipes.
-
-addThruPipe (new ArrayIterator (trainingdata[i][0],trainingdata[i][1][0]));
-
-
-
-Mallet provides different types of Iterater for different forms of data. For e.g. of the
-data is stored in the Array forms than ArrayIteraor must be used and if the data is in 
-the File then FileIterator must be used.
-
-Here in the sample application ,we have used ArrayIterator as we stored the data in String array.
-
-
-ArrayIterator
-
-Implementations
-
-1)public ArrayIterator (List data, Object target):ArrayIterator (trainingdata[i][0],trainingdata[i][1][0]) :- 
-
-data: It contains the data which is to be imported into Mallet instances.
-Target: It is label or target on the basis of which classification of data occur.
-  
-
-2)public ArrayIterator (List data):It calls the above constructor with arguments
-(data,null). If user just want to import the data and do not want to do any 
-classification then should go with this constructor.
-
-3)public ArrayIterator (Object[] data, Object target):It calls the first constructor with 
-arguments this (java.util.Arrays.asList (data), target).
-
-4)public ArrayIterator (Object[] data): It will call the above constructor with arguments (data,null).
-
-
-
-}}}
