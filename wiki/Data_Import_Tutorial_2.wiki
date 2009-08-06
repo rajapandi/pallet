@@ -55,9 +55,9 @@ The purpose of the each pipe is explained below.
 Some of the other pipes which are used in Mallet and also explained here.
 
  * 11) Charsequence2charngrams
- * 12) CharSequenceLowercase
- * 13) CharSubsequence
- * 14) LineGroupString2TokenSequence
+ * 12) Char-Sequence-Lowercase
+ * 13) Char-Subsequence
+ * 14) Line-Group-String-2-Token-Sequence
 
 Now we will look into each pipe
 
