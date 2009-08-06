@@ -369,12 +369,9 @@ had in the original string(separated by equal “=”).)
 It runs a regular expression on the text of each token .The part of the string which matches will be converted into Target (or data) and the rest of the string will be data(or Token).
 
 ===Implementation===
- * 1)TokenSequenceMatchDataAndTarget(java.util.regex.Pattern, int datagroup ,int
-                                                        targetGroup):
-java.util.regex.Pattern: Regular expression which is used to process the data.
-    
-     * Datagroup:Data group is set on the basis of “matcher.group(datagroup)”.
-     * Targetgroup: Target group is set on the basis of “matcher.group(Targetgroup)”.
+ * 1)TokenSequenceMatchDataAndTarget(java.util.regex.Pattern, int datagroup ,int targetGroup):java.util.regex.Pattern: Regular expression which is used to process the data.
+        * Datagroup:Data group is set on the basis of “matcher.group(datagroup)”.
+        * Targetgroup: Target group is set on the basis of “matcher.group(Targetgroup)”.
 
 Note: group is the predefined java function associated with Matcher class.
  * 2) TokenSequenceMatchDataAndTarget(java.lang.String regex, int datagroup, int
@@ -428,7 +425,7 @@ Token#1:SWAHII remain as data.
 Token#2:SARAHA
 }}}
 ==Token-Sequence-2-Feature-Sequence-With-Bigrams==
-{{{
+
 This pipe converts the token sequence in the data field of each instance to a feature 
 sequence that preserves bigram information.
 
@@ -481,10 +478,9 @@ It remembers the last non background label,for each position in the target. It r
 
 ===Implementation===
  * 1)TargetRememberLastLabel (): It simply creates the object of TargetRememberLastLabel and replaces the target with a LabelSequence where coloumn0 is original label and coloum1 is the label of the of the last row.
-
  * 2)TargetRememberLastLabel(java.lang.String backgroundlabel , Boolean offset):
 java.lang.String backgroundlabel : The user can enter the background label here.
-   * Boolean offset: It determines how the memory and base sequence will be aligned.
+     * Boolean offset: It determines how the memory and base sequence will be aligned.
 
 
 ===Sample Code===
