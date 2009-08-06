@@ -3,10 +3,10 @@ Table of Contents
 <wiki:toc max_depth="2" />
  
 = Introduction =
-{{{
+
 This Tutorial is in the continuation of the Data_Import Tutorial 1 and Data_Import
 Tutorial 2. This tutorial further explores the Data Import features of the Mallet.
-}}}
+
 = Details =
 =====Note: Please go through the [http://code.google.com/p/pallet/wiki/Tutorial_Data_Import Tutorial_1] and [http://code.google.com/p/pallet/w/edit/Data_Import_Tutorial_2 Tutorial_2] starting Tutorial 2.=====
 {{{
