@@ -403,7 +403,7 @@ itself.
 This pipe simply converts the string into tokens and take it as its input. It means this pips accept sequence of letters as tokens.
 
 ===Implementation===
- * 1) SimpleTokenizer (java.io.File stopfile) :User provides the list of stopwords* here  in the form of file.
+ * 1) SimpleTokenizer (java.io.File stopfile) :User provides the list of stopwords here  in the form of file.
  * 2) SimpleTokenizer (java.util.HashSet<java.lang.String> stoplist) :User provides the   list of stopwords here in the form of HashSet.
  * 3) SimpleTokenizer (int languageFlag) : If user wants to use the default Mallet list   than use 1.
 
@@ -652,8 +652,7 @@ target: africa
 It adds the conjunction(&) in the features of the Feature Vector.
 
 ===Implementation===
- * 1)FeatureVectorConjunction():It contains the simple constructor which requires no  
-     parameter.
+ * 1)FeatureVectorConjunction():It contains the simple constructor which requires no      parameter.
  
 ===Sample Code===
 
