@@ -171,14 +171,12 @@ If our TokenList contains words which are also there in stopword list than that 
 
  * 3)public TokenSequenceRemoveStopwords():-This will in turn call the above constructor with the value false.
 
- * 4)public TokenSequenceRemoveStopwords(File stoplistFile, String encoding, boolean 
-includeDefault,boolean caseSensitive, boolean markDeletions):-
+ * 4)public TokenSequenceRemoveStopwords(File stoplistFile, String encoding, boolean includeDefault,boolean caseSensitive, boolean markDeletions):-
    * stopListFile: If users want to provide own set of stopwords list then pass the name of file which contain the list of stopwords.
    * Encoding: Pass the encoding of the file for e.g. (“UTF-8”)
    * includeDefault: If user also wants to use the Mallet default stopword list then pass true else false.
-       * CaseSensitve: If this is true than the removing of the stopwords are CaseSensitive.Otherwise the stopwords are removed from the tokens irrespective of their cases.
-
-       * MarkDeletions: If it is true then it marks the token which is deleted.
+   * CaseSensitve: If this is true than the removing of the stopwords are caseSensitive.Otherwise the stopwords are removed from the tokens irrespective of their cases.
+   * MarkDeletions: If it is true then it marks the token which is deleted.
 
 
 ==Token-Sequence-2-Feature-Sequence==
