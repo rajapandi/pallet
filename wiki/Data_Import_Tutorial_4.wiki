@@ -179,7 +179,9 @@ Token#6:a
 Token#7:pallet
 }}}
  * 1)Data which is inside SGML tags are has target sequence corresponding to the name of the tag.
+{{{
 For eg "<abc> on the plains of </abc>" is having ”abc” tag in the target field.
+}}}
  * 2)The data which is not inside any of SGML tags have a background tag in the target field provided by the user(Pallet).
 
 Note: If commented statement is used instead of what we have used in the sample source
