@@ -1,5 +1,6 @@
 #summary Data Import Tutorial 3
 Table of Contents 
+<wiki:toc max_depth="2" />
  * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_3#Introduction Introduction]
  * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_3#Details Details]
    * 1) [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_3#File-name-2-Char-Sequence File-name-2-Char-Sequence] 
