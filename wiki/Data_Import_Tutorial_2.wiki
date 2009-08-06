@@ -41,16 +41,16 @@ The following pipes are used by the application. We will look into the each of t
 one by one and explains what each one do.
 
 The purpose of the each pipe is explained below.
- * 1)Input2CharSequence: Convert Input data to character sequence(Explained in Tutorial 1)
- * 2)CharSequenceReplace: Replaces the String from the character sequence.
- * 3)CharSequenceRemoveHTML: Removes the HTML content from the character sequence
- * 4)CharSequence2TokenSequence: Convert char sequence to token sequence(Explained in Tutorial 1) 
- * 5)TokenSequenceRemoveStopwords: Remove stop words (Explained in Tutorial 1)
- * 6)MakeAmpersandXMLFriendly: convert & to &amp in tokens of a token sequence
- * 7)TokenSequence2FeatureSequence: converts the Token Sequence to FeatureSequence(Exp in Tut1)                
- * 8)Target2Label: Convert object in the target field into label in the target field. Explained in Tutorial 1)
- * 9)FeatureSequence2AugmentableFeatureVector: Convert Feature sequence into Augmentable Feature Vector.
- * 10)AugmentableFeatureVectorLogScale: Given an AugmentableFeatureVector, set those values greater than or equal to 1 to log(value)+1.
+ * 1)Input-2-Char-Sequence: Convert Input data to character sequence(Explained in Tutorial 1)
+ * 2)Char-Sequence-Replace: Replaces the String from the character sequence.
+ * 3)Char-Sequence-Remove-HTML: Removes the HTML content from the character sequence
+ * 4)Char-Sequence-2-Token-Sequence: Convert char sequence to token sequence(Explained in Tutorial 1) 
+ * 5)Token-Sequence-Remove-Stopwords: Remove stop words (Explained in Tutorial 1)
+ * 6)Make-Ampersand-XML-Friendly: convert & to &amp in tokens of a token sequence
+ * 7)Token-Sequence-2-Feature-Sequence: converts the Token Sequence to FeatureSequence(Exp in Tut1)                
+ * 8)Target-2-Label: Convert object in the target field into label in the target field. Explained in Tutorial 1)
+ * 9)Feature-Seqence-2-Augmentable-Feature-Vector: Convert Feature sequence into Augmentable Feature Vector.
+ * 10)Augmentable-Feature-Vector-Log-Scale: Given an AugmentableFeatureVector, set those values greater than or equal to 1 to log(value)+1.
 
 Some of the other pipes which are used in Mallet and also explained here.
 
