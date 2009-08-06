@@ -271,8 +271,7 @@ It parses Token Sequence and convert it into Feature String. It adds each string
 
 If your data consists only of values, and the position determines which feature the value is for (eg 10.7 3.6 1.7), use new TokenSequenceParseFeatureString(true). This format is typically used for data that has a small number of features that all have non-zero values most of the time.
 
-If your data is in the form of named binary indicator variables (eg yellow quacks has_webbed_feet), use the constructor new TokenSequenceParseFeatureString(false). Each token will be interpreted as the name of a feature, whose value is 1.0.
-                                                              * (Source: Mallet javadoc)
+If your data is in the form of named binary indicator variables (eg yellow quacks has_webbed_feet), use the constructor new TokenSequenceParseFeatureString(false). Each token will be interpreted as the name of a feature, whose value is 1.0.* (Source: Mallet javadoc)
 
 Things will get clearer when one sees the usage of the pipe.
 
