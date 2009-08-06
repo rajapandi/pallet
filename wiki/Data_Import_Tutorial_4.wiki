@@ -35,8 +35,7 @@ Sequence.
 ===Implementation===
 
  *  1) TokenSequenceRemoveNonAlpha(): This is simple constructor which creates the object of TokenSequenceRemoveNonAlpha . This object is then use to process the tokens.
- *  2) TokenSequenceRemoveNonAlpha(boolean markDeletions): If user wants to mark the deletions of the non Alphabet words to the serialized object,then call this constructor 
-with true value.The deletion of the tokens is marked in the serialized object.
+ *  2) TokenSequenceRemoveNonAlpha(boolean markDeletions): If user wants to mark the deletions of the non Alphabet words to the serialized object,then call this constructor with true value.The deletion of the tokens is marked in the serialized object.
 
 ===Sample Code===
 
