@@ -556,7 +556,7 @@ target: LabelsSequence:
 5: pallet abc------>”Pallet” is not used as the last label.
 6: a abc
 7: pallet a
-}}}
+
 Note: Here the background label “Pallet” is not used as the last remembered label.
 If the pipe is used as 
 TargetRememberLastLabel trll=new TargetRememberLastLabel("pallet", false);
@@ -620,8 +620,9 @@ FeatureSequence2AugmentableFeatureVector();
 Instance i6=fs2afv.pipe(i3);
 PrintInputAndTarget piat=new PrintInputAndTarget();
 Instance i5=piat.pipe(i6);
-}}
+}
+}
 
 }}}
-                              Sample Output
+===Sample Output===
 The output will contain the raw data contain in the file”sci_spec.txt “in token sequence
