@@ -1,20 +1,7 @@
 #summary Data Import Tutorial 2
 Table of contents
  <wiki:toc max_depth="2" />
- * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_2#Introduction Introduction]
- * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_2#Details Details]
-  * 1)[http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_2#Char-Sequence-Replace CharSequenceReplace] 
-  * 2)[http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_2#Char-Sequence-Remove-HTML CharSequenceRemoveHTML]
-  * 3)[http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_2#Make-Ampersand-XML-Friendly MakeAmpersandXMLFriendly]
-  * 4)[http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_2#Feature-Sequence-2-Augmentable-Feature-Vector FeatureSequence2AugmentableFeatureVector]
-  * 5)[http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_2#Augmentable-Feature-Vector-Log-Scale AugmentableFeatureVectorLogScale]
-  * 6)[http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_2#Char-Sequence-2-char-n-grams Charsequence2charngrams]
-  * 7)[http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_2#Char-Sequence-Lower-case CharSequenceLowercase]
-  * 8)[http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_2#Char-Sub-sequence CharSubsequence]
-  * 9)[http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_2#Line-Group-String-2-Token-Sequence LineGroupString2TokenSequence]
-
-
-
+ 
 =Introduction=
 
 Mallet uses many pipes in order to process the training data. Tutorial 1 explained some of those pipes and how they can be used. The application which is showing the demonstration of Tutorial 1 is TestMalletClassifier.java.
