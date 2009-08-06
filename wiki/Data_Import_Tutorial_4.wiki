@@ -1,5 +1,6 @@
 #summary Data Import Tutorial 4
 Table of Contents
+
 <wiki:toc max_depth="2" />
 
 = Introduction =
@@ -27,7 +28,7 @@ The following pipes we are going to discuss here
 9) TargetRememberLastLabel
 10) SourceLocation2TokenSequence
 }}}
-===Token-Sequence-Remove-Non-Alpha===
+==Token-Sequence-Remove-Non-Alpha==
 {{{
 This pipe removes all the non Alphabet words from the Token Sequence. For eg if the 
 Token Sequence contains tokens like abc123, then these words are removed from the Token 
@@ -73,7 +74,7 @@ are not converted into the tokens. But the output of TokenSequenceRemoveStopword
 still contains token “lions123” which will be removed by this pipe.
 }}}
 
-===Token-Sequence-N-Grams===
+==Token-Sequence-N-Grams==
 {{{
 It converts the token sequence in the data fields to the token sequence of N grams.
 
@@ -119,7 +120,7 @@ africa_roar
 
 }}}
 
-===SGML-2-Token-Sequence===
+==SGML-2-Token-Sequence==
 {{{
 It converts a string containing simple SGML tags into a dta TokenSequence of words, 
 paired with a target TokenSequence containing the SGML tags in effect for each word.
@@ -227,7 +228,7 @@ Token#5:O
 Token#6:a
 Token#7:O
 }}}
-===Target-2-Feature-Sequence===
+==Target-2-Feature-Sequence==
 {{{
 It converts the token sequence in the target field into the Feature Sequence.
 
@@ -405,7 +406,7 @@ Now here string is converted into featurename and value is allotted to them (wha
 had in the original string(separated by equal “=”).)
 }}}
 
-===Token-Sequence-Match-Data-And-Target===
+==Token-Sequence-Match-Data-And-Target==
 {{{
 It runs a regular expression on the text of each token .The part of the string which 
 matches will be converted into Target (or data) and the rest of the string will be 
@@ -470,7 +471,7 @@ Token#0:PLAINS--Capital letter words are converted into Tokens and rest will
 Token#1:SWAHII remain as data.
 Token#2:SARAHA
 }}}
-===Token-Sequence-2-Feature-Sequence-With-Bigrams===
+==Token-Sequence-2-Feature-Sequence-With-Bigrams==
 {{{
 This pipe converts the token sequence in the data field of each instance to a feature 
 sequence that preserves bigram information.
@@ -517,7 +518,7 @@ TokenSequence2FeatureSequenceWithBigrams pipe will combine the consecutive words
 in order to preserve the bigram information.
 }}}
 
-===Target-Remember-Last-Label===
+==Target-Remember-Last-Label==
 {{{
 It remembers the last non background label,for each position in
 the target. It replaces the target with a LabelSequence where column 0 is the original 
@@ -629,7 +630,7 @@ target: LabelsSequence:
 7: pallet a  
 }}}
 
-===Source-Location-2-Token-Sequence===
+==Source-Location-2-Token-Sequence==
 {{{
 It reads data from the file or BufferedRead and produces
 the TokenSequence.
