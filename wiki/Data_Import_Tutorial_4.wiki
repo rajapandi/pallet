@@ -288,7 +288,7 @@ target: 0: abc (0)------------->Target is indexed and hence converted into
 6: a (2)
 7: a (2)
 }}}
-===Target-2-Label-Sequence===
+==Target-2-Label-Sequence==
 {{{
 It a simple pipe which converts the data in the target field into LabelSequence. 
 LabelSequence is similar to the feature sequence. Its usage is similar to
@@ -298,7 +298,7 @@ similar to the Target2FeatureSequence.
 Note: Just replace the Target2FeatureSequence to Target2LabelSequence in the above code.
 }}}
 
-===Token-Sequence-Parse-Feature-String===
+==Token-Sequence-Parse-Feature-String==
 {{{
 It parses Token Sequence and convert it into Feature String. It adds each string as a 
 Feature to the token.If your data consists of feature/value pairs (eg height=10.7 
