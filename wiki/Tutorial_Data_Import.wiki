@@ -163,11 +163,10 @@ If our TokenList contains words which are also there in stopword list than that 
 
 ===Implementations===
 
- * 1)public TokenSequenceRemoveStopwords (boolean caseSensitive,boolean markDeletions)
-(TokenSequenceRemoveStopwords(true, true)):-
+ * 1)public TokenSequenceRemoveStopwords (boolean caseSensitive,boolean markDeletions) TokenSequenceRemoveStopwords(true, true)):-
 
- * CaseSensitve: If this is true than the removing of the stopwords are CaseSensitive.
- *  MarkDeletions: If it is true then it marks the token which is deleted.
+    * CaseSensitve: If this is true than the removing of the stopwords are CaseSensitive.
+    *  MarkDeletions: If it is true then it marks the token which is deleted.
 
  * 2)public TokenSequenceRemoveStopwords (boolean caseSensitive):- If this is true than the removing of the stopwords are CaseSensitive
 
