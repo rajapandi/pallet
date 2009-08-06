@@ -110,12 +110,12 @@ africa_roar
 }}}
 
 ==SGML-2-Token-Sequence==
-It converts a string containing simple SGML tags into a dta TokenSequence of words, paired with a target TokenSequence containing the SGML tags in effect for each word.It does not handle nested SGML tags, nor gracefully handle malformed SGML. 
+It converts a string containing simple SGML tags into a dta TokenSequence of words, paired with a target TokenSequence containing the SGML tags in effect for each word.It does not handle nested SGML tags, nor gracefully handle malformed SGML.
                                                            * (Source : Mallet javadoc)
 
 ===Implementation===
 
- * 1) SGML2TokenSequence(): This constructor process all the data and take backgroundTag 
+ * 1) SGML2TokenSequence(): This constructor process all the data and take backgroundTag
       as “0”
  * 2) SGML2TokenSequence(CharSequenceLexer lexer, String backgroundTag): This constructor takes the regular expression in the form of CharSequenceLexer to tell what kind of data must be taken as the input for this pipe.
 
