@@ -29,14 +29,14 @@ The following pipes we are going to discuss here
 ==Token-Sequence-Remove-Non-Alpha==
 
 This pipe removes all the non Alphabet words from the Token Sequence. For eg if the 
-Token Sequence contains tokens like abc123, then these words are removed from the Token 
+Token Sequence contains tokens like abc123,then these words are removed from the Token 
 Sequence.
 
 ===Implementation===
 
  *  1) TokenSequenceRemoveNonAlpha(): This is simple constructor which creates the object of TokenSequenceRemoveNonAlpha . This object is then use to process the tokens.
-  
- *  2) TokenSequenceRemoveNonAlpha(boolean markDeletions): If user wants to mark the deletions of the non Alphabet words to the serialized object ,then call this     constructor with true value.The deletion of the tokens is marked in the serialized object.
+ *  2) TokenSequenceRemoveNonAlpha(boolean markDeletions): If user wants to mark the deletions of the non Alphabet words to the serialized object,then call this constructor 
+with true value.The deletion of the tokens is marked in the serialized object.
 
 ===Sample Code===
 
@@ -112,15 +112,15 @@ africa_roar
 
 ==SGML-2-Token-Sequence==
 It converts a string containing simple SGML tags into a dta TokenSequence of words, paired with a target TokenSequence containing the SGML tags in effect for each word.It does not handle nested SGML tags, nor gracefully handle malformed SGML. 
-                                                            (Source : Mallet javadoc)
+                                                           * (Source : Mallet javadoc)
 
 ===Implementation===
 
  * 1) SGML2TokenSequence(): This constructor process all the data and take backgroundTag 
       as “0”
- * 2) SGML2TokenSequence(CharSequenceLexer lexer, String backgroundTag): This     constructor takes the regular expression in the form of CharSequenceLexer to tell what kind of data must be taken as the input for this pipe.
+ * 2) SGML2TokenSequence(CharSequenceLexer lexer, String backgroundTag): This constructor takes the regular expression in the form of CharSequenceLexer to tell what kind of data must be taken as the input for this pipe.
 
-    * ”backgroundTag” represents the tag which will be used as the Tag in the token     sequence of the target ,to represent the data which doesn’t come under SGML tags.
+     * ”backgroundTag” represents the tag which will be used as the Tag in the token     sequence of the target ,to represent the data which doesn’t come under SGML tags.
 
  * 3) SGML2TokenSequence(CharSequenceLexer lexer, String back, boolean saveSource): This constructor is almost similar to the above one except that is has one more arguments which must be true if you want to save the source fields (Mallet instances has four fields-one of them is a source field)
 
