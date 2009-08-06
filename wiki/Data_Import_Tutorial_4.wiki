@@ -208,8 +208,7 @@ Token#7:O
 It converts the token sequence in the target field into the Feature Sequence.
 
 ===Implementation===
- * 1)Target2FeatureSequence(): It is simple constructor which converts the token sequence
-   in the target field into the Feature sequence.
+ * 1)Target2FeatureSequence(): It is simple constructor which converts the token sequence in the target field into the Feature sequence.
 
 Note: It is to be noted that ,this pipe expects that target string is in the form of token sequence.Please convert the target into token sequence before applying this pipe.
 
