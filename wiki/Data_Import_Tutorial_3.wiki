@@ -97,10 +97,10 @@ It converts the string of comma separated values(CSV) to an array where each ind
 
 ===Implementation===
  * 1)Csv2Array(): This constructor will call the constructor of the charSequenceLexer  with this ([^,]+) parameter. This means process the input string except the “,”(which is used as a separator). 
- * 2)Csv2Array(charSequenceLexer l) : If user wants to provide its own set of *Pattern then directly pass the reference of charSequenceLexer.
+ * 2)Csv2Array(charSequenceLexer l) : If user wants to provide its own set of Pattern then directly pass the reference of charSequenceLexer.
  * 3)Csv2Array(java.lang.String regex) : If user wants to process the string in its own   way than provide the matching pattern in form of String.
 
-     *Pattern : Pattern is the java inbuild class. For further explanation about Pattern  
+     * Pattern : Pattern is the java inbuild class. For further explanation about Pattern 
 [http://java.sun.com/j2se/1.4.2/docs/api/java/util/regex/Pattern.html please_see]
 
 Note: The sample code and sample output of this pipe is explained after describing Array2FeatureVector.
