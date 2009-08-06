@@ -1,6 +1,6 @@
 #summary Data Import Tutorial 2
 Table of contents
- <wiki:toc max_depth="1" />
+ <wiki:toc max_depth="2" />
  * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_2#Introduction Introduction]
  * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_2#Details Details]
   * 1)[http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_2#Char-Sequence-Replace CharSequenceReplace] 
@@ -29,7 +29,7 @@ demonstration of the Tutorial 2 is Data_Import.java
 =====Note: Please go through the [http://code.google.com/p/pallet/wiki/Tutorial_Data_Import Tutorial 1] before starting Tutorial 2.=====
 {{{
 Sample Code  
-__________________________________________________________________
+_________________________________________________________________________________________
 
 mc.CreatePipe (  new Input2CharSequence("UTF-8"),
                  new CharSequenceReplace(tokenPattern, "Mallet"),
@@ -57,15 +57,12 @@ The purpose of the each pipe is explained below.
  * 1)Input2CharSequence: Convert Input data to character sequence(Explained in Tutorial 1)
  * 2)CharSequenceReplace: Replaces the String from the character sequence.
  * 3)CharSequenceRemoveHTML: Removes the HTML content from the character sequence
- * 4)CharSequence2TokenSequence: Convert char sequence to token sequence(Explained in  
-Tutorial 1)
+ * 4)CharSequence2TokenSequence: Convert char sequence to token sequence(Explained in Tutorial 1) 
  * 5)TokenSequenceRemoveStopwords: Remove stop words (Explained in Tutorial 1)
  * 6)MakeAmpersandXMLFriendly: convert & to &amp in tokens of a token sequence
  * 7)TokenSequence2FeatureSequence: converts the Token Sequence to FeatureSequence(Exp in Tut1)                
- * 8)Target2Label: Convert object in the target field into label in the target field.
-(Explained in Tutorial 1)
- * 9)FeatureSequence2AugmentableFeatureVector: Convert Feature sequence into Augmentable
-Feature Vector.
+ * 8)Target2Label: Convert object in the target field into label in the target field. Explained in Tutorial 1)
+ * 9)FeatureSequence2AugmentableFeatureVector: Convert Feature sequence into Augmentable Feature Vector.
  * 10)AugmentableFeatureVectorLogScale: Given an AugmentableFeatureVector, set those values greater than or equal to 1 to log(value)+1.
 
 Some of the other pipes which are used in Mallet and also explained here.
