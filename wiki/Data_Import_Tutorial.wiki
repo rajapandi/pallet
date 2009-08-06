@@ -1,4 +1,4 @@
-#Complete Data Import Tutorial. It describes all the pipes of Mallet
+#summary Complete Data Import Tutorial. It describes all the pipes of Mallet
 
 
 Table of Contents
