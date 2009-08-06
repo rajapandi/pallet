@@ -116,8 +116,7 @@ It converts a string containing simple SGML tags into a dta TokenSequence of wor
 
  * 1) SGML2TokenSequence():This constructor process all the data and take backgroundTag as “0”
  * 2) SGML2TokenSequence(CharSequenceLexer lexer, String backgroundTag): This constructor takes the regular expression in the form of CharSequenceLexer to tell what kind of data must be taken as the input for this pipe.
-
-     * ”backgroundTag” represents the tag which will be used as the Tag in the token     sequence of the target ,to represent the data which doesn’t come under SGML tags.
+      * ”backgroundTag” represents the tag which will be used as the Tag in the token     sequence of the target ,to represent the data which doesn’t come under SGML tags.
 
  * 3) SGML2TokenSequence(CharSequenceLexer lexer, String back, boolean saveSource): This constructor is almost similar to the above one except that is has one more arguments which must be true if you want to save the source fields (Mallet instances has four fields-one of them is a source field)
 
