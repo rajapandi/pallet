@@ -219,9 +219,7 @@ It converts the Token Sequence to FeatureSequence.It indexes the each token.
 }}}
 ===Implementations===
 
- * 1) public TokenSequence2FeatureSequence ():-Create an instance of Alphabet class by    itslef.Integers are assigned consecutively, starting at zero ,as objects(tokens) are added
-to the Alphabet.
-
+ * 1) public TokenSequence2FeatureSequence ():-Create an instance of Alphabet class by itslef.Integers are assigned consecutively, starting at zero ,as objects(tokens) are added to the Alphabet.
 Objects cannot be deleted from the Alphabet and thus the integers are never reused. In a simple document classification usage ,each unique word in a  document would be unique entry in the Alphabet with unique features added to it.
    
 Therefore TokenSequence2featureSequence assigned unique index to each unique words.
