@@ -1,17 +1,6 @@
 #summary Data Import Tutorial 4
 Table of Contents
- * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_4#Introduction Introduction]
- * [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_4#Details Details]
-  * 1) [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_4#Token-Sequence-Remove-Non-Alpha Token-Sequence-Remove-Non-Alpha]
-  * 2) [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_4#Token-Sequence-N-Grams Token-Sequence-N-Grams]
-  * 3) [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_4#SGML-2-Token-Sequence SGML-2-Token-Sequence]
-  * 4) [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_4#Target-2-Feature-Sequence Target-2-Feature-Sequence]
-  * 5) [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_4#Target-2-Label-Sequence Target-2-Label-Sequence]
-  * 6) [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_4#Token-Sequence-Parse-Feature-String Token-Sequence-Parse-Feature-String]
-  * 7) [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_4#Token-Sequence-Match-Data-And-Target Token-Sequence-Match-Data-And-Target]
-  * 8) [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_4#Token-Sequence-2-Feature-Sequence-With-Bigrams Token-Sequence-2-Feature-Sequence-With-Bigrams]
-  * 9) [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_4#Target-Remember-Last-Label Target-Remember-Last-Label]
-  * 10)[http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_4#Source-Location-2-Token-Sequence Source-Location-2-Token-Sequence]
+<wiki:toc max_depth="2" />
 
 = Introduction =
 {{{ 
