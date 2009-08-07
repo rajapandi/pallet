@@ -6,6 +6,8 @@ Table of Contents
 
 
 =Introduction=
+
+Mallet Uses different types of pipes to process the raw data and convert it into Mallet instances. Later on, Mallet uses these instances to train the classifiers. Converting the raw data into Mallet instances is the first step towards classification of data. Here in this Tutorial we are going to see different pipes and their working, provided by Mallet.
 __________________________________________________________________________________________
 
 ===Sample Code===
