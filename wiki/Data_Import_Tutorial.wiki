@@ -4,7 +4,7 @@
 Table of Contents
 <wiki:toc max_depth="2" /> 
 
-=Tutorial 1=
+
 =Introduction=
 __________________________________________________________________________________________
 
@@ -372,20 +372,8 @@ If you passed true in createPipe as last argument then constructor of PrintInput
 
  * 2) PrintInputAndTarget(): This is the constructor which simply creates the object of PrintInputAndTarget without any prefix. 
 
-=Tutorial 2=
-
-=Introduction=
-
-Mallet uses many pipes in order to process the training data. Tutorial 1 explained some of those pipes and how they can be used. The application which is showing the demonstration of Tutorial 1 is TestMalletClassifier.java.
-
-Tutorial 2 will also explain some of those pipes. The application which is showing the
-demonstration of the Tutorial 2 is Data_Import.java
 
 
-
-=Details=
-
-=====Note: Please go through the [http://code.google.com/p/pallet/wiki/Tutorial_Data_Import Tutorial 1] before starting Tutorial 2.=====
 {{{
 Sample Code  
 _________________________________________________________________________________________
@@ -405,22 +393,20 @@ mc.CreatePipe (  new Input2CharSequence("UTF-8"),
                )
 This function will create the Pipelist by adding the instances of all the pipes.
 
-Note: The pipes which are already explained in Tutorial 1 are not explained her.
-Some of the pipes which are not shown above are also explained here.
 _________________________________________________________________________________________
 }}}
 The following pipes are used by the application. We will look into the each of the pipe 
 one by one and explains what each one do.
 
 The purpose of the each pipe is explained below.
- * 1)Input-2-Char-Sequence: Convert Input data to character sequence(Explained in Tutorial 1)
+ * 1)Input-2-Char-Sequence: Convert Input data to character sequence(Already Explained)
  * 2)Char-Sequence-Replace: Replaces the String from the character sequence.
  * 3)Char-Sequence-Remove-HTML: Removes the HTML content from the character sequence
- * 4)Char-Sequence-2-Token-Sequence: Convert char sequence to token sequence(Explained in Tutorial 1) 
- * 5)Token-Sequence-Remove-Stopwords: Remove stop words (Explained in Tutorial 1)
+ * 4)Char-Sequence-2-Token-Sequence: Convert char sequence to token sequence(Already Explained) 
+ * 5)Token-Sequence-Remove-Stopwords: Remove stop words (Already Explained)
  * 6)Make-Ampersand-XML-Friendly: convert & to &amp in tokens of a token sequence
- * 7)Token-Sequence-2-Feature-Sequence: converts the Token Sequence to FeatureSequence(Exp in Tut1)                
- * 8)Target-2-Label: Convert object in the target field into label in the target field. Explained in Tutorial 1)
+ * 7)Token-Sequence-2-Feature-Sequence: converts the Token Sequence to FeatureSequence(Already Explained)                
+ * 8)Target-2-Label: Convert object in the target field into label in the target field. Already Explained)
  * 9)Feature-Seqence-2-Augmentable-Feature-Vector: Convert Feature sequence into Augmentable Feature Vector.
  * 10)Augmentable-Feature-Vector-Log-Scale: Given an AugmentableFeatureVector, set those values greater than or equal to 1 to log(value)+1.
 
@@ -656,36 +642,6 @@ input: the saraha dessert is expanding
 
 }}}
 
-
-=Tutorial 3=
-
-
- 
-= Introduction =
-
-This Tutorial is in the continuation of the Data_Import Tutorial 1 and Data_Import
-Tutorial 2. This tutorial further explores the Data Import features of the Mallet.
-
-= Details =
-=====Note: Please go through the [http://code.google.com/p/pallet/wiki/Tutorial_Data_Import Tutorial_1] and [http://code.google.com/p/pallet/w/edit/Data_Import_Tutorial_2 Tutorial_2] starting Tutorial 2.=====
-{{{
-
-The pipes which are going to discuss here are
- 1) Filename2CharSequence
- 2) CharSequenceArray2TokenSequence
- 3) Csv2Array
- 4) Array2FeatureVector
- 5) Csv2FeatureVector
- 6) TargetStringToFeatures
- 7) SimpleTaggerSentence2TokenSequence
- 8) SimpleTokenizer
- 9) Pipeutils
- 10) StringAddNewLineDelimiter
- 11) CharSequenceRemoveUUEncodedBlocks
- 12) StringList2FeatureSequence
- 13) FeatureSequenceConvolution
- 14) FeatureVectorConjunction
-}}}
 ==File-name-2-Char-Sequence==
 
 The user provides the name of the input file in the form of string, it takes the data from the specified file and converts it into the character sequence.
@@ -1068,7 +1024,7 @@ This pipe simply converts the string into tokens and take it as its input. It me
 
  * 1 represent default English stop word list and zero represent empty stop words list.
 
-*stopwords are discussed in Tutorial 1.
+*stopwords are discussed already.
 
 ===Sample Code===
 {{{
@@ -1343,31 +1299,6 @@ lions_&_roar
 target: africa
 }}}
 
-
-=Tutorial 4=
-
-= Introduction =
-
-This Tutorial is in the continuation of the Data_Import Tutorial 1, Data_Import Tutorial 2 and Data_Import_Tutorial 3.This tutorial further explores the Data Import features of the Mallet.
-
-
-= Details =
-=====Note: Please go through the [http://code.google.com/p/pallet/wiki/Tutorial_Data_Import Tutorial_1],[http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_2 Tutorial_2] and [http://code.google.com/p/pallet/wiki/Data_Import_Tutorial_3 Tutorial_3].=====
-
-
-
-The following pipes we are going to discuss here
-
- * 1) TokenSequenceRemoveNonAlpha
- * 2) TokenSequenceNGrams
- * 3) SGML2TokenSequence
- * 4) Target2FeatureSequence
- * 5) Target2LabelSequence
- * 6) TokenSequenceParseFeatureString
- * 7) TokenSequenceMatchDataAndTarget
- * 8) TokenSequence2FeatureSequenceWithBigrams
- * 9) TargetRememberLastLabel
- * 10) SourceLocation2TokenSequence
 
 ==Token-Sequence-Remove-Non-Alpha==
 
@@ -1969,16 +1900,6 @@ Instance i5=piat.pipe(i6);
 }}}
 ===Sample Output===
 The output will contain the raw data contain in the file”sci_spec.txt “in token sequence
-
-
-
-=Tutorial 5=
-
-=Introduction =
-This tutorial is in the continuation of Data_Import_Tutorial 1,2,3,4. This is the last 
-tutorial which completes the Data Import Section of the Mallet.
- 
-=Details=
 
 ==Feature-Count-Pipe ==
 This pipe is used to prune the features which have low count.It is used in order to save the memory which could have been occupied by low count features.This class supports a simpler method that makes two passes over the data : one to collect statistics and create an augumented "stop list",and secondly to actually create instances.
