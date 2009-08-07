@@ -8,7 +8,7 @@ Table of Contents
 =Introduction=
 __________________________________________________________________________________________
 
-==Sample Code==
+===Sample Code===
 {{{
 The pipeList is created in Mallet by calling CreatePipe method. The CreatePipe method 
 must be called in the following way.
@@ -33,9 +33,6 @@ Note: The first and second argument are must for this method. We can provide nul
 The following pipes are used by the application. We will look into the each of the pipe 
 one by one and explains what each one do.
 
-=Details=
-
-Now we will look into the each pipe.
         
 ==Input-2-Char-Sequence==
 
