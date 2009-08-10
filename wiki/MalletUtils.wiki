@@ -37,7 +37,7 @@ implements [http://mallet.cs.umass.edu/api/serialized-form.html#cc.mallet.util.P
  key - Key Indicator to be used.
  rest - Reference to PropertyList object.
 
-Since, both the constructors are protected Property List objects are instantiated using add methods (explained below)
+ Since, both the constructors are protected Property List objects are instantiated using add methods (explained below).
   
 [MalletUtils#Contents Contents]
 
