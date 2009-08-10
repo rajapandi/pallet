@@ -1,0 +1,24 @@
+#Classifying RDF Resources.
+
+= Introduction =
+
+Usually classification occurs on un-structured or semi-structured text.  RDF/XML is of course very structured.  However in general we should focus on the RDF, and not as much on the XML.
+
+= RDF Breakdown =
+RDF triples are statements in the form:
+  * Resource (otherwise known as a Subject)
+  * Property (otherwise known as a Predicate)
+  * Object
+
+So logically we can say any statement:
+Lance (Resource/Subject)
+knows (Property/Predicate)
+english (Object)
+
+Lance
+is married to
+Annie
+
+Lance
+is a
+person
