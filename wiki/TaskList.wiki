@@ -89,6 +89,8 @@ Any task listed here should take 1 hour to no more than 2 weeks work.  If a task
      * StringKernel 	
      * Token 	
      * TokenSequence
+   * Mallet Utils
+     * Property List
    * Decision Trees.
      * planned extension to support pruning.
    * Balanced Winnow.
