@@ -17,13 +17,32 @@ Utilities for lexing, logging and Math functions
 
 = Classes =
 == Property-List==
-Property Lists are tabular data structure containing zero or more entries, each entry is associated with a key, which is called value or property. Every indicator (value) in a property list is unique, i.e No duplications among indicators. Important property of the property list is, any update to it is a destructive(alters the property list rather than making a new one).
+Property Lists are tabular data structure containing zero or more entries, each entry is associated with a key, which is called value or property. Important property of the property list is, any update to it is a destructive(alters the property list rather than making a new one). A list contains an even number of elements that are alternating names (sometimes called indicators or keys) and values (sometimes called properties). When there is more than one name and value pair with the identical name in a property list, the first such pair determines the property.
+
+public class PropertyList
+extends java.lang.Object
+implements [http://mallet.cs.umass.edu/api/serialized-form.html#cc.mallet.util.PropertyList java.io.Serializable]
+
+===Nested Classes supported===
+ * PropertyList.Iterator           
+ * PropertyList.NumericIterator
+ * PropertyList.ObjectIterator
+           <To be done>
 ===Property-List-Constructors===
  * [http://mallet.cs.umass.edu/api/cc/mallet/util/PropertyList.html protected PropertyList()]
- Does not allow zero parameter constructor, throws IllegalArgumentException
+ Does not allow zero parameter constructor, throws [http://java.sun.com/j2se/1.4.2/docs/api/java/lang/IllegalArgumentException.html IllegalArgumentException]
            
  * [http://mallet.cs.umass.edu/api/cc/mallet/util/PropertyList.html protected PropertyList(java.lang.String key, PropertyList rest)]
- 
+ ====Parameters====
+ key - Key Indicator to be used.
+ rest - Reference to PropertyList object.
+
+Since, both the constructors are protected Property List objects are instantiated using add methods (explained below)
+  
+[MalletUtils#Contents Contents]
+
+===Property-List-Methods===
+
 
 
 [MalletUtils#Contents Contents]
