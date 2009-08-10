@@ -105,8 +105,7 @@ Any task listed here should take 1 hour to no more than 2 weeks work.  If a task
   * Real Application to show the Data Import and Classification functionality.
 
 == Currently being worked on ==
-  * Currently working on the following pipes.
-    
+     
     
   * Maximum Entropy 
     * Code Review - Currently have paused this work and have moved onto Decision Tree
