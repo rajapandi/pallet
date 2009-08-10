@@ -16,7 +16,7 @@ Utilities for lexing, logging and Math functions
  ----------------------------------------------------------------------------------------
 
 = Classes =
-= Property-List=
+== Property-List==
 Property Lists are tabular data structure containing zero or more entries, each entry is associated with a key, which is called value or property. Every indicator (value) in a property list is unique, i.e No duplications among indicators. Important property of the property list is, any update to it is a destructive(alters the property list rather than making a new one).
 ===Property-List-Constructors===
  * [http://mallet.cs.umass.edu/api/cc/mallet/util/PropertyList.html protected PropertyList()]
