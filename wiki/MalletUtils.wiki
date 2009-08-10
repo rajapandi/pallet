@@ -42,7 +42,11 @@ implements [http://mallet.cs.umass.edu/api/serialized-form.html#cc.mallet.util.P
 [MalletUtils#Contents Contents]
 
 ===Property-List-Methods===
+ * [http://mallet.cs.umass.edu/api/cc/mallet/util/PropertyList.html#add(java.lang.String,%20double,%20cc.mallet.util.PropertyList) static PropertyList add(java.lang.String key, double value, PropertyList rest)]
 
+ *[http://mallet.cs.umass.edu/api/cc/mallet/util/PropertyList.html#add(java.lang.String,%20java.lang.Object,%20cc.mallet.util.PropertyList) static PropertyList add(java.lang.String key, java.lang.Object value, PropertyList rest)]
+
+ * [http://mallet.cs.umass.edu/api/cc/mallet/util/PropertyList.html#add(java.lang.String,%20java.lang.String,%20cc.mallet.util.PropertyList) static PropertyList add(java.lang.String key, java.lang.String value, PropertyList rest)]
 
 
 [MalletUtils#Contents Contents]
