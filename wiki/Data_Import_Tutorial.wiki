@@ -427,7 +427,9 @@ Some of the other pipes which are used in Mallet and also explained here.
 Now we will look into each pipe
 
 ==Char-Sequence-Replace==
-[http://mallet.cs.umass.edu/api/cc/mallet/pipe/CharSequenceReplace Mallet javadoc] 
+[http://mallet.cs.umass.edu/api/cc/mallet/pipe/CharSequenceReplace Mallet javadoc]
+
+ 
 It is used to find the words which satisfy the given regex expression and then replace 
 it with the given String.
 
@@ -474,6 +476,8 @@ This pipe converts & to &amp in tokens of a token sequence.
 
 ==Feature-Sequence-2-Augmentable-Feature-Vector==
 [http://mallet.cs.umass.edu/api/cc/mallet/pipe/FeatureSequence2AugmentableFeatureVector.html Mallet javadoc]
+
+
 It converts the data field from the feature vector to Augmentable Feature Vector.
 
 Note: FeatureSequence2FeatureVector is a different pipe from FeatureSequence2Augmentable
@@ -604,6 +608,8 @@ the starting of the border with (>).
 }}}
 ==Char-Sequence-Lower-case==
 [http://mallet.cs.umass.edu/api/cc/mallet/pipe/CharSequenceLowercase.html Mallet javadoc]
+
+
 It is simple pipe which will replace the data string (or the character Sequence) with its lowercased version.
 
 ===Implementation===
@@ -687,6 +693,8 @@ The data of the given file is converted to the char sequence
 
 ==Char-Sequence-Array-2-Token-Sequence==
 [http://mallet.cs.umass.edu/api/cc/mallet/pipe/CharSequenceArray2TokenSequence.html Mallet javadoc]
+
+
 It transforms the array of character sequences into a token sequence.
 
 ===Implementation=== 
@@ -726,6 +734,8 @@ Here ,the characterSequenceArray is converted into tokens
 
 ==Csv-2-Array==
 [http://mallet.cs.umass.edu/api/cc/mallet/pipe/Csv2Array.html Mallet javadoc]
+
+
 It converts the string of comma separated values(CSV) to an array where each index is a feature name. It will be used prior to Array2FeatureVector.The string must contain only numbers.
 
 ===Implementation===
@@ -740,6 +750,8 @@ Note: The sample code and sample output of this pipe is explained after describi
 
 ==Array-2-Feature-Vector==
 [http://mallet.cs.umass.edu/api/cc/mallet/pipe/Array2FeatureVector.html Mallet javadoc]
+
+
 This pipe is used to convert the Java array of numerical type to feature vector(as the 
 name signifies).
 
@@ -882,6 +894,8 @@ target: data_gif
 
 ==Csv-2-Feature-Vector==
 [http://mallet.cs.umass.edu/api/cc/mallet/pipe/Csv2FeatureVector.html Mallet javadoc]
+
+
 It converts a string of the form feature_1:val_1 feature_2 : val_2 into a feature
 vector.
 
@@ -1037,6 +1051,8 @@ itself.
 
 ==Simple-Tokenizer==
 [http://mallet.cs.umass.edu/api/cc/mallet/pipe/SimpleTokenizer.html Mallet javadoc]
+
+
 This pipe simply converts the string into tokens and take it as its input. It means this pips accept sequence of letters as tokens.
 
 ===Implementation===
@@ -1142,6 +1158,8 @@ The output is exactly similar to what we got in SimpleTaggerSentence2TokenSequen
 
 ==String-Add-New-Line-Delimiter==
 [http://mallet.cs.umass.edu/api/cc/mallet/pipe/StringAddNewLineDelimiter.html Mallet javadoc]
+
+
 It is a simple pipe which add special text between lines to explicitly represent line breaks.
 
 ===Implementation===
@@ -1189,6 +1207,8 @@ reading about UUEncodedBlocks [http://www.skypoint.com/members/gimonca/uuencode.
 
 ==String-List-2-Feature-Sequence==
 [http://mallet.cs.umass.edu/api/cc/mallet/pipe/StringList2FeatureSequence.html Mallet javadoc]
+
+
 It converts the stringList to feature Sequence. It is to be noted that the data which will be given to this pipe as input must be in the form of String List.
 
 ===Implementation===
@@ -1229,6 +1249,8 @@ target: <null>
 
 ==Feature-Sequence-Convolution==
 [http://mallet.cs.umass.edu/api/cc/mallet/pipe/FeatureSequenceConvolution.html Mallet javadoc]
+
+
 It construct word co-occurrence features from the original sequence using cominatoric,choosing two at a time.
 
 ===Implementation===
@@ -1292,6 +1314,8 @@ target: africa
 
 ==Feature-Vector-Conjunction==
 [http://mallet.cs.umass.edu/api/cc/mallet/pipe/FeatureVectorConjunction.html Mallet javadoc]
+
+
 It adds the conjunction(&) in the features of the Feature Vector.
 
 ===Implementation===
@@ -1415,6 +1439,8 @@ africa_roar
 
 ==SGML-2-Token-Sequence==
 [http://mallet.cs.umass.edu/api/cc/mallet/pipe/SGML2TokenSequence.html Mallet javadoc]
+
+
 It converts a string containing simple SGML tags into a dta TokenSequence of words, paired with a target TokenSequence containing the SGML tags in effect for each word.It does not handle nested SGML tags, nor gracefully handle malformed SGML.* (Source : Mallet javadoc)
 
 ===Implementation===
@@ -1568,6 +1594,8 @@ target: 0: abc (0)------------->Target is indexed and hence converted into
 }}}
 ==Target-2-Label-Sequence==
 [http://mallet.cs.umass.edu/api/cc/mallet/pipe/Target2LabelSequence.html Mallet javadoc]
+
+
 It a simple pipe which converts the data in the target field into LabelSequence. LabelSequence is similar to the feature sequence. Its usage is similar to Target2FeatureSequence.It has just one constructor with no arguments. Its output is also similar to the Target2FeatureSequence.
 
 Note: Just replace the Target2FeatureSequence to Target2LabelSequence in the above code.
@@ -1940,6 +1968,8 @@ Instance i5=piat.pipe(i6);
 The output will contain the raw data contain in the file”sci_spec.txt “in token sequence
 
 ==Feature-Count-Pipe ==
+[http://mallet.cs.umass.edu/api/cc/mallet/pipe/FeatureCountPipe.html Mallet javadoc]
+
 This pipe is used to prune the features which have low count.It is used in order to save the memory which could have been occupied by low count features.This class supports a simpler method that makes two passes over the data : one to collect statistics and create an augumented "stop list",and secondly to actually create instances.
 
 ===Implementation===
@@ -2018,6 +2048,8 @@ These all words doesn't occur more than two times in the raw data so will be pru
 
 ==Feature-Value-String-2-Feature-Vector==
 [http://mallet.cs.umass.edu/api/cc/mallet/pipe/FeatureValueString2FeatureVector.html Mallet javadoc]
+
+
 It is simple pipe which converts the Feature Value String 2 Feature Vector.
 
 ===Implementation===
@@ -2069,6 +2101,8 @@ target: africa
 }}}
 ==Token-Sequence-2-Feature-Vector-Sequence==
 [http://mallet.cs.umass.edu/api/cc/mallet/pipe/TokenSequence2FeatureVectorSequence.html Mallet javadoc]
+
+
 It is pipe which take input as Token Sequence of Instances and convert it into Feature 
 Vector Sequence.
 
@@ -2148,6 +2182,8 @@ target: 0: abc (0)
 
 ==Feature-Vector-Sequence-2-Feature-Vectors==
 [http://mallet.cs.umass.edu/api/cc/mallet/pipe/FeatureVectorSequence2FeatureVectors.html Mallet javadoc]
+
+
 It is the pipe which converts the Feature Vector Sequence to Feature Vectors. The previous pipe (TokenSequence2FeatureVectorSequence) converts the token sequence to feature vector sequence and this pipe than subsequently converts the given Feature Vector Sequence to Feature Vectors.So given an instance with a Feature Vector Sequence in the data field ,it break up the sequence into the individual feature vectors producing one feature vector per instance.
 
 ===Implementation===
@@ -2173,6 +2209,8 @@ Output contains individual feature vectors per instance.
 
 ==Filter-Empty-Feature-Vector==
 [http://mallet.cs.umass.edu/api/cc/mallet/pipe/FilterEmptyFeatureVector.html Mallet javadoc]
+
+
 This pipe provides functionality of iterating through Feature Vectors individually.
 
 ===Implementation===
@@ -2466,10 +2504,14 @@ target: australia
 
 ==Instance-List-Trim-Features-By-Count==
 [http://mallet.cs.umass.edu/api/cc/mallet/pipe/InstanceListTrimFeatureByCount.html Mallet javadoc]
+
+
 This pipe is unimplemented in the Mallet as of now.
 
 ==Noop==
 [http://mallet.cs.umass.edu/api/cc/mallet/pipe/Noop.html Mallet javadoc] 
+
+
 It is the pipe which does nothing to the instance fields but which has the side effects on the dictionary.Noop creates the Dictionary from dataAlphabet and targetAlphabet which can be used by the DictinariedPipe's.You might want to use this pipe before Parallel pipes where the previous pipe do not need dictionaries ,but later steps in each parallel paths do,and they all must share the same directory.  
 
 ===Implementation===
@@ -2528,6 +2570,8 @@ The dataAlphabet and targetAlphabet is created by the use Noop.
 
 ==Pipe==
 [http://mallet.cs.umass.edu/api/cc/mallet/pipe/Pipe.html Mallet javadoc]
+
+
  * 1) It is an abstract super class which doesn't contain any abstract methods.
  * 2) In order to use Pipe subclass you have to override either the pipe method or the newIteratorFrom method 
  * 3) The "pipe" method is used when the pipe's processing of an Instance is one to one and "newIteratorFrom" method is used when the pipe's processing may result in more or fewer Instances than arrive through its source iterator.
@@ -2699,6 +2743,8 @@ herpetologist(47)=1.0
 
 ==Print-Token-Sequence-Features==
 [http://mallet.cs.umass.edu/api/cc/mallet/pipe/PrintTokenSequenceFeatures.html Mallet javadoc]
+
+
 It print features of the token sequence in the data field and the corressponding value (if exists) of any token sequence or feature sequence in the target field.
 
 ===Implementation===
@@ -2778,6 +2824,8 @@ length=12.0
 
 ==Save-Data-In-Source==
 [http://mallet.cs.umass.edu/api/cc/mallet/pipe/SaveDataInSource.html Mallet javadoc]
+
+
 Each Mallet Instance has four part 
  * a)Name : This field should contain a value that identifies this instance, usually a String.
  * b)Label: The label is primarily used in classification applications. It is usually a value within a finite set of labels, a LabelAlphabet.
@@ -2794,6 +2842,8 @@ Note: We need to just create the pipe and pass the data through this pipe with t
 
 ==Selective-SGML-2-Token-Sequence==
 [http://mallet.cs.umass.edu/api/cc/mallet/pipe/SelectiveSGML2TokenSequence.html Mallet javadoc]
+
+
 It converts only the specified SGML tag into Labels.It is similar to SGML2TokenSequence which converts all the SGML tags into Labels.
 
 ===Implementation===
@@ -2900,6 +2950,8 @@ Token#7:pallet
 
 ==Simple-Tagger-Sentence-2-String-Tokenization==
 [http://mallet.cs.umass.edu/api/cc/mallet/pipe/SimpleTaggerSentence2StringTokenization.html Mallet javadoc]
+
+
 This pipe extends SimpleTaggerSentence2TokenSequence to use {Slink StringTokenization} for use with the extract  package.
 
 ===Implementation===
@@ -3045,6 +3097,8 @@ target: length=12
 
 ==Token-Sequence-2-Token-Instances==
 [http://mallet.cs.umass.edu/api/cc/mallet/pipe/TokenSequence2TokenInstances.html Mallet javadoc]
+
+
 It is pipe which converts the token sequence to token instances.
 
 ===Implementation===
@@ -3117,6 +3171,8 @@ roar  span[38..42]
 
 ==Augmentable-Feature-Vector-Add-Conjunction==
 [http://mallet.cs.umass.edu/api/cc/mallet/pipe/AugmentableFeatureVectorAddConjunction.html Mallet javadoc]
+
+
 It is simple pipe which add specified conjunction to the instances.
 
 ===Implementation===
@@ -3133,7 +3189,8 @@ It is simple pipe which add specified conjunction to the instances.
 [http://mallet.cs.umass.edu/api/cc/mallet/pipe/BranchingPipe.html Mallet javadoc] 
 Thie pipe is deprecated from the Mallet-2.0-RC2.
 
-==Directory-2-File-Iterator==[http://mallet.cs.umass.edu/api/ Mallet javadoc]
+==Directory-2-File-Iterator==
+[http://mallet.cs.umass.edu/api/cc/mallet/pipe/Directory2FileIterator.html Mallet javadoc]
 This pipe takes File object which refers to directory and return a File Iterator which iterates over the files in a directory matching a pattern.It extract Label from each file path to become the target field of the instance.
 
 ===Implementation===
@@ -3225,6 +3282,8 @@ file:/home/pralabh/workspace1/sample-data/web/en/sunderland_echo.txt
 
 ==Serial Pipes==
 [http://mallet.cs.umass.edu/api/cc/mallet/pipe/SerialPipes.html Mallet javadoc]
+
+
 This pipe convert an instance through a sequence of pipes. We have used this pipe in the sample code of many other pipes.We added all the Pipes in the ArrayList and then pass the ArrayList as its arguments.
 
 ===Implementation===
