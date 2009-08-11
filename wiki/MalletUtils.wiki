@@ -94,7 +94,7 @@ PropertyList pl = null;
 pl = pl.add ("key", "value", pl);
 }}}
  * [http://mallet.cs.umass.edu/api/cc/mallet/util/PropertyList.html#remove(java.lang.String,%20cc.mallet.util.PropertyList) public static PropertyList remove (String key, PropertyList rest)]
-
+ The name remove is really an irony here!!! All it does i
 
 
 [MalletUtils#Contents Contents]
