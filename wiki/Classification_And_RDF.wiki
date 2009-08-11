@@ -142,7 +142,7 @@ Then perhaps we would output the original model with additional statements stati
 
 }}}
 
-= Refication =
+= Reification =
 Notice that all four types were listed in the new RDF model.  And then we added statements about those types below.  This is called reification (statements or metadata about statements).  It is very useful in this case since the classifyer doesn't know for sure what the type of incident is (even though it is 90% sure that it is a hoax/prank).  So all four types are included but we associate confidence values for each of those statements.  So the classifier is 90% sure it is a hoax/prank, 20% sure it is a threat only, and 10% sure it is a possession only or use of agent.
 
 If the classifyer had known for sure what type of incident it was, then it would have only added the correct BB:STAT_EVENT statement and would not need an associated reified statement (although there probably should be reification statement saying that a Mallet classifier added the statement, for provenance purposes).
