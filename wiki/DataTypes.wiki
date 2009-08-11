@@ -411,7 +411,7 @@ implements java.io.Serializable
 == Augmentable-Feature-Vector-Constructor == 
  * [http://mallet.cs.umass.edu/api/cc/mallet/types/AugmentableFeatureVector.html#AugmentableFeatureVector(cc.mallet.types.Alphabet) AugmentableFeatureVector(Alphabet dict)]           
  * [http://mallet.cs.umass.edu/api/cc/mallet/types/AugmentableFeatureVector.html#AugmentableFeatureVector(cc.mallet.types.Alphabet,%20boolean) AugmentableFeatureVector(Alphabet dict, boolean binary)]
- * [http://mallet.cs.umass.edu/api/cc/mallet/types/AugmentableFeatureVector.html#AugmentableFeatureVector(cc.mallet.types.Alphabet,%20double[]) AugmentableFeatureVector(Alphabet dict, double[] values)]           
+ * [http://mallet.cs.umass.edu/api/cc/mallet/types/AugmentableFeatureVector.html#AugmentableFeatureVector(cc.mallet.types.Alphabet,%20double[]) AugmentableFeatureVector](Alphabet dict, double`[]` values)
  * [http://mallet.cs.umass.edu/api/cc/mallet/types/AugmentableFeatureVector.html#AugmentableFeatureVector(cc.mallet.types.Alphabet,%20double[],%20int) AugmentableFeatureVector(Alphabet dict, double[] values, int capacity)]           
  * [http://mallet.cs.umass.edu/api/cc/mallet/types/AugmentableFeatureVector.html#AugmentableFeatureVector(cc.mallet.types.Alphabet,%20int[],%20double[],%20int) AugmentableFeatureVector(Alphabet dict, int[] indices, double[] values, int capacity)]           
  * [http://mallet.cs.umass.edu/api/cc/mallet/types/AugmentableFeatureVector.html#AugmentableFeatureVector(cc.mallet.types.Alphabet,%20int[],%20double[],%20int,%20boolean) AugmentableFeatureVector(Alphabet dict, int[] indices, double[] values, int capacity, boolean copy)]           
