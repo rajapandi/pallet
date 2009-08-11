@@ -65,10 +65,10 @@ pl = pl.add ("key", 1.0, pl);
  ====Parameters====
  # key - Indicator of the entry. type - String.
  # value - Value of the entry. type - Object.
- # rest - Reference of the existing plist to which the entry needs to be added or null if the first entry needs to be created.
+ # azzcxrest - Reference of the existing plist to which the entry needs to be added or null if the first entry needs to be created.
 
  ====Return Value====
- PropertyList - Updated plist or newly created plist
+ # PropertyList - Updated plist or newly created plist
 
  Code snippet for instantiating plist
 {{{
@@ -86,13 +86,16 @@ pl = pl.add ("key", (Object)str, pl);
  # rest - Reference of the existing plist to which the entry needs to be added or null if the first entry needs to be created.
 
  ====Return Value====
- PropertyList - Updated plist or newly created plist
+ # PropertyList - Updated plist or newly created plist
 
  Code snippet for instantiating plist
 {{{
 PropertyList pl = null;
 pl = pl.add ("key", "value", pl);
 }}}
+ * [http://mallet.cs.umass.edu/api/cc/mallet/util/PropertyList.html#remove(java.lang.String,%20cc.mallet.util.PropertyList) public static PropertyList remove (String key, PropertyList rest)]
+
+
 
 [MalletUtils#Contents Contents]
 
