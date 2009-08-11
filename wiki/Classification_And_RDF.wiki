@@ -1,5 +1,8 @@
 #Classifying RDF Resources.
 
+Table of contents
+ <wiki:toc max_depth="4" />
+
 = Introduction =
 
 Usually classification occurs on un-structured or semi-structured text.  RDF/XML is structured.  However in general we should focus on the RDF, and not as much on the XML.
