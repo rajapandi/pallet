@@ -80,13 +80,13 @@ pl = pl.add ("key", (Object)str, pl);
  * [http://mallet.cs.umass.edu/api/cc/mallet/util/PropertyList.html#add(java.lang.String,%20java.lang.String,%20cc.mallet.util.PropertyList) static PropertyList add(java.lang.String key, java.lang.String value, PropertyList rest)]
  Creates a property list entry and adds its at the front of the property list. this methods creates numerical entry and adds it to the plist.
 
-====Parameters====
- # key - Indicator of the entry. type - String.
- # value - Value of the entry. type - String.
- # rest - Reference of the existing plist to which the entry needs to be added or null if the first entry needs to be created.
+ ====Parameters====
+  # key - Indicator of the entry. type - String.
+  # value - Value of the entry. type - String.
+  # rest - Reference of the existing plist to which the entry needs to be added or null if the first entry needs to be created.
 
-====Return Value====
- # PropertyList - Updated plist or newly created plist
+ ====Return Value====
+  # PropertyList - Updated plist or newly created plist
 
  Code snippet for instantiating plist
 {{{
@@ -95,13 +95,18 @@ pl = pl.add ("key", "value", pl);
 }}}
  * [http://mallet.cs.umass.edu/api/cc/mallet/util/PropertyList.html#remove(java.lang.String,%20cc.mallet.util.PropertyList) public static PropertyList remove (String key, PropertyList rest)]
  The name remove is really an irony here!!! All it does is create a new entry with with value set to null. Strange isn't it? I was astonished too, but look at the definition of plist it makes sense.
+ ====Parameters====
+  # key - Indicator of the entry that needs to be removed. type - String.
+  # rest - Reference of the plist from which the entry needs to be deleted.
 
-====Parameters====
- # key - Indicator of the entry that needs to be removed. type - String.
- # rest - Reference of the plist from which the entry needs to be deleted.
-
-====Return Value====
- # PropertyList - Updated plist or newly created plist
+ ====Return Value====
+  # PropertyList - Updated plist or newly created plist.
+ Code snippet
+{{{
+PropertyList pl = null;
+pl = pl.add ("key", "value", pl);
+pl = pl.remove("key",pl);
+}}}
 
 
 [MalletUtils#Contents Contents]
