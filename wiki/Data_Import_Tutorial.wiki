@@ -36,7 +36,7 @@ The following pipes are used by the application. We will look into the each of t
 one by one and explains what each one do.
 
         
-==Input-2-Char-Sequence==[http://mallet.cs.umass.edu/api/ Mallet javadoc]
+==Input-2-Char-Sequence== [http://mallet.cs.umass.edu/api/ Mallet javadoc]
 
 It is a Pipe that can read data from various kinds  of sources and convert the given input into character sequence. 
 
