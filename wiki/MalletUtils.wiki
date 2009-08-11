@@ -108,6 +108,36 @@ pl = pl.add ("key", "value", pl);
 pl = pl.remove("key",pl);
 }}}
 
+ * [http://mallet.cs.umass.edu/api/cc/mallet/util/PropertyList.html#lookupObject(java.lang.String) Object lookupObject (String key)]
+ ====Parameters====
+ ====Return Value====
+ * [http://mallet.cs.umass.edu/api/cc/mallet/util/PropertyList.html#lookupNumber(java.lang.String) double lookupNumber (String key)]
+ ====Parameters====
+ ====Return Value====
+ * [http://mallet.cs.umass.edu/api/cc/mallet/util/PropertyList.html#hasProperty(java.lang.String) boolean hasProperty (String key)]
+ ====Parameters====
+ ====Return Value====
+ * [http://mallet.cs.umass.edu/api/cc/mallet/util/PropertyList.html#iterator() Iterator iterator ()]
+ ====Parameters====
+ ====Return Value====
+ * [http://mallet.cs.umass.edu/api/cc/mallet/util/PropertyList.html#sumDuplicateKeyValues(cc.mallet.util.PropertyList) static PropertyList sumDuplicateKeyValues (PropertyList pl)]
+ ====Parameters====
+ ====Return Value====
+ * [http://mallet.cs.umass.edu/api/cc/mallet/util/PropertyList.html#sumDuplicateKeyValues(cc.mallet.util.PropertyList,%20boolean) static PropertyList sumDuplicateKeyValues (PropertyList pl, boolean ignoreZeros)]
+ ====Parameters====
+ ====Return Value====
+ * [http://mallet.cs.umass.edu/api/cc/mallet/util/PropertyList.html#numericIterator() Iterator numericIterator ()]
+ ====Parameters====
+ ====Return Value====
+ * [http://mallet.cs.umass.edu/api/cc/mallet/util/PropertyList.html#objectIterator() Iterator objectIterator ()]
+ ====Parameters====
+ ====Return Value====
+ * [http://mallet.cs.umass.edu/api/cc/mallet/util/PropertyList.html#print() void print ()]
+ ====Parameters====
+ ====Return Value====
+ * [http://mallet.cs.umass.edu/api/cc/mallet/util/PropertyList.html#size() int size ()]
+ ====Parameters====
+ ====Return Value====
 
 [MalletUtils#Contents Contents]
 
