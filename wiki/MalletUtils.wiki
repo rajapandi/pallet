@@ -109,37 +109,53 @@ pl = pl.remove("key",pl);
 }}}
 
  * [http://mallet.cs.umass.edu/api/cc/mallet/util/PropertyList.html#lookupObject(java.lang.String) Object lookupObject (String key)]
+ Searches for the property entry's value having the specified key.
  ====Parameters====
+ # key - key of the entry to be searched, type - String
  ====Return Value====
+ # Entry's value if found else null
+
  * [http://mallet.cs.umass.edu/api/cc/mallet/util/PropertyList.html#lookupNumber(java.lang.String) double lookupNumber (String key)]
+ Searches for the property entry's value having the specified key, works on numerical plist.
  ====Parameters====
+ # key - key of the entry to be searched, type - String
  ====Return Value====
+ # Entry's value if found else null
+
  * [http://mallet.cs.umass.edu/api/cc/mallet/util/PropertyList.html#hasProperty(java.lang.String) boolean hasProperty (String key)]
  ====Parameters====
  ====Return Value====
  * [http://mallet.cs.umass.edu/api/cc/mallet/util/PropertyList.html#iterator() Iterator iterator ()]
- ====Parameters====
+ Returns iterator to plist.
  ====Return Value====
+ Iterator to plist
+
  * [http://mallet.cs.umass.edu/api/cc/mallet/util/PropertyList.html#sumDuplicateKeyValues(cc.mallet.util.PropertyList) static PropertyList sumDuplicateKeyValues (PropertyList pl)]
+ If the plist is of numerical type then returns the updated plist with summing up the duplicate values of a key.
  ====Parameters====
+ # plist for which the duplicates values need to summed up.
  ====Return Value====
+ # Updated plist.
+
  * [http://mallet.cs.umass.edu/api/cc/mallet/util/PropertyList.html#sumDuplicateKeyValues(cc.mallet.util.PropertyList,%20boolean) static PropertyList sumDuplicateKeyValues (PropertyList pl, boolean ignoreZeros)]
  ====Parameters====
- ====Return Value====
+ Same as the previous one but does not consider entries having zero values.
+
  * [http://mallet.cs.umass.edu/api/cc/mallet/util/PropertyList.html#numericIterator() Iterator numericIterator ()]
- ====Parameters====
- ====Return Value====
+ Same as previous Iterator method but works for Numerical plist.
+
  * [http://mallet.cs.umass.edu/api/cc/mallet/util/PropertyList.html#objectIterator() Iterator objectIterator ()]
  ====Parameters====
  ====Return Value====
  * [http://mallet.cs.umass.edu/api/cc/mallet/util/PropertyList.html#print() void print ()]
- ====Parameters====
- ====Return Value====
+ Prints all the entries in plist to the standard output
  * [http://mallet.cs.umass.edu/api/cc/mallet/util/PropertyList.html#size() int size ()]
- ====Parameters====
  ====Return Value====
+ Number of entries in the plist.
+
  * [http://mallet.cs.umass.edu/api/cc/mallet/util/PropertyList.html#last() PropertyList last()]
  ====Parameters====
+ 
  ====Return Value====
  * [http://mallet.cs.umass.edu/api/cc/mallet/util/PropertyList.html#append(cc.mallet.util.PropertyList) PropertyList append(PropertyList nextPl) throws UnsupportedOperationException]
  ====Parameters====
