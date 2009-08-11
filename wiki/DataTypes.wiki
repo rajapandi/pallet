@@ -412,16 +412,7 @@ implements java.io.Serializable
  * [http://mallet.cs.umass.edu/api/cc/mallet/types/AugmentableFeatureVector.html#AugmentableFeatureVector(cc.mallet.types.Alphabet) AugmentableFeatureVector(Alphabet dict)]           
  * [http://mallet.cs.umass.edu/api/cc/mallet/types/AugmentableFeatureVector.html#AugmentableFeatureVector(cc.mallet.types.Alphabet,%20boolean) AugmentableFeatureVector(Alphabet dict, boolean binary)]
  * [http://mallet.cs.umass.edu/api/cc/mallet/types/AugmentableFeatureVector.html AugmentableFeatureVector](Alphabet dict, double`[]` values)
- * [http://mallet.cs.umass.edu/api/cc/mallet/types/AugmentableFeatureVector.html#AugmentableFeatureVector(cc.mallet.types.Alphabet,%20double[],%20int) AugmentableFeatureVector(Alphabet dict, double[] values, int capacity)]           
- * [http://mallet.cs.umass.edu/api/cc/mallet/types/AugmentableFeatureVector.html#AugmentableFeatureVector(cc.mallet.types.Alphabet,%20int[],%20double[],%20int) AugmentableFeatureVector(Alphabet dict, int[] indices, double[] values, int capacity)]           
- * [http://mallet.cs.umass.edu/api/cc/mallet/types/AugmentableFeatureVector.html#AugmentableFeatureVector(cc.mallet.types.Alphabet,%20int[],%20double[],%20int,%20boolean) AugmentableFeatureVector(Alphabet dict, int[] indices, double[] values, int capacity, boolean copy)]           
- * [http://mallet.cs.umass.edu/api/cc/mallet/types/AugmentableFeatureVector.html#AugmentableFeatureVector(cc.mallet.types.Alphabet,%20int[],%20double[],%20int,%20boolean,%20boolean) AugmentableFeatureVector(Alphabet dict, int[] indices, double[] values, int capacity, boolean copy, boolean checkIndicesSorted)]           
- * [http://mallet.cs.umass.edu/api/cc/mallet/types/AugmentableFeatureVector.html#AugmentableFeatureVector(cc.mallet.types.Alphabet,%20int[],%20double[],%20int,%20int,%20boolean,%20boolean,%20boolean) AugmentableFeatureVector(Alphabet dict, int[] indices, double[] values, int capacity, int size, boolean copy, boolean checkIndicesSorted, boolean removeDuplicates)]
- * [http://mallet.cs.umass.edu/api/cc/mallet/types/AugmentableFeatureVector.html#AugmentableFeatureVector(cc.mallet.types.Alphabet,%20int,%20boolean) AugmentableFeatureVector(Alphabet dict, int capacity, boolean binary)]           
- * [http://mallet.cs.umass.edu/api/cc/mallet/types/AugmentableFeatureVector.html#AugmentableFeatureVector(cc.mallet.types.Alphabet,%20cc.mallet.util.PropertyList,%20boolean) AugmentableFeatureVector(Alphabet dict, PropertyList pl, boolean binary)]           
- * [http://mallet.cs.umass.edu/api/cc/mallet/types/AugmentableFeatureVector.html#AugmentableFeatureVector(cc.mallet.types.Alphabet,%20cc.mallet.util.PropertyList,%20boolean,%20boolean) AugmentableFeatureVector(Alphabet dict, PropertyList pl, boolean binary, boolean growAlphabet)]           
- * [http://mallet.cs.umass.edu/api/cc/mallet/types/AugmentableFeatureVector.html#AugmentableFeatureVector(cc.mallet.types.FeatureSequence,%20boolean) AugmentableFeatureVector(FeatureSequence fs, boolean binary)]           
- * [http://mallet.cs.umass.edu/api/cc/mallet/types/AugmentableFeatureVector.html#AugmentableFeatureVector(cc.mallet.types.FeatureVector) AugmentableFeatureVector(FeatureVector fv)]
+ * [http://mallet.cs.umass.edu/api/cc/mallet/types/AugmentableFeatureVector.html AugmentableFeatureVector(Alphabet dict, double`[]` values, int capacity)]           
 
 == Augmentable-Feature-Vector-Methods ==
 
