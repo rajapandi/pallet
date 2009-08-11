@@ -60,9 +60,39 @@ pl = pl.add ("key", 1.0, pl);
 }}}
 
  * [http://mallet.cs.umass.edu/api/cc/mallet/util/PropertyList.html#add(java.lang.String,%20java.lang.Object,%20cc.mallet.util.PropertyList) static PropertyList add(java.lang.String key, java.lang.Object value, PropertyList rest)]
+ Creates a property list entry and adds its at the front of the property list. this methods creates numerical entry and adds it to the plist.
+
+ ====Parameters====
+ # key - Indicator of the entry. type - String.
+ # value - Value of the entry. type - Object.
+ # rest - Reference of the existing plist to which the entry needs to be added or null if the first entry needs to be created.
+
+ ====Return Value====
+ PropertyList - Updated plist or newly created plist
+
+ Code snippet for instantiating plist
+{{{
+PropertyList pl = null;
+String str = "value";
+pl = pl.add ("key", (Object)str, pl);
+}}}
 
  * [http://mallet.cs.umass.edu/api/cc/mallet/util/PropertyList.html#add(java.lang.String,%20java.lang.String,%20cc.mallet.util.PropertyList) static PropertyList add(java.lang.String key, java.lang.String value, PropertyList rest)]
+ Creates a property list entry and adds its at the front of the property list. this methods creates numerical entry and adds it to the plist.
 
+ ====Parameters====
+ # key - Indicator of the entry. type - String.
+ # value - Value of the entry. type - String.
+ # rest - Reference of the existing plist to which the entry needs to be added or null if the first entry needs to be created.
+
+ ====Return Value====
+ PropertyList - Updated plist or newly created plist
+
+ Code snippet for instantiating plist
+{{{
+PropertyList pl = null;
+pl = pl.add ("key", "value", pl);
+}}}
 
 [MalletUtils#Contents Contents]
 
