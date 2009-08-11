@@ -522,7 +522,7 @@ classifier will not be affected much by the multiple occurrence of the token.
 }}}
 
 ==Char-Sequence-2-char-n-grams== 
-[http://mallet.cs.umass.edu/api/cc/mallet/pipe/CharSequence2charngrams.html Mallet javadoc]
+[http://mallet.cs.umass.edu/api/cc/mallet/pipe/CharSequence2CharNGrams.html Mallet javadoc]
 
 This pipe is used to convert the character into a token sequence of N gram. It means , if 
 N is three than the token which is created by this pipe has length 3.
@@ -1120,7 +1120,7 @@ target: australia
 }}}
 
 ==Pipe-utils==
-[http://mallet.cs.umass.edu/api/cc/mallet/pipe/Pipeutils.html Mallet javadoc]
+[http://mallet.cs.umass.edu/api/cc/mallet/pipe/PipeUtils.html Mallet javadoc]
 
 This is a very special type of pipe which is used to combine two different pipes. This pipe has one static function which is used for this purpose.
 
@@ -1313,7 +1313,7 @@ target: africa
 }}}
 
 ==Feature-Vector-Conjunction==
-[http://mallet.cs.umass.edu/api/cc/mallet/pipe/FeatureVectorConjunction.html Mallet javadoc]
+[http://mallet.cs.umass.edu/api/cc/mallet/pipe/FeatureVectorConjunctions.html Mallet javadoc]
 
 
 It adds the conjunction(&) in the features of the Feature Vector.
@@ -2208,7 +2208,7 @@ Output contains individual feature vectors per instance.
 
 
 ==Filter-Empty-Feature-Vector==
-[http://mallet.cs.umass.edu/api/cc/mallet/pipe/FilterEmptyFeatureVector.html Mallet javadoc]
+[http://mallet.cs.umass.edu/api/cc/mallet/pipe/FilterEmptyFeatureVectors.html Mallet javadoc]
 
 
 This pipe provides functionality of iterating through Feature Vectors individually.
@@ -2503,7 +2503,7 @@ target: australia
 }}}
 
 ==Instance-List-Trim-Features-By-Count==
-[http://mallet.cs.umass.edu/api/cc/mallet/pipe/InstanceListTrimFeatureByCount.html Mallet javadoc]
+[http://mallet.cs.umass.edu/api/cc/mallet/pipe/InstanceListTrimFeaturesByCount.html Mallet javadoc]
 
 
 This pipe is unimplemented in the Mallet as of now.
@@ -3170,7 +3170,7 @@ roar  span[38..42]
 }}}
 
 ==Augmentable-Feature-Vector-Add-Conjunction==
-[http://mallet.cs.umass.edu/api/cc/mallet/pipe/AugmentableFeatureVectorAddConjunction.html Mallet javadoc]
+[http://mallet.cs.umass.edu/api/cc/mallet/pipe/AugmentableFeatureVectorAddConjunctions.html Mallet javadoc]
 
 
 It is simple pipe which add specified conjunction to the instances.
