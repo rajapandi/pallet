@@ -19,6 +19,8 @@ Utilities for lexing, logging and Math functions
 == Property-List==
 Property Lists are tabular data structure containing zero or more entries, each entry is associated with a key, which is called value or property. Important property of the property list is, any update to it is a destructive(alters the property list rather than making a new one). A list contains an even number of elements that are alternating names (sometimes called indicators or keys) and values (sometimes called properties). When there is more than one name and value pair with the identical name in a property list, the first such pair determines the property.
 
+Mallet Property List works with Object and Numerical (Double) objects.
+
 public class PropertyList
 extends java.lang.Object
 implements [http://mallet.cs.umass.edu/api/serialized-form.html#cc.mallet.util.PropertyList java.io.Serializable]
@@ -43,8 +45,21 @@ implements [http://mallet.cs.umass.edu/api/serialized-form.html#cc.mallet.util.P
 
 ===Property-List-Methods===
  * [http://mallet.cs.umass.edu/api/cc/mallet/util/PropertyList.html#add(java.lang.String,%20double,%20cc.mallet.util.PropertyList) static PropertyList add(java.lang.String key, double value, PropertyList rest)]
+ Creates a property list entry and adds its at the front of the property list. this methods creates numerical entry and adds it to the plist.
+ ====Parameters====
+ # key - Indicator of the entry. type - String.
+ # value - Value of the entry. type - double.
+ # rest - Reference of the existing plist to which the entry needs to be added or null if the first entry needs to be created.
+ ====Return Value====
+ PropertyList - Updated plist or newly created plist
 
- *[http://mallet.cs.umass.edu/api/cc/mallet/util/PropertyList.html#add(java.lang.String,%20java.lang.Object,%20cc.mallet.util.PropertyList) static PropertyList add(java.lang.String key, java.lang.Object value, PropertyList rest)]
+ Code snippet for instantiating plist
+{{{
+PropertyList pl = null;
+pl = pl.add ("key", 1.0, pl);
+}}}
+
+ * [http://mallet.cs.umass.edu/api/cc/mallet/util/PropertyList.html#add(java.lang.String,%20java.lang.Object,%20cc.mallet.util.PropertyList) static PropertyList add(java.lang.String key, java.lang.Object value, PropertyList rest)]
 
  * [http://mallet.cs.umass.edu/api/cc/mallet/util/PropertyList.html#add(java.lang.String,%20java.lang.String,%20cc.mallet.util.PropertyList) static PropertyList add(java.lang.String key, java.lang.String value, PropertyList rest)]
 
