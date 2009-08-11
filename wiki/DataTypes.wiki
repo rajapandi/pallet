@@ -403,7 +403,12 @@ implements Sequence`<E>`<BR CLEAR="ALL"|"LEFT"|"RIGHT">
 
 = Augmentable-Feature-Vector =
 *Package: * [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
- To be done
+
+public class AugmentableFeatureVector
+extends FeatureVector
+implements java.io.Serializable
+
+
 
  [DataTypes#Contents Contents]
  ----------------------------------------------------------------------------------------
