@@ -70,7 +70,7 @@ Using the example RDF that we will be testing against, the RDF for these two wou
 }}}
 
 = Initial Goal =
-The initial goal would be to train the classification system on a data set similar to the above example.  Then when we apply the training model with the proper classification algorithm, we hope to have a resulting set containg confidence values in our RDF.  So if we are trying to classify all incidents in terms of their type:
+The initial goal would be to train the classification system on a data set similar to the above example.  Then when we apply the training model with the classification algorithm, we hope to have the original RDF data as well as additional RDF data stating confidence values for each classification.  So if we are trying to classify all incidents in terms of their type:
   * Hoax/Prank
   * Threat Only
   * Possession Only
@@ -140,6 +140,6 @@ Then perhaps we would output the original model with additional statements stati
 }}}
 
 = Refication =
-Notice that all four types were listed in the new RDF model.  And then we added statements about those statements below.  This is called reification.  It is very useful in this case since the classifyer doesn't know for sure what the type of incident is (even though it is 90% sure that it is a hoax/prank).  So all four types are included but we associate confidence values for each of those statements.  So the classifier is 90% sure it is a hoax/prank, 20% sure it is a threat only, and 10% sure it is a possession only or use of agent.
+Notice that all four types were listed in the new RDF model.  And then we added statements about those types below.  This is called reification (statements or metadata about statements).  It is very useful in this case since the classifyer doesn't know for sure what the type of incident is (even though it is 90% sure that it is a hoax/prank).  So all four types are included but we associate confidence values for each of those statements.  So the classifier is 90% sure it is a hoax/prank, 20% sure it is a threat only, and 10% sure it is a possession only or use of agent.
 
 If the classifyer had known for sure what type of incident it was, then it would have only added the correct BB:STAT_EVENT statement and would not need an associated reified statement (although there probably should be reification statement saying that a Mallet classifier added the statement, for provenance purposes).
