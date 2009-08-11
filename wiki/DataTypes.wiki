@@ -404,9 +404,9 @@ implements Sequence`<E>`<BR CLEAR="ALL"|"LEFT"|"RIGHT">
 = Augmentable-Feature-Vector =
 *Package: * [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
-public class AugmentableFeatureVector
-extends FeatureVector
-implements java.io.Serializable
+public class AugmentableFeatureVector<BR CLEAR="ALL"|"LEFT"|"RIGHT">
+extends FeatureVector<BR CLEAR="ALL"|"LEFT"|"RIGHT">
+implements java.io.Serializable<BR CLEAR="ALL"|"LEFT"|"RIGHT">
 
 == Augmentable-Feature-Vector-Constructor == 
  * [http://mallet.cs.umass.edu/api/cc/mallet/types/AugmentableFeatureVector.html#AugmentableFeatureVector(cc.mallet.types.Alphabet) AugmentableFeatureVector(Alphabet dict)]           
