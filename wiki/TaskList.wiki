@@ -11,6 +11,9 @@ Any task listed here should take 1 hour to no more than 2 weeks work.  If a task
  * Retrieve entire data source model, within Blackbook - Lance
  * Create Generalized Training Algorithm which takes an algorithm name and RDF data to train on - Sharath.
  * Wrap the generalized training algorithm as a Blackbook algorithm - Lance.
+   * RDF -> Pipe -> MalletP
+   * MalletTrain.train(algorithmName,malletP)
+   * return wrapClassifier(Classifier)
  * Create generalized mallet classifier in Blackbook which takes a Classifier and the RDF data to be classified -Lance.
    * rdf -> pipe
    * classify
