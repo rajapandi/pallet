@@ -10,7 +10,6 @@ Any task listed here should take 1 hour to no more than 2 weeks work.  If a task
  
   
  * The unit testing of all the pipes.(%)
- * Sample Application using Data Import functionality.  
  * Data Classification:
    * Types - includes feature vector, instance labels.
      * Alphabet
@@ -113,6 +112,7 @@ Any task listed here should take 1 hour to no more than 2 weeks work.  If a task
   * Maximum Entropy 
     * Code Review - Currently have paused this work and have moved onto Decision Tree
     * Documentation and Tutorials
+  * Sample Application to import RDF/XML Data into Mallet Instances using Mallet pipes.
 
 == Completed ==
   * The following task has been completed on the pipes(mentioned below)
