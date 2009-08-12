@@ -19,6 +19,12 @@ Any task listed here should take 1 hour to no more than 2 weeks work.  If a task
    * classify
    * jena add statement and reified statement for provenance
  * Create generalized incremental training algorithm as a Blackbook algorithm which takes a Classifier and RDF to be trained on and return the Classifier - Lance. 
+ * Application to Import RDF Data into Mallet Instances - Pralabh
+   * RDF->Jena Model->Inspect each resource 
+   * list all statements for that resource where the object is literal
+   * check if label is already exist using supplied predicate argument.
+   * Output in Mallet Format 
+   
  * The unit testing of all the pipes.(%)
  * Data Classification:
    * Types - includes feature vector, instance labels.
@@ -122,7 +128,7 @@ Any task listed here should take 1 hour to no more than 2 weeks work.  If a task
   * Maximum Entropy 
     * Code Review - Currently have paused this work and have moved onto Decision Tree
     * Documentation and Tutorials
-  * Sample Application to import RDF/XML Data into Mallet Instances using Mallet pipes.
+  
 
 == Completed ==
   * The following task has been completed on the pipes(mentioned below)
