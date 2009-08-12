@@ -103,6 +103,9 @@ Any task listed here should take 1 hour to no more than 2 weeks work.  If a task
    * Maximum Entropy models with Generalized Expectation Criteria.
   * Data classification unit tests
   * Real Application to show the Data Import and Classification functionality.
+  * C4.5 Decision Tree
+    * Code Review.
+    * Documentation and Tutorials.
 
 == Currently being worked on ==
      
@@ -110,10 +113,6 @@ Any task listed here should take 1 hour to no more than 2 weeks work.  If a task
   * Maximum Entropy 
     * Code Review - Currently have paused this work and have moved onto Decision Tree
     * Documentation and Tutorials
-
-  * C4.5 Decision Tree
-    * Code Review.
-    * Documentation and Tutorials.
 
 == Completed ==
   * The following task has been completed on the pipes(mentioned below)
