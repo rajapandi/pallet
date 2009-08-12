@@ -12,6 +12,9 @@ Any task listed here should take 1 hour to no more than 2 weeks work.  If a task
  * Create Generalized Training Algorithm which takes an algorithm name and RDF data to train on - Sharath.
  * Wrap the generalized training algorithm as a Blackbook algorithm - Lance.
  * Create generalized mallet classifier in Blackbook which takes a Classifier and the RDF data to be classified -Lance.
+   * rdf -> pipe
+   * classify
+   * jena add statement and reified statement for provenance
  * Create generalized incremental training algorithm as a Blackbook algorithm which takes a Classifier and RDF to be trained on and return the Classifier - Lance. 
  * The unit testing of all the pipes.(%)
  * Data Classification:
