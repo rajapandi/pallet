@@ -1,6 +1,8 @@
 #summary This document describes the step needed to Import the RDF data into Mallet instances
+<wiki:toc max_depth="3" /> 
 
 = Introduction =
+
 
 We Lance,Pralabh and Sharath has decided number of steps to Import the "Montery2RDF.rdf" into Mallet instances so that incidents can be classified on the basis of there types (Hoax/Prank, threat only, possession only, use of agent).
 
