@@ -29,7 +29,18 @@ There are basically two steps
         <event:startDate>1999-02-05</event:startDate>
         <vCard:ORG rdf:resource="urn:monterey:organization9" />
         <BB:STAT_EVENT>hoax/prank</BB:STAT_EVENT>
-<bb:incidentDescription>On 5 February 1999, Main Street School in East Aurora, New York, was closed following the discovery of an anthrax threat written on the front door. The warning was found by a member of the night staff just before 5 a.m.. East Aurora Police Chief William Nye stated that authorities were planning to check the building to be sure that the incident was a hoax.[A] The following week, the school board cited the disturbance caused by the incident and asked parents to convey to their children the seriousness of hoaxes, particularly about subjects like anthrax. Board President Anne Wadsworth added that such an action could have serious implications on one's future.[B] A 17 February 1999 Buffalo news article reported that a seventh-grade East Aurora boy had been implicated in the event and charged with falsely reporting an incident and aggravated harassment. It also mentioned that his case was petitioned to Family Court.[C]</bb:incidentDescription>
+<bb:incidentDescription>On 5 February 1999, Main Street School in East Aurora, New York, 
+was closed following the discovery of an anthrax threat written on the front door. The 
+warning was found by a member of the night staff just before 5 a.m.. East Aurora Police 
+Chief William Nye stated that authorities were planning to check the building to be sure 
+that the incident was a hoax.[A] The following week, the school board cited the 
+disturbance caused by the incident and asked parents to convey to their children the 
+seriousness of hoaxes, particularly about subjects like anthrax. Board President Anne 
+Wadsworth added that such an action could have serious implications on one's future.[B] A 
+17 February 1999 Buffalo news article reported that a seventh-grade East Aurora boy had 
+been implicated in the event and charged with falsely reporting an incident and 
+aggravated harassment. It also mentioned that his case was petitioned to Family Court.
+[C]</bb:incidentDescription>
 
                  
                  Will get converted into Mallet instances which looks like
