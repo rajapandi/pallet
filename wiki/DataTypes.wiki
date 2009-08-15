@@ -589,6 +589,7 @@ Feature sequence as the following data structure:
  # Dictionary of alphabets  represented by [DataTypes#Alphabet Alphabet].
  # indices represents the dictionary to be stored, it contains the index to the [DataTypes#Alphabet Alphabet].
 
+{{{
 eg: Let dictionary be "Never test a test string".
 If the dictionary is represented as a Feature Sequence then 
 	Feature sequence looks as follows:
@@ -605,7 +606,7 @@ If the dictionary is represented as a Feature Sequence then
 	 index [2] = 2 (a)
 	 index [3] = 1 (test)
 	 index [4] = 3 (string)
-
+}}}
  [DataTypes#Contents Contents]
  ----------------------------------------------------------------------------------------
  ----------------------------------------------------------------------------------------
