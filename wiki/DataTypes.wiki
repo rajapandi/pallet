@@ -1068,8 +1068,24 @@ implements java.io.Serializable<BR CLEAR="ALL"|"LEFT"|"RIGHT">
 = Sparse-Vector = 	
 *Package: * [http://mallet.cs.umass.edu/api/cc/mallet/types/package-summary.html cc.mallet.types]
 
- To be done
+A sparse vector is a vector having a relatively small number of nonzero elements.
 
+Mallet uses Compressed-vector storage mode:
+It uses two 1D arrays to store a sparse vector, each with a length of number of non-zero elements.
+ # Index array - Indicates the element position.
+ # Value array - Non-zero elements of the sparse vector.
+
+eg:
+Array : {0.0, 0.0, 1.0, 0.0, 2.0, 3.0, 0.0, 4.0, 0.0, 5.0, 0.0}
+Index array : {3, 5, 6, 8, 10}
+Value array : {1.0, 2.0, 3.0, 4.0, 5.0}
+
+== Constructors ==
+ * [http://mallet.cs.umass.edu/api/cc/mallet/types/SparseVector.html SparseVector] (int[] indices, double[] values, int capacity, int size, boolean copy,boolean checkIndicesSorted boolean removeDuplicates)
+ Creates the Sparse
+
+
+== Public-Methods ==
 
  [DataTypes#Contents Contents]
  ----------------------------------------------------------------------------------------
