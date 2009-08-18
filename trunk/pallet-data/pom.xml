@@ -15,5 +15,20 @@
 			<artifactId>mallet</artifactId>
 			<version>2.0</version>
 		</dependency>
-	</dependencies>
+		<dependency>
+			<groupId>com.hp.hpl.jena</groupId>
+			<artifactId>arq</artifactId>
+			<version>2.8.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.hp.hpl.jena</groupId>
+			<artifactId>jena</artifactId>
+			<version>2.6.0</version>
+		</dependency>
+		<dependency>
+            <groupId>trove</groupId>
+            <artifactId>trove</artifactId>
+            <version>2.1.1</version>
+        </dependency>
+			</dependencies>
 </project>
