@@ -1,3 +1,8 @@
+/**
+ * The following program is used to convert the data in the RDF format to Mallet Instances.The first 
+ * command line argument(args[0]) will be the path of the Input RDF file. The Second Command Line 
+ * argument will be the Output .txt(args[1]) file.
+ */
 package utd.pallet.data;
 
 import java.io.BufferedReader;
@@ -118,67 +123,100 @@ public class RDF_2_Mallet_Instances {
      *            CommandLine Arguments
      */
     public static void main(String args[]) {
-        File f = null;
-        File f1 = null;
-        String s12 = " ";
-        HashMap<String, String> m1 = new HashMap<String, String>();
+        File fread = null;
+        File fwrite = null;
+        String s_data = " ";
+        /**
+         * Map which store Resource as a Key and Resource's data as a Value
+         * 
+         */
+        HashMap<String, String> Res_data = new HashMap<String, String>();
         FileReader fr = null;
         BufferedReader br = null;
         FileWriter fw = null;
         BufferedWriter bw = null;
         try {
             model = ModelFactory.createDefaultModel();
-            f = new File("Montery2RDF.rdf");
-            f1 = new File("Mallet_Instances.txt");
-
-            fr = new FileReader(f);
+            fread = new File(args[0]);
+            fwrite = new File(args[1]);
+            fr = new FileReader(fread);
             br = new BufferedReader(fr);
-            fw = new FileWriter(f1);
+            fw = new FileWriter(fwrite);
             bw = new BufferedWriter(fw);
-            model.read(br, null, "RDF/XML");
 
+            model.read(br, null, "RDF/XML");
+            /**
+             * The object of Property STAT_EVENT is used as the Target in the
+             * Mallet Instances.
+             * 
+             */
             Property p1 = model
                     .getProperty("http://blackbook.com/terms#STAT_EVENT");
             ResIterator res = model.listSubjects();
 
             while (res.hasNext()) {
-                Resource r = res.next();
+                Resource r_original = res.next();
+                Resource r1 = findsupernode(r_original);
 
-                Resource r1 = findsupernode(r);
-
-                System.out.println("DATA OF LOCAL RESOURCE " + r.toString()
+                System.out.println("DATA OF LOCAL RESOURCE "
+                        + r_original.toString()
                         + "IS ATTACHED TO THE DATA OF ORIGINAL RESOURCE "
                         + r1.toString());
 
-                StmtIterator stmt = r.listProperties();
-                s12 = " ";
+                StmtIterator stmt = r_original.listProperties();
+                s_data = " ";
                 while (stmt.hasNext()) {
                     Statement s1 = stmt.next();
                     if (s1.getObject().isLiteral()) {
 
-                        s12 = s12 + " " + s1.getObject().toString() + " ";
+                        s_data = s_data + " " + s1.getObject().toString() + " ";
 
                     }
                 }
-                if (m1.containsKey(r1.toString())) {
-                    String slrt = m1.get(r1.toString());
-                    slrt = slrt + " " + s12;
-                    m1.put(r1.toString(), slrt);
-                } else {
-                    m1.put(r1.toString(), s12);
+                /**
+                 * If Resource already there in the Map ,then get the previous
+                 * data. and add the new data.
+                 */
+                if (Res_data.containsKey(r1.toString())) {
+                    String slrt = Res_data.get(r1.toString());
+                    slrt = slrt + " " + s_data;
+                    Res_data.put(r1.toString(), slrt);
+                }
+                /**
+                 * If Resource is not already in the Map then add in the Map
+                 * with current data.
+                 */
+                else {
+                    Res_data.put(r1.toString(), s_data);
                 }
             }
-            Instance i = null;
 
+            Instance i = null;
+            /**
+             * Again Start iterating through each resource
+             */
             res = model.listSubjects();
             while (res.hasNext()) {
                 Resource re = res.next();
-                String str = m1.get(re.toString());
-
+                String str = Res_data.get(re.toString());
+                /**
+                 * Get the data from the Map associated with each Resource.If
+                 * data has the property http://blackbook.com/terms#STAT_EVENT
+                 * then only we need to create instance.
+                 */
                 if (re.getProperty(p1) != null) {
 
+                    /**
+                     * An Mallet Instance is created with data as the data
+                     * associated with Resource.Target will be the object value
+                     * of the property
+                     * http://blackbook.com/terms#STAT_EVENT.Name will be the
+                     * name of the resource. Source is the file through which we
+                     * get the data.
+                     */
+
                     i = new Instance(str, re.getProperty(p1).getObject()
-                            .toString(), re.toString(), "Montery2RDF.rdf");
+                            .toString(), re.toString(), args[0]);
 
                     Inst_bef_proce.add(i);
 
@@ -189,17 +227,24 @@ public class RDF_2_Mallet_Instances {
             System.out.println(e);
         }
         Iterator<Instance> ip = Inst_bef_proce.iterator();
+        /**
+         * A BuildPipe method is called ,which creates the pipelist.
+         */
         RDF_2_Mallet_Instances ob1 = new RDF_2_Mallet_Instances();
         InstanceList instances = new InstanceList(ob1.pipe);
+        /**
+         * The data is processed through the Pipe which is associated with
+         * Mallet InstanceList.
+         */
         instances.addThruPipe(ip);
         Iterator<Instance> ipc = instances.iterator();
         try {
             while (ipc.hasNext()) {
                 Instance io = ipc.next();
-                System.out.println(io.getName());
-                System.out.println(io.getTarget());
-                System.out.println(io.getData());
-                System.out.println(io.getSource());
+                System.out.println("NAME:: " + io.getName().toString());
+                System.out.println("DATA::\n" + io.getData().toString());
+                System.out.println("TARGET:: " + io.getTarget().toString());
+                System.out.println("SOURCE:: " + io.getSource().toString());
 
                 bw.newLine();
                 bw.write("NAME:: " + io.getName().toString());
