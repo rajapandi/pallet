@@ -58,7 +58,7 @@ aggravated harassment. It also mentioned that his case was petitioned to Family 
 
 
 }}} 
-===2)Classify the Data===
+===Classify the Data===
   * 1) Take the data which is to be classified in jena Model
   * 2) Passes the data (description of the incident) through the trained Classifier.  Classifier will return the type of the incident (Hoax/Prank, threat only, possession only, use of agent).
   * 3) The Predicate <BB:STAT_EVENT> with the type of the incident is added.
