@@ -12,7 +12,6 @@ import utd.pallet.data.BuildPipe;
 import cc.mallet.classify.Classification;
 import cc.mallet.classify.Classifier;
 import cc.mallet.classify.ClassifierTrainer;
-import cc.mallet.classify.tests.TestNaiveBayes;
 import cc.mallet.pipe.CharSequence2TokenSequence;
 import cc.mallet.pipe.FeatureSequence2FeatureVector;
 import cc.mallet.pipe.Input2CharSequence;
@@ -79,7 +78,8 @@ public class testClassification extends TestCase {
 	}
 	
 
-    public void testClassification () {
+    @SuppressWarnings("unchecked")
+	public void testMalletClassification () {
     	InstanceList iList = GetInstanceList();
     	BlackbookTextDataTrainer bTrainer = new BlackbookTextDataTrainer (iList, 
     										BlackbookTextDataTrainer.NAIVEBAYES, 
