@@ -31,22 +31,15 @@ public class TestMalletClassifier {
          */
 
         String[][][] trainingdata = new String[][][] {
-                {
-                        {
-                                "on the plains of africa the lions roar",
-                                "in swahili ngoma means to dance",
-                                "nelson mandela became president of south africa",
-                                "the saraha dessert is expanding" },
-                        { "africa" } },
-                {
-                        {
-                                "panda bears eat bamboo",
-                                "china's one child policy has resulted in a surplus of boys",
-                                "tigers live in the jungle" }, { "asia" } },
-                {
-                        { "home of kangaroos", "Autralian's for beer - Foster",
-                                "Steve Irvin is a herpetologist" },
-                        { "australia" } } };
+                {{ "on the plains of africa the lions roar",
+                   "in swahili ngoma means to dance",
+                   "nelson mandela became president of south africa",
+                   "the saraha dessert is expanding" }, { "africa" }},
+                {{ "panda bears eat bamboo",
+                   "china's one child policy has resulted in a surplus of boys",
+                   "tigers live in the jungle" }, { "asia" } },
+                {{ "home of kangaroos", "Autralian's for beer - Foster",
+                   "Steve Irvin is a herpetologist" },{ "australia" } } };
 
         MalletClassifier mc = new MalletClassifier();
 
