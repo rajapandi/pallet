@@ -15,7 +15,7 @@ import cc.mallet.types.InstanceList;
  *
  */
 
-@SuppressWarnings("serial")
+@SuppressWarnings({ "serial", "unused" })
 public class BlackbookTextClassify implements Serializable {
 	private Classifier 			classifier = null;
 	private Object		listToClassify = null;
