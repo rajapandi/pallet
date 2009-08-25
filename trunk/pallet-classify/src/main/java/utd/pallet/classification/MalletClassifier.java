@@ -68,7 +68,7 @@ public class MalletClassifier {
      *            Boolean Value
      * @throws IOException
      */
-    public void CreatePipe(Input2CharSequence charseq,
+    public void createPipe(Input2CharSequence charseq,
             CharSequence2TokenSequence tokenseq, boolean tokenseq2lowercase,
             TokenSequenceRemoveStopwords removestopwards,
             TokenSequence2FeatureSequence tokenseq2featureseq,
@@ -119,7 +119,7 @@ public class MalletClassifier {
             throw new Exception(
                     "Mallet Classifier, Train : Unsupported Training algorithm");
         }
-        classifier = trainer.train(bpipe.GetInstanceList());
+        classifier = trainer.train(bpipe.getInstanceList());
     }
 
     /**
