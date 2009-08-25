@@ -19,7 +19,7 @@ import cc.mallet.types.Instance;
  * @author Pralabh
  * 
  */
-public class Mallet_Data_Import {
+public class MalletDataImport {
     /**
      * An instance of BuildPipe1 is created which will be used to call the
      * CreatePipe method of the BuildPipe1 class.

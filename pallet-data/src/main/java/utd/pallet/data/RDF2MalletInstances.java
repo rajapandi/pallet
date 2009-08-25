@@ -53,7 +53,7 @@ import com.hp.hpl.jena.rdf.model.StmtIterator;
  * @author pralabh
  * 
  */
-public class RDF_2_Mallet_Instances {
+public class RDF2MalletInstances {
     /**
      * Pipe instance is created which is used to process the data.
      */
@@ -73,7 +73,7 @@ public class RDF_2_Mallet_Instances {
      * RDF_2_Mallet_Instances constructor is called which calls buildpipe
      * method.
      */
-    public RDF_2_Mallet_Instances() {
+    public RDF2MalletInstances() {
         pipe = buildpipe();
     }
 
@@ -230,7 +230,7 @@ public class RDF_2_Mallet_Instances {
         /**
          * A BuildPipe method is called ,which creates the pipelist.
          */
-        RDF_2_Mallet_Instances ob1 = new RDF_2_Mallet_Instances();
+        RDF2MalletInstances ob1 = new RDF2MalletInstances();
         InstanceList instances = new InstanceList(ob1.pipe);
         /**
          * The data is processed through the Pipe which is associated with

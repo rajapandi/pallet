@@ -113,7 +113,7 @@ public class BuildPipe {
     /**
      * @return InstanceList
      */
-    public InstanceList GetInstanceList() {
+    public InstanceList getInstanceList() {
         return this.instancelist;
     }
 }

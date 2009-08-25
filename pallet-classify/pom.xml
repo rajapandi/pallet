@@ -21,4 +21,22 @@
 			<version>0.1</version>
 		</dependency>
 	</dependencies>
+
+	<build>
+		<plugins>
+			<!-- Added test excludes for Abstract -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>**/Abstract*</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+
+			<!-- ....... other configuration ....... -->
+
+		</plugins>
+	</build>
 </project>
