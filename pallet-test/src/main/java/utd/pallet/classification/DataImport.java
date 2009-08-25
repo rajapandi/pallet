@@ -15,6 +15,8 @@ import cc.mallet.pipe.TokenSequence2FeatureSequence;
 import cc.mallet.pipe.TokenSequenceRemoveStopwords;
 import cc.mallet.pipe.iterator.ArrayIterator;
 
+import utd.pallet.data.MalletDataImport;
+
 /**
  * @author Pralabh
  * 

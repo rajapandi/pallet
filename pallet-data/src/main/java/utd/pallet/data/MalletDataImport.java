@@ -53,7 +53,7 @@ public class MalletDataImport {
      *            Boolean Value
      * @throws IOException
      */
-    public void CreatePipe(Input2CharSequence i2cs, CharSequenceReplace csr,
+    public void createPipe(Input2CharSequence i2cs, CharSequenceReplace csr,
             CharSequenceRemoveHTML csrh, CharSequence2TokenSequence cs2ts,
             TokenSequenceRemoveStopwords tsrs, MakeAmpersandXMLFriendly maxf,
             boolean tokenseq2lowercase, TokenSequence2FeatureSequence ts2fs,
