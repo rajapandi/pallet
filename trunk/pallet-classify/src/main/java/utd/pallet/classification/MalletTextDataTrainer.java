@@ -121,7 +121,7 @@ public class MalletTextDataTrainer {
 	 * @throws Exception 
 	 */
 	@SuppressWarnings("unchecked")
-	public TrainerObject train (InstanceList listToTrain, int trainerAlgo) throws NullPointerException {
+	public TrainerObject train (InstanceList listToTrain, int trainerAlgo) throws NullPointerException, Exception {
 	
 		if (listToTrain == null)
 			throw new NullPointerException ("Instance List to be trained is null");
@@ -129,9 +129,9 @@ public class MalletTextDataTrainer {
 		ClassifierTrainer trainer = null;
 		try {
 			trainer = this.CreateTrainer(trainerAlgo);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
+		} catch (Exception e) {			
 			e.printStackTrace();
+			throw new Exception ("Failed to create Trainer");
 		}		
 		Classifier cl = trainer.train(listToTrain);
 		
@@ -139,8 +139,8 @@ public class MalletTextDataTrainer {
 		try {
 			trnObject.setTrainerObject(trainer, cl);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			throw new Exception ("Failed to create TrainerObject");
 		}
 		
 		return trnObject;
@@ -156,7 +156,7 @@ public class MalletTextDataTrainer {
 	 */
 	@SuppressWarnings("unchecked")
 	public TrainerObject trainIncremental (ClassifierTrainer prevTrainer, 
-											InstanceList listToTrain) throws NullPointerException {
+											InstanceList listToTrain) throws NullPointerException, Exception {
 		
 		if (prevTrainer == null)
 			throw new NullPointerException ("prev Trainer is null pointer");
@@ -179,9 +179,9 @@ public class MalletTextDataTrainer {
 		
 		try {
 			trnObject.setTrainerObject(prevTrainer, cl);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
+		} catch (Exception e) {		
 			e.printStackTrace();
+			throw new Exception ("Failed to create TrainerObject");
 		}
 		
 		return trnObject;
