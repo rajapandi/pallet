@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+	<parent>
+		<artifactId>pallet-parent</artifactId>
+		<groupId>pallet</groupId>
+		<version>0.1</version>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>pallet-test</artifactId>
+	<packaging>jar</packaging>
+	<name>Pallet Test and Evaluation</name>
+	<dependencies>
+		<dependency>
+			<groupId>umass.mallet</groupId>
+			<artifactId>mallet</artifactId>
+			<version>2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>pallet</groupId>
+			<artifactId>pallet-classify</artifactId>
+			<version>0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>trove</groupId>
+			<artifactId>trove</artifactId>
+			<version>2.1.1</version>
+		</dependency>
+	</dependencies>
+</project>
