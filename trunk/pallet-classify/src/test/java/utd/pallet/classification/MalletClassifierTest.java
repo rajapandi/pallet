@@ -52,7 +52,7 @@ public class MalletClassifierTest extends TestCase {
         Pattern tokenPattern = Pattern.compile("[\\p{L}\\p{N}_]+");
         
         try {
-        	pipe.CreatePipe(new Input2CharSequence("UTF-8"),
+        	pipe.createPipe(new Input2CharSequence("UTF-8"),
                     new CharSequence2TokenSequence(tokenPattern), true,
                     new TokenSequenceRemoveStopwords(true, true),
                     new TokenSequence2FeatureSequence(), new Target2Label(),

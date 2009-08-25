@@ -54,7 +54,7 @@ public class BuildPipe {
      * @throws IOException
      */
     @SuppressWarnings("unused")
-    public void CreatePipe(Input2CharSequence charseq,
+    public void createPipe(Input2CharSequence charseq,
             CharSequence2TokenSequence tokenseq, boolean tokenseq2lowercase,
             TokenSequenceRemoveStopwords removestopwards,
             TokenSequence2FeatureSequence tokenseq2featureseq,

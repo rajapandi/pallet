@@ -77,7 +77,7 @@ public class MalletClassifier {
             boolean printinputandlabel) throws IOException {
 
         this.bpipe = new BuildPipe();
-        this.bpipe.CreatePipe(charseq, tokenseq, tokenseq2lowercase,
+        this.bpipe.createPipe(charseq, tokenseq, tokenseq2lowercase,
                 removestopwards, tokenseq2featureseq, target2label,
                 featseq2Featvector, printinputandlabel);
 
