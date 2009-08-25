@@ -14,7 +14,6 @@
 <modules>
 	<module>pallet-data</module>
 	<module>pallet-classify</module>
-	<module>pallet-tagging</module>
 	<module>pallet-test</module>
 </modules>
 
