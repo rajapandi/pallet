@@ -27,11 +27,11 @@ import junit.framework.TestSuite;
  *
  *
  */
-public class testClassifier extends TestCase {
+public class MalletClassifierTest extends TestCase {
 	
 	BuildPipe pipe = new BuildPipe ();	
 	
-	public testClassifier (String name)
+	public MalletClassifierTest (String name)
 	{
 		super (name);
 	}
@@ -70,7 +70,7 @@ public class testClassifier extends TestCase {
             }
         }   
         
-        return pipe.GetInstanceList();
+        return pipe.getInstanceList();
 		
 	}
 	
@@ -107,7 +107,7 @@ public class testClassifier extends TestCase {
 	
 	static Test suite ()
 	{
-		return new TestSuite (testClassifier.class);
+		return new TestSuite (MalletClassifierTest.class);
 	}	
 	
 	protected void setUp ()

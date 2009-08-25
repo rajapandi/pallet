@@ -19,7 +19,7 @@ import cc.mallet.pipe.iterator.ArrayIterator;
  * @author Pralabh
  * 
  */
-public class Data_Import {
+public class DataImport {
 
     /**
      * This method demonstrates the processing of the data through different
@@ -60,7 +60,7 @@ public class Data_Import {
          * 
          */
 
-        Mallet_Data_Import mc = new Mallet_Data_Import();
+        MalletDataImport mc = new MalletDataImport();
 
         /**
          *Pattern is created to filter all the words which contain capital
@@ -78,7 +78,7 @@ public class Data_Import {
          */
 
         try {
-            mc.CreatePipe(new Input2CharSequence("UTF-8"),
+            mc.createPipe(new Input2CharSequence("UTF-8"),
                     new CharSequenceReplace(tokenPattern, "Pallet"),
                     new CharSequenceRemoveHTML(),
                     new CharSequence2TokenSequence(),

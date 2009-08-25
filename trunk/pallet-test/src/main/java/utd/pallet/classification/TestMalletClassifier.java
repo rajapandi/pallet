@@ -57,7 +57,7 @@ public class TestMalletClassifier {
          */
 
         try {
-            mc.CreatePipe(new Input2CharSequence("UTF-8"),
+            mc.createPipe(new Input2CharSequence("UTF-8"),
                     new CharSequence2TokenSequence(tokenPattern), true,
                     new TokenSequenceRemoveStopwords(true, true),
                     new TokenSequence2FeatureSequence(), new Target2Label(),
