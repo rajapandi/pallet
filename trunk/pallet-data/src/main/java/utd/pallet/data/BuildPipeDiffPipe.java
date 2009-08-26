@@ -25,7 +25,7 @@ import cc.mallet.types.InstanceList;
  * @author pralabh
  * 
  */
-public class BuildPipe1 {
+public class BuildPipeDiffPipe {
 
     /**
      * A pipe instance is created

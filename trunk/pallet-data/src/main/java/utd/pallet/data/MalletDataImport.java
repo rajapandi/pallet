@@ -24,7 +24,7 @@ public class MalletDataImport {
      * An instance of BuildPipe1 is created which will be used to call the
      * CreatePipe method of the BuildPipe1 class.
      */
-    private BuildPipe1 bpipe = null;
+    private BuildPipeDiffPipe bpipe = null;
 
     /**
      * @param i2cs
@@ -61,7 +61,7 @@ public class MalletDataImport {
             AugmentableFeatureVectorLogScale afv, boolean printinputandlabel)
             throws IOException {
 
-        this.bpipe = new BuildPipe1();
+        this.bpipe = new BuildPipeDiffPipe();
         this.bpipe
                 .CreatePipe(i2cs, csr, csrh, cs2ts, tsrs, maxf,
                         tokenseq2lowercase, ts2fs, t2l, fs2afv, afv,
