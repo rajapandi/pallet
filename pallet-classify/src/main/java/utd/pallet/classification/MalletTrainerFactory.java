@@ -94,16 +94,18 @@ public class MalletTrainerFactory {
 		return new NaiveBayesEMTrainer ();
 	}
 	
-	/**
+	// Yet to be done	
+	/*
 	 * Creates MCMaxEntTrainer, currently creates trainer with default constructor.
 	 * @return Instance of MCMaxEntTrainer.
 	 */
-	@SuppressWarnings("unchecked")
-	public static ClassifierTrainer CreateMCMAxEntTrainer () {
+	//@SuppressWarnings("unchecked")
+	/*
+	public static ClassifierTrainer CreateMCMaxEntTrainer () {
 		return new MCMaxEntTrainer ();
-	}
+	}*/
 	
-	// Yet to be done
+
 	/*
 	public static ClassifierTrainer CreateClassifierEnsembleTrainer () {
 		
