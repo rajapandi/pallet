@@ -14,15 +14,15 @@ import cc.mallet.types.InstanceList;
 public class MalletTextDataTrainer {
 	
 	public static final int ALGO_UNASSIGNED = 0x00;
-	public static final int NAIVEBAYES 		= 0x01;
-	public static final int MAXENT	 		= 0x02;
-	public static final int DECISIONTREES 	= 0x03;
-	public static final int C45				= 0x04;
-	public static final int BALANCEDWINNOW	= 0x06;
-	public static final int RANKMAXENT		= 0x07;
-	public static final int NAIVEBAYES_EM	= 0x08;
-	public static final int MAXENT_GE		= 0x09;
-	public static final int MC_MAXENT		= 0x0A;
+	public static final int NAIVE_BAYES 	= 0x01;
+	public static final int MAX_ENT	 		= 0x02;
+	public static final int DECISION_TREES 	= 0x03;
+	public static final int C_45			= 0x04;
+	public static final int BALANCED_WINNOW	= 0x06;
+	public static final int RANK_MAX_ENT	= 0x07;
+	public static final int NAIVE_BAYES_EM	= 0x08;
+	public static final int MAX_ENT_GE		= 0x09;
+	public static final int MC_MAX_ENT		= 0x0A;
 	
 	/**
 	 * Creates Trainer instance 
@@ -37,7 +37,9 @@ public class MalletTextDataTrainer {
 	 * @param trainer that used to train data earlier.
 	 * @return Training algorithm used.
 	 */
-	private int getTrainerAlgo (ClassifierTrainer trainer) throws java.lang.NullPointerException {
+	private int getTrainerAlgo (ClassifierTrainer trainer) throws 
+													java.lang.NullPointerException, 
+													java.lang.Exception {
 		
 		if (trainer == null)
 			throw new NullPointerException ("Trainer not initialized");
@@ -45,23 +47,27 @@ public class MalletTextDataTrainer {
 		int trainerAlgo = ALGO_UNASSIGNED;
 		
 		if (trainer instanceof cc.mallet.classify.NaiveBayesTrainer)
-			trainerAlgo = NAIVEBAYES;
+			trainerAlgo = NAIVE_BAYES;
 		else if (trainer instanceof cc.mallet.classify.MaxEntTrainer)
-			trainerAlgo = MAXENT;
+			trainerAlgo = MAX_ENT;
 		else if (trainer instanceof cc.mallet.classify.DecisionTreeTrainer)
-			trainerAlgo = DECISIONTREES;
+			trainerAlgo = DECISION_TREES;
 		else if (trainer instanceof cc.mallet.classify.C45Trainer)
-			trainerAlgo = C45;
+			trainerAlgo = C_45;
 		else if (trainer instanceof cc.mallet.classify.BalancedWinnowTrainer)
-			trainerAlgo = BALANCEDWINNOW;		
+			trainerAlgo = BALANCED_WINNOW;		
 		else if (trainer instanceof cc.mallet.classify.RankMaxEntTrainer)
-			trainerAlgo = RANKMAXENT;
+			trainerAlgo = RANK_MAX_ENT;
 		else if (trainer instanceof cc.mallet.classify.NaiveBayesEMTrainer)
-			trainerAlgo = NAIVEBAYES_EM;
+			trainerAlgo = NAIVE_BAYES_EM;
 		else if (trainer instanceof cc.mallet.classify.MaxEntGETrainer)
-			trainerAlgo = MAXENT_GE;
-		else if (trainer instanceof cc.mallet.classify.MCMaxEntTrainer)
-				trainerAlgo = MC_MAXENT;
+			trainerAlgo = MAX_ENT_GE;
+		/*else if (trainer instanceof cc.mallet.classify.MCMaxEntTrainer)
+				trainerAlgo = MC_MAX_ENT;*/
+		else
+			throw new Exception ("Unsupported algorithm");
+		
+		
 							
 		return trainerAlgo;
 		
@@ -78,35 +84,35 @@ public class MalletTextDataTrainer {
 		ClassifierTrainer trainer = null;
 		
 		switch (trainingAlgo) {
-		case NAIVEBAYES:
+		case NAIVE_BAYES:
 			trainer = MalletTrainerFactory.CreateNaiveBayesTrainer();
 			break;
-		case MAXENT:
+		case MAX_ENT:
 			trainer = MalletTrainerFactory.CreateMaxEntTrainer();
 			break;
-		case DECISIONTREES:
+		case DECISION_TREES:
 			trainer = MalletTrainerFactory.CreateDecisionTreeTrainer();
 			break;
-		case C45:
+		case C_45:
 			trainer = MalletTrainerFactory.CreateC45Trainer();
 			break;
-		case BALANCEDWINNOW:
+		case BALANCED_WINNOW:
 			trainer = MalletTrainerFactory.CreateBalancedWinnowTrainer();
 			break;
-		case RANKMAXENT:
+		case RANK_MAX_ENT:
 			trainer = MalletTrainerFactory.CreateRankMaxEntTrainer();
 			break;
-		case NAIVEBAYES_EM:
+		case NAIVE_BAYES_EM:
 			trainer = MalletTrainerFactory.CreateNaiveBayesEMTrainer();
 			break;
-		case MAXENT_GE:
+		case MAX_ENT_GE:
 			trainer = MalletTrainerFactory.CreateMaxEntGETrainer();
 			break;
-		case MC_MAXENT:
-			trainer = MalletTrainerFactory.CreateMCMAxEntTrainer();
-			break;
+		/*case MC_MAX_ENT:
+			trainer = MalletTrainerFactory.CreateMCMaxEntTrainer();
+			break;*/
 		default:
-			throw new Exception ("Unknown Trainer Algorithm");
+			throw new Exception ("Unsupported Trainer Algorithm");
 		}
 				
 		return trainer;				
@@ -163,11 +169,18 @@ public class MalletTextDataTrainer {
 		
 		if (listToTrain == null)
 			throw new NullPointerException ("Instance list to be trained is null pointer");
-		
-		int trainerAlgo = this.getTrainerAlgo(prevTrainer);
-		
+	
+		int trainerAlgo;
+		try {
+			trainerAlgo = this.getTrainerAlgo(prevTrainer);
+		} catch (NullPointerException ne) {
+			throw ne;
+		} catch (Exception e) {
+			throw e;
+		}
+			
 		Classifier cl = null;
-		if (trainerAlgo == NAIVEBAYES)
+		if (trainerAlgo == NAIVE_BAYES)
 		{
 			NaiveBayesTrainer nbTrainer = (NaiveBayesTrainer) prevTrainer; 
 			cl = nbTrainer.trainIncremental(listToTrain);
