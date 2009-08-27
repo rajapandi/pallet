@@ -85,7 +85,7 @@ public class MalletClassifierTest extends TestCase {
     	
     	TrainerObject trnObj = null;
     	try {
-    		trnObj = bTrainer.train(iList, MalletTextDataTrainer.NAIVEBAYES);
+    		trnObj = bTrainer.train(iList, MalletTextDataTrainer.NAIVE_BAYES);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
