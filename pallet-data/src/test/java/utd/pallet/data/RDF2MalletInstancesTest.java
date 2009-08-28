@@ -114,20 +114,21 @@ public class RDF2MalletInstancesTest extends TestCase {
      */
 
     public void testExecuteAlgorithmNullModel() {
-
+        boolean exceptionThrown = false;
         try {
             rdf2MalletInstances1.executeAlgorithm(null, null);
         } catch (Exception e) {
-            assertNotNull(e.getMessage());
+            exceptionThrown = true;
 
         }
+        assertTrue(exceptionThrown);
     }
 
     /**
      * This checks for the blank model.
      */
     public void testExecuteAlgorithmBlankModel() {
-
+        boolean exceptionThrown = false;
         try {
 
             Model model = ModelFactory.createDefaultModel();
@@ -135,9 +136,10 @@ public class RDF2MalletInstancesTest extends TestCase {
                     .createProperty("http://www.w3.org/2001/vcard-rdf/3.0#CATEGORIES");
             rdf2MalletInstances2.executeAlgorithm(model, sampleProperty);
         } catch (Exception e) {
-            assertNotNull(e.getMessage());
+            exceptionThrown = true;
 
         }
+        assertTrue(exceptionThrown);
     }
 
     /**
@@ -145,6 +147,7 @@ public class RDF2MalletInstancesTest extends TestCase {
      */
 
     public void testExecuteAlgorithmNullProperty() {
+        boolean exceptionThrown = false;
         try {
             Model model = ModelFactory.createDefaultModel();
             Resource resource = model
@@ -155,9 +158,9 @@ public class RDF2MalletInstancesTest extends TestCase {
 
         } catch (Exception e) {
 
-            assertNotNull(e.getMessage());
+            exceptionThrown = true;
         }
-
+        assertTrue(exceptionThrown);
     }
 
     /**
@@ -166,6 +169,7 @@ public class RDF2MalletInstancesTest extends TestCase {
      */
 
     public void testExecuteAlgorithmModelMissingClassification() {
+        boolean exceptionThrown = false;
         try {
             Model model = ModelFactory.createDefaultModel();
 
@@ -179,9 +183,10 @@ public class RDF2MalletInstancesTest extends TestCase {
                     .createProperty("http://www.w3.org/2001/vcard-rdf/3.0#CATEGORIES");
             rdf2MalletInstances4.executeAlgorithm(model, p);
         } catch (Exception e) {
-            assertNotNull(e.getMessage());
+            exceptionThrown = true;
 
         }
+        assertTrue(exceptionThrown);
     }
 
     /**
@@ -190,14 +195,14 @@ public class RDF2MalletInstancesTest extends TestCase {
      */
 
     public void testExecuteAlgorithmSerializableNullModelString() {
-
+        boolean exceptionThrown = false;
         try {
 
             rdf2MalletInstances5.executeAlgorithmSerializable(null, null);
         } catch (Exception e) {
-            assertNotNull(e);
+            exceptionThrown = true;
         }
-
+        assertTrue(exceptionThrown);
     }
 
     /**
@@ -205,13 +210,15 @@ public class RDF2MalletInstancesTest extends TestCase {
      */
 
     public void testExecuteAlgorithmSerializableEmptyModelString() {
+        boolean exceptionThrown = false;
         try {
 
             rdf2MalletInstances6.executeAlgorithmSerializable("",
                     "http://www.w3.org/2001/vcard-rdf/3.0#CATEGORIES");
         } catch (Exception e) {
-            assertNotNull(e);
+            exceptionThrown = true;
         }
+        assertTrue(exceptionThrown);
     }
 
     /**
@@ -219,6 +226,7 @@ public class RDF2MalletInstancesTest extends TestCase {
      * not in correct URI form.
      */
     public void testExecuteAlgorithmSerializableMalformedString() {
+        boolean exceptionThrown = false;
         try {
             Model model = ModelFactory.createDefaultModel();
             Resource resource = model
@@ -229,8 +237,9 @@ public class RDF2MalletInstancesTest extends TestCase {
             rdf2MalletInstances7.executeAlgorithmSerializable(modelSerialized,
                     "HIJK");
         } catch (Exception e) {
-            assertNotNull(e);
+            exceptionThrown = true;
         }
+        assertTrue(exceptionThrown);
     }
 
     /**
@@ -261,10 +270,6 @@ public class RDF2MalletInstancesTest extends TestCase {
             bout = rdf2MalletInstances8.executeAlgorithmSerializable(
                     modelSerialized,
                     "http://www.w3.org/2001/vcard-rdf/3.0#CATEGORIES");
-        } catch (Exception e) {
-            fail(e.toString());
-        }
-        try {
             ByteArrayInputStream bin = new ByteArrayInputStream(bout
                     .toByteArray());
             ObjectInputStream oos = new ObjectInputStream(bin);
