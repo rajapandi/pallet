@@ -5,10 +5,12 @@ package utd.pallet.data;
 
 import java.io.BufferedWriter;
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.InputStream;
-import java.io.StringWriter;
+import java.io.ObjectOutputStream;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -25,7 +27,6 @@ import cc.mallet.pipe.CharSequence2TokenSequence;
 import cc.mallet.pipe.FeatureSequence2FeatureVector;
 import cc.mallet.pipe.Input2CharSequence;
 import cc.mallet.pipe.Pipe;
-import cc.mallet.pipe.PrintInputAndTarget;
 import cc.mallet.pipe.SerialPipes;
 import cc.mallet.pipe.Target2Label;
 import cc.mallet.pipe.TokenSequence2FeatureSequence;
@@ -45,7 +46,7 @@ import com.hp.hpl.jena.rdf.model.StmtIterator;
 import com.hp.hpl.jena.shared.BadURIException;
 
 /**
- * RDF_2_Mallet_Instances class is used to convert the RDF data into Mallet
+ * RDF2MalletInstances class is used to convert the RDF data into Mallet
  * Instances.The Algorithm which is followed here is 1) Iterate through each
  * resource of the RDF 2) If Resource is not uri resource or Blank node then
  * find the Original Resource of the Blank node. 3) list all the properties of
@@ -60,50 +61,45 @@ import com.hp.hpl.jena.shared.BadURIException;
  * 
  */
 public class RDF2MalletInstances {
-    /**
-     * Pipe instance is created which is used to process the data.
-     * 
-     */
 
+    /**
+     * log is created for the purpose of logging
+     */
     private static org.apache.log4j.Logger log = Logger
             .getLogger(RDF2MalletInstances.class);
     /**
-     * Appender for logger is created.
+     * Appender is created to append the log in the file.
      */
     private static WriterAppender appender = null;
     /**
      * BufferedWriter is created for the log file.
      */
-    private static BufferedWriter bw = null;
+    private static BufferedWriter bufferWriter = null;
     /**
-     * 
+     * Pipe is intialized to get all the pipes of Mallet
      */
     Pipe pipe;
     static {
         try {
             File logFile = new File("RDFMalletInstances.log");
-            FileWriter logfileWriter = new FileWriter(logFile);
-            bw = new BufferedWriter(logfileWriter);
-            appender = new WriterAppender(new PatternLayout(), bw);
+            FileWriter logFileWriter = new FileWriter(logFile);
+            bufferWriter = new BufferedWriter(logFileWriter);
+            appender = new WriterAppender(new PatternLayout(), bufferWriter);
             log.addAppender(appender);
             log.setLevel((Level) Level.DEBUG);
         } catch (Exception e) {
 
         }
     }
-    /**
-     * Jena Model is intianlized
-     */
 
     /**
-     * An List is created(Instances_before_processing), to add all the instances
-     * before processing through them pipe.
+     * An List is created(instBeforeProcessing), to add all the instances before
+     * processing through them pipe.
      */
-    public static List<Instance> Inst_bef_proce = new ArrayList<Instance>();
+    public static List<Instance> instBeforeProcessing = new ArrayList<Instance>();
 
     /**
-     * RDF_2_Mallet_Instances constructor is called which calls buildpipe
-     * method.
+     * RDF2MalletInstances constructor is called which calls buildpipe method.
      */
 
     public RDF2MalletInstances() {
@@ -125,7 +121,6 @@ public class RDF2MalletInstances {
         pipeList.add(new TokenSequence2FeatureSequence());
         pipeList.add(new Target2Label());
         pipeList.add(new FeatureSequence2FeatureVector());
-        pipeList.add(new PrintInputAndTarget());
         return new SerialPipes(pipeList);
     }
 
@@ -138,16 +133,16 @@ public class RDF2MalletInstances {
      */
     private final Resource findSuperNode(Resource r, Model model) {
 
-        StmtIterator stmt1 = model.listStatements();
-        while (stmt1.hasNext()) {
-            Statement s1 = stmt1.next();
-            RDFNode rdf1 = s1.getObject();
+        StmtIterator stmt = model.listStatements();
+        while (stmt.hasNext()) {
+            Statement s = stmt.next();
+            RDFNode rdf = s.getObject();
             if (r.isURIResource()) {
                 break;
             }
-            if (rdf1.toString().equals(r.toString())) {
-                r = s1.getSubject();
-                stmt1 = model.listStatements();
+            if (rdf.toString().equals(r.toString())) {
+                r = s.getSubject();
+                stmt = model.listStatements();
                 continue;
             }
         }
@@ -168,12 +163,13 @@ public class RDF2MalletInstances {
 
         try {
 
-            if (model == null) {
-                throw new IllegalArgumentException("model cannot be null");
+            if (model == null || model.isEmpty()) {
+                throw new IllegalArgumentException(
+                        "model cannot be blank or null");
             }
         } catch (Exception e) {
 
-            log.debug(e.toString());
+            log.error(e.toString());
 
             throw e;
         }
@@ -181,24 +177,23 @@ public class RDF2MalletInstances {
         try {
             if (classificationPredicate == null) {
                 throw new IllegalArgumentException(
-                        "Classification Predicate cannot be  blank");
+                        "Classification Predicate cannot be  null");
             }
         } catch (IllegalArgumentException e) {
 
-            log.debug(e.toString());
+            log.error(e.toString());
 
             throw e;
         }
 
         try {
-            Model m1 = ModelFactory.createDefaultModel();
-            Property p = classificationPredicate;
-            m1.createResource().addProperty(p, "test");
-            m1.write(System.out);
+
+            @SuppressWarnings("unused")
+            URL checkPredicate = new URL(classificationPredicate.toString());
 
         } catch (Exception e) {
 
-            log.debug(e.toString() + classificationPredicate
+            log.error(e.toString() + "   " + classificationPredicate
                     + " is not in the proper format of the RDF predicate");
 
             throw new BadURIException(classificationPredicate
@@ -206,25 +201,26 @@ public class RDF2MalletInstances {
 
         }
 
-        HashMap<String, String> Res_data = new HashMap<String, String>();
-        String s_data = " ";
+        HashMap<String, String> resData = new HashMap<String, String>();
+        String propertyData = " ";
         ResIterator res = model.listSubjects();
 
         while (res.hasNext()) {
-            Resource r_original = res.next();
-            Resource r1 = findSuperNode(r_original, model);
+            Resource resourceOriginal = res.next();
+            Resource newResource = findSuperNode(resourceOriginal, model);
 
-            log.debug("DATA OF LOCAL RESOURCE " + r_original.toString()
+            log.debug("DATA OF LOCAL RESOURCE " + resourceOriginal.toString()
                     + "IS ATTACHED TO THE DATA OF ORIGINAL RESOURCE "
-                    + r1.toString());
+                    + newResource.toString());
 
-            StmtIterator stmt = r_original.listProperties();
-            s_data = " ";
+            StmtIterator stmt = resourceOriginal.listProperties();
+            propertyData = " ";
             while (stmt.hasNext()) {
-                Statement s1 = stmt.next();
-                if (s1.getObject().isLiteral()) {
+                Statement s = stmt.next();
+                if (s.getObject().isLiteral()) {
 
-                    s_data = s_data + " " + s1.getObject().toString() + " ";
+                    propertyData = propertyData + " "
+                            + s.getObject().toString() + " ";
 
                 }
             }
@@ -232,17 +228,17 @@ public class RDF2MalletInstances {
              * If Resource already there in the Map ,then get the previous data.
              * and add the new data.
              */
-            if (Res_data.containsKey(r1.toString())) {
-                String slrt = Res_data.get(r1.toString());
-                slrt = slrt + " " + s_data;
-                Res_data.put(r1.toString(), slrt);
+            if (resData.containsKey(newResource.toString())) {
+                String slrt = resData.get(newResource.toString());
+                slrt = slrt + " " + propertyData;
+                resData.put(newResource.toString(), slrt);
             }
             /**
              * If Resource is not already in the Map then add in the Map with
              * current data.
              */
             else {
-                Res_data.put(r1.toString(), s_data);
+                resData.put(newResource.toString(), propertyData);
             }
         }
         Instance i = null;
@@ -252,46 +248,45 @@ public class RDF2MalletInstances {
         res = model.listSubjects();
         while (res.hasNext()) {
             Resource re = res.next();
-            String str = Res_data.get(re.toString());
+            String str = resData.get(re.toString());
             /**
              * Get the data from the Map associated with each Resource.If data
-             * has the property http://blackbook.com/terms#STAT_EVENT then only
-             * we need to create instance.
+             * has the specified property then only we need to create instance.
              */
             if (re.getProperty(classificationPredicate) != null) {
 
                 /**
                  * An Mallet Instance is created with data as the data
                  * associated with Resource.Target will be the object value of
-                 * the property http://blackbook.com/terms#STAT_EVENT.Name will
-                 * be the name of the resource. Source is the file through which
-                 * we get the data.
+                 * the specified property .Name will be the name of the
+                 * resource. Source is the through which we get the data.
                  */
 
                 i = new Instance(str, re.getProperty(classificationPredicate)
-                        .getObject().toString(), re.toString(), "File");
+                        .getObject().toString(), re.toString(),
+                        "Sample RDF/XML");
 
-                Inst_bef_proce.add(i);
+                instBeforeProcessing.add(i);
             }
         }
         try {
-            if (Inst_bef_proce.size() == 0) {
+            if (instBeforeProcessing.size() == 0) {
                 throw new IllegalArgumentException(
                         "No resource in the given RDF contains the predicate "
                                 + classificationPredicate);
             }
         } catch (IllegalArgumentException e) {
 
-            log.debug("No resource in the given RDF contains the predicate ");
+            log.error("No resource in the given RDF contains the predicate ");
 
             throw e;
         }
-        Iterator<Instance> ip = Inst_bef_proce.iterator();
+        Iterator<Instance> ip = instBeforeProcessing.iterator();
         /**
          * A BuildPipe method is called ,which creates the pipelist.
          */
-        RDF2MalletInstances ob1 = new RDF2MalletInstances();
-        InstanceList instances = new InstanceList(ob1.pipe);
+        RDF2MalletInstances rdf2MalletInstances = new RDF2MalletInstances();
+        InstanceList instances = new InstanceList(rdf2MalletInstances.pipe);
         /**
          * The data is processed through the Pipe which is associated with
          * Mallet InstanceList.
@@ -310,7 +305,7 @@ public class RDF2MalletInstances {
 
         } catch (Exception e) {
 
-            log.debug(e.toString());
+            log.error(e.toString());
 
             throw e;
 
@@ -322,12 +317,16 @@ public class RDF2MalletInstances {
     /**
      * 
      * @param modelAsString
+     *            :It takes model as String
      * @param classificationPredicate
-     * @return InstanceList
+     *            : It takes classification predicate as String
+     * @return ByteArrayOutputStream :It return the serialized form of the
+     *         InstnaceList.
      * @throws Exception
      */
-    public final String executeAlgorithmSerializable(String modelAsString,
-            String classificationPredicate) throws Exception {
+    public final ByteArrayOutputStream executeAlgorithmSerializable(
+            String modelAsString, String classificationPredicate)
+            throws Exception {
 
         InstanceList il = null;
         Model incomingModel = null;
@@ -335,14 +334,15 @@ public class RDF2MalletInstances {
         try {
 
             if (StringUtils.isBlank(modelAsString))
-                throw new IllegalArgumentException("model cannot be blank");
+                throw new IllegalArgumentException(
+                        "model cannot be blank or null");
             InputStream is = new ByteArrayInputStream(modelAsString
                     .getBytes("UTF-8"));
             incomingModel = ModelFactory.createDefaultModel();
             incomingModel.read(is, "");
         } catch (Exception e) {
 
-            log.debug(e.toString());
+            log.error(e.toString());
 
             throw e;
         }
@@ -350,54 +350,50 @@ public class RDF2MalletInstances {
         try {
             if (StringUtils.isBlank(classificationPredicate)) {
                 throw new IllegalArgumentException(
-                        "Classification Predicate cannot be  blank");
+                        "Classification Predicate cannot be  blank or null");
             }
         } catch (IllegalArgumentException e) {
 
-            log.debug(e.toString());
+            log.error(e.toString());
 
             throw e;
         }
 
         try {
-            Model m1 = ModelFactory.createDefaultModel();
-            Property p = m1.createProperty(classificationPredicate);
-            m1.createResource().addProperty(p, "test");
-            m1.write(System.out);
 
-        } catch (BadURIException e) {
+            @SuppressWarnings("unused")
+            URL checkProperty = new URL(classificationPredicate);
 
-            log.debug(e.toString() + classificationPredicate
+        } catch (Exception e) {
+
+            log.error(e.toString() + "   " + classificationPredicate
                     + " is not in the proper format of the RDF predicate");
 
             throw new BadURIException(classificationPredicate
                     + " is not in the proper format of the RDF predicate");
         }
-        StringWriter sw = null;
+
+        ByteArrayOutputStream bos = null;
         try {
 
-            Property p1 = incomingModel.getProperty(classificationPredicate);
-            il = executeAlgorithm(incomingModel, p1);
-            String stringInstanceList = il.toString();
-            sw = new StringWriter();
-            sw.write(stringInstanceList);
+            Property property = incomingModel
+                    .getProperty(classificationPredicate);
+            il = executeAlgorithm(incomingModel, property);
+            bos = new ByteArrayOutputStream();
+            ObjectOutputStream oos = new ObjectOutputStream(bos);
+            oos.writeObject(il);
 
             log
                     .debug("The RDF data is converted into Mallet Instances and the  instance list is serialized as a String and return");
 
         } catch (Exception e) {
 
-            log.debug(e.toString());
+            log.error(e.toString());
 
             throw e;
         }
 
-        return sw.toString();
+        return bos;
     }
-
-    /**
-     * @param args
-     *            CommandLine Arguments
-     * */
 
 }
