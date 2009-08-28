@@ -37,7 +37,7 @@ public class RDF2MalletInstancesTest extends TestCase {
      */
     private RDF2MalletInstances rdf2MalletInstances3;
     /**
-     * ob4 is an Instance of RDF2MalletInstances
+     * rdf2MalletInstances4 is an Instance of RDF2MalletInstances
      */
     private RDF2MalletInstances rdf2MalletInstances4;
     /**
@@ -51,7 +51,7 @@ public class RDF2MalletInstancesTest extends TestCase {
     private RDF2MalletInstances rdf2MalletInstances6;
 
     /**
-     * ob7 is an Instance of RDF2MalletInstances
+     * rdf2MalletInstances7 is an Instance of RDF2MalletInstances
      */
     private RDF2MalletInstances rdf2MalletInstances7;
 
