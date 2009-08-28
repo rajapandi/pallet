@@ -1,8 +1,12 @@
 package utd.pallet.data;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.StringWriter;
 
 import com.hp.hpl.jena.rdf.model.Model;
+import com.hp.hpl.jena.rdf.model.ModelFactory;
 
 /**
  * 
@@ -31,7 +35,25 @@ public class JenaModelFactory {
         } catch (Exception e) {
             throw e;
         }
-
+     
     }
+    /**
+     * @param fileName Name of the input RDF file name
+     * @return It returns Jena model
+     * @throws Exception
+     */
+    static public Model rdf2Model(String fileName) throws Exception {
+        Model model = null;
+        try {
 
+            File fread = new File(fileName);
+            FileReader fr = new FileReader(fread);
+            BufferedReader br = new BufferedReader(fr);
+            model = ModelFactory.createDefaultModel();
+            model.read(br, null, "RDF/XML");
+        } catch (Exception e) {
+            throw e;
+        }
+        return model;
+    }
 }
