@@ -1,15 +1,21 @@
 package utd.pallet.data;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.ObjectInputStream;
+import java.util.Iterator;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import utd.pallet.data.JenaModelFactory;
-import utd.pallet.data.RDF2MalletInstances;
-import utd.pallet.data.Rdf2JenaModel;
+import cc.mallet.types.Instance;
+import cc.mallet.types.InstanceList;
 
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.Property;
+import com.hp.hpl.jena.rdf.model.Resource;
+import com.hp.hpl.jena.vocabulary.VCARD;
 
 /**
  * testRDF2MalletInstances is a class which perform five junit test cases on
@@ -19,40 +25,40 @@ import com.hp.hpl.jena.rdf.model.Property;
 public class RDF2MalletInstancesTest extends TestCase {
 
     /**
-     * ob1 is an Instance of RDF2MalletInstances
+     * rdf2MalletInstances1 is an Instance of RDF2MalletInstances
      */
-    private RDF2MalletInstances ob1;
+    private RDF2MalletInstances rdf2MalletInstances1;
     /**
-     * ob2 is an Instance of RDF2MalletInstances
+     * rdf2MalletInstances2 is an Instance of RDF2MalletInstances
      */
-    private RDF2MalletInstances ob2;
+    private RDF2MalletInstances rdf2MalletInstances2;
     /**
-     * * ob3 is an Instance of RDF2MalletInstances
+     * * rdf2MalletInstances3 is an Instance of RDF2MalletInstances
      */
-    private RDF2MalletInstances ob3;
+    private RDF2MalletInstances rdf2MalletInstances3;
     /**
      * ob4 is an Instance of RDF2MalletInstances
      */
-    private RDF2MalletInstances ob4;
+    private RDF2MalletInstances rdf2MalletInstances4;
     /**
-     * ob5 is an Instance of RDF2MalletInstances
+     * rdf2MalletInstances5 is an Instance of RDF2MalletInstances
      */
-    private RDF2MalletInstances ob5;
+    private RDF2MalletInstances rdf2MalletInstances5;
 
     /**
-     * ob6 is an Instance of RDF2MalletInstances
+     * rdf2MalletInstances6 is an Instance of RDF2MalletInstances
      */
-    private RDF2MalletInstances ob6;
+    private RDF2MalletInstances rdf2MalletInstances6;
 
     /**
      * ob7 is an Instance of RDF2MalletInstances
      */
-    private RDF2MalletInstances ob7;
+    private RDF2MalletInstances rdf2MalletInstances7;
 
     /**
-     * ob8 is an Instance of RDF2Mallet Instances
+     * rdf2MalletInstances8 is an Instance of RDF2Mallet Instances
      */
-    private RDF2MalletInstances ob8;
+    private RDF2MalletInstances rdf2MalletInstances8;
 
     /**
      * @return Instance of TestSuite
@@ -66,18 +72,19 @@ public class RDF2MalletInstancesTest extends TestCase {
      * 
      * @see junit.framework.TestCase#setUp()
      */
+
     protected void setUp() {
 
         try {
             super.setUp();
-            ob1 = new RDF2MalletInstances();
-            ob2 = new RDF2MalletInstances();
-            ob3 = new RDF2MalletInstances();
-            ob4 = new RDF2MalletInstances();
-            ob5 = new RDF2MalletInstances();
-            ob6 = new RDF2MalletInstances();
-            ob7 = new RDF2MalletInstances();
-            ob8 = new RDF2MalletInstances();
+            rdf2MalletInstances1 = new RDF2MalletInstances();
+            rdf2MalletInstances2 = new RDF2MalletInstances();
+            rdf2MalletInstances3 = new RDF2MalletInstances();
+            rdf2MalletInstances4 = new RDF2MalletInstances();
+            rdf2MalletInstances5 = new RDF2MalletInstances();
+            rdf2MalletInstances6 = new RDF2MalletInstances();
+            rdf2MalletInstances7 = new RDF2MalletInstances();
+            rdf2MalletInstances8 = new RDF2MalletInstances();
         } catch (Exception e) {
 
         }
@@ -91,25 +98,25 @@ public class RDF2MalletInstancesTest extends TestCase {
     protected void tearDown() throws Exception {
 
         super.tearDown();
-        ob1 = null;
-        ob2 = null;
-        ob3 = null;
-        ob4 = null;
-        ob5 = null;
-        ob6 = null;
-        ob7 = null;
+        rdf2MalletInstances1 = null;
+        rdf2MalletInstances2 = null;
+        rdf2MalletInstances3 = null;
+        rdf2MalletInstances4 = null;
+        rdf2MalletInstances5 = null;
+        rdf2MalletInstances6 = null;
+        rdf2MalletInstances7 = null;
+        rdf2MalletInstances8 = null;
 
     }
 
     /**
-     * This checks for the case when both model and classification predicate is
-     * null
+     * This checks for the case when model is null
      */
 
     public void testExecuteAlgorithmNullModel() {
 
         try {
-            ob1.executeAlgorithm(null, null);
+            rdf2MalletInstances1.executeAlgorithm(null, null);
         } catch (Exception e) {
             assertNotNull(e.getMessage());
 
@@ -122,8 +129,11 @@ public class RDF2MalletInstancesTest extends TestCase {
     public void testExecuteAlgorithmBlankModel() {
 
         try {
-            Model m = ModelFactory.createDefaultModel();
-            ob2.executeAlgorithm(m, null);
+
+            Model model = ModelFactory.createDefaultModel();
+            Property sampleProperty = model
+                    .createProperty("http://www.w3.org/2001/vcard-rdf/3.0#CATEGORIES");
+            rdf2MalletInstances2.executeAlgorithm(model, sampleProperty);
         } catch (Exception e) {
             assertNotNull(e.getMessage());
 
@@ -136,9 +146,13 @@ public class RDF2MalletInstancesTest extends TestCase {
 
     public void testExecuteAlgorithmNullProperty() {
         try {
-            Model model = Rdf2JenaModel
-                    .rdf2Model("C:\\Users\\pralabh\\workspace2\\Mallet1\\Montery2RDF.rdf");
-            ob3.executeAlgorithm(model, null);
+            Model model = ModelFactory.createDefaultModel();
+            Resource resource = model
+                    .createResource("http://somewhere/JohnSmith");
+            resource.addProperty(VCARD.FN, "John Smith");
+
+            rdf2MalletInstances3.executeAlgorithm(model, null);
+
         } catch (Exception e) {
 
             assertNotNull(e.getMessage());
@@ -153,11 +167,17 @@ public class RDF2MalletInstancesTest extends TestCase {
 
     public void testExecuteAlgorithmModelMissingClassification() {
         try {
-            Model model = Rdf2JenaModel
-                    .rdf2Model("C:\\Users\\pralabh\\workspace2\\Mallet1\\Montery2RDF.rdf");
+            Model model = ModelFactory.createDefaultModel();
+
+            Resource johnSmith = model
+                    .createResource("http://somewhere/JohnSmith");
+            johnSmith.addProperty(VCARD.FN, "John Smith");
+            johnSmith.addProperty(VCARD.N, model.createResource().addProperty(
+                    VCARD.Given, "John").addProperty(VCARD.Family, "Smith"));
+
             Property p = model
-                    .createProperty("http://blackbook.com/terms#STAT_EVENT1");
-            ob4.executeAlgorithm(model, p);
+                    .createProperty("http://www.w3.org/2001/vcard-rdf/3.0#CATEGORIES");
+            rdf2MalletInstances4.executeAlgorithm(model, p);
         } catch (Exception e) {
             assertNotNull(e.getMessage());
 
@@ -173,7 +193,7 @@ public class RDF2MalletInstancesTest extends TestCase {
 
         try {
 
-            ob5.executeAlgorithmSerializable(null, null);
+            rdf2MalletInstances5.executeAlgorithmSerializable(null, null);
         } catch (Exception e) {
             assertNotNull(e);
         }
@@ -181,17 +201,14 @@ public class RDF2MalletInstancesTest extends TestCase {
     }
 
     /**
-     * The function checks executeAlgorithmSerializable when the model (in
-     * String) form is null.
+     * The function checks executeAlgorithmSerializable when the model is Empty
      */
 
     public void testExecuteAlgorithmSerializableEmptyModelString() {
         try {
-            Model model = ModelFactory.createDefaultModel();
-            String modelSerialized = JenaModelFactory.serializeModel(model,
-                    "RDF/XML");
-            ob6.executeAlgorithmSerializable(modelSerialized,
-                    "http://blackbook.com/terms#STAT_EVENT");
+
+            rdf2MalletInstances6.executeAlgorithmSerializable("",
+                    "http://www.w3.org/2001/vcard-rdf/3.0#CATEGORIES");
         } catch (Exception e) {
             assertNotNull(e);
         }
@@ -203,37 +220,74 @@ public class RDF2MalletInstancesTest extends TestCase {
      */
     public void testExecuteAlgorithmSerializableMalformedString() {
         try {
-            Model m = Rdf2JenaModel
-                    .rdf2Model("C:\\Users\\pralabh\\workspace2\\Mallet1\\Montery2RDF.rdf");
-            String modelSerialized = JenaModelFactory.serializeModel(m,
+            Model model = ModelFactory.createDefaultModel();
+            Resource resource = model
+                    .createResource("http://somewhere/JohnSmith");
+            resource.addProperty(VCARD.FN, "John Smith");
+            String modelSerialized = JenaModelFactory.serializeModel(model,
                     "RDF/XML");
-            ob7.executeAlgorithmSerializable(modelSerialized, "HIJK");
+            rdf2MalletInstances7.executeAlgorithmSerializable(modelSerialized,
+                    "HIJK");
         } catch (Exception e) {
             assertNotNull(e);
         }
     }
 
     /**
-     * ------------------------------------------------------------------------
-     * -- ----------------------------------------------------------------------
-     * -- ---- This function checks for the correct functionality of
-     * RDF2MalletInstances class. executeAlgorithmSerializableis checked when
-     * all the input is correct.
+     * This function checks for the correct functionality of RDF2MalletInstances
+     * class. executeAlgorithmSerializableis checked when all the input is
+     * correct.
      */
     public void testExecuteAlgorithmSerializableCorrectModel() {
-        String il = null;
+        ByteArrayOutputStream bout = null;
 
         try {
-            Model m = Rdf2JenaModel
-                    .rdf2Model("C:\\Users\\pralabh\\workspace2\\Mallet1\\Montery2RDF.rdf");
-            String modelSerialized = JenaModelFactory.serializeModel(m,
-                    "RDF/XML");
-            il = ob8.executeAlgorithmSerializable(modelSerialized,
-                    "http://blackbook.com/terms#STAT_EVENT");
-        } catch (Exception e) {
+            Model model = ModelFactory.createDefaultModel();
+            Resource johnSmith = model
+                    .createResource("http://somewhere/JohnSmith");
+            johnSmith.addProperty(VCARD.FN, "John Smith");
+            johnSmith.addProperty(VCARD.CATEGORIES, "General");
+            johnSmith.addProperty(VCARD.N, model.createResource().addProperty(
+                    VCARD.Given, "John").addProperty(VCARD.Family, "Smith"));
 
+            Resource paulKit = model.createResource("http://somewhere/PaulKit");
+            paulKit.addProperty(VCARD.FN, "Paul Kit");
+            paulKit.addProperty(VCARD.CATEGORIES, "Special");
+            paulKit.addProperty(VCARD.N, model.createResource().addProperty(
+                    VCARD.Given, "Paul").addProperty(VCARD.Family, "Kit"));
+
+            String modelSerialized = JenaModelFactory.serializeModel(model,
+                    "RDF/XML");
+            bout = rdf2MalletInstances8.executeAlgorithmSerializable(
+                    modelSerialized,
+                    "http://www.w3.org/2001/vcard-rdf/3.0#CATEGORIES");
+        } catch (Exception e) {
+            fail(e.toString());
         }
-        assertNotNull(il);
+        try {
+            ByteArrayInputStream bin = new ByteArrayInputStream(bout
+                    .toByteArray());
+            ObjectInputStream oos = new ObjectInputStream(bin);
+            Object o = oos.readObject();
+            InstanceList instances = (InstanceList) o;
+            Iterator<Instance> ipc = instances.iterator();
+            Instance io = ipc.next();
+            /**
+             * This conditions check the name and target of the first instance .
+             * Moreover it checks the size of instancelist If all the things are
+             * as expected then assertTrue will be return.
+             * 
+             */
+
+            assertTrue((io.getName().toString()
+                    .equals("http://somewhere/JohnSmith"))
+                    && (io.getTarget().toString().equals("General"))
+                    && ((instances.size() == 2)));
+
+        } catch (Exception e) {
+            fail(e.toString());
+        }
+
     }
 
     /**
