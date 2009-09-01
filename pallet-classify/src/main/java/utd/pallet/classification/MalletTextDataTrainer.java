@@ -139,8 +139,8 @@ public class MalletTextDataTrainer {
 			e.printStackTrace();
 			throw new Exception ("Failed to create Trainer");
 		}		
-		Classifier cl = trainer.train(listToTrain);
-		
+		Classifier cl = trainer.train(listToTrain);		
+				
 		TrainerObject trnObject = new TrainerObject ();
 		try {
 			trnObject.setTrainerObject(trainer, cl);
