@@ -76,8 +76,9 @@ public class MalletClassifierTest extends TestCase {
 	
 	/**
 	 * Tests Mallet Classification
+	 * @throws Exception 
 	 */
-    public void testMalletClassification () {
+    public void testMalletClassification () throws Exception {
     	InstanceList iList = GetInstanceList();
     	MalletTextDataTrainer bTrainer = new MalletTextDataTrainer ();
     	
@@ -92,10 +93,10 @@ public class MalletClassifierTest extends TestCase {
 		}
 		
 		classifier = trnObj.getClassifier();
-		MalletTextClassify bClassifier = new MalletTextClassify (classifier, 
-										"nelson mandela never eats lions");
+		MalletTextClassify bClassifier = new MalletTextClassify ();
 		
-		Classification bClassification = bClassifier.classify();
+		Classification bClassification = bClassifier.classify(classifier, 
+				"nelson mandela never eats lions");
 		
 		assertTrue (bClassification.getLabeling().getBestLabel()
 				== ((LabelAlphabet)iList.getTargetAlphabet()).lookupLabel("africa"));
