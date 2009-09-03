@@ -30,6 +30,7 @@ import com.hp.hpl.jena.rdf.model.RDFNode;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
+import com.hp.hpl.jena.util.FileUtils;
 import com.hp.hpl.jena.vocabulary.OWL;
 
 import utd.pallet.classification.MalletTextDataTrainer.TrainerObject;
@@ -51,13 +52,13 @@ import cc.mallet.types.InstanceList;
 import cc.mallet.types.Label;
 import cc.mallet.types.LabelAlphabet;
 
-public class ClassifyRDF {
+public class BlackbookWorkflowSimulator {
 	
 	 /**
      * log is created for the purpose of logging
      */
     private static Logger log = Logger
-            .getLogger(ClassifyRDF.class);
+            .getLogger(BlackbookWorkflowSimulator.class);
 
 	/**
 	 * charset encoding for getbytes
@@ -466,7 +467,7 @@ public class ClassifyRDF {
 		//TODO pretend persistence... should be removed once we can really persist to blackbook.
 		HashMap<String,String> tempDataSource = new HashMap<String,String>();
 
-		// get data
+		// get data from file
 		String fileContents = org.apache.commons.io.FileUtils
 				.readFileToString(new File(args[0]));
 
@@ -489,10 +490,16 @@ public class ClassifyRDF {
 		// TODO get classifier from rdf
 		Classifier classifier = convertRDFToClassifier(classifierRetrievedAsRDF);
 
-		InstanceList testingList = generateTestingList();
+		InstanceList testingList = convertRDFToInstanceList(RDF_HEADER
+				+RDF_HOAX_WITHOUT_LABEL
+				+RDF_THREAT_ONLY_WITHOUT_LABEL
+				+RDF_USE_OF_AGENT_WITHOUT_LABEL
+				+RDF_PLOT_ONLY_WITHOUT_LABEL
+				+RDF_FOOTER);
 		
 		Model modelWithClassifications = classify(classifier, testingList);
 		
+		// TODO report should use the built in mechanisms of Mallet for verifying accuracy.
 		produceModelAccuracyReport(modelWithClassifications);
 	}
 
@@ -508,6 +515,7 @@ public class ClassifyRDF {
 		ObjectInputStream ois = new ObjectInputStream(bis);
 
 		InstanceList iList = (InstanceList) ois.readObject();
+		log.error("number of instances retrieved from RDF: " + iList.size());
 
 		return iList;
 	}
@@ -590,31 +598,17 @@ public class ClassifyRDF {
 			String label = c.getLabeling().getBestLabel().toString();
 			Resource uri = model.createResource((String)iList.get(curIndex).getName());
 			Statement stmt = model.createStatement(uri, CLASSIFICATION_PROPERTY, label);
+			log.error("adding statment to classification model: " + stmt);
 			model.add(stmt);
+			curIndex++;
 		}
 
 		return model;
 	}
 	
 	
-	private static InstanceList generateTestingList() throws Exception {
-		RDF2MalletInstances rdf2Mallet = new RDF2MalletInstances();
-		ByteArrayOutputStream bos = rdf2Mallet.executeAlgorithmSerializable(RDF_HEADER
-				+RDF_HOAX_WITHOUT_LABEL
-				+RDF_THREAT_ONLY_WITHOUT_LABEL
-				+RDF_USE_OF_AGENT_WITHOUT_LABEL
-				+RDF_PLOT_ONLY_WITH_LABEL
-				+RDF_FOOTER, CLASSIFICATION_PROPERTY.getURI());
-		
-		ByteArrayInputStream bis = new ByteArrayInputStream(bos.toByteArray());
-		ObjectInputStream ois = new ObjectInputStream(bis);
-		InstanceList instances = (InstanceList)ois.readObject();
-		
-		return instances;
-	}
-	
-	
-	private static void produceModelAccuracyReport(Model model) {
+	private static void produceModelAccuracyReport(Model model) throws Exception {
+		log.error("model of classifications is: " + JenaModelFactory.serializeModel(model, FileUtils.langNTriple));
 		log.error("Hoax entity is marked correctly? " + model.contains(HOAX_RESOURCE, CLASSIFICATION_PROPERTY, HOAX_LABEL));
 		log.error("Threat entity is marked correctly? " + model.contains(THREAT_RESOURCE, CLASSIFICATION_PROPERTY, THREAT_LABEL));
 		log.error("Plot entity is marked correctly? " + model.contains(PLOT_RESOURCE, CLASSIFICATION_PROPERTY, PLOT_LABEL));
