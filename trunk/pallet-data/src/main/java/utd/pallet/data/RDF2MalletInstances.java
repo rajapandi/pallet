@@ -96,7 +96,7 @@ public class RDF2MalletInstances {
      * An List is created(instBeforeProcessing), to add all the instances before
      * processing through them pipe.
      */
-    public static List<Instance> instBeforeProcessing = new ArrayList<Instance>();
+    public List<Instance> instBeforeProcessing = new ArrayList<Instance>();
 
     /**
      * RDF2MalletInstances constructor is called which calls buildpipe method.
