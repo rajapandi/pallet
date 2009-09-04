@@ -149,7 +149,7 @@ public class MalletTextDataTrainerTest extends TestCase {
 		String [][][] incTestData = {
 				{{ "The United States is one of the world's most ethnically diverse and multicultural nations",
 	                   "The U.S. economy is the largest national economy in the world",
-	                   "The country accounts for approximately 50% of global military spending"}, { "USA" }}
+	                   "The country accounts for approximately fifty percent of global military spending"}, { "USA" }}
 		};
 		
 		ClassifierTrainer trner = trnObj.getTrainer();
