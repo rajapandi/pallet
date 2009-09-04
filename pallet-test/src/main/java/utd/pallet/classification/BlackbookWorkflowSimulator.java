@@ -43,6 +43,7 @@ import cc.mallet.classify.Classifier;
 import cc.mallet.pipe.CharSequence2TokenSequence;
 import cc.mallet.pipe.FeatureSequence2FeatureVector;
 import cc.mallet.pipe.Input2CharSequence;
+import cc.mallet.pipe.Pipe;
 import cc.mallet.pipe.Target2Label;
 import cc.mallet.pipe.TokenSequence2FeatureSequence;
 import cc.mallet.pipe.TokenSequenceRemoveStopwords;
@@ -53,12 +54,12 @@ import cc.mallet.types.Label;
 import cc.mallet.types.LabelAlphabet;
 
 public class BlackbookWorkflowSimulator {
-	
-	 /**
-     * log is created for the purpose of logging
-     */
-    private static Logger log = Logger
-            .getLogger(BlackbookWorkflowSimulator.class);
+
+	/**
+	 * log is created for the purpose of logging
+	 */
+	private static Logger log = Logger
+			.getLogger(BlackbookWorkflowSimulator.class);
 
 	/**
 	 * charset encoding for getbytes
@@ -114,46 +115,46 @@ public class BlackbookWorkflowSimulator {
 			+ "        <bb:STAT_TGT_IND>0</bb:STAT_TGT_IND>"
 			+ "        <bb:STAT_TGT_NA>0</bb:STAT_TGT_NA>"
 			+ "    </rdf:Description>";
-		
+
 	private static final String RDF_HOAX_WITHOUT_LABEL = "<rdf:Description rdf:about=\"urn:monterey:incident1\">"
-		+ "        <dc:identifier>1</dc:identifier>"
-		+ "        <rdfs:label>incident</rdfs:label>"
-		+ "        <rdf:type rdf:resource = \"urn:monterey:incident\" />"
-		+ "        <event:startDate>1999-03-04</event:startDate>"
-		+ "        <vCard:ADR rdf:parseType=\"Resource\">"
-		+ "            <vCard:Locality>Lumberton</vCard:Locality>"
-		+ "            <vCard:Region>North Carolina</vCard:Region>"
-		+ "            <vCard:Country>United States</vCard:Country>"
-		+ "            <geo:Point rdf:parseType=\"Resource\">"
-		+ "                <geo:lat>34.618302</geo:lat>"
-		+ "                <geo:long>-79.012475</geo:long>"
-		+ "            </geo:Point>"
-		+ "        </vCard:ADR>"
-		+ "        <dc:source>[A] \"Lumberton Dialysis Clinic Targeted With Anthrax Scare,\" The News  Observer On The Web (5 March 1999); Internet, available at http://www.news-observer.com, accessed on 3/5/99.</dc:source>"
-		+ "        <bb:incidentDescription>An unidentified perpetrator called the Lumberton, North Carolina emergency communications center on 4 March 1999 and claimed that anthrax bacteria had been released in the Lumberton Dialysis Clinic. The city manager, Todd Powell, received the call. 40 people at the clinic were detained for three hours, most of whom were patients. Officials investigated the scene and instructed patients on self-decontamination procedures. According to FBI Spokeswoman Joanne Morley, a similar message was found written on a sheet of paper in the clinic's mailbox. Powell said at the time of the incident that officials had no evidence or indication that the claim was genuine.[A]</bb:incidentDescription>"
-		+ "        <bb:SUSPECTED>0</bb:SUSPECTED>"
-		+ "        <bb:LAST_MODIFIED>2005-08-08 11:03:29</bb:LAST_MODIFIED>"
-		+ "        <bb:STAT_TGT_GOVT>0</bb:STAT_TGT_GOVT>"
-		+ "        <bb:STAT_TGT_AGRO>0</bb:STAT_TGT_AGRO>"
-		+ "        <bb:MISC_INFO>No further information available.</bb:MISC_INFO>"
-		+ "        <bb:STAT_TGT_BUS>0</bb:STAT_TGT_BUS>"
-		+ "        <bb:G_SUSPECTED>0</bb:G_SUSPECTED>"
-		+ "        <bb:STAT_INCIDENT>Type 2: Criminally Motivated</bb:STAT_INCIDENT>"
-		+ "        <bb:STAT_TGT_ED>0</bb:STAT_TGT_ED>"
-		+ "        <bb:STAT_TGT_ORG>0</bb:STAT_TGT_ORG>"
-		+ "        <bb:STAT_TGT_UNK>0</bb:STAT_TGT_UNK>"
-		+ "        <bb:REGION>USA and Canada</bb:REGION>"
-		+ "        <bb:injuries>0</bb:injuries>"
-		+ "        <bb:STAT_TGT_INDISCRIM>0</bb:STAT_TGT_INDISCRIM>"
-		+ "        <bb:fatalities>0</bb:fatalities>"
-		+ "        <bb:STAT_TGT_MED>1</bb:STAT_TGT_MED>"
-		+ "        <bb:CREATED>2003-07-08 00:00:00</bb:CREATED>"
-		+ "        <bb:target>Dialysis clinic</bb:target>"
-		+ "        <bb:AGENT>bacillus anthracis</bb:AGENT>"
-		+ "        <bb:CBRN>biological</bb:CBRN>"
-		+ "        <bb:STAT_TGT_IND>0</bb:STAT_TGT_IND>"
-		+ "        <bb:STAT_TGT_NA>0</bb:STAT_TGT_NA>"
-		+ "    </rdf:Description>";
+			+ "        <dc:identifier>1</dc:identifier>"
+			+ "        <rdfs:label>incident</rdfs:label>"
+			+ "        <rdf:type rdf:resource = \"urn:monterey:incident\" />"
+			+ "        <event:startDate>1999-03-04</event:startDate>"
+			+ "        <vCard:ADR rdf:parseType=\"Resource\">"
+			+ "            <vCard:Locality>Lumberton</vCard:Locality>"
+			+ "            <vCard:Region>North Carolina</vCard:Region>"
+			+ "            <vCard:Country>United States</vCard:Country>"
+			+ "            <geo:Point rdf:parseType=\"Resource\">"
+			+ "                <geo:lat>34.618302</geo:lat>"
+			+ "                <geo:long>-79.012475</geo:long>"
+			+ "            </geo:Point>"
+			+ "        </vCard:ADR>"
+			+ "        <dc:source>[A] \"Lumberton Dialysis Clinic Targeted With Anthrax Scare,\" The News  Observer On The Web (5 March 1999); Internet, available at http://www.news-observer.com, accessed on 3/5/99.</dc:source>"
+			+ "        <bb:incidentDescription>An unidentified perpetrator called the Lumberton, North Carolina emergency communications center on 4 March 1999 and claimed that anthrax bacteria had been released in the Lumberton Dialysis Clinic. The city manager, Todd Powell, received the call. 40 people at the clinic were detained for three hours, most of whom were patients. Officials investigated the scene and instructed patients on self-decontamination procedures. According to FBI Spokeswoman Joanne Morley, a similar message was found written on a sheet of paper in the clinic's mailbox. Powell said at the time of the incident that officials had no evidence or indication that the claim was genuine.[A]</bb:incidentDescription>"
+			+ "        <bb:SUSPECTED>0</bb:SUSPECTED>"
+			+ "        <bb:LAST_MODIFIED>2005-08-08 11:03:29</bb:LAST_MODIFIED>"
+			+ "        <bb:STAT_TGT_GOVT>0</bb:STAT_TGT_GOVT>"
+			+ "        <bb:STAT_TGT_AGRO>0</bb:STAT_TGT_AGRO>"
+			+ "        <bb:MISC_INFO>No further information available.</bb:MISC_INFO>"
+			+ "        <bb:STAT_TGT_BUS>0</bb:STAT_TGT_BUS>"
+			+ "        <bb:G_SUSPECTED>0</bb:G_SUSPECTED>"
+			+ "        <bb:STAT_INCIDENT>Type 2: Criminally Motivated</bb:STAT_INCIDENT>"
+			+ "        <bb:STAT_TGT_ED>0</bb:STAT_TGT_ED>"
+			+ "        <bb:STAT_TGT_ORG>0</bb:STAT_TGT_ORG>"
+			+ "        <bb:STAT_TGT_UNK>0</bb:STAT_TGT_UNK>"
+			+ "        <bb:REGION>USA and Canada</bb:REGION>"
+			+ "        <bb:injuries>0</bb:injuries>"
+			+ "        <bb:STAT_TGT_INDISCRIM>0</bb:STAT_TGT_INDISCRIM>"
+			+ "        <bb:fatalities>0</bb:fatalities>"
+			+ "        <bb:STAT_TGT_MED>1</bb:STAT_TGT_MED>"
+			+ "        <bb:CREATED>2003-07-08 00:00:00</bb:CREATED>"
+			+ "        <bb:target>Dialysis clinic</bb:target>"
+			+ "        <bb:AGENT>bacillus anthracis</bb:AGENT>"
+			+ "        <bb:CBRN>biological</bb:CBRN>"
+			+ "        <bb:STAT_TGT_IND>0</bb:STAT_TGT_IND>"
+			+ "        <bb:STAT_TGT_NA>0</bb:STAT_TGT_NA>"
+			+ "    </rdf:Description>";
 
 	private static final String RDF_THREAT_ONLY_WITH_LABEL = "<rdf:Description rdf:about=\"urn:monterey:incident66\">"
 			+ "<dc:identifier>66</dc:identifier>"
@@ -203,54 +204,54 @@ public class BlackbookWorkflowSimulator {
 			+ "<bb:STAT_TGT_NA>0</bb:STAT_TGT_NA>"
 			+ "<bb:SP_DELIVERY>vial of liquid sent through the mail</bb:SP_DELIVERY>"
 			+ "</rdf:Description>";
-		
-	private static final String RDF_THREAT_ONLY_WITHOUT_LABEL = "<rdf:Description rdf:about=\"urn:monterey:incident66\">"
-		+ "<dc:identifier>66</dc:identifier>"
-		+ "<rdfs:label>incident</rdfs:label>"
-		+ "<rdf:type rdf:resource = \"urn:monterey:incident\" />"
-		+ "<event:startDate>1998-12-04</event:startDate>"
-		+ "<vCard:ADR rdf:parseType=\"Resource\">"
-		+ "    <vCard:Locality>Coppell</vCard:Locality>"
-		+ "    <vCard:Region>Texas</vCard:Region>"
-		+ "    <vCard:Country>United States</vCard:Country>"
-		+ "    <geo:Point rdf:parseType=\"Resource\">"
-		+ "        <geo:lat>32.976736</geo:lat>"
-		+ "        <geo:long>-96.990083</geo:long>"
-		+ "    </geo:Point>"
-		+ "</vCard:ADR>"
-		+ "<dc:source>[A] \"FBI Investigating Anthrax Scare at Suburban Post Office,\" Associate Press State  Local Wire (4 December 1998)."
-		+ "[B] Jason Sickles, \"FBI Doubts Vial in Coppell Mail Contains Anthrax,\" Dallas Morni</dc:source>"
-		+ "<bb:incidentDescription>At approximately 12:30 a.m. on 4 December 1998, at the bulk mail center of the United States Postal Service's Southwest Division, in Coppell, Texas, near the Dallas/Fort Worth Airport, a postal worker discovered a vial in an empty tray, with a handwritten message stating \"You have just been contaminated by anthrax\".[A,B,C,D] The postal worker discovered the unwrapped vial when she had gone to get a piece of equipment.[C,D] She picked up the vial, which may have contained a liquid, and carried it to the maintenance department after reporting the vial to her supervisor. The vial was then sealed in a hazardous materials container, and employees called 911.[C] Between 450 and 500 workers were at the center when the vial was found, but only four to six workers were exposed to the vial.[A,B,C,D] Investigators arrived at the postal center and detained the exposed workers until 3:45 a.m.[C] FBI investigators removed the four-inch vial and remained at the center until the scene was declared safe about five hours later.[A,B] The FBI later determined that the vial only contained water.[G]"
-		+ "On 6 January 2000, Steven Matthew Cutler, 27, was arrested in connection with the incident. Cutler, an emergency medical technician from Lewisville, Texas, a suburb of Dallas, was charged with threatening to use a weapon of mass destruction. He was indicted on two counts of threatening to use a weapon of mass destruction and  released on personal recognizance on 7 January 2000.[F] Cutler obtained the vials from his workplace, a medical laboratory in Irving, Texas.[G] Cutler is also charged with stealing a Social Security number from a patient at the laboratory and using it to apply for a credit card.] The indictment of Cutler was the first involving a case in which a perpetrator mailed an anthrax threat. Cutler faced up to 30 years in prison and a fine of $1 million if convicted.[G]"
 
-		+ "On 10 March 2000, Steven Cutler pleaded guilty to charges of making anthrax threats.[H] In July 2000, Cutler was sentenced to 21 months in federal prison and three years probation.[I]</bb:incidentDescription>"
-		+ "<bb:SUSPECTED>0</bb:SUSPECTED>"
-		+ "<bb:LAST_MODIFIED>2006-10-17 13:47:01</bb:LAST_MODIFIED>"
-		+ "<bb:STAT_TGT_GOVT>1</bb:STAT_TGT_GOVT>"
-		+ "<bb:STAT_TGT_AGRO>0</bb:STAT_TGT_AGRO>"
-		+ "<bb:SPEC_MOTIVE>unknown, most likely a prank</bb:SPEC_MOTIVE>"
-		+ "<bb:STAT_DELIVERY>Jug/Jar/Canister</bb:STAT_DELIVERY>"
-		+ "<bb:MISC_INFO>no further information available</bb:MISC_INFO>"
-		+ "<bb:STAT_TGT_BUS>0</bb:STAT_TGT_BUS>"
-		+ "<bb:G_SUSPECTED>0</bb:G_SUSPECTED>"
-		+ "<bb:STAT_INCIDENT>Type 2: Criminally Motivated</bb:STAT_INCIDENT>"
-		+ "<bb:STAT_TGT_ED>0</bb:STAT_TGT_ED>"
-		+ "<bb:STAT_TGT_ORG>0</bb:STAT_TGT_ORG>"
-		+ "<bb:STAT_TGT_UNK>0</bb:STAT_TGT_UNK>"
-		+ "<bb:REGION>USA and Canada</bb:REGION>"
-		+ "<bb:injuries>0</bb:injuries>"
-		+ "<bb:STAT_TGT_INDISCRIM>1</bb:STAT_TGT_INDISCRIM>"
-		+ "<bb:fatalities>0</bb:fatalities>"
-		+ "<bb:STAT_TGT_MED>0</bb:STAT_TGT_MED>"
-		+ "<bb:CREATED>2004-12-08 00:00:00</bb:CREATED>"
-		+ "<bb:ACTOR>Steven Matthew Cutler</bb:ACTOR>"
-		+ "<bb:target>employees of United States Postal Service Division</bb:target>"
-		+ "<bb:AGENT>bacillus anthracis</bb:AGENT>"
-		+ "<bb:CBRN>biological</bb:CBRN>"
-		+ "<bb:STAT_TGT_IND>0</bb:STAT_TGT_IND>"
-		+ "<bb:STAT_TGT_NA>0</bb:STAT_TGT_NA>"
-		+ "<bb:SP_DELIVERY>vial of liquid sent through the mail</bb:SP_DELIVERY>"
-		+ "</rdf:Description>";
+	private static final String RDF_THREAT_ONLY_WITHOUT_LABEL = "<rdf:Description rdf:about=\"urn:monterey:incident66\">"
+			+ "<dc:identifier>66</dc:identifier>"
+			+ "<rdfs:label>incident</rdfs:label>"
+			+ "<rdf:type rdf:resource = \"urn:monterey:incident\" />"
+			+ "<event:startDate>1998-12-04</event:startDate>"
+			+ "<vCard:ADR rdf:parseType=\"Resource\">"
+			+ "    <vCard:Locality>Coppell</vCard:Locality>"
+			+ "    <vCard:Region>Texas</vCard:Region>"
+			+ "    <vCard:Country>United States</vCard:Country>"
+			+ "    <geo:Point rdf:parseType=\"Resource\">"
+			+ "        <geo:lat>32.976736</geo:lat>"
+			+ "        <geo:long>-96.990083</geo:long>"
+			+ "    </geo:Point>"
+			+ "</vCard:ADR>"
+			+ "<dc:source>[A] \"FBI Investigating Anthrax Scare at Suburban Post Office,\" Associate Press State  Local Wire (4 December 1998)."
+			+ "[B] Jason Sickles, \"FBI Doubts Vial in Coppell Mail Contains Anthrax,\" Dallas Morni</dc:source>"
+			+ "<bb:incidentDescription>At approximately 12:30 a.m. on 4 December 1998, at the bulk mail center of the United States Postal Service's Southwest Division, in Coppell, Texas, near the Dallas/Fort Worth Airport, a postal worker discovered a vial in an empty tray, with a handwritten message stating \"You have just been contaminated by anthrax\".[A,B,C,D] The postal worker discovered the unwrapped vial when she had gone to get a piece of equipment.[C,D] She picked up the vial, which may have contained a liquid, and carried it to the maintenance department after reporting the vial to her supervisor. The vial was then sealed in a hazardous materials container, and employees called 911.[C] Between 450 and 500 workers were at the center when the vial was found, but only four to six workers were exposed to the vial.[A,B,C,D] Investigators arrived at the postal center and detained the exposed workers until 3:45 a.m.[C] FBI investigators removed the four-inch vial and remained at the center until the scene was declared safe about five hours later.[A,B] The FBI later determined that the vial only contained water.[G]"
+			+ "On 6 January 2000, Steven Matthew Cutler, 27, was arrested in connection with the incident. Cutler, an emergency medical technician from Lewisville, Texas, a suburb of Dallas, was charged with threatening to use a weapon of mass destruction. He was indicted on two counts of threatening to use a weapon of mass destruction and  released on personal recognizance on 7 January 2000.[F] Cutler obtained the vials from his workplace, a medical laboratory in Irving, Texas.[G] Cutler is also charged with stealing a Social Security number from a patient at the laboratory and using it to apply for a credit card.] The indictment of Cutler was the first involving a case in which a perpetrator mailed an anthrax threat. Cutler faced up to 30 years in prison and a fine of $1 million if convicted.[G]"
+
+			+ "On 10 March 2000, Steven Cutler pleaded guilty to charges of making anthrax threats.[H] In July 2000, Cutler was sentenced to 21 months in federal prison and three years probation.[I]</bb:incidentDescription>"
+			+ "<bb:SUSPECTED>0</bb:SUSPECTED>"
+			+ "<bb:LAST_MODIFIED>2006-10-17 13:47:01</bb:LAST_MODIFIED>"
+			+ "<bb:STAT_TGT_GOVT>1</bb:STAT_TGT_GOVT>"
+			+ "<bb:STAT_TGT_AGRO>0</bb:STAT_TGT_AGRO>"
+			+ "<bb:SPEC_MOTIVE>unknown, most likely a prank</bb:SPEC_MOTIVE>"
+			+ "<bb:STAT_DELIVERY>Jug/Jar/Canister</bb:STAT_DELIVERY>"
+			+ "<bb:MISC_INFO>no further information available</bb:MISC_INFO>"
+			+ "<bb:STAT_TGT_BUS>0</bb:STAT_TGT_BUS>"
+			+ "<bb:G_SUSPECTED>0</bb:G_SUSPECTED>"
+			+ "<bb:STAT_INCIDENT>Type 2: Criminally Motivated</bb:STAT_INCIDENT>"
+			+ "<bb:STAT_TGT_ED>0</bb:STAT_TGT_ED>"
+			+ "<bb:STAT_TGT_ORG>0</bb:STAT_TGT_ORG>"
+			+ "<bb:STAT_TGT_UNK>0</bb:STAT_TGT_UNK>"
+			+ "<bb:REGION>USA and Canada</bb:REGION>"
+			+ "<bb:injuries>0</bb:injuries>"
+			+ "<bb:STAT_TGT_INDISCRIM>1</bb:STAT_TGT_INDISCRIM>"
+			+ "<bb:fatalities>0</bb:fatalities>"
+			+ "<bb:STAT_TGT_MED>0</bb:STAT_TGT_MED>"
+			+ "<bb:CREATED>2004-12-08 00:00:00</bb:CREATED>"
+			+ "<bb:ACTOR>Steven Matthew Cutler</bb:ACTOR>"
+			+ "<bb:target>employees of United States Postal Service Division</bb:target>"
+			+ "<bb:AGENT>bacillus anthracis</bb:AGENT>"
+			+ "<bb:CBRN>biological</bb:CBRN>"
+			+ "<bb:STAT_TGT_IND>0</bb:STAT_TGT_IND>"
+			+ "<bb:STAT_TGT_NA>0</bb:STAT_TGT_NA>"
+			+ "<bb:SP_DELIVERY>vial of liquid sent through the mail</bb:SP_DELIVERY>"
+			+ "</rdf:Description>";
 
 	private static final String RDF_USE_OF_AGENT_WITH_LABEL = "<rdf:Description rdf:about=\"urn:monterey:incident69\">"
 			+ "<dc:identifier>69</dc:identifier>"
@@ -298,46 +299,46 @@ public class BlackbookWorkflowSimulator {
 			+ "<bb:STAT_TGT_NA>0</bb:STAT_TGT_NA>" + "</rdf:Description>";
 
 	private static final String RDF_USE_OF_AGENT_WITHOUT_LABEL = "<rdf:Description rdf:about=\"urn:monterey:incident69\">"
-		+ "<dc:identifier>69</dc:identifier>"
-		+ "<rdfs:label>incident</rdfs:label>"
-		+ "<rdf:type rdf:resource = \"urn:monterey:incident\" />"
-		+ "<event:startDate>1998-12-29</event:startDate>"
-		+ "<vCard:ADR rdf:parseType=\"Resource\">"
-		+ "<vCard:Locality>Argun, Chechnya</vCard:Locality>"
-		+ "<vCard:Country>Russian Federation</vCard:Country>"
-		+ "<geo:Point rdf:parseType=\"Resource\">"
-		+ "    <geo:lat>43.292511</geo:lat>"
-		+ "    <geo:long>45.867081</geo:long>"
-		+ "</geo:Point>"
-		+ "</vCard:ADR>"
-		+ "<dc:source>[A] “Mined Radioactive Container Found in Chechnya,” Agence France Presse (29 December 1998): 08:31 GMT."
-		+ "[B] “Mined Radioactive Container Found in Chechnya: security official,” Agence France Presse (</dc:source>"
-		+ "<bb:incidentDescription>On 29 December 1998, a “booby-trapped” or “mined” container of radioactive material “emitting a highly radioactive substance” was discovered near a railway track in Argun, Chechnya.[A,B] The United Press International (UPI) stated that sources from Argun report the radiation level “is ‘huge’ and ‘poses a hazard to human health’.”[H] Argun is located approximately 9 miles due east of the Chechen capital of Grozny.[A,B]"
-		+ "The announcement was issued by Ibragim Khultygov, director of security services, over Chechen television.[A] Khultygov did not reveal the location in which the container was being deactivated.[A] Reports from Agence France Press that cited ITAR-TASS news agency, indicated that specialists cordoned off the area and worked for several hours on dismantling the explosive device at the scene.[C,D,F] Specialists from the Ministry of Emergencies managed to deactivate the device and remove the container to an undisclosed location without incident. By 31 December 1998, a report from Radiostantsiya Ekho Moskvy suggested that “we will probably be right to assume that this was not just an accident but a planned act of sabotage.”[J]"
-		+ "In January 1998, containers of radioactive material were found near this location;[H,I] however, it is only in the same UPI article mentioned above that this container was described as “de-activated.”[H] Press reports issued at the time of the incident do not indicate the presence of any type of explosive device. (See Miscellaneous information for more about the January 1998 container found near Argun.)</bb:incidentDescription>"
-		+ "<bb:SUSPECTED>0</bb:SUSPECTED>"
-		+ "<bb:LAST_MODIFIED>2006-10-17 13:47:01</bb:LAST_MODIFIED>"
-		+ "<bb:STAT_TGT_GOVT>0</bb:STAT_TGT_GOVT>"
-		+ "<bb:STAT_TGT_AGRO>0</bb:STAT_TGT_AGRO>"
-		+ "<bb:STAT_DELIVERY>Explosive Device</bb:STAT_DELIVERY>"
-		+ "<bb:MISC_INFO>After a mined container of radioactive material was found in Argun, Chechnya, press reports referenced the discovery of another “radioactive container” one year earlier. The reference stated that the</bb:MISC_INFO>"
-		+ "<bb:STAT_TGT_BUS>0</bb:STAT_TGT_BUS>"
-		+ "<bb:G_SUSPECTED>0</bb:G_SUSPECTED>"
-		+ "<bb:STAT_INCIDENT>Type 1: Politically / Ideologically Motivated</bb:STAT_INCIDENT>"
-		+ "<bb:STAT_TGT_ED>0</bb:STAT_TGT_ED>"
-		+ "<bb:STAT_TGT_ORG>0</bb:STAT_TGT_ORG>"
-		+ "<bb:STAT_TGT_UNK>1</bb:STAT_TGT_UNK>"
-		+ "<bb:REGION>Russia and NIS</bb:REGION>"
-		+ "<bb:injuries>0</bb:injuries>"
-		+ "<bb:STAT_TGT_INDISCRIM>0</bb:STAT_TGT_INDISCRIM>"
-		+ "<bb:fatalities>0</bb:fatalities>"
-		+ "<bb:STAT_TGT_MED>0</bb:STAT_TGT_MED>"
-		+ "<bb:CREATED>2003-03-07 00:00:00</bb:CREATED>"
-		+ "<bb:AGENT>unknown radiological material</bb:AGENT>"
-		+ "<bb:CBRN>radiological</bb:CBRN>"
-		+ "<bb:STAT_TGT_IND>0</bb:STAT_TGT_IND>"
-		+ "<bb:STAT_TGT_NA>0</bb:STAT_TGT_NA>" + "</rdf:Description>";
-		
+			+ "<dc:identifier>69</dc:identifier>"
+			+ "<rdfs:label>incident</rdfs:label>"
+			+ "<rdf:type rdf:resource = \"urn:monterey:incident\" />"
+			+ "<event:startDate>1998-12-29</event:startDate>"
+			+ "<vCard:ADR rdf:parseType=\"Resource\">"
+			+ "<vCard:Locality>Argun, Chechnya</vCard:Locality>"
+			+ "<vCard:Country>Russian Federation</vCard:Country>"
+			+ "<geo:Point rdf:parseType=\"Resource\">"
+			+ "    <geo:lat>43.292511</geo:lat>"
+			+ "    <geo:long>45.867081</geo:long>"
+			+ "</geo:Point>"
+			+ "</vCard:ADR>"
+			+ "<dc:source>[A] “Mined Radioactive Container Found in Chechnya,” Agence France Presse (29 December 1998): 08:31 GMT."
+			+ "[B] “Mined Radioactive Container Found in Chechnya: security official,” Agence France Presse (</dc:source>"
+			+ "<bb:incidentDescription>On 29 December 1998, a “booby-trapped” or “mined” container of radioactive material “emitting a highly radioactive substance” was discovered near a railway track in Argun, Chechnya.[A,B] The United Press International (UPI) stated that sources from Argun report the radiation level “is ‘huge’ and ‘poses a hazard to human health’.”[H] Argun is located approximately 9 miles due east of the Chechen capital of Grozny.[A,B]"
+			+ "The announcement was issued by Ibragim Khultygov, director of security services, over Chechen television.[A] Khultygov did not reveal the location in which the container was being deactivated.[A] Reports from Agence France Press that cited ITAR-TASS news agency, indicated that specialists cordoned off the area and worked for several hours on dismantling the explosive device at the scene.[C,D,F] Specialists from the Ministry of Emergencies managed to deactivate the device and remove the container to an undisclosed location without incident. By 31 December 1998, a report from Radiostantsiya Ekho Moskvy suggested that “we will probably be right to assume that this was not just an accident but a planned act of sabotage.”[J]"
+			+ "In January 1998, containers of radioactive material were found near this location;[H,I] however, it is only in the same UPI article mentioned above that this container was described as “de-activated.”[H] Press reports issued at the time of the incident do not indicate the presence of any type of explosive device. (See Miscellaneous information for more about the January 1998 container found near Argun.)</bb:incidentDescription>"
+			+ "<bb:SUSPECTED>0</bb:SUSPECTED>"
+			+ "<bb:LAST_MODIFIED>2006-10-17 13:47:01</bb:LAST_MODIFIED>"
+			+ "<bb:STAT_TGT_GOVT>0</bb:STAT_TGT_GOVT>"
+			+ "<bb:STAT_TGT_AGRO>0</bb:STAT_TGT_AGRO>"
+			+ "<bb:STAT_DELIVERY>Explosive Device</bb:STAT_DELIVERY>"
+			+ "<bb:MISC_INFO>After a mined container of radioactive material was found in Argun, Chechnya, press reports referenced the discovery of another “radioactive container” one year earlier. The reference stated that the</bb:MISC_INFO>"
+			+ "<bb:STAT_TGT_BUS>0</bb:STAT_TGT_BUS>"
+			+ "<bb:G_SUSPECTED>0</bb:G_SUSPECTED>"
+			+ "<bb:STAT_INCIDENT>Type 1: Politically / Ideologically Motivated</bb:STAT_INCIDENT>"
+			+ "<bb:STAT_TGT_ED>0</bb:STAT_TGT_ED>"
+			+ "<bb:STAT_TGT_ORG>0</bb:STAT_TGT_ORG>"
+			+ "<bb:STAT_TGT_UNK>1</bb:STAT_TGT_UNK>"
+			+ "<bb:REGION>Russia and NIS</bb:REGION>"
+			+ "<bb:injuries>0</bb:injuries>"
+			+ "<bb:STAT_TGT_INDISCRIM>0</bb:STAT_TGT_INDISCRIM>"
+			+ "<bb:fatalities>0</bb:fatalities>"
+			+ "<bb:STAT_TGT_MED>0</bb:STAT_TGT_MED>"
+			+ "<bb:CREATED>2003-03-07 00:00:00</bb:CREATED>"
+			+ "<bb:AGENT>unknown radiological material</bb:AGENT>"
+			+ "<bb:CBRN>radiological</bb:CBRN>"
+			+ "<bb:STAT_TGT_IND>0</bb:STAT_TGT_IND>"
+			+ "<bb:STAT_TGT_NA>0</bb:STAT_TGT_NA>" + "</rdf:Description>";
+
 	private static final String RDF_PLOT_ONLY_WITH_LABEL = "<rdf:Description rdf:about=\"urn:monterey:incident147\">"
 			+ "<dc:identifier>147</dc:identifier>"
 			+ "<rdfs:label>incident</rdfs:label>"
@@ -380,81 +381,85 @@ public class BlackbookWorkflowSimulator {
 			+ "<bb:CBRN>biological</bb:CBRN>"
 			+ "<bb:STAT_TGT_IND>0</bb:STAT_TGT_IND>"
 			+ "<bb:STAT_TGT_NA>0</bb:STAT_TGT_NA>" + "</rdf:Description>";
-	
+
 	private static final String RDF_PLOT_ONLY_WITHOUT_LABEL = "<rdf:Description rdf:about=\"urn:monterey:incident147\">"
-		+ "<dc:identifier>147</dc:identifier>"
-		+ "<rdfs:label>incident</rdfs:label>"
-		+ "<rdf:type rdf:resource = \"urn:monterey:incident\" />"
-		+ "<event:startDate>1998-04-00</event:startDate>"
-		+ "<vCard:ORG rdf:resource=\"urn:monterey:organization147\" />"
-		+ "<vCard:ADR rdf:parseType=\"Resource\">"
-		+ "<vCard:Locality>Amman</vCard:Locality>"
-		+ "<vCard:Country>Jordan</vCard:Country>"
-		+ "<geo:Point rdf:parseType=\"Resource\">"
-		+ "<geo:lat>31.949841</geo:lat>"
-		+ "<geo:long>35.922371</geo:long>"
-		+ "</geo:Point>"
-		+ "</vCard:ADR>"
-		+ "<dc:source>[A] “Quote-Unquote,” The Sleeping Giant (date not given); Internet, available from http://www.geocities.com/CapitolHill/Congress/7663/Quote.html, accessed on 6/28/99."
-		+ "[B] Nirenstein Fiamma, “E Arafat</dc:source>"
-		+ "<bb:incidentDescription>In April 1998, Palestinian Islamic Jihad leader Nassar Asad Al-Tamimi discussed the possibility of the acquisition of biological weapons by his organization.  He was speaking at a Hamas memorial service in Amman, Jordan.  According to a report by the Center for Israeli Civilian Empowerment, Al Tamimi stated, “Jihad has at last discovered how to win the holy war -- lethal germs.”[A,B,C,D]</bb:incidentDescription>"
-		+ "<bb:SUSPECTED>0</bb:SUSPECTED>"
-		+ "<bb:STAT_MOTIVE>To Act Because of an Ideology/Belief System</bb:STAT_MOTIVE>"
-		+ "<bb:LAST_MODIFIED>2006-10-17 13:47:01</bb:LAST_MODIFIED>"
-		+ "<bb:STAT_TGT_GOVT>0</bb:STAT_TGT_GOVT>"
-		+ "<bb:STAT_TGT_AGRO>0</bb:STAT_TGT_AGRO>"
-		+ "<bb:SPEC_MOTIVE>To further group objectives, part of an overall campaign against non-Muslims</bb:SPEC_MOTIVE>"
-		+ "<bb:MISC_INFO>No further information available</bb:MISC_INFO>"
-		+ "<bb:STAT_TGT_BUS>0</bb:STAT_TGT_BUS>"
-		+ "<bb:G_SUSPECTED>0</bb:G_SUSPECTED>"
-		+ "<bb:STAT_INCIDENT>Type 1: Politically / Ideologically Motivated</bb:STAT_INCIDENT>"
-		+ "<bb:STAT_TGT_ED>0</bb:STAT_TGT_ED>"
-		+ "<bb:STAT_TGT_ORG>0</bb:STAT_TGT_ORG>"
-		+ "<bb:STAT_TGT_UNK>1</bb:STAT_TGT_UNK>"
-		+ "<bb:REGION>Middle East and North Africa</bb:REGION>"
-		+ "<bb:STAT_EVENT>Plot Only</bb:STAT_EVENT>"
-		+ "<bb:injuries>0</bb:injuries>"
-		+ "<bb:STAT_TGT_INDISCRIM>0</bb:STAT_TGT_INDISCRIM>"
-		+ "<bb:fatalities>0</bb:fatalities>"
-		+ "<bb:STAT_TGT_MED>0</bb:STAT_TGT_MED>"
-		+ "<bb:CREATED>2006-10-17 13:47:01</bb:CREATED>"
-		+ "<bb:ACTOR>Asad Al-Tamimi</bb:ACTOR>"
-		+ "<bb:AGENT>unknown biological agent</bb:AGENT>"
-		+ "<bb:CBRN>biological</bb:CBRN>"
-		+ "<bb:STAT_TGT_IND>0</bb:STAT_TGT_IND>"
-		+ "<bb:STAT_TGT_NA>0</bb:STAT_TGT_NA>" + "</rdf:Description>";
+			+ "<dc:identifier>147</dc:identifier>"
+			+ "<rdfs:label>incident</rdfs:label>"
+			+ "<rdf:type rdf:resource = \"urn:monterey:incident\" />"
+			+ "<event:startDate>1998-04-00</event:startDate>"
+			+ "<vCard:ORG rdf:resource=\"urn:monterey:organization147\" />"
+			+ "<vCard:ADR rdf:parseType=\"Resource\">"
+			+ "<vCard:Locality>Amman</vCard:Locality>"
+			+ "<vCard:Country>Jordan</vCard:Country>"
+			+ "<geo:Point rdf:parseType=\"Resource\">"
+			+ "<geo:lat>31.949841</geo:lat>"
+			+ "<geo:long>35.922371</geo:long>"
+			+ "</geo:Point>"
+			+ "</vCard:ADR>"
+			+ "<dc:source>[A] “Quote-Unquote,” The Sleeping Giant (date not given); Internet, available from http://www.geocities.com/CapitolHill/Congress/7663/Quote.html, accessed on 6/28/99."
+			+ "[B] Nirenstein Fiamma, “E Arafat</dc:source>"
+			+ "<bb:incidentDescription>In April 1998, Palestinian Islamic Jihad leader Nassar Asad Al-Tamimi discussed the possibility of the acquisition of biological weapons by his organization.  He was speaking at a Hamas memorial service in Amman, Jordan.  According to a report by the Center for Israeli Civilian Empowerment, Al Tamimi stated, “Jihad has at last discovered how to win the holy war -- lethal germs.”[A,B,C,D]</bb:incidentDescription>"
+			+ "<bb:SUSPECTED>0</bb:SUSPECTED>"
+			+ "<bb:STAT_MOTIVE>To Act Because of an Ideology/Belief System</bb:STAT_MOTIVE>"
+			+ "<bb:LAST_MODIFIED>2006-10-17 13:47:01</bb:LAST_MODIFIED>"
+			+ "<bb:STAT_TGT_GOVT>0</bb:STAT_TGT_GOVT>"
+			+ "<bb:STAT_TGT_AGRO>0</bb:STAT_TGT_AGRO>"
+			+ "<bb:SPEC_MOTIVE>To further group objectives, part of an overall campaign against non-Muslims</bb:SPEC_MOTIVE>"
+			+ "<bb:MISC_INFO>No further information available</bb:MISC_INFO>"
+			+ "<bb:STAT_TGT_BUS>0</bb:STAT_TGT_BUS>"
+			+ "<bb:G_SUSPECTED>0</bb:G_SUSPECTED>"
+			+ "<bb:STAT_INCIDENT>Type 1: Politically / Ideologically Motivated</bb:STAT_INCIDENT>"
+			+ "<bb:STAT_TGT_ED>0</bb:STAT_TGT_ED>"
+			+ "<bb:STAT_TGT_ORG>0</bb:STAT_TGT_ORG>"
+			+ "<bb:STAT_TGT_UNK>1</bb:STAT_TGT_UNK>"
+			+ "<bb:REGION>Middle East and North Africa</bb:REGION>"
+			+ "<bb:injuries>0</bb:injuries>"
+			+ "<bb:STAT_TGT_INDISCRIM>0</bb:STAT_TGT_INDISCRIM>"
+			+ "<bb:fatalities>0</bb:fatalities>"
+			+ "<bb:STAT_TGT_MED>0</bb:STAT_TGT_MED>"
+			+ "<bb:CREATED>2006-10-17 13:47:01</bb:CREATED>"
+			+ "<bb:ACTOR>Asad Al-Tamimi</bb:ACTOR>"
+			+ "<bb:AGENT>unknown biological agent</bb:AGENT>"
+			+ "<bb:CBRN>biological</bb:CBRN>"
+			+ "<bb:STAT_TGT_IND>0</bb:STAT_TGT_IND>"
+			+ "<bb:STAT_TGT_NA>0</bb:STAT_TGT_NA>" + "</rdf:Description>";
 
 	private static final String RDF_FOOTER = "</rdf:RDF>";
-	
-	private static final Resource HOAX_RESOURCE = ModelFactory.createDefaultModel().createResource("urn:monterey:incident1");
-	
-	private static final Resource THREAT_RESOURCE = ModelFactory.createDefaultModel().createResource("urn:monterey:incident66");
-	
-	private static final Resource USE_RESOURCE = ModelFactory.createDefaultModel().createResource("urn:monterey:incident69");
 
-	private static final Resource PLOT_RESOURCE = ModelFactory.createDefaultModel().createResource("urn:monterey:incident147");
-	
-	
-	//a list of keywords that should be classified a hoax
+	private static final Resource HOAX_RESOURCE = ModelFactory
+			.createDefaultModel().createResource("urn:monterey:incident1");
+
+	private static final Resource THREAT_RESOURCE = ModelFactory
+			.createDefaultModel().createResource("urn:monterey:incident66");
+
+	private static final Resource USE_RESOURCE = ModelFactory
+			.createDefaultModel().createResource("urn:monterey:incident69");
+
+	private static final Resource PLOT_RESOURCE = ModelFactory
+			.createDefaultModel().createResource("urn:monterey:incident147");
+
+	// a list of keywords that should be classified a hoax
 	private static final String HOAX_KEYWORDS = "";
-	
-	//a list of keywords that should be classified a threat only
+
+	// a list of keywords that should be classified a threat only
 	private static final String THEAT_KEYWORDS = "";
-	
-	//a list of keywords that should be classified a use of agent
+
+	// a list of keywords that should be classified a use of agent
 	private static final String USE_KEYWORDS = "";
-	
-	//a list of keywords that should be classified a plot only
+
+	// a list of keywords that should be classified a plot only
 	private static final String PLOT_KEYWORDS = "";
-	
-	private static final Property CLASSIFICATION_PROPERTY = ModelFactory.createDefaultModel().createProperty("http://blackbook.com/terms#STAT_EVENT"); 
-	
+
+	private static final Property CLASSIFICATION_PROPERTY = ModelFactory
+			.createDefaultModel().createProperty(
+					"http://blackbook.com/terms#STAT_EVENT");
+
 	private static final String HOAX_LABEL = "Hoax/Prank";
-	
+
 	private static final String THREAT_LABEL = "Threat Only";
-	
+
 	private static final String PLOT_LABEL = "Plont Only";
-	
+
 	private static final String USE_LABEL = "Use Of Agent";
 
 	/**
@@ -464,8 +469,9 @@ public class BlackbookWorkflowSimulator {
 	 * @throws Exception
 	 */
 	public static void main(String[] args) throws Exception {
-		//TODO pretend persistence... should be removed once we can really persist to blackbook.
-		HashMap<String,String> tempDataSource = new HashMap<String,String>();
+		// TODO pretend persistence... should be removed once we can really
+		// persist to blackbook.
+		HashMap<String, String> tempDataSource = new HashMap<String, String>();
 
 		// get data from file
 		String fileContents = org.apache.commons.io.FileUtils
@@ -482,25 +488,43 @@ public class BlackbookWorkflowSimulator {
 				.getClassifier());
 
 		// TODO save classifier in blackbook assertions data source
-		tempDataSource.putAll(persistClassifierRDF("fakeDataSourceName", classifierToPersistAsRDF));
+		tempDataSource.putAll(persistClassifierRDF("fakeDataSourceName",
+				classifierToPersistAsRDF));
 
 		// TODO retrieve classifier from blackbook assertions data source
-		String classifierRetrievedAsRDF = retrieveClassifierRDF("fakeDataSourceName",tempDataSource);
+		String classifierRetrievedAsRDF = retrieveClassifierRDF(
+				"fakeDataSourceName", tempDataSource);
 
 		// TODO get classifier from rdf
 		Classifier classifier = convertRDFToClassifier(classifierRetrievedAsRDF);
 
-		InstanceList testingList = convertRDFToInstanceList(RDF_HEADER
-				+RDF_HOAX_WITHOUT_LABEL
-				+RDF_THREAT_ONLY_WITHOUT_LABEL
-				+RDF_USE_OF_AGENT_WITHOUT_LABEL
-				+RDF_PLOT_ONLY_WITHOUT_LABEL
-				+RDF_FOOTER);
+		Model testModel = bbClassify(RDF_HEADER
+				+ RDF_HOAX_WITHOUT_LABEL + RDF_THREAT_ONLY_WITHOUT_LABEL
+				+ RDF_USE_OF_AGENT_WITHOUT_LABEL + RDF_PLOT_ONLY_WITHOUT_LABEL
+				+ RDF_FOOTER, classifier);
+
+		//TODO read original test model that now has label answers
+		// get data from file
+		Model answerModel = JenaModelFactory.rdf2Model(args[1]);
 		
-		Model modelWithClassifications = classify(classifier, testingList);
-		
-		// TODO report should use the built in mechanisms of Mallet for verifying accuracy.
-		produceModelAccuracyReport(modelWithClassifications);
+		// TODO report should use the built in mechanisms of Mallet for
+		// verifying accuracy.
+		produceModelAccuracyReport(testModel, answerModel);
+	}
+
+	private static InstanceList convertRDFToMalletData(String rdf)
+			throws Exception {
+
+		// get converted data
+		ByteArrayOutputStream bos = RDF2MalletInstances.convertRDFWithLabels(rdf,
+				CLASSIFICATION_PROPERTY.getURI());
+		ByteArrayInputStream bis = new ByteArrayInputStream(bos.toByteArray());
+		ObjectInputStream ois = new ObjectInputStream(bis);
+
+		InstanceList iList = (InstanceList) ois.readObject();
+		log.error("number of instances retrieved from RDF: " + iList.size());
+
+		return iList;
 	}
 
 	private static InstanceList convertRDFToInstanceList(String rdf)
@@ -530,88 +554,117 @@ public class BlackbookWorkflowSimulator {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return trnObj;
 	}
-	
-	
-	private static String convertClassifierToRDF(Classifier classifier) throws Exception {
+
+	private static String convertClassifierToRDF(Classifier classifier)
+			throws Exception {
 		Model model = ModelFactory.createDefaultModel();
-		Resource res = model.createResource(new URL("http://localhost:8443/blackbook/malletModel_" + System.currentTimeMillis()).toString());
+		Resource res = model.createResource(new URL(
+				"http://localhost:8443/blackbook/malletModel_"
+						+ System.currentTimeMillis()).toString());
 		Property prop = OWL.hasValue;
-		
+
 		ByteArrayOutputStream bos = new ByteArrayOutputStream();
 		ObjectOutputStream oos = new ObjectOutputStream(bos);
 		oos.writeObject(classifier);
-		
+
 		Literal obj = model.createTypedLiteral(bos.toByteArray());
-		
+
 		Statement stmt = model.createLiteralStatement(res, prop, obj);
 		model.add(stmt);
-		
+
 		String ret = JenaModelFactory.serializeModel(model, "RDF/XML");
 
 		log.error("converted classifier to rdf:");
-		
+
 		return ret;
 	}
-	
-	//TODO should have a return type of void, not HashMap.
-	private static HashMap<String,String> persistClassifierRDF(String dsName, String classifierRDF) {
-		HashMap<String,String> map = new HashMap<String,String>(1);
+
+	// TODO should have a return type of void, not HashMap.
+	private static HashMap<String, String> persistClassifierRDF(String dsName,
+			String classifierRDF) {
+		HashMap<String, String> map = new HashMap<String, String>(1);
 		map.put(dsName, classifierRDF);
-		
+
 		log.error("persisted classifier rdf as:");
 		return map;
 	}
-	
-	
-	//TODO this method should not have the data source hashmap passed to it, it should retrieve the classifier from persistent store.
-	private static String retrieveClassifierRDF(String dsName, HashMap<String,String> tempDataSource) {
+
+	// TODO this method should not have the data source hashmap passed to it, it
+	// should retrieve the classifier from persistent store.
+	private static String retrieveClassifierRDF(String dsName,
+			HashMap<String, String> tempDataSource) {
 		return tempDataSource.get(dsName);
 	}
-	
-	
-	private static Classifier convertRDFToClassifier(String rdf) throws Exception {
-		
+
+	private static Classifier convertRDFToClassifier(String rdf)
+			throws Exception {
+
 		Model model = ModelFactory.createDefaultModel();
 		ByteArrayInputStream bisModel = new ByteArrayInputStream(rdf.getBytes());
-		model.read(bisModel,"RDF/XML");
-		
-		StmtIterator stmtItr = model.listStatements((Resource)null,OWL.hasValue,(RDFNode)null);
+		model.read(bisModel, "RDF/XML");
+
+		StmtIterator stmtItr = model.listStatements((Resource) null,
+				OWL.hasValue, (RDFNode) null);
 		Statement onlyStmt = stmtItr.nextStatement();
-		
-		ByteArrayInputStream bisLiteral = new ByteArrayInputStream((byte[])onlyStmt.getLiteral().getValue());
+
+		ByteArrayInputStream bisLiteral = new ByteArrayInputStream(
+				(byte[]) onlyStmt.getLiteral().getValue());
 		ObjectInputStream ois = new ObjectInputStream(bisLiteral);
-		Classifier classifier = (Classifier)ois.readObject();
-		
+		Classifier classifier = (Classifier) ois.readObject();
+
 		return classifier;
-		
+
 	}
-	
-	
-	private static Model classify(Classifier classifier, InstanceList iList) {
-		Model model = ModelFactory.createDefaultModel();
-		ArrayList<Classification> classifications = classifier.classify(iList);
-		int curIndex = 0;
-		for(Classification c : classifications) {
-			String label = c.getLabeling().getBestLabel().toString();
-			Resource uri = model.createResource((String)iList.get(curIndex).getName());
-			Statement stmt = model.createStatement(uri, CLASSIFICATION_PROPERTY, label);
-			log.error("adding statment to classification model: " + stmt);
-			model.add(stmt);
-			curIndex++;
-		}
+
+	private static Model bbClassify(String rdf, Classifier classifier)
+			throws Exception {
+		
+		InstanceList iList = RDF2MalletInstances.convertRDFWithoutLabels(rdf,classifier);
+		MalletTextClassify malletClassifier = new MalletTextClassify();
+		//FIXME needs confidence values as well
+		ArrayList<Classification> classifications = malletClassifier.classify(
+				classifier, iList);
+		
+		Model model = RDFUtils.createModelWithClassifications(classifications);
+
+		
+//		int curIndex = 0;
+//		for (Classification c : classifications) {
+//			String label = c.getLabeling().getBestLabel().toString();
+//			Resource uri = model.createResource((String) c.getInstance()
+//					.getName());
+//			Statement stmt = model.createStatement(uri,
+//					CLASSIFICATION_PROPERTY, label);
+//			
+//			//FIXME put in statements about confidence
+//			
+//			log.error("adding statment to classification model: " + stmt);
+//			model.add(stmt);
+//			curIndex++;
+//		}
 
 		return model;
 	}
-	
-	
-	private static void produceModelAccuracyReport(Model model) throws Exception {
-		log.error("model of classifications is: " + JenaModelFactory.serializeModel(model, FileUtils.langNTriple));
-		log.error("Hoax entity is marked correctly? " + model.contains(HOAX_RESOURCE, CLASSIFICATION_PROPERTY, HOAX_LABEL));
-		log.error("Threat entity is marked correctly? " + model.contains(THREAT_RESOURCE, CLASSIFICATION_PROPERTY, THREAT_LABEL));
-		log.error("Plot entity is marked correctly? " + model.contains(PLOT_RESOURCE, CLASSIFICATION_PROPERTY, PLOT_LABEL));
-		log.error("Use entity is marked correctly? " + model.contains(USE_RESOURCE, CLASSIFICATION_PROPERTY, USE_LABEL));
+
+	private static void produceModelAccuracyReport(Model testModel,
+			Model testModelWithAnswers) throws Exception {
+		log.error("model of classifications is: "
+				+ JenaModelFactory.serializeModel(testModel,
+						FileUtils.langNTriple));
+		log.error("Hoax entity is marked correctly? "
+				+ testModel.contains(HOAX_RESOURCE, CLASSIFICATION_PROPERTY,
+						HOAX_LABEL));
+		log.error("Threat entity is marked correctly? "
+				+ testModel.contains(THREAT_RESOURCE, CLASSIFICATION_PROPERTY,
+						THREAT_LABEL));
+		log.error("Plot entity is marked correctly? "
+				+ testModel.contains(PLOT_RESOURCE, CLASSIFICATION_PROPERTY,
+						PLOT_LABEL));
+		log.error("Use entity is marked correctly? "
+				+ testModel.contains(USE_RESOURCE, CLASSIFICATION_PROPERTY,
+						USE_LABEL));
 	}
 }
