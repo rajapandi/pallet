@@ -151,6 +151,73 @@ public class RDF2MalletInstances {
     }
 
     /**
+     * @param modelAsString
+     *            :It recieves model As a String
+     * @return HashMap
+     * @throws Exception
+     */
+    public final ByteArrayOutputStream classifyingDataIntoMalletData(
+            String modelAsString) throws Exception {
+        Model incomingModel = null;
+        ByteArrayOutputStream bos = null;
+        try {
+            if (StringUtils.isBlank(modelAsString))
+                throw new IllegalArgumentException(
+                        "model cannot be blank or null");
+            InputStream is = new ByteArrayInputStream(modelAsString
+                    .getBytes("UTF-8"));
+            incomingModel = ModelFactory.createDefaultModel();
+            incomingModel.read(is, "");
+        } catch (Exception e) {
+            log.error(e.toString());
+            throw e;
+        }
+        HashMap<String, String> resData = new HashMap<String, String>();
+        String propertyData = " ";
+        ResIterator res = incomingModel.listSubjects();
+        while (res.hasNext()) {
+            Resource resourceOriginal = res.next();
+            Resource newResource = findSuperNode(resourceOriginal,
+                    incomingModel);
+
+            log.debug("DATA OF LOCAL RESOURCE " + resourceOriginal.toString()
+                    + "IS ATTACHED TO THE DATA OF ORIGINAL RESOURCE "
+                    + newResource.toString());
+
+            StmtIterator stmt = resourceOriginal.listProperties();
+            propertyData = " ";
+            while (stmt.hasNext()) {
+                Statement s = stmt.next();
+                if (s.getObject().isLiteral()) {
+
+                    propertyData = propertyData + " "
+                            + s.getObject().toString() + " ";
+
+                }
+            }
+            if (resData.containsKey(newResource.toString())) {
+                String slrt = resData.get(newResource.toString());
+                slrt = slrt + " " + propertyData;
+                resData.put(newResource.toString(), slrt);
+            } else {
+                resData.put(newResource.toString(), propertyData);
+            }
+
+        }
+
+        try {
+            bos = new ByteArrayOutputStream();
+            ObjectOutputStream oos = new ObjectOutputStream(bos);
+            oos.writeObject(resData);
+        } catch (Exception e) {
+            log.error(e.toString());
+            throw e;
+        }
+        return bos;
+
+    }
+
+    /**
      * @param model
      *            Jena Model
      * @param classificationPredicate
@@ -158,6 +225,7 @@ public class RDF2MalletInstances {
      * @return This method returns InstanceList
      * @throws Exception
      */
+
     public final InstanceList executeAlgorithm(Model model,
             Property classificationPredicate) throws Exception {
 
