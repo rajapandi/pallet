@@ -19,10 +19,7 @@ Any task listed here should take 1 hour to no more than 2 weeks work.  If a task
    * classify
    * jena add statement and reified statement for provenance
  * Create generalized incremental training algorithm as a Blackbook algorithm which takes a Classifier and RDF to be trained on and return the Classifier - Lance. 
- * Convert the classification data(data without labels) into Mallet Instances - Pralabh
-   * Use the trained pipe
-   * Create the Instance List having Target value provided by the trained Pipe.
- * Convert the final output of the classification into Reified RDF showing the confidence value for each label.-Pralabh
+ 
    
  * The unit testing of all the pipes.(%)
  * Data Classification:
@@ -120,6 +117,10 @@ Any task listed here should take 1 hour to no more than 2 weeks work.  If a task
   * C4.5 Decision Tree
     * Code Review.
     * Documentation and Tutorials.
+  * Convert the classification data(data without labels) into Mallet Instances - Pralabh
+    * Use the trained pipe
+    * Create the Instance List having Target value provided by the trained Pipe.
+  * Convert the final output of the classification into Reified RDF showing the confidence value for each label.-Pralabh
 
 == Currently being worked on ==
      
