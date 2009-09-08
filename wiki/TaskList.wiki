@@ -121,6 +121,8 @@ Any task listed here should take 1 hour to no more than 2 weeks work.  If a task
     * Use the trained pipe
     * Create the Instance List having Target value provided by the trained Pipe.
   * Convert the final output of the classification into Reified RDF showing the confidence value for each label.-Pralabh
+  * Creation of Confidence Vector - Sharath.
+  * Completion of Jena Simulator - Sharath.
 
 == Currently being worked on ==
      
