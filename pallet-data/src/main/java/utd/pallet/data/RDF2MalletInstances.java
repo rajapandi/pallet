@@ -23,9 +23,11 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.PatternLayout;
 import org.apache.log4j.WriterAppender;
 
+import cc.mallet.classify.Classifier;
 import cc.mallet.pipe.CharSequence2TokenSequence;
 import cc.mallet.pipe.FeatureSequence2FeatureVector;
 import cc.mallet.pipe.Input2CharSequence;
+import cc.mallet.pipe.Noop;
 import cc.mallet.pipe.Pipe;
 import cc.mallet.pipe.SerialPipes;
 import cc.mallet.pipe.Target2Label;
@@ -65,8 +67,11 @@ public class RDF2MalletInstances {
     /**
      * log is created for the purpose of logging
      */
+
     private static org.apache.log4j.Logger log = Logger
             .getLogger(RDF2MalletInstances.class);
+
+    // static Logger log = Logger.getLogger("MyLog");
     /**
      * Appender is created to append the log in the file.
      */
@@ -96,7 +101,6 @@ public class RDF2MalletInstances {
      * An List is created(instBeforeProcessing), to add all the instances before
      * processing through them pipe.
      */
-    public List<Instance> instBeforeProcessing = new ArrayList<Instance>();
 
     /**
      * RDF2MalletInstances constructor is called which calls buildpipe method.
@@ -131,7 +135,7 @@ public class RDF2MalletInstances {
      *            Jena Model
      * @return It return the original Resource of the passed Blank node.
      */
-    private final Resource findSuperNode(Resource r, Model model) {
+    private final static Resource findSuperNode(Resource r, Model model) {
 
         StmtIterator stmt = model.listStatements();
         while (stmt.hasNext()) {
@@ -152,14 +156,20 @@ public class RDF2MalletInstances {
 
     /**
      * @param modelAsString
-     *            :It recieves model As a String
-     * @return HashMap
+     *            : The classifying data as model
+     * @param classifier
+     *            : The trained classifier
+     * @return : ByteArrayOutputStream Serialized InstanceList containing
+     *         classifying data
      * @throws Exception
      */
-    public final ByteArrayOutputStream classifyingDataIntoMalletData(
-            String modelAsString) throws Exception {
+    public final static ByteArrayOutputStream convertRDFWithoutLabels(
+            String modelAsString, Classifier classifier) throws Exception {
         Model incomingModel = null;
         ByteArrayOutputStream bos = null;
+        InstanceList classifyingDataIntoMalletInstances = new InstanceList(
+                new Noop());
+        Pipe newPipe = null;
         try {
             if (StringUtils.isBlank(modelAsString))
                 throw new IllegalArgumentException(
@@ -172,6 +182,15 @@ public class RDF2MalletInstances {
             log.error(e.toString());
             throw e;
         }
+
+        try {
+            if (classifier == null)
+                throw new IllegalArgumentException(
+                        "classifier cannot be blank or null");
+        } catch (Exception e) {
+            log.error(e.toString());
+            throw e;
+        }
         HashMap<String, String> resData = new HashMap<String, String>();
         String propertyData = " ";
         ResIterator res = incomingModel.listSubjects();
@@ -179,20 +198,16 @@ public class RDF2MalletInstances {
             Resource resourceOriginal = res.next();
             Resource newResource = findSuperNode(resourceOriginal,
                     incomingModel);
-
             log.debug("DATA OF LOCAL RESOURCE " + resourceOriginal.toString()
                     + "IS ATTACHED TO THE DATA OF ORIGINAL RESOURCE "
                     + newResource.toString());
-
             StmtIterator stmt = resourceOriginal.listProperties();
             propertyData = " ";
             while (stmt.hasNext()) {
                 Statement s = stmt.next();
                 if (s.getObject().isLiteral()) {
-
                     propertyData = propertyData + " "
                             + s.getObject().toString() + " ";
-
                 }
             }
             if (resData.containsKey(newResource.toString())) {
@@ -202,19 +217,34 @@ public class RDF2MalletInstances {
             } else {
                 resData.put(newResource.toString(), propertyData);
             }
-
         }
+        Instance i = null;
+        res = incomingModel.listSubjects();
+        newPipe = classifier.getInstancePipe();
+        while (res.hasNext()) {
+            Resource re = res.next();
+            String str = resData.get(re.toString());
+            if (str == null)
+                continue;
+            i = newPipe.instanceFrom(new Instance(str, newPipe
+                    .getTargetAlphabet().lookupObject(0).toString(), re
+                    .toString(), "RDF/XML"));
+            log.debug("NAME:: " + i.getName().toString());
+            log.debug("DATA::\n" + i.getData().toString());
+            log.debug("TARGET:: " + i.getTarget().toString());
+            log.debug("SOURCE:: " + i.getSource().toString());
 
+            classifyingDataIntoMalletInstances.add(i);
+        }
         try {
             bos = new ByteArrayOutputStream();
             ObjectOutputStream oos = new ObjectOutputStream(bos);
-            oos.writeObject(resData);
+            oos.writeObject(classifyingDataIntoMalletInstances);
         } catch (Exception e) {
             log.error(e.toString());
             throw e;
         }
         return bos;
-
     }
 
     /**
@@ -226,9 +256,9 @@ public class RDF2MalletInstances {
      * @throws Exception
      */
 
-    public final InstanceList executeAlgorithm(Model model,
-            Property classificationPredicate) throws Exception {
-
+    public final static InstanceList trainingDataIntoMalletInstanceList(
+            Model model, Property classificationPredicate) throws Exception {
+        List<Instance> instBeforeProcessing = new ArrayList<Instance>();
         try {
 
             if (model == null || model.isEmpty()) {
@@ -321,6 +351,8 @@ public class RDF2MalletInstances {
              * Get the data from the Map associated with each Resource.If data
              * has the specified property then only we need to create instance.
              */
+            if (str == null)
+                continue;
             if (re.getProperty(classificationPredicate) != null) {
 
                 /**
@@ -392,7 +424,7 @@ public class RDF2MalletInstances {
      *         InstnaceList.
      * @throws Exception
      */
-    public final ByteArrayOutputStream executeAlgorithmSerializable(
+    public final static ByteArrayOutputStream convertRDFWithLabels(
             String modelAsString, String classificationPredicate)
             throws Exception {
 
@@ -446,7 +478,7 @@ public class RDF2MalletInstances {
 
             Property property = incomingModel
                     .getProperty(classificationPredicate);
-            il = executeAlgorithm(incomingModel, property);
+            il = trainingDataIntoMalletInstanceList(incomingModel, property);
             bos = new ByteArrayOutputStream();
             ObjectOutputStream oos = new ObjectOutputStream(bos);
             oos.writeObject(il);
