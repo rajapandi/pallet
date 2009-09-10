@@ -18,47 +18,11 @@ import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.vocabulary.VCARD;
 
 /**
- * testRDF2MalletInstances is a class which perform five junit test cases on
+ * RDF2MalletInstancesTest is a class which perform Eight junit test cases on
  * RDF2MalletInstances.
  * 
  */
 public class RDF2MalletInstancesTest extends TestCase {
-
-    /**
-     * rdf2MalletInstances1 is an Instance of RDF2MalletInstances
-     */
-    private RDF2MalletInstances rdf2MalletInstances1;
-    /**
-     * rdf2MalletInstances2 is an Instance of RDF2MalletInstances
-     */
-    private RDF2MalletInstances rdf2MalletInstances2;
-    /**
-     * * rdf2MalletInstances3 is an Instance of RDF2MalletInstances
-     */
-    private RDF2MalletInstances rdf2MalletInstances3;
-    /**
-     * rdf2MalletInstances4 is an Instance of RDF2MalletInstances
-     */
-    private RDF2MalletInstances rdf2MalletInstances4;
-    /**
-     * rdf2MalletInstances5 is an Instance of RDF2MalletInstances
-     */
-    private RDF2MalletInstances rdf2MalletInstances5;
-
-    /**
-     * rdf2MalletInstances6 is an Instance of RDF2MalletInstances
-     */
-    private RDF2MalletInstances rdf2MalletInstances6;
-
-    /**
-     * rdf2MalletInstances7 is an Instance of RDF2MalletInstances
-     */
-    private RDF2MalletInstances rdf2MalletInstances7;
-
-    /**
-     * rdf2MalletInstances8 is an Instance of RDF2Mallet Instances
-     */
-    private RDF2MalletInstances rdf2MalletInstances8;
 
     /**
      * @return Instance of TestSuite
@@ -77,14 +41,7 @@ public class RDF2MalletInstancesTest extends TestCase {
 
         try {
             super.setUp();
-            rdf2MalletInstances1 = new RDF2MalletInstances();
-            rdf2MalletInstances2 = new RDF2MalletInstances();
-            rdf2MalletInstances3 = new RDF2MalletInstances();
-            rdf2MalletInstances4 = new RDF2MalletInstances();
-            rdf2MalletInstances5 = new RDF2MalletInstances();
-            rdf2MalletInstances6 = new RDF2MalletInstances();
-            rdf2MalletInstances7 = new RDF2MalletInstances();
-            rdf2MalletInstances8 = new RDF2MalletInstances();
+
         } catch (Exception e) {
 
         }
@@ -98,14 +55,6 @@ public class RDF2MalletInstancesTest extends TestCase {
     protected void tearDown() throws Exception {
 
         super.tearDown();
-        rdf2MalletInstances1 = null;
-        rdf2MalletInstances2 = null;
-        rdf2MalletInstances3 = null;
-        rdf2MalletInstances4 = null;
-        rdf2MalletInstances5 = null;
-        rdf2MalletInstances6 = null;
-        rdf2MalletInstances7 = null;
-        rdf2MalletInstances8 = null;
 
     }
 
@@ -116,7 +65,7 @@ public class RDF2MalletInstancesTest extends TestCase {
     public void testExecuteAlgorithmNullModel() {
         boolean exceptionThrown = false;
         try {
-            rdf2MalletInstances1.executeAlgorithm(null, null);
+            RDF2MalletInstances.trainingDataIntoMalletInstanceList(null, null);
         } catch (Exception e) {
             exceptionThrown = true;
 
@@ -134,7 +83,8 @@ public class RDF2MalletInstancesTest extends TestCase {
             Model model = ModelFactory.createDefaultModel();
             Property sampleProperty = model
                     .createProperty("http://www.w3.org/2001/vcard-rdf/3.0#CATEGORIES");
-            rdf2MalletInstances2.executeAlgorithm(model, sampleProperty);
+            RDF2MalletInstances.trainingDataIntoMalletInstanceList(model,
+                    sampleProperty);
         } catch (Exception e) {
             exceptionThrown = true;
 
@@ -154,7 +104,7 @@ public class RDF2MalletInstancesTest extends TestCase {
                     .createResource("http://somewhere/JohnSmith");
             resource.addProperty(VCARD.FN, "John Smith");
 
-            rdf2MalletInstances3.executeAlgorithm(model, null);
+            RDF2MalletInstances.trainingDataIntoMalletInstanceList(model, null);
 
         } catch (Exception e) {
 
@@ -181,7 +131,7 @@ public class RDF2MalletInstancesTest extends TestCase {
 
             Property p = model
                     .createProperty("http://www.w3.org/2001/vcard-rdf/3.0#CATEGORIES");
-            rdf2MalletInstances4.executeAlgorithm(model, p);
+            RDF2MalletInstances.trainingDataIntoMalletInstanceList(model, p);
         } catch (Exception e) {
             exceptionThrown = true;
 
@@ -198,7 +148,7 @@ public class RDF2MalletInstancesTest extends TestCase {
         boolean exceptionThrown = false;
         try {
 
-            rdf2MalletInstances5.executeAlgorithmSerializable(null, null);
+            RDF2MalletInstances.convertRDFWithLabels(null, null);
         } catch (Exception e) {
             exceptionThrown = true;
         }
@@ -213,7 +163,7 @@ public class RDF2MalletInstancesTest extends TestCase {
         boolean exceptionThrown = false;
         try {
 
-            rdf2MalletInstances6.executeAlgorithmSerializable("",
+            RDF2MalletInstances.convertRDFWithLabels("",
                     "http://www.w3.org/2001/vcard-rdf/3.0#CATEGORIES");
         } catch (Exception e) {
             exceptionThrown = true;
@@ -234,8 +184,7 @@ public class RDF2MalletInstancesTest extends TestCase {
             resource.addProperty(VCARD.FN, "John Smith");
             String modelSerialized = JenaModelFactory.serializeModel(model,
                     "RDF/XML");
-            rdf2MalletInstances7.executeAlgorithmSerializable(modelSerialized,
-                    "HIJK");
+            RDF2MalletInstances.convertRDFWithLabels(modelSerialized, "HIJK");
         } catch (Exception e) {
             exceptionThrown = true;
         }
@@ -267,8 +216,7 @@ public class RDF2MalletInstancesTest extends TestCase {
 
             String modelSerialized = JenaModelFactory.serializeModel(model,
                     "RDF/XML");
-            bout = rdf2MalletInstances8.executeAlgorithmSerializable(
-                    modelSerialized,
+            bout = RDF2MalletInstances.convertRDFWithLabels(modelSerialized,
                     "http://www.w3.org/2001/vcard-rdf/3.0#CATEGORIES");
             ByteArrayInputStream bin = new ByteArrayInputStream(bout
                     .toByteArray());
