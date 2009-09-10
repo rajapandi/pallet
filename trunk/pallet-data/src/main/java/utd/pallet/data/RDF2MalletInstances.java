@@ -71,7 +71,6 @@ public class RDF2MalletInstances {
     private static org.apache.log4j.Logger log = Logger
             .getLogger(RDF2MalletInstances.class);
 
-    // static Logger log = Logger.getLogger("MyLog");
     /**
      * Appender is created to append the log in the file.
      */
@@ -96,11 +95,6 @@ public class RDF2MalletInstances {
 
         }
     }
-
-    /**
-     * An List is created(instBeforeProcessing), to add all the instances before
-     * processing through them pipe.
-     */
 
     /**
      * RDF2MalletInstances constructor is called which calls buildpipe method.
