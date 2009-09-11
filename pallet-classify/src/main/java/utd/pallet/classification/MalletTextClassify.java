@@ -2,8 +2,7 @@ package utd.pallet.classification;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashMap;
-
+import utd.pallet.data.MalletAccuracyVector;
 import cc.mallet.classify.Classification;
 import cc.mallet.classify.Classifier;
 import cc.mallet.classify.Trial;
@@ -12,9 +11,6 @@ import cc.mallet.pipe.Pipe;
 import cc.mallet.pipe.iterator.ArrayIterator;
 import cc.mallet.types.Instance;
 import cc.mallet.types.InstanceList;
-import cc.mallet.types.Labeling;
-//import cc.mallet.classify.ClassifierTrainer;
-//import cc.mallet.types.InstanceList;
 
 /**
  * classifies text document using the specified classifier. 
@@ -61,15 +57,16 @@ public class MalletTextClassify implements Serializable {
 		} else if (listToClassify instanceof String) {
 						
 			iList = new InstanceList (new Noop ());
-			instance = pipe.instanceFrom(new Instance (listToClassify, null,null,null));			
+			instance = pipe.instanceFrom(new Instance (listToClassify, 
+										pipe.getTargetAlphabet().lookupObject(0),null,null));			
 			iList.add(instance);			 
 			trial = new Trial (classifier, iList);
 			
 		} else if (listToClassify instanceof Instance) {
 			Instance testInstance = (Instance) listToClassify; 			
 			iList = new InstanceList (new Noop ());
-			iList.add(testInstance);			 
-			trial = new Trial (classifier, iList);			
+			iList.add(testInstance);
+			trial = new Trial (classifier, iList);
 			
 		} else if (listToClassify instanceof String[]){
 						
@@ -95,104 +92,32 @@ public class MalletTextClassify implements Serializable {
 	
 	/**
 	 * Returns list of Accuracy vector.
-	 * Vector represented as list of <object,accuracy> pair where accuracy is the accuracy associated with the object.
-	 * @return 
+	 * Vector represented as list of <label,accuracy> pair where accuracy is the accuracy associated with the object.
+	 * @return ArrayList of Accuracy Vector.
 	 */
-	ArrayList <HashMap<Object, Double>> getAccuracyVectors () throws Exception, NullPointerException {
+	ArrayList <MalletAccuracyVector> getAccuracyVectors () throws Exception, NullPointerException {
 				
-		ArrayList <HashMap<Object, Double>>  accVectorList = new ArrayList <HashMap<Object, Double>> ();		
-		MalletAccuracyVector accuracyVector = new MalletAccuracyVector ();
+		ArrayList <MalletAccuracyVector>  accVectorList = new ArrayList <MalletAccuracyVector> ();		
+		//
 		
 		for (int i = 0; i < trial.size(); i++) {
+			
 			Classification cl = this.trial.get(i);
+			MalletAccuracyVector accuracyVector = new MalletAccuracyVector ();
 			try {
 				accuracyVector.setAccuracy(cl);
-			} catch (NullPointerException e) {
-				// TODO Auto-generated catch block
+			} catch (NullPointerException e) {				
 				e.printStackTrace();
 				throw (e);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 				throw (e);
 			}
-			HashMap<Object, Double> vector = null;
-			try {
-				vector = accuracyVector.getAccuracyVector();
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				throw (e);
-			}	
-			
-			accVectorList.add(vector);
+	
+			accVectorList.add(accuracyVector);
 		}
 		
 		return accVectorList;
 	}
-	
-	//ArrDouble getAccuracy 	
-	// Not in a shape to be tested
-	// Is separate class necessary? -> What if accuracy of previously saved classification is required.
-	/**
-	 * 
-	 */
-	public class MalletAccuracyVector {
-		
-		// Is Object type to be changed to Labelings? - if labelings then cannot use hashmap 
-		HashMap<Object, Double> accuracyVector = new HashMap<Object, Double> ();
-		/**
-		 * 
-		 */
-		public MalletAccuracyVector () {};
-		
-		/**
-		 * 
-		 * @param classification
-		 * @throws java.lang.NullPointerException
-		 * @throws java.lang.Exception
-		 */
-		public void setAccuracy (Classification classification) 
-						throws java.lang.NullPointerException, java.lang.Exception {
-			if (classification == null)
-				throw new NullPointerException ("Invalid Classification object");
-		
-			//accuracyVector.put(key, value);
-			//classification.
-			throw new Exception ("Yet to be implemented");
-			
-		}
-		
-		/**
-		 * 
-		 * @return
-		 * @throws java.lang.Exception
-		 */
-		public HashMap<Object, Double> getAccuracyVector ()  throws java.lang.Exception {			
-			if (accuracyVector.isEmpty() == true)
-				throw new Exception ("Empty Accuracy Vector");
-			
-			return accuracyVector;
-		}
-		
-		/**
-		 * 
-		 * @return
-		 * @throws java.lang.Exception
-		 */
-		public double getAccuracy () throws java.lang.Exception {
-			
-			throw new Exception ("Yet to be implemented");		
-		}
-		
-		/**
-		 * 
-		 * @return
-		 * @throws java.lang.Exception
-		 */
-		public Labeling getLabel () throws java.lang.Exception {
-			throw new Exception ("Yet to be implemented");		
-		}		
-	}	
 }
 
