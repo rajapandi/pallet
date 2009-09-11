@@ -147,7 +147,7 @@ public class MalletTextClassifyTest extends TestCase {
 		
 		if (classificationList.size() != testObj.length || 
 			classificationListAsia.size() != testObjAsia.length ||
-			classificationListAus.size() != testObjAus.length	)
+			classificationListAus.size() != testObjAus.length)
 			assertTrue (false);
 		
 		// Test for label africa
@@ -156,7 +156,7 @@ public class MalletTextClassifyTest extends TestCase {
 										
 			assertTrue (classificationList.get(i).getLabeling().getBestLabel()
 					== ((LabelAlphabet)iList.getTargetAlphabet()).lookupLabel("africa"));
-		}			
+		}
 		
 		// Test for label asia
 		for (int i = 0; i < classificationListAsia.size();i++) {
@@ -237,9 +237,10 @@ public class MalletTextClassifyTest extends TestCase {
 		int i = 0;
 		for (i = 0; i < cl.size(); i++) 
 		{
-			//System.out.println ("Label - " + cl.get(i).getLabeling().getBestLabel());
-				assertTrue (cl.get(i).getLabeling().getBestLabel() == 
+			//System.out.println ("Label - " + cl.get(i).getLabeling().getBestLabel());						 
+			assertTrue (cl.get(i).getLabeling().getBestLabel() == 
 					((LabelAlphabet)iList.getTargetAlphabet()).lookupLabel("asia"));
+				
 		}    	
     	
     }
@@ -314,6 +315,7 @@ public class MalletTextClassifyTest extends TestCase {
 		}							
     }
     
+        
 	static Test suite ()
 	{
 		return new TestSuite (MalletTextClassifyTest.class);
