@@ -11,6 +11,7 @@ public class RDFUtils {
 	public static Model createModelWithClassifications (ArrayList<MalletAccuracyVector>  accVector,
 											ArrayList<Classification> classificationList) {
 		
+		@SuppressWarnings("unused")
 		Model rdfModel = null;
 		
 		return null;		
