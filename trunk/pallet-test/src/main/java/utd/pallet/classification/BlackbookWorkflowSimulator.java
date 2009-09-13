@@ -25,6 +25,7 @@ import org.junit.Assert;
 import com.hp.hpl.jena.rdf.model.Literal;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
+import com.hp.hpl.jena.rdf.model.NodeIterator;
 import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.RDFNode;
 import com.hp.hpl.jena.rdf.model.Resource;
@@ -36,7 +37,9 @@ import com.hp.hpl.jena.vocabulary.OWL;
 import utd.pallet.classification.MalletTextDataTrainer.TrainerObject;
 import utd.pallet.data.BuildPipe;
 import utd.pallet.data.JenaModelFactory;
+import utd.pallet.data.MalletAccuracyVector;
 import utd.pallet.data.RDF2MalletInstances;
+import utd.pallet.data.RDFUtils;
 
 import cc.mallet.classify.Classification;
 import cc.mallet.classify.Classifier;
@@ -268,18 +271,18 @@ public class BlackbookWorkflowSimulator {
 			+ "    <geo:long>45.867081</geo:long>"
 			+ "</geo:Point>"
 			+ "</vCard:ADR>"
-			+ "<dc:source>[A] “Mined Radioactive Container Found in Chechnya,” Agence France Presse (29 December 1998): 08:31 GMT."
-			+ "[B] “Mined Radioactive Container Found in Chechnya: security official,” Agence France Presse (</dc:source>"
-			+ "<bb:incidentDescription>On 29 December 1998, a “booby-trapped” or “mined” container of radioactive material “emitting a highly radioactive substance” was discovered near a railway track in Argun, Chechnya.[A,B] The United Press International (UPI) stated that sources from Argun report the radiation level “is ‘huge’ and ‘poses a hazard to human health’.”[H] Argun is located approximately 9 miles due east of the Chechen capital of Grozny.[A,B]"
-			+ "The announcement was issued by Ibragim Khultygov, director of security services, over Chechen television.[A] Khultygov did not reveal the location in which the container was being deactivated.[A] Reports from Agence France Press that cited ITAR-TASS news agency, indicated that specialists cordoned off the area and worked for several hours on dismantling the explosive device at the scene.[C,D,F] Specialists from the Ministry of Emergencies managed to deactivate the device and remove the container to an undisclosed location without incident. By 31 December 1998, a report from Radiostantsiya Ekho Moskvy suggested that “we will probably be right to assume that this was not just an accident but a planned act of sabotage.”[J]"
+			+ "<dc:source>[A] Mined Radioactive Container Found in Chechnya,Agence France Presse (29 December 1998): 08:31 GMT."
+			+ "[B] Mined Radioactive Container Found in Chechnya: security official, Agence France Presse (</dc:source>"
+			+ "<bb:incidentDescription>On 29 December 1998, a booby-trapped or mined container of radioactive material emitting a highly radioactive substance was discovered near a railway track in Argun, Chechnya.[A,B] The United Press International (UPI) stated that sources from Argun report the radiation level is huge and poses a hazard to human health.[H] Argun is located approximately 9 miles due east of the Chechen capital of Grozny.[A,B]"
+			+ "The announcement was issued by Ibragim Khultygov, director of security services, over Chechen television.[A] Khultygov did not reveal the location in which the container was being deactivated.[A] Reports from Agence France Press that cited ITAR-TASS news agency, indicated that specialists cordoned off the area and worked for several hours on dismantling the explosive device at the scene.[C,D,F] Specialists from the Ministry of Emergencies managed to deactivate the device and remove the container to an undisclosed location without incident. By 31 December 1998, a report from Radiostantsiya Ekho Moskvy suggested that we will probably be right to assume that this was not just an accident but a planned act of sabotage.[J]"
 
-			+ "In January 1998, containers of radioactive material were found near this location;[H,I] however, it is only in the same UPI article mentioned above that this container was described as “de-activated.”[H] Press reports issued at the time of the incident do not indicate the presence of any type of explosive device. (See Miscellaneous information for more about the January 1998 container found near Argun.)</bb:incidentDescription>"
+			+ "In January 1998, containers of radioactive material were found near this location;[H,I] however, it is only in the same UPI article mentioned above that this container was described as de-activated.[H] Press reports issued at the time of the incident do not indicate the presence of any type of explosive device. (See Miscellaneous information for more about the January 1998 container found near Argun.)</bb:incidentDescription>"
 			+ "<bb:SUSPECTED>0</bb:SUSPECTED>"
 			+ "<bb:LAST_MODIFIED>2006-10-17 13:47:01</bb:LAST_MODIFIED>"
 			+ "<bb:STAT_TGT_GOVT>0</bb:STAT_TGT_GOVT>"
 			+ "<bb:STAT_TGT_AGRO>0</bb:STAT_TGT_AGRO>"
 			+ "<bb:STAT_DELIVERY>Explosive Device</bb:STAT_DELIVERY>"
-			+ "<bb:MISC_INFO>After a mined container of radioactive material was found in Argun, Chechnya, press reports referenced the discovery of another “radioactive container” one year earlier. The reference stated that the</bb:MISC_INFO>"
+			+ "<bb:MISC_INFO>After a mined container of radioactive material was found in Argun, Chechnya, press reports referenced the discovery of another radioactive container one year earlier. The reference stated that the</bb:MISC_INFO>"
 			+ "<bb:STAT_TGT_BUS>0</bb:STAT_TGT_BUS>"
 			+ "<bb:G_SUSPECTED>0</bb:G_SUSPECTED>"
 			+ "<bb:STAT_INCIDENT>Type 1: Politically / Ideologically Motivated</bb:STAT_INCIDENT>"
@@ -311,17 +314,17 @@ public class BlackbookWorkflowSimulator {
 			+ "    <geo:long>45.867081</geo:long>"
 			+ "</geo:Point>"
 			+ "</vCard:ADR>"
-			+ "<dc:source>[A] “Mined Radioactive Container Found in Chechnya,” Agence France Presse (29 December 1998): 08:31 GMT."
-			+ "[B] “Mined Radioactive Container Found in Chechnya: security official,” Agence France Presse (</dc:source>"
-			+ "<bb:incidentDescription>On 29 December 1998, a “booby-trapped” or “mined” container of radioactive material “emitting a highly radioactive substance” was discovered near a railway track in Argun, Chechnya.[A,B] The United Press International (UPI) stated that sources from Argun report the radiation level “is ‘huge’ and ‘poses a hazard to human health’.”[H] Argun is located approximately 9 miles due east of the Chechen capital of Grozny.[A,B]"
-			+ "The announcement was issued by Ibragim Khultygov, director of security services, over Chechen television.[A] Khultygov did not reveal the location in which the container was being deactivated.[A] Reports from Agence France Press that cited ITAR-TASS news agency, indicated that specialists cordoned off the area and worked for several hours on dismantling the explosive device at the scene.[C,D,F] Specialists from the Ministry of Emergencies managed to deactivate the device and remove the container to an undisclosed location without incident. By 31 December 1998, a report from Radiostantsiya Ekho Moskvy suggested that “we will probably be right to assume that this was not just an accident but a planned act of sabotage.”[J]"
-			+ "In January 1998, containers of radioactive material were found near this location;[H,I] however, it is only in the same UPI article mentioned above that this container was described as “de-activated.”[H] Press reports issued at the time of the incident do not indicate the presence of any type of explosive device. (See Miscellaneous information for more about the January 1998 container found near Argun.)</bb:incidentDescription>"
+			+ "<dc:source>[A] Mined Radioactive Container Found in Chechnya, Agence France Presse (29 December 1998): 08:31 GMT."
+			+ "[B] Mined Radioactive Container Found in Chechnya: security official, Agence France Presse (</dc:source>"
+			+ "<bb:incidentDescription>On 29 December 1998, a booby-trapped or mined container of radioactive material emitting a highly radioactive substance was discovered near a railway track in Argun, Chechnya.[A,B] The United Press International (UPI) stated that sources from Argun report the radiation level is huge and poses a hazard to human health.[H] Argun is located approximately 9 miles due east of the Chechen capital of Grozny.[A,B]"
+			+ "The announcement was issued by Ibragim Khultygov, director of security services, over Chechen television.[A] Khultygov did not reveal the location in which the container was being deactivated.[A] Reports from Agence France Press that cited ITAR-TASS news agency, indicated that specialists cordoned off the area and worked for several hours on dismantling the explosive device at the scene.[C,D,F] Specialists from the Ministry of Emergencies managed to deactivate the device and remove the container to an undisclosed location without incident. By 31 December 1998, a report from Radiostantsiya Ekho Moskvy suggested that we will probably be right to assume that this was not just an accident but a planned act of sabotage.[J]"
+			+ "In January 1998, containers of radioactive material were found near this location;[H,I] however, it is only in the same UPI article mentioned above that this container was described as de-activated.[H] Press reports issued at the time of the incident do not indicate the presence of any type of explosive device. (See Miscellaneous information for more about the January 1998 container found near Argun.)</bb:incidentDescription>"
 			+ "<bb:SUSPECTED>0</bb:SUSPECTED>"
 			+ "<bb:LAST_MODIFIED>2006-10-17 13:47:01</bb:LAST_MODIFIED>"
 			+ "<bb:STAT_TGT_GOVT>0</bb:STAT_TGT_GOVT>"
 			+ "<bb:STAT_TGT_AGRO>0</bb:STAT_TGT_AGRO>"
 			+ "<bb:STAT_DELIVERY>Explosive Device</bb:STAT_DELIVERY>"
-			+ "<bb:MISC_INFO>After a mined container of radioactive material was found in Argun, Chechnya, press reports referenced the discovery of another “radioactive container” one year earlier. The reference stated that the</bb:MISC_INFO>"
+			+ "<bb:MISC_INFO>After a mined container of radioactive material was found in Argun, Chechnya, press reports referenced the discovery of another radioactive container one year earlier. The reference stated that the</bb:MISC_INFO>"
 			+ "<bb:STAT_TGT_BUS>0</bb:STAT_TGT_BUS>"
 			+ "<bb:G_SUSPECTED>0</bb:G_SUSPECTED>"
 			+ "<bb:STAT_INCIDENT>Type 1: Politically / Ideologically Motivated</bb:STAT_INCIDENT>"
@@ -353,9 +356,9 @@ public class BlackbookWorkflowSimulator {
 			+ "<geo:long>35.922371</geo:long>"
 			+ "</geo:Point>"
 			+ "</vCard:ADR>"
-			+ "<dc:source>[A] “Quote-Unquote,” The Sleeping Giant (date not given); Internet, available from http://www.geocities.com/CapitolHill/Congress/7663/Quote.html, accessed on 6/28/99."
-			+ "[B] Nirenstein Fiamma, “E Arafat</dc:source>"
-			+ "<bb:incidentDescription>In April 1998, Palestinian Islamic Jihad leader Nassar Asad Al-Tamimi discussed the possibility of the acquisition of biological weapons by his organization.  He was speaking at a Hamas memorial service in Amman, Jordan.  According to a report by the Center for Israeli Civilian Empowerment, Al Tamimi stated, “Jihad has at last discovered how to win the holy war -- lethal germs.”[A,B,C,D]</bb:incidentDescription>"
+			+ "<dc:source>[A] Quote-Unquote, The Sleeping Giant (date not given); Internet, available from http://www.geocities.com/CapitolHill/Congress/7663/Quote.html, accessed on 6/28/99."
+			+ "[B] Nirenstein Fiamma, E Arafat</dc:source>"
+			+ "<bb:incidentDescription>In April 1998, Palestinian Islamic Jihad leader Nassar Asad Al-Tamimi discussed the possibility of the acquisition of biological weapons by his organization.  He was speaking at a Hamas memorial service in Amman, Jordan.  According to a report by the Center for Israeli Civilian Empowerment, Al Tamimi stated, Jihad has at last discovered how to win the holy war -- lethal germs.[A,B,C,D]</bb:incidentDescription>"
 			+ "<bb:SUSPECTED>0</bb:SUSPECTED>"
 			+ "<bb:STAT_MOTIVE>To Act Because of an Ideology/Belief System</bb:STAT_MOTIVE>"
 			+ "<bb:LAST_MODIFIED>2006-10-17 13:47:01</bb:LAST_MODIFIED>"
@@ -396,9 +399,9 @@ public class BlackbookWorkflowSimulator {
 			+ "<geo:long>35.922371</geo:long>"
 			+ "</geo:Point>"
 			+ "</vCard:ADR>"
-			+ "<dc:source>[A] “Quote-Unquote,” The Sleeping Giant (date not given); Internet, available from http://www.geocities.com/CapitolHill/Congress/7663/Quote.html, accessed on 6/28/99."
-			+ "[B] Nirenstein Fiamma, “E Arafat</dc:source>"
-			+ "<bb:incidentDescription>In April 1998, Palestinian Islamic Jihad leader Nassar Asad Al-Tamimi discussed the possibility of the acquisition of biological weapons by his organization.  He was speaking at a Hamas memorial service in Amman, Jordan.  According to a report by the Center for Israeli Civilian Empowerment, Al Tamimi stated, “Jihad has at last discovered how to win the holy war -- lethal germs.”[A,B,C,D]</bb:incidentDescription>"
+			+ "<dc:source>[A] Quote-Unquote, The Sleeping Giant (date not given); Internet, available from http://www.geocities.com/CapitolHill/Congress/7663/Quote.html, accessed on 6/28/99."
+			+ "[B] Nirenstein Fiamma, E Arafat</dc:source>"
+			+ "<bb:incidentDescription>In April 1998, Palestinian Islamic Jihad leader Nassar Asad Al-Tamimi discussed the possibility of the acquisition of biological weapons by his organization.  He was speaking at a Hamas memorial service in Amman, Jordan.  According to a report by the Center for Israeli Civilian Empowerment, Al Tamimi stated, Jihad has at last discovered how to win the holy war -- lethal germs.[A,B,C,D]</bb:incidentDescription>"
 			+ "<bb:SUSPECTED>0</bb:SUSPECTED>"
 			+ "<bb:STAT_MOTIVE>To Act Because of an Ideology/Belief System</bb:STAT_MOTIVE>"
 			+ "<bb:LAST_MODIFIED>2006-10-17 13:47:01</bb:LAST_MODIFIED>"
@@ -437,7 +440,11 @@ public class BlackbookWorkflowSimulator {
 
 	private static final Resource PLOT_RESOURCE = ModelFactory
 			.createDefaultModel().createResource("urn:monterey:incident147");
-
+	private static final Property BEST_LABEL =ModelFactory
+	.createDefaultModel().createProperty("http://marathonminds.com//MalletClassification//#hasBestLabel");
+		
+	private static final Property HAS_VALUE =ModelFactory
+	.createDefaultModel().createProperty("http://marathonminds.com//MalletClassification//#hasValue");
 	// a list of keywords that should be classified a hoax
 	private static final String HOAX_KEYWORDS = "";
 
@@ -458,9 +465,9 @@ public class BlackbookWorkflowSimulator {
 
 	private static final String THREAT_LABEL = "Threat Only";
 
-	private static final String PLOT_LABEL = "Plont Only";
+	private static final String PLOT_LABEL = "Plot Only";
 
-	private static final String USE_LABEL = "Use Of Agent";
+	private static final String USE_LABEL = "Use of Agent";
 
 	/**
 	 * @param args
@@ -505,6 +512,7 @@ public class BlackbookWorkflowSimulator {
 
 		//TODO read original test model that now has label answers
 		// get data from file
+		//testModel.write(System.out,"N-TRIPLE");
 		Model answerModel = JenaModelFactory.rdf2Model(args[1]);
 		
 		// TODO report should use the built in mechanisms of Mallet for
@@ -530,10 +538,10 @@ public class BlackbookWorkflowSimulator {
 	private static InstanceList convertRDFToInstanceList(String rdf)
 			throws Exception {
 		// get converter
-		RDF2MalletInstances conv = new RDF2MalletInstances();
+		//RDF2MalletInstances conv = new RDF2MalletInstances();
 
 		// get converted data
-		ByteArrayOutputStream bos = conv.executeAlgorithmSerializable(rdf,
+		ByteArrayOutputStream bos = RDF2MalletInstances.convertRDFWithLabels(rdf,
 				CLASSIFICATION_PROPERTY.getURI());
 		ByteArrayInputStream bis = new ByteArrayInputStream(bos.toByteArray());
 		ObjectInputStream ois = new ObjectInputStream(bis);
@@ -622,14 +630,20 @@ public class BlackbookWorkflowSimulator {
 	private static Model bbClassify(String rdf, Classifier classifier)
 			throws Exception {
 		
-		InstanceList iList = RDF2MalletInstances.convertRDFWithoutLabels(rdf,classifier);
-		MalletTextClassify malletClassifier = new MalletTextClassify();
-		//FIXME needs confidence values as well
-		ArrayList<Classification> classifications = malletClassifier.classify(
-				classifier, iList);
-		
-		Model model = RDFUtils.createModelWithClassifications(classifications);
+		   ByteArrayOutputStream bos = RDF2MalletInstances
+           .convertRDFWithoutLabels(rdf, classifier);
+   ByteArrayInputStream bis = new ByteArrayInputStream(bos.toByteArray());
+   ObjectInputStream ois = new ObjectInputStream(bis);
 
+   InstanceList iList = (InstanceList) ois.readObject();
+   MalletTextClassify malletClassifier = new MalletTextClassify();
+           
+	ArrayList<Classification> classifications = malletClassifier.classify(classifier, iList);
+   ArrayList<MalletAccuracyVector> mAccVectorList = malletClassifier.getAccuracyVectors();
+   
+   // FIXME needs confidence values as well - Created an empty static method in RDFUtils(in pallet-data)
+   // 										   project. - sj
+   Model model = RDFUtils.createModelWithClassifications(mAccVectorList, classifications);
 		
 //		int curIndex = 0;
 //		for (Classification c : classifications) {
@@ -654,7 +668,7 @@ public class BlackbookWorkflowSimulator {
 		log.error("model of classifications is: "
 				+ JenaModelFactory.serializeModel(testModel,
 						FileUtils.langNTriple));
-		log.error("Hoax entity is marked correctly? "
+		/*log.error("Hoax entity is marked correctly? "
 				+ testModel.contains(HOAX_RESOURCE, CLASSIFICATION_PROPERTY,
 						HOAX_LABEL));
 		log.error("Threat entity is marked correctly? "
@@ -665,6 +679,30 @@ public class BlackbookWorkflowSimulator {
 						PLOT_LABEL));
 		log.error("Use entity is marked correctly? "
 				+ testModel.contains(USE_RESOURCE, CLASSIFICATION_PROPERTY,
+						USE_LABEL));*/
+	NodeIterator stmt=testModel.listObjectsOfProperty(HOAX_RESOURCE, BEST_LABEL);
+	RDFNode bestLabel =stmt.next();
+	Resource resourceBestLabel=ModelFactory.createDefaultModel().createResource(bestLabel.toString());
+		log.error("Hoax entity is marked correctly? "
+				+ testModel.contains(resourceBestLabel, HAS_VALUE,
+						HOAX_LABEL));
+		stmt=testModel.listObjectsOfProperty(THREAT_RESOURCE, BEST_LABEL);
+		bestLabel =stmt.next();
+		resourceBestLabel=ModelFactory.createDefaultModel().createResource(bestLabel.toString());
+		log.error("Threat entity is marked correctly? "
+				+ testModel.contains(resourceBestLabel, HAS_VALUE,
+						THREAT_LABEL));
+		stmt=testModel.listObjectsOfProperty(PLOT_RESOURCE, BEST_LABEL);
+		bestLabel =stmt.next();
+		resourceBestLabel=ModelFactory.createDefaultModel().createResource(bestLabel.toString());
+		log.error("Plot entity is marked correctly? "
+				+ testModel.contains(resourceBestLabel, HAS_VALUE,
+						PLOT_LABEL));
+		stmt=testModel.listObjectsOfProperty(USE_RESOURCE, BEST_LABEL);
+		bestLabel =stmt.next();
+		resourceBestLabel=ModelFactory.createDefaultModel().createResource(bestLabel.toString());
+		log.error("Use entity is marked correctly? "
+				+ testModel.contains(resourceBestLabel, HAS_VALUE,
 						USE_LABEL));
 	}
 }
