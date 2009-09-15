@@ -117,10 +117,6 @@ Any task listed here should take 1 hour to no more than 2 weeks work.  If a task
   * C4.5 Decision Tree
     * Code Review.
     * Documentation and Tutorials.
-  * Convert the classification data(data without labels) into Mallet Instances - Pralabh
-    * Use the trained pipe
-    * Create the Instance List having Target value provided by the trained Pipe.
-  * Convert the final output of the classification into Reified RDF showing the confidence value for each label.-Pralabh
   * Creation of Confidence Vector - Sharath.
   * Completion of Jena Simulator - Sharath.
 
@@ -222,3 +218,8 @@ Any task listed here should take 1 hour to no more than 2 weeks work.  If a task
     * list all statements for that resource where the object is literal
     * check if label is already exist using supplied predicate argument.
     * Output in Mallet Format 
+   * Convert the classification data(data without labels) into Mallet Instances - Pralabh
+    * Use the trained pipe
+    * Create the Instance List having Target value provided by the trained Pipe.
+   * Convert the final output of the classification into Reified RDF showing the confidence value for each label.-Pralabh
+
