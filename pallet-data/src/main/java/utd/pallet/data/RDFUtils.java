@@ -37,7 +37,7 @@ public class RDFUtils {
     /**
      * It is default uriAddress attach to each resource and Property.
      */
-    private final static String uriAddress = "http://marathonminds.com//MalletClassification//";
+    private final static String URI_ADDRESS = "http://marathonminds.com//MalletClassification//";
 
     /**
      * @param accVector
@@ -69,10 +69,10 @@ public class RDFUtils {
                 }
 
                 Resource originalResource = rdfModel.createResource(name);
-                Resource bestLabelResource = rdfModel.createResource(uriAddress
-                        + bestLabelRemoveSpaces + i);
-                Property bestLabelProperty = rdfModel.createProperty(uriAddress
-                        + HAS_BEST_LABEL);
+                Resource bestLabelResource = rdfModel
+                        .createResource(URI_ADDRESS + bestLabelRemoveSpaces + i);
+                Property bestLabelProperty = rdfModel
+                        .createProperty(URI_ADDRESS + HAS_BEST_LABEL);
                 originalResource.addProperty(bestLabelProperty,
                         bestLabelResource);
                 while (iterator.hasNext()) {
@@ -87,13 +87,14 @@ public class RDFUtils {
 
                     Double confidencValue = labelVector.get(Label);
                     Property malletConfidenceValue = rdfModel
-                            .createProperty(uriAddress
+                            .createProperty(URI_ADDRESS
                                     + MALLET_CONFIDENCE_VALUE);
-                    Resource labelResource = rdfModel.createResource(uriAddress
-                            + uriLabelRemoveSpaces + i);
+                    Resource labelResource = rdfModel
+                            .createResource(URI_ADDRESS + uriLabelRemoveSpaces
+                                    + i);
                     Property associatedWith = rdfModel
-                            .createProperty(uriAddress + ASSOCIATED_WITH);
-                    Property hasValue = rdfModel.createProperty(uriAddress
+                            .createProperty(URI_ADDRESS + ASSOCIATED_WITH);
+                    Property hasValue = rdfModel.createProperty(URI_ADDRESS
                             + HAS_VALUE);
                     labelResource.addProperty(malletConfidenceValue,
                             confidencValue.toString());
