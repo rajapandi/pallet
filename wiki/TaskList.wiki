@@ -119,6 +119,70 @@ Any task listed here should take 1 hour to no more than 2 weeks work.  If a task
     * Documentation and Tutorials.
   * Creation of Confidence Vector - Sharath.
   * Completion of Jena Simulator - Sharath.
+  * Pallet Functionality Test:
+    *Functionalities to be tested:*
+    * Training of data set.
+    * Incremental Training.
+    * Classification.
+    * Validation (Answer Model).
+    *Application that tests these functionalities should have following modules:*
+    * Parser(Data Import): Fetches the training/testing data.
+{{{
+if (data in rdf format)  {
+converts to Instance List;
+} else {
+    1. converts the text data to rdf format.// we have huge data set of 20-news-channel which are not in rdf format.
+    2. converts the intermediate data to instance list.
+}}}
+    * Trainer: 
+{{{
+    <Get training data> --> <Convert to Mallet Instance List> --> <Choose Algorithm and train the data> --> <Persist Classifier>
+}}}
+    * Incremental Trainer:
+{{{
+    <Get Training data> --> <Convert to Mallet Instance List> --> <Get the persisted Classifier that needs to be incrementally trained> --> <Persist the new classifier(use the same filename as before)>
+}}}
+    * Classification:
+{{{
+    <Get Specified classifier(persisted)> --> <Get data set to be classified(as instance list)> --> <Classify the data> --> <if validation enabled, then validate data> --> <Persist o/p>
+}}}
+    * Validation:
+      Works in two modes:
+      * In conjunction with Classification:
+{{{
+    <Data is classified in the classification step, Get the validation data set> -> <Valiadate the classified data set against validation data set> --> <Print/Persist O/p>
+}}}
+      * Independent Existence:
+{{{
+    <Get the test data to be validated> --> <Get the validation data> --> <Validate the test data against validation data set> --> <Persist/Print o/p>
+}}}
+   * Command Line Option parser:
+   Options to be supported:
+     * Trainer options;
+       * --Train-dir <Set of directories from where the data is to be fetched> <Training Algo to be used>
+{{{
+         There can be sequence of such commands:
+         eg: --Train-dir <directory1 ... directoryn> <algo1 to be used> --Train-dir <Dir1...DirM> <Algo2 to be used> .......
+        Useful in testing same algo on different data sets and same data set on different algos.
+}}}
+       * --Train-files <File1.... fileN> <Algo1> --Train-files <File1...FileM> <Algo2> 
+     * Test Options:
+       * --test-dir <dir1....dirN> <classifier1 to be used for testing>.
+       * --test-file <file1....fileN> <Classifier1 to be used>
+       similar to trainer options multiple commands can be concatenated.
+     * Validation Options:
+       * --Validate-data <Validattion data dir/file list> - to be used in conjunction with the classification.
+       * --Validate-data <Test data o/p that needs to be validated> <Validation data set> -- Independent existence.
+     * Incremental Train:
+       *--IncTrain-dir <dir list> <Classifier to be used(will be persisted during training)>
+       *--IncTrain-file <file list> <Classifier to be used>
+{{{
+All commands can be concatenated as described above
+}}}
+
+         
+
+
 
 == Currently being worked on ==
      
