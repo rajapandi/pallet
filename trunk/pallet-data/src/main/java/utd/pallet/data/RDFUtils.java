@@ -13,7 +13,7 @@ import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.Resource;
 
 /**
- * @author RDFUtils class is used to generate the final classified model.
+ * RDFUtils class is used to generate the final classified model.
  * 
  */
 public class RDFUtils {
