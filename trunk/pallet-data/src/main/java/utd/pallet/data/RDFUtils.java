@@ -34,6 +34,10 @@ public class RDFUtils {
      * It shows the real value of the Label.
      */
     private final static String HAS_VALUE = "#hasValue";
+    /**
+     * It is default uriAddress attach to each resource and Property.
+     */
+    private final static String uriAddress = "http://marathonminds.com//MalletClassification//";
 
     /**
      * @param accVector
@@ -50,8 +54,6 @@ public class RDFUtils {
         Model rdfModel = ModelFactory.createDefaultModel();
 
         try {
-
-            String uriAddress = "http://marathonminds.com//MalletClassification//";
 
             int i = 0;
             for (MalletAccuracyVector av : accVector) {
