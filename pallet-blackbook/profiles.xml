@@ -1,0 +1,18 @@
+<profilesXml>
+	<profiles>
+		<profile>
+			<id>blackbook-devel-configuration</id>
+			<activation>
+				<property>
+					<name>target</name>
+					<value>devel</value>
+				</property>
+			</activation>
+			<properties>
+				<blackbook.home>${user.home}</blackbook.home>
+				<workspace.blackbook>${blackbook.home}/workspace-blackbook</workspace.blackbook>
+				<jboss.home>${blackbook.home}/pkg/jboss-5.1.0.GA</jboss.home>
+			</properties>
+		</profile>
+	</profiles>
+</profilesXml>

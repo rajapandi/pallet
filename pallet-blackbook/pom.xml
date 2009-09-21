@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<parent>
+		<artifactId>pallet-parent</artifactId>
+		<groupId>pallet</groupId>
+		<version>0.1</version>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>pallet-blackbook</artifactId>
+	<name>Pallet algorithms in blackbook</name>
+	<packaging>jar</packaging>
+	<dependencies>
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.1.0.jboss</version>
+		</dependency>
+		<dependency>
+			<groupId>blackbook</groupId>
+			<artifactId>blackbook-common</artifactId>
+			<version>3.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>blackbook</groupId>
+			<artifactId>blackbook-jena</artifactId>
+			<version>3.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.hp.hpl.jena</groupId>
+			<artifactId>jena</artifactId>
+			<version>2.6.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.hp.hpl.jena</groupId>
+			<artifactId>iri</artifactId>
+			<version>0.7</version>
+		</dependency>
+		<dependency>
+			<groupId>blackbook-security</groupId>
+			<artifactId>usermgmt-ejb</artifactId>
+			<version>3.0.0</version>
+			<type>ejb</type>
+		</dependency>
+		<dependency>
+			<groupId>blackbook-workflow</groupId>
+			<artifactId>workflow-ejb</artifactId>
+			<version>3.0.0</version>
+			<type>ejb</type>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.5</version>
+		</dependency>
+		<dependency>
+			<groupId>blackbook-security</groupId>
+			<artifactId>authorization-plugins</artifactId>
+			<version>3.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.5.6</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.5.6</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>process-data-sources</id>
+						<phase>process-sources</phase>
+						<configuration>
+							<tasks>
+								<!-- Copy test file -->
+								<copy toDir="target/test-classes" overwrite="true">
+									<fileset dir="src/test/etc">
+										<include name="**/*.n3" />
+									</fileset>
+									<filterset>
+										<filter token="METADATA_DIR"
+											value="${workspace.blackbook}/config/target/classes" />
+										<filter token="LUCENE_DIR" value="${lucene.dir}" />
+									</filterset>
+								</copy>
+							</tasks>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
+
