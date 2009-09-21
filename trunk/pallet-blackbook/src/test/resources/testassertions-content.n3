@@ -1,0 +1,27 @@
+@prefix test2: <urn:test2:> .
+@prefix test1: <urn:test1:> .
+@prefix a: <urn:assertions:> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ont: <urn:ont:> .
+
+test1:resource1
+    a ont:class3;
+    owl:sameAs test2:resource1;
+    .
+
+ont:class1
+    a rdfs:Class
+    .
+
+ont:class2
+    a rdfs:Class;
+    rdfs:subClassOf ont:class1
+    .
+    
+ont:class3
+    a rdfs:Class;
+    rdfs:subClassOf ont:class2
+    .

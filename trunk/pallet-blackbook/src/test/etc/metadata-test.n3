@@ -1,0 +1,784 @@
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix bb:      <urn:blackbook:> .
+@prefix ja:      <http://jena.hpl.hp.com/2005/11/Assembler#> .
+
+bb:imports
+         ja:imports <file:///@METADATA_DIR@/core-ontology.n3> ;
+         ja:imports <file:///@METADATA_DIR@/core.n3> .
+         
+#
+# ALGORITHM
+#
+bb:algorithmTestAlgorithm
+      a       bb:AlgorithmMetadata ;      
+      bb:className "blackbook.algorithm.api.AlgorithmTesting"^^xsd:string ;
+      bb:name "Test Algorithm"^^xsd:string ;
+      bb:template "false"^^xsd:boolean .
+      
+#
+# RDF TYPES
+#
+bb:personRdfType
+      a       bb:RDFTypeMetadata ;      
+      bb:datePropertyUris
+              [ a       rdf:Seq ;
+                rdf:_1  "http://purl.org/dc/elements/1.1/date"^^xsd:string
+              ] ;
+      bb:descriptionPropertyUris
+              [ a       rdf:Seq ;
+                rdf:_1  "http://purl.org/dc/elements/1.1/description"^^xsd:string
+              ] ;
+      bb:icon "images/nodeicons/organization32.gif"^^xsd:string ;
+      bb:labelPropertyUris
+              [ a       rdf:Seq ;
+                rdf:_1  "http://purl.org/dc/elements/1.1/description"^^xsd:string
+              ] ;
+      bb:name "Person"^^xsd:string ;
+      bb:template "false"^^xsd:boolean ;
+      bb:typeUri "urn:test:person"^^xsd:string .
+
+bb:eventRdfType
+      a       bb:RDFTypeMetadata ;      
+      bb:datePropertyUris
+              [ a       rdf:Seq ;
+                rdf:_1  "http://purl.org/dc/elements/1.1/date"^^xsd:string
+              ] ;
+      bb:descriptionPropertyUris
+              [ a       rdf:Seq ;
+                rdf:_1  "http://purl.org/dc/elements/1.1/description"^^xsd:string
+              ] ;
+      bb:icon "images/nodeicons/organization32.gif"^^xsd:string ;
+      bb:labelPropertyUris
+              [ a       rdf:Seq ;
+                rdf:_1  "http://purl.org/dc/elements/1.1/description"^^xsd:string
+              ] ;
+      bb:name "Event"^^xsd:string ;
+      bb:template "false"^^xsd:boolean ;
+      bb:typeUri "urn:test:event"^^xsd:string .
+
+bb:organizationRdfType
+      a       bb:RDFTypeMetadata ;      
+      bb:datePropertyUris
+              [ a       rdf:Seq ;
+                rdf:_1  "http://purl.org/dc/elements/1.1/date"^^xsd:string
+              ] ;
+      bb:descriptionPropertyUris
+              [ a       rdf:Seq ;
+                rdf:_1  "http://purl.org/dc/elements/1.1/description"^^xsd:string
+              ] ;
+      bb:icon "images/nodeicons/organization32.gif"^^xsd:string ;
+      bb:labelPropertyUris
+              [ a       rdf:Seq ;
+                rdf:_1  "http://purl.org/dc/elements/1.1/description"^^xsd:string
+              ] ;
+      bb:name "Organization"^^xsd:string ;
+      bb:template "false"^^xsd:boolean ;
+      bb:typeUri "urn:test:organization"^^xsd:string .
+
+#
+# DATA SOURCES AND ASSEMBLERS
+#
+
+#
+# TEST
+#
+bb:testModel
+     a bb:ClassloaderConnectionMetadata;
+     bb:name "Test Assembler";
+     bb:readOnlyStatus "false"^^xsd:boolean ;  
+     bb:modelName "test";
+     bb:contentResourceName "test-content.n3";
+     bb:rdfFormat "N3"
+     .
+
+bb:testDataSource
+      a       bb:DataSourceMetadata ;     
+      bb:connectionMetadata bb:testModel ;     
+      bb:color "0033FF"^^xsd:string ;
+      bb:dataSourceType "INTERACTIVE"^^xsd:string ;
+      bb:defaultRDFTypeURI
+              "urn:test:entity"^^xsd:string ;
+      bb:defaultRoles
+              [ a       rdf:Bag ;
+                rdf:_1  "UNCLASSIFIED"^^xsd:string
+              ] ;
+      bb:dipAlgorithm bb:jenaDipAlgorithm ;
+      bb:dipAttributes "http://www.w3.org/2001/vcard-rdf/3.0#Orgname || http://blackbook.com/terms#Orgname_soundsLike || http://www.w3.org/2001/vcard-rdf/3.0#Family || http://blackbook.com/terms#Family_soundsLike || http://www.w3.org/2001/vcard-rdf/3.0#FN || http://blackbook.com/terms#FN_soundsLike"^^xsd:string ;
+      bb:expandAlgorithm bb:jenaExpandAlgorithm ;
+      bb:keywordAlgorithm bb:luceneKeywordAlgorithm ;
+      bb:keywordAttributes
+              [ a       rdf:Seq ;
+                rdf:_1  "http://www.w3.org/2001/vcard-rdf/3.0#Family"^^xsd:string ;
+                rdf:_2  "http://www.w3.org/2001/vcard-rdf/3.0#Given"^^xsd:string
+              ] ;
+      bb:listFieldsAlgorithm
+              bb:luceneListFieldsAlgorithm ;
+      bb:luceneKeywordIndex
+              "@LUCENE_DIR@/UnitTest/lucene/index"^^xsd:string ;
+      bb:materializeAlgorithm
+              bb:jenaMaterializeAlgorithm ;
+      bb:decorateAlgorithm
+              bb:jenaDecorateAlgorithm ;
+      bb:maxStatements "1000"^^xsd:int ;
+      bb:maxUris "100"^^xsd:int ;
+      bb:maxMergeDocs "1000"^^xsd:int ;
+      bb:maxRoles
+              [ a       rdf:Bag ;
+                rdf:_1  "UNCLASSIFIED"^^xsd:string ;
+                rdf:_2  "AAA"^^xsd:string ;
+                rdf:_3  "ZZZ"^^xsd:string ;
+                rdf:_4  "ROLE1"^^xsd:string ;
+                rdf:_5  "ROLE2"^^xsd:string ;
+                rdf:_6  "ROLE3"^^xsd:string ;
+                rdf:_7  "ROLE_68424018"^^xsd:string
+              ] ;
+      bb:mergeFactor "100"^^xsd:int ;
+      bb:name "test"^^xsd:string ;
+      bb:namespace
+              [ a       rdf:Bag ;
+                rdf:_1  "urn:test:"^^xsd:string
+              ] ;
+      bb:nonStdIndexThreshold
+              "2"^^xsd:string ;
+      bb:persistAlgorithm bb:jenaAndLucenePersistAlgorithm ;
+      bb:rdfTypeMetadata
+              [ a       rdf:Seq ;
+                rdf:_1  bb:personRdfType ;
+                rdf:_2  bb:eventRdfType ;
+                rdf:_3  bb:organizationRdfType
+              ] ;      
+      bb:template "false"^^xsd:boolean  .
+
+#
+# TEST1
+#
+bb:test1Model
+     a bb:ClassloaderConnectionMetadata;
+     bb:name "Test1 Assembler";
+    bb:modelName "test1";
+    bb:readOnlyStatus "false"^^xsd:boolean ;  
+    bb:contentResourceName "test1-content.n3";
+    bb:rdfFormat "N3"
+    .
+
+bb:test1DataSource
+      a       bb:DataSourceMetadata ;     
+      bb:connectionMetadata bb:test1Model ;     
+      bb:color "0033FF"^^xsd:string ;
+      bb:dataSourceType "INTERACTIVE"^^xsd:string ;
+      bb:defaultRDFTypeURI
+              "urn:test1:entity"^^xsd:string ;
+      bb:defaultRoles
+              [ a       rdf:Bag ;
+                rdf:_1  "UNCLASSIFIED"^^xsd:string
+              ] ;
+      bb:dipAlgorithm bb:jenaDipAlgorithm ;
+      bb:dipAttributes "http://www.w3.org/2001/vcard-rdf/3.0#Orgname || http://blackbook.com/terms#Orgname_soundsLike || http://www.w3.org/2001/vcard-rdf/3.0#Family || http://blackbook.com/terms#Family_soundsLike || http://www.w3.org/2001/vcard-rdf/3.0#FN || http://blackbook.com/terms#FN_soundsLike"^^xsd:string ;
+      bb:expandAlgorithm bb:jenaExpandAlgorithm ;
+      bb:keywordAlgorithm bb:luceneKeywordAlgorithm ;
+      bb:keywordAttributes
+              [ a       rdf:Seq ;
+                rdf:_1  "http://www.w3.org/2001/vcard-rdf/3.0#Family"^^xsd:string ;
+                rdf:_2  "http://www.w3.org/2001/vcard-rdf/3.0#Given"^^xsd:string
+              ] ;
+      bb:listFieldsAlgorithm
+              bb:luceneListFieldsAlgorithm ;
+      bb:luceneKeywordIndex
+              "@LUCENE_DIR@/UnitTest/lucene/index"^^xsd:string ;
+      bb:materializeAlgorithm
+              bb:jenaMaterializeAlgorithm ;
+      bb:decorateAlgorithm
+              bb:jenaDecorateAlgorithm ;
+      bb:maxStatements "1000"^^xsd:int ;
+      bb:maxUris "100"^^xsd:int ;
+      bb:maxMergeDocs "1000"^^xsd:int ;
+      bb:maxRoles
+              [ a       rdf:Bag ;
+                rdf:_1  "UNCLASSIFIED"^^xsd:string ;
+                rdf:_2  "AAA"^^xsd:string ;
+                rdf:_3  "ZZZ"^^xsd:string ;
+                rdf:_4  "ROLE1"^^xsd:string ;
+                rdf:_5  "ROLE2"^^xsd:string ;
+                rdf:_6  "ROLE3"^^xsd:string ;
+                rdf:_7  "ROLE_68424018"^^xsd:string
+              ] ;
+      bb:mergeFactor "100"^^xsd:int ;
+      bb:name "test1"^^xsd:string ;
+      bb:namespace
+              [ a       rdf:Bag ;
+                rdf:_1  "urn:test1:"^^xsd:string
+              ] ;
+      bb:nonStdIndexThreshold
+              "2"^^xsd:string ;
+      bb:persistAlgorithm bb:jenaAndLucenePersistAlgorithm ;
+      bb:rdfTypeMetadata
+              [ a       rdf:Seq ;
+                rdf:_1  bb:personRdfType ;
+                rdf:_2  bb:eventRdfType ;
+                rdf:_3  bb:organizationRdfType
+              ] ;      
+      bb:template "false"^^xsd:boolean  .
+      
+#
+# TEST2
+#
+bb:test2Model
+     a bb:ClassloaderConnectionMetadata;
+     bb:name "Test2 Assembler";
+     bb:modelName "test2";
+     bb:readOnlyStatus "false"^^xsd:boolean ;  
+    bb:contentResourceName "test2-content.n3";
+    bb:rdfFormat "N3"
+    .
+
+bb:test2DataSource
+      a       bb:DataSourceMetadata ;     
+      bb:connectionMetadata bb:test2Model ;     
+      bb:color "0033FF"^^xsd:string ;
+      bb:dataSourceType "INTERACTIVE"^^xsd:string ;
+      bb:defaultRDFTypeURI
+              "urn:test2:entity"^^xsd:string ;
+      bb:defaultRoles
+              [ a       rdf:Bag ;
+                rdf:_1  "UNCLASSIFIED"^^xsd:string
+              ] ;
+      bb:dipAlgorithm bb:jenaDipAlgorithm ;
+      bb:dipAttributes "http://www.w3.org/2001/vcard-rdf/3.0#Orgname || http://blackbook.com/terms#Orgname_soundsLike || http://www.w3.org/2001/vcard-rdf/3.0#Family || http://blackbook.com/terms#Family_soundsLike || http://www.w3.org/2001/vcard-rdf/3.0#FN || http://blackbook.com/terms#FN_soundsLike"^^xsd:string ;
+      bb:expandAlgorithm bb:jenaExpandAlgorithm ;
+      bb:keywordAlgorithm bb:luceneKeywordAlgorithm ;
+      bb:keywordAttributes
+              [ a       rdf:Seq ;
+                rdf:_1  "http://www.w3.org/2001/vcard-rdf/3.0#Family"^^xsd:string ;
+                rdf:_2  "http://www.w3.org/2001/vcard-rdf/3.0#Given"^^xsd:string
+              ] ;
+      bb:listFieldsAlgorithm
+              bb:luceneListFieldsAlgorithm ;
+      bb:luceneKeywordIndex
+              "@LUCENE_DIR@/UnitTest/lucene/index"^^xsd:string ;
+      bb:materializeAlgorithm
+              bb:jenaMaterializeAlgorithm ;
+      bb:decorateAlgorithm
+              bb:jenaDecorateAlgorithm ;
+      bb:maxStatements "1000"^^xsd:int ;
+      bb:maxUris "100"^^xsd:int ;
+      bb:maxMergeDocs "1000"^^xsd:int ;
+      bb:maxRoles
+              [ a       rdf:Bag ;
+                rdf:_1  "UNCLASSIFIED"^^xsd:string ;
+                rdf:_2  "AAA"^^xsd:string ;
+                rdf:_3  "ZZZ"^^xsd:string ;
+                rdf:_4  "ROLE1"^^xsd:string ;
+                rdf:_5  "ROLE2"^^xsd:string ;
+                rdf:_6  "ROLE3"^^xsd:string ;
+                rdf:_7  "ROLE_68424018"^^xsd:string
+              ] ;
+      bb:mergeFactor "100"^^xsd:int ;
+      bb:name "test2"^^xsd:string ;
+      bb:namespace
+              [ a       rdf:Bag ;
+                rdf:_1  "urn:test2:"^^xsd:string
+              ] ;
+      bb:nonStdIndexThreshold
+              "2"^^xsd:string ;
+      bb:persistAlgorithm bb:jenaAndLucenePersistAlgorithm ;
+      bb:rdfTypeMetadata
+              [ a       rdf:Seq ;
+                rdf:_1  bb:personRdfType ;
+                rdf:_2  bb:eventRdfType ;
+                rdf:_3  bb:organizationRdfType
+              ] ;      
+      bb:template "false"^^xsd:boolean  .
+      
+#
+# TEST3
+#
+bb:test3Model
+     a bb:ClassloaderConnectionMetadata;
+     bb:name "Test3 Assembler";
+    bb:modelName "test3";
+    bb:readOnlyStatus "false"^^xsd:boolean ;  
+    bb:contentResourceName "test3-content.n3";
+    bb:rdfFormat "N3"
+    .
+
+bb:test3DataSource
+      a       bb:DataSourceMetadata ;     
+      bb:connectionMetadata bb:test3Model ;     
+      bb:color "0033FF"^^xsd:string ;
+      bb:dataSourceType "INTERACTIVE"^^xsd:string ;
+      bb:defaultRDFTypeURI
+              "urn:test3:entity"^^xsd:string ;
+      bb:defaultRoles
+              [ a       rdf:Bag ;
+                rdf:_1  "UNCLASSIFIED"^^xsd:string
+              ] ;
+      bb:dipAlgorithm bb:jenaDipAlgorithm ;
+      bb:dipAttributes "http://www.w3.org/2001/vcard-rdf/3.0#Orgname || http://blackbook.com/terms#Orgname_soundsLike || http://www.w3.org/2001/vcard-rdf/3.0#Family || http://blackbook.com/terms#Family_soundsLike || http://www.w3.org/2001/vcard-rdf/3.0#FN || http://blackbook.com/terms#FN_soundsLike"^^xsd:string ;
+      bb:expandAlgorithm bb:jenaExpandAlgorithm ;
+      bb:keywordAlgorithm bb:luceneKeywordAlgorithm ;
+      bb:keywordAttributes
+              [ a       rdf:Seq ;
+                rdf:_1  "http://www.w3.org/2001/vcard-rdf/3.0#Family"^^xsd:string ;
+                rdf:_2  "http://www.w3.org/2001/vcard-rdf/3.0#Given"^^xsd:string
+              ] ;
+      bb:listFieldsAlgorithm
+              bb:luceneListFieldsAlgorithm ;
+      bb:luceneKeywordIndex
+              "@LUCENE_DIR@/UnitTest/lucene/index"^^xsd:string ;
+      bb:materializeAlgorithm
+              bb:jenaMaterializeAlgorithm ;
+      bb:decorateAlgorithm
+              bb:jenaDecorateAlgorithm ;
+      bb:maxStatements "1000"^^xsd:int ;
+      bb:maxUris "100"^^xsd:int ;
+      bb:maxMergeDocs "1000"^^xsd:int ;
+      bb:maxRoles
+              [ a       rdf:Bag ;
+                rdf:_1  "UNCLASSIFIED"^^xsd:string ;
+                rdf:_2  "AAA"^^xsd:string ;
+                rdf:_3  "ZZZ"^^xsd:string ;
+                rdf:_4  "ROLE1"^^xsd:string ;
+                rdf:_5  "ROLE2"^^xsd:string ;
+                rdf:_6  "ROLE3"^^xsd:string ;
+                rdf:_7  "ROLE_68424018"^^xsd:string
+              ] ;
+      bb:mergeFactor "100"^^xsd:int ;
+      bb:name "test3"^^xsd:string ;
+      bb:namespace
+              [ a       rdf:Bag ;
+                rdf:_1  "urn:test3:"^^xsd:string
+              ] ;
+      bb:nonStdIndexThreshold
+              "2"^^xsd:string ;
+      bb:persistAlgorithm bb:jenaAndLucenePersistAlgorithm ;
+      bb:rdfTypeMetadata
+              [ a       rdf:Seq ;
+                rdf:_1  bb:personRdfType ;
+                rdf:_2  bb:eventRdfType ;
+                rdf:_3  bb:organizationRdfType
+              ] ;      
+      bb:template "false"^^xsd:boolean  .
+      
+#
+# TEST4
+#
+bb:test4Model
+     a bb:ClassloaderConnectionMetadata;
+     bb:name "Test4 Assembler";
+    bb:modelName "test4";
+    bb:readOnlyStatus "false"^^xsd:boolean ;  
+    bb:contentResourceName "test4-content.n3";
+    bb:rdfFormat "N3"
+    .
+
+bb:test4DataSource
+      a       bb:DataSourceMetadata ;     
+      bb:connectionMetadata bb:test4Model ;     
+      bb:color "0033FF"^^xsd:string ;
+      bb:dataSourceType "BATCH"^^xsd:string ;
+      bb:defaultRDFTypeURI
+              "urn:test4:entity"^^xsd:string ;
+      bb:defaultRoles
+              [ a       rdf:Bag ;
+                rdf:_1  "UNCLASSIFIED"^^xsd:string
+              ] ;
+      bb:dipAlgorithm bb:jenaDipAlgorithm ;
+      bb:dipAttributes "http://www.w3.org/2001/vcard-rdf/3.0#Orgname || http://blackbook.com/terms#Orgname_soundsLike || http://www.w3.org/2001/vcard-rdf/3.0#Family || http://blackbook.com/terms#Family_soundsLike || http://www.w3.org/2001/vcard-rdf/3.0#FN || http://blackbook.com/terms#FN_soundsLike"^^xsd:string ;
+      bb:expandAlgorithm bb:jenaExpandAlgorithm ;
+      bb:keywordAlgorithm bb:luceneKeywordAlgorithm ;
+      bb:keywordAttributes
+              [ a       rdf:Seq ;
+                rdf:_1  "http://www.w3.org/2001/vcard-rdf/3.0#Family"^^xsd:string ;
+                rdf:_2  "http://www.w3.org/2001/vcard-rdf/3.0#Given"^^xsd:string
+              ] ;
+      bb:listFieldsAlgorithm
+              bb:luceneListFieldsAlgorithm ;
+      bb:luceneKeywordIndex
+              "@LUCENE_DIR@/UnitTest/lucene/index"^^xsd:string ;
+      bb:materializeAlgorithm
+              bb:jenaMaterializeAlgorithm ;
+      bb:decorateAlgorithm
+              bb:jenaDecorateAlgorithm ;
+      bb:maxStatements "1000"^^xsd:int ;
+      bb:maxUris "100"^^xsd:int ;
+      bb:maxMergeDocs "1000"^^xsd:int ;
+      bb:maxRoles
+              [ a       rdf:Bag ;
+                rdf:_1  "UNCLASSIFIED"^^xsd:string ;
+                rdf:_2  "AAA"^^xsd:string ;
+                rdf:_3  "ZZZ"^^xsd:string ;
+                rdf:_4  "ROLE1"^^xsd:string ;
+                rdf:_5  "ROLE2"^^xsd:string ;
+                rdf:_6  "ROLE3"^^xsd:string ;
+                rdf:_7  "ROLE_68424018"^^xsd:string
+              ] ;
+      bb:mergeFactor "100"^^xsd:int ;
+      bb:name "test4"^^xsd:string ;
+      bb:namespace
+              [ a       rdf:Bag ;
+                rdf:_1  "urn:test4:"^^xsd:string
+              ] ;
+      bb:nonStdIndexThreshold
+              "2"^^xsd:string ;
+      bb:persistAlgorithm bb:jenaAndLucenePersistAlgorithm ;
+      bb:rdfTypeMetadata
+              [ a       rdf:Seq ;
+                rdf:_1  bb:personRdfType ;
+                rdf:_2  bb:eventRdfType ;
+                rdf:_3  bb:organizationRdfType
+              ] ;      
+      bb:template "false"^^xsd:boolean  .
+      
+#
+# TEST5
+#
+bb:test5Model
+     a bb:ClassloaderConnectionMetadata;
+     bb:name "Test5 Assembler";     
+    bb:modelName "test5";
+    bb:readOnlyStatus "false"^^xsd:boolean ;  
+    bb:contentResourceName "test5-content.n3";
+    bb:rdfFormat "N3"
+    .
+
+bb:test5DataSource
+      a       bb:DataSourceMetadata ;     
+      bb:connectionMetadata bb:test5Model ;     
+      bb:color "0033FF"^^xsd:string ;
+      bb:dataSourceType "BATCH"^^xsd:string ;
+      bb:defaultRDFTypeURI
+              "urn:test5:entity"^^xsd:string ;
+      bb:defaultRoles
+              [ a       rdf:Bag ;
+                rdf:_1  "UNCLASSIFIED"^^xsd:string
+              ] ;
+      bb:dipAlgorithm bb:jenaDipAlgorithm ;
+      bb:dipAttributes "http://www.w3.org/2001/vcard-rdf/3.0#Orgname || http://blackbook.com/terms#Orgname_soundsLike || http://www.w3.org/2001/vcard-rdf/3.0#Family || http://blackbook.com/terms#Family_soundsLike || http://www.w3.org/2001/vcard-rdf/3.0#FN || http://blackbook.com/terms#FN_soundsLike"^^xsd:string ;
+      bb:expandAlgorithm bb:jenaExpandAlgorithm ;
+      bb:keywordAlgorithm bb:luceneKeywordAlgorithm ;
+      bb:keywordAttributes
+              [ a       rdf:Seq ;
+                rdf:_1  "http://www.w3.org/2001/vcard-rdf/3.0#Family"^^xsd:string ;
+                rdf:_2  "http://www.w3.org/2001/vcard-rdf/3.0#Given"^^xsd:string
+              ] ;
+      bb:listFieldsAlgorithm
+              bb:luceneListFieldsAlgorithm ;
+      bb:luceneKeywordIndex
+              "@LUCENE_DIR@/UnitTest/lucene/index"^^xsd:string ;
+      bb:materializeAlgorithm
+              bb:jenaMaterializeAlgorithm ;
+      bb:decorateAlgorithm
+              bb:jenaDecorateAlgorithm ;
+      bb:maxStatements "1000"^^xsd:int ;
+      bb:maxUris "100"^^xsd:int ;
+      bb:maxMergeDocs "1000"^^xsd:int ;
+      bb:maxRoles
+              [ a       rdf:Bag ;
+                rdf:_1  "UNCLASSIFIED"^^xsd:string ;
+                rdf:_2  "AAA"^^xsd:string ;
+                rdf:_3  "ZZZ"^^xsd:string ;
+                rdf:_4  "ROLE1"^^xsd:string ;
+                rdf:_5  "ROLE2"^^xsd:string ;
+                rdf:_6  "ROLE3"^^xsd:string ;
+                rdf:_7  "ROLE_68424018"^^xsd:string
+              ] ;
+      bb:mergeFactor "100"^^xsd:int ;
+      bb:name "test5"^^xsd:string ;
+      bb:namespace
+              [ a       rdf:Bag ;
+                rdf:_1  "urn:test5:"^^xsd:string
+              ] ;
+      bb:nonStdIndexThreshold
+              "2"^^xsd:string ;
+      bb:persistAlgorithm bb:jenaAndLucenePersistAlgorithm ;
+      bb:rdfTypeMetadata
+              [ a       rdf:Seq ;
+                rdf:_1  bb:personRdfType ;
+                rdf:_2  bb:eventRdfType ;
+                rdf:_3  bb:organizationRdfType
+              ] ;      
+      bb:template "false"^^xsd:boolean  .
+      
+#
+# TEST6
+#
+bb:test6Model
+     a bb:ClassloaderConnectionMetadata;
+     bb:name "Test6 Assembler";
+    bb:modelName "test6";
+    bb:readOnlyStatus "false"^^xsd:boolean ;  
+    bb:contentResourceName "test6-content.n3";
+    bb:rdfFormat "N3"
+    .
+
+bb:test6DataSource
+      a       bb:DataSourceMetadata ;     
+      bb:connectionMetadata bb:test6Model ;     
+      bb:color "0033FF"^^xsd:string ;
+      bb:dataSourceType "ASSERTIONS"^^xsd:string ;
+      bb:defaultRDFTypeURI
+              "urn:test6:entity"^^xsd:string ;
+      bb:defaultRoles
+              [ a       rdf:Bag ;
+                rdf:_1  "UNCLASSIFIED"^^xsd:string
+              ] ;
+      bb:dipAlgorithm bb:jenaDipAlgorithm ;
+      bb:dipAttributes "http://www.w3.org/2001/vcard-rdf/3.0#Orgname || http://blackbook.com/terms#Orgname_soundsLike || http://www.w3.org/2001/vcard-rdf/3.0#Family || http://blackbook.com/terms#Family_soundsLike || http://www.w3.org/2001/vcard-rdf/3.0#FN || http://blackbook.com/terms#FN_soundsLike"^^xsd:string ;
+      bb:expandAlgorithm bb:jenaExpandAlgorithm ;
+      bb:keywordAlgorithm bb:luceneKeywordAlgorithm ;
+      bb:keywordAttributes
+              [ a       rdf:Seq ;
+                rdf:_1  "http://www.w3.org/2001/vcard-rdf/3.0#Family"^^xsd:string ;
+                rdf:_2  "http://www.w3.org/2001/vcard-rdf/3.0#Given"^^xsd:string
+              ] ;
+      bb:listFieldsAlgorithm
+              bb:luceneListFieldsAlgorithm ;
+      bb:luceneKeywordIndex
+              "@LUCENE_DIR@/UnitTest/lucene/index"^^xsd:string ;
+      bb:materializeAlgorithm
+              bb:jenaMaterializeAlgorithm ;
+      bb:decorateAlgorithm
+              bb:jenaDecorateAlgorithm ;
+      bb:maxStatements "1000"^^xsd:int ;
+      bb:maxUris "100"^^xsd:int ;
+      bb:maxMergeDocs "1000"^^xsd:int ;
+      bb:maxRoles
+              [ a       rdf:Bag ;
+                rdf:_1  "UNCLASSIFIED"^^xsd:string ;
+                rdf:_2  "AAA"^^xsd:string ;
+                rdf:_3  "ZZZ"^^xsd:string ;
+                rdf:_4  "ROLE1"^^xsd:string ;
+                rdf:_5  "ROLE2"^^xsd:string ;
+                rdf:_6  "ROLE3"^^xsd:string ;
+                rdf:_7  "ROLE_68424018"^^xsd:string
+              ] ;
+      bb:mergeFactor "100"^^xsd:int ;
+      bb:name "test6"^^xsd:string ;
+      bb:namespace
+              [ a       rdf:Bag ;
+                rdf:_1  "urn:test6:"^^xsd:string
+              ] ;
+      bb:nonStdIndexThreshold
+              "2"^^xsd:string ;
+      bb:persistAlgorithm bb:jenaAndLucenePersistAlgorithm ;
+      bb:rdfTypeMetadata
+              [ a       rdf:Seq ;
+                rdf:_1  bb:personRdfType ;
+                rdf:_2  bb:eventRdfType ;
+                rdf:_3  bb:organizationRdfType
+              ] ;      
+      bb:template "false"^^xsd:boolean  .
+      
+#
+# TEST7
+#
+bb:test7Model
+     a bb:ClassloaderConnectionMetadata;
+     bb:name "Test7 Assembler";     
+    bb:modelName "test7";
+    bb:readOnlyStatus "false"^^xsd:boolean ;  
+    bb:contentResourceName "test7-content.n3";
+    bb:rdfFormat "N3"
+    .
+
+bb:test7DataSource
+      a       bb:DataSourceMetadata ;     
+      bb:connectionMetadata bb:test7Model ;     
+      bb:color "0033FF"^^xsd:string ;
+      bb:dataSourceType "INTERACTIVE"^^xsd:string ;
+      bb:defaultRDFTypeURI
+              "urn:test7:entity"^^xsd:string ;
+      bb:defaultRoles
+              [ a       rdf:Bag ;
+                rdf:_1  "UNCLASSIFIED"^^xsd:string
+              ] ;
+      bb:dipAlgorithm bb:jenaDipAlgorithm ;
+      bb:dipAttributes "http://www.w3.org/2001/vcard-rdf/3.0#Orgname || http://blackbook.com/terms#Orgname_soundsLike || http://www.w3.org/2001/vcard-rdf/3.0#Family || http://blackbook.com/terms#Family_soundsLike || http://www.w3.org/2001/vcard-rdf/3.0#FN || http://blackbook.com/terms#FN_soundsLike"^^xsd:string ;
+      bb:expandAlgorithm bb:jenaExpandAlgorithm ;
+      bb:keywordAlgorithm bb:luceneKeywordAlgorithm ;
+      bb:keywordAttributes
+              [ a       rdf:Seq ;
+                rdf:_1  "http://www.w3.org/2001/vcard-rdf/3.0#Family"^^xsd:string ;
+                rdf:_2  "http://www.w3.org/2001/vcard-rdf/3.0#Given"^^xsd:string
+              ] ;
+      bb:listFieldsAlgorithm
+              bb:luceneListFieldsAlgorithm ;
+      bb:luceneKeywordIndex
+              "@LUCENE_DIR@/UnitTest/lucene/index"^^xsd:string ;
+      bb:materializeAlgorithm
+              bb:jenaMaterializeAlgorithm ;
+      bb:decorateAlgorithm
+              bb:jenaDecorateAlgorithm ;
+      bb:maxStatements "1000"^^xsd:int ;
+      bb:maxUris "100"^^xsd:int ;
+      bb:maxMergeDocs "1000"^^xsd:int ;
+      bb:maxRoles
+              [ a       rdf:Bag ;
+                rdf:_1  "UNCLASSIFIED"^^xsd:string ;
+                rdf:_2  "AAA"^^xsd:string ;
+                rdf:_3  "ZZZ"^^xsd:string ;
+                rdf:_4  "ROLE1"^^xsd:string ;
+                rdf:_5  "ROLE2"^^xsd:string ;
+                rdf:_6  "ROLE3"^^xsd:string ;
+                rdf:_7  "ROLE_68424018"^^xsd:string
+              ] ;
+      bb:mergeFactor "100"^^xsd:int ;
+      bb:name "test7"^^xsd:string ;
+      bb:namespace
+              [ a       rdf:Bag ;
+                rdf:_1  "urn:test7:"^^xsd:string
+              ] ;
+      bb:nonStdIndexThreshold
+              "2"^^xsd:string ;
+      bb:persistAlgorithm bb:jenaAndLucenePersistAlgorithm ;
+      bb:rdfTypeMetadata
+              [ a       rdf:Seq ;
+                rdf:_1  bb:personRdfType ;
+                rdf:_2  bb:eventRdfType ;
+                rdf:_3  bb:organizationRdfType
+              ] ;      
+      bb:template "false"^^xsd:boolean  .
+      
+#
+# TEST8
+#
+bb:test8Model
+     a bb:ClassloaderConnectionMetadata;
+     bb:name "Test8 Assembler";
+    bb:modelName "test8";
+    bb:readOnlyStatus "false"^^xsd:boolean ;  
+    bb:contentResourceName "test8-content.n3";
+    bb:rdfFormat "N3"
+    .
+
+bb:test8DataSource
+      a       bb:DataSourceMetadata ;     
+      bb:connectionMetadata bb:test8Model ;     
+      bb:color "0033FF"^^xsd:string ;
+      bb:dataSourceType "INTERACTIVE"^^xsd:string ;
+      bb:defaultRDFTypeURI
+              "urn:test8:entity"^^xsd:string ;
+      bb:defaultRoles
+              [ a       rdf:Bag ;
+                rdf:_1  "UNCLASSIFIED"^^xsd:string
+              ] ;
+      bb:dipAlgorithm bb:jenaDipAlgorithm ;
+      bb:dipAttributes "http://www.w3.org/2001/vcard-rdf/3.0#Orgname || http://blackbook.com/terms#Orgname_soundsLike || http://www.w3.org/2001/vcard-rdf/3.0#Family || http://blackbook.com/terms#Family_soundsLike || http://www.w3.org/2001/vcard-rdf/3.0#FN || http://blackbook.com/terms#FN_soundsLike"^^xsd:string ;
+      bb:expandAlgorithm bb:jenaExpandAlgorithm ;
+      bb:keywordAlgorithm bb:luceneKeywordAlgorithm ;
+      bb:keywordAttributes
+              [ a       rdf:Seq ;
+                rdf:_1  "http://www.w3.org/2001/vcard-rdf/3.0#Family"^^xsd:string ;
+                rdf:_2  "http://www.w3.org/2001/vcard-rdf/3.0#Given"^^xsd:string
+              ] ;
+      bb:listFieldsAlgorithm
+              bb:luceneListFieldsAlgorithm ;
+      bb:luceneKeywordIndex
+              "@LUCENE_DIR@/UnitTest/lucene/index"^^xsd:string ;
+      bb:materializeAlgorithm
+              bb:jenaMaterializeAlgorithm ;
+      bb:decorateAlgorithm
+              bb:jenaDecorateAlgorithm ;
+      bb:maxStatements "1000"^^xsd:int ;
+      bb:maxUris "100"^^xsd:int ;
+      bb:maxMergeDocs "1000"^^xsd:int ;
+      bb:maxRoles
+              [ a       rdf:Bag ;
+                rdf:_1  "UNCLASSIFIED"^^xsd:string ;
+                rdf:_2  "AAA"^^xsd:string ;
+                rdf:_3  "ZZZ"^^xsd:string ;
+                rdf:_4  "ROLE1"^^xsd:string ;
+                rdf:_5  "ROLE2"^^xsd:string ;
+                rdf:_6  "ROLE3"^^xsd:string ;
+                rdf:_7  "ROLE_68424018"^^xsd:string
+              ] ;
+      bb:mergeFactor "100"^^xsd:int ;
+      bb:name "test8"^^xsd:string ;
+      bb:namespace
+              [ a       rdf:Bag ;
+                rdf:_1  "urn:test8:"^^xsd:string
+              ] ;
+      bb:nonStdIndexThreshold
+              "2"^^xsd:string ;
+      bb:persistAlgorithm bb:jenaAndLucenePersistAlgorithm ;
+      bb:rdfTypeMetadata
+              [ a       rdf:Seq ;
+                rdf:_1  bb:personRdfType ;
+                rdf:_2  bb:eventRdfType ;
+                rdf:_3  bb:organizationRdfType
+              ] ;      
+      bb:template "false"^^xsd:boolean  .
+      
+#
+# TEST ASSERTIONS
+#
+bb:testAssertionsModel
+     a bb:ClassloaderConnectionMetadata;
+     bb:name "Test Assertions Assembler";    
+    bb:modelName "testassertions";
+    bb:readOnlyStatus "false"^^xsd:boolean ;  
+    bb:contentResourceName "testassertions-content.n3";
+    bb:rdfFormat "N3"
+    .
+
+bb:testAssertionsDataSource
+      a       bb:DataSourceMetadata ;     
+      bb:connectionMetadata bb:testAssertionsModel ;     
+      bb:color "0033FF"^^xsd:string ;
+      bb:dataSourceType "ASSERTIONS"^^xsd:string ;
+      bb:defaultRDFTypeURI
+              "urn:assertions:entity"^^xsd:string ;
+      bb:defaultRoles
+              [ a       rdf:Bag ;
+                rdf:_1  "UNCLASSIFIED"^^xsd:string
+              ] ;
+      bb:dipAlgorithm bb:jenaDipAlgorithm ;
+      bb:dipAttributes "http://www.w3.org/2001/vcard-rdf/3.0#Orgname || http://blackbook.com/terms#Orgname_soundsLike || http://www.w3.org/2001/vcard-rdf/3.0#Family || http://blackbook.com/terms#Family_soundsLike || http://www.w3.org/2001/vcard-rdf/3.0#FN || http://blackbook.com/terms#FN_soundsLike"^^xsd:string ;
+      bb:expandAlgorithm bb:jenaExpandAlgorithm ;
+      bb:keywordAlgorithm bb:luceneKeywordAlgorithm ;
+      bb:keywordAttributes
+              [ a       rdf:Seq ;
+                rdf:_1  "http://www.w3.org/2001/vcard-rdf/3.0#Family"^^xsd:string ;
+                rdf:_2  "http://www.w3.org/2001/vcard-rdf/3.0#Given"^^xsd:string
+              ] ;
+      bb:listFieldsAlgorithm
+              bb:luceneListFieldsAlgorithm ;
+      bb:luceneKeywordIndex
+              "@LUCENE_DIR@/UnitTest/lucene/index"^^xsd:string ;
+      bb:materializeAlgorithm
+              bb:jenaMaterializeAlgorithm ;
+      bb:decorateAlgorithm
+              bb:jenaDecorateAlgorithm ;
+      bb:maxStatements "1000"^^xsd:int ;
+      bb:maxUris "100"^^xsd:int ;
+      bb:maxMergeDocs "1000"^^xsd:int ;
+      bb:maxRoles
+              [ a       rdf:Bag ;
+                rdf:_1  "UNCLASSIFIED"^^xsd:string ;
+                rdf:_2  "AAA"^^xsd:string ;
+                rdf:_3  "ZZZ"^^xsd:string ;
+                rdf:_4  "ROLE1"^^xsd:string ;
+                rdf:_5  "ROLE2"^^xsd:string ;
+                rdf:_6  "ROLE3"^^xsd:string ;
+                rdf:_7  "ROLE_68424018"^^xsd:string
+              ] ;
+      bb:mergeFactor "100"^^xsd:int ;
+      bb:name "Assertions"^^xsd:string ;
+      bb:namespace
+              [ a       rdf:Bag ;
+                rdf:_1  "urn:assertions:"^^xsd:string
+              ] ;
+      bb:nonStdIndexThreshold
+              "2"^^xsd:string ;
+      bb:persistAlgorithm bb:jenaAndLucenePersistAlgorithm ;
+      bb:rdfTypeMetadata
+              [ a       rdf:Seq ;
+                rdf:_1  bb:personRdfType ;
+                rdf:_2  bb:eventRdfType ;
+                rdf:_3  bb:organizationRdfType
+              ] ;      
+      bb:template "false"^^xsd:boolean  .
+      
