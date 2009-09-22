@@ -1,4 +1,4 @@
-package pallet.algorithm.jena;
+package pallet.algorithm.blackbook;
 
 import java.util.Set;
 
