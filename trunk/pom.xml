@@ -15,6 +15,7 @@
 	<module>pallet-data</module>
 	<module>pallet-classify</module>
 	<module>pallet-test</module>
+	<module>pallet-blackbook</module>
 </modules>
 
 <repositories>
