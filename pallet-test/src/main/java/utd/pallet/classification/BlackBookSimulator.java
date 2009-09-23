@@ -27,7 +27,7 @@ public class BlackBookSimulator {
     /**
      * @param trainDataSrc
      */
-    public static TrainerObject processTrainCommand(
+    private static TrainerObject processTrainCommand(
             ArrayList<String> trainDataSrcs, int trainingAlgorithm,
             String opFilename) {
 
@@ -59,7 +59,7 @@ public class BlackBookSimulator {
         return trainerObj;
     }
 
-    public static TrainerObject processIncTrainCommand(
+    private static TrainerObject processIncTrainCommand(
             ClassifierTrainer classifierTrainer,
             ArrayList<String> trainDataSrcs, String opFilename,
             TrainerObject trainerObject) {
@@ -157,7 +157,7 @@ public class BlackBookSimulator {
 
     }
 
-    public static void validateTrainCmd(ArrayList<Object> optionList)
+    private static void validateTrainCmd(ArrayList<Object> optionList)
             throws Exception {
 
         if (optionList.size() != 3)
@@ -176,7 +176,7 @@ public class BlackBookSimulator {
         }
     }
 
-    public static void validateIncTrainCmd(ArrayList<Object> optionList)
+    private static void validateIncTrainCmd(ArrayList<Object> optionList)
             throws Exception {
         try {
             validateTrainCmd(optionList);
@@ -186,7 +186,7 @@ public class BlackBookSimulator {
     }
 
     // <TestDataSet> <TrainerObjectFilepath>
-    public static void validateClassifyStandAloneCmd(
+    private static void validateClassifyStandAloneCmd(
             ArrayList<Object> optionList) throws Exception {
 
         if (optionList.size() != 2)
@@ -202,8 +202,8 @@ public class BlackBookSimulator {
     }
 
     // <TrainingDataList> <algo> <DestTrainerFile> <TestDataList>
-    public static void validateClassifyWithTrainCmd(ArrayList<Object> optionList)
-            throws Exception {
+    private static void validateClassifyWithTrainCmd(
+            ArrayList<Object> optionList) throws Exception {
         if (optionList.size() != 4)
             throw new Exception("Training data cannot be empty");
 
@@ -226,7 +226,7 @@ public class BlackBookSimulator {
 
     // <trainingDataSrc> <TrainerObjectSrc(filename)> <DestTrainerObjectpath>
     // <TestDataSet>
-    public static void validateClassifyWithIncTrainCmd(
+    private static void validateClassifyWithIncTrainCmd(
             ArrayList<Object> optionList) throws Exception {
         try {
             validateClassifyWithTrainCmd(optionList);
@@ -325,6 +325,7 @@ public class BlackBookSimulator {
         // "/home/sharath/websemantic_lab/pallet-parent/pallet-test/1253511423514.rdf"
         // );
 
+        // TODO : Fetch Commands from the parser.
         String opFilename = "./testTrainer.rdf";
 
         ArrayList<String> dirList = new ArrayList<String>();
