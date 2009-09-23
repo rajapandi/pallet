@@ -245,14 +245,21 @@ public class RDF2MalletInstances {
      * @param model
      *            Jena Model
      * @param classificationPredicate
-     *            : The Predicate on the basis of which classification done
+     *            : The Predicate on the basis of which classification done.
+     * @param trainer
+     *            : null for general training, previously trained instance of
+     *            ClassifierTrainer on incremental training.
      * @return This method returns InstanceList
      * @throws Exception
      */
 
+    // Classifier trainer as an argument - Reqd for incremental training of data
+    // - 09-21-2009, SJ
     public final static InstanceList trainingDataIntoMalletInstanceList(
-            Model model, Property classificationPredicate) throws Exception {
+            Model model, Property classificationPredicate,
+            Classifier prevClassifier) throws Exception {
         List<Instance> instBeforeProcessing = new ArrayList<Instance>();
+
         try {
 
             if (model == null || model.isEmpty()) {
@@ -379,8 +386,15 @@ public class RDF2MalletInstances {
         /**
          * A BuildPipe method is called ,which creates the pipelist.
          */
-        RDF2MalletInstances rdf2MalletInstances = new RDF2MalletInstances();
-        InstanceList instances = new InstanceList(rdf2MalletInstances.pipe);
+
+        InstanceList instances = null;
+        if (prevClassifier == null) {
+            RDF2MalletInstances rdf2MalletInstances = new RDF2MalletInstances();
+            instances = new InstanceList(rdf2MalletInstances.pipe);
+        } else {
+            Pipe pipe = prevClassifier.getInstancePipe();
+            instances = new InstanceList(pipe);
+        }
         /**
          * The data is processed through the Pipe which is associated with
          * Mallet InstanceList.
@@ -414,13 +428,17 @@ public class RDF2MalletInstances {
      *            :It takes model as String
      * @param classificationPredicate
      *            : It takes classification predicate as String
+     * @param prevTrainer
+     *            : Null for first time training, instance of classifierTrainer
+     *            for subsequent incremental training.
      * @return ByteArrayOutputStream :It return the serialized form of the
      *         InstnaceList.
+     * 
      * @throws Exception
      */
     public final static ByteArrayOutputStream convertRDFWithLabels(
-            String modelAsString, String classificationPredicate)
-            throws Exception {
+            String modelAsString, String classificationPredicate,
+            Classifier prevTrainer) throws Exception {
 
         InstanceList il = null;
         Model incomingModel = null;
@@ -472,7 +490,9 @@ public class RDF2MalletInstances {
 
             Property property = incomingModel
                     .getProperty(classificationPredicate);
-            il = trainingDataIntoMalletInstanceList(incomingModel, property);
+
+            il = trainingDataIntoMalletInstanceList(incomingModel, property,
+                    prevTrainer);
             bos = new ByteArrayOutputStream();
             ObjectOutputStream oos = new ObjectOutputStream(bos);
             oos.writeObject(il);
