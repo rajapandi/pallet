@@ -724,7 +724,7 @@ public class BlackbookWorkflowSimulator {
 
         // get converted data
         ByteArrayOutputStream bos = RDF2MalletInstances.convertRDFWithLabels(
-                rdf, CLASSIFICATION_PROPERTY.getURI());
+                rdf, CLASSIFICATION_PROPERTY.getURI(), null);
         ByteArrayInputStream bis = new ByteArrayInputStream(bos.toByteArray());
         ObjectInputStream ois = new ObjectInputStream(bis);
 
@@ -741,7 +741,7 @@ public class BlackbookWorkflowSimulator {
 
         // get converted data
         ByteArrayOutputStream bos = RDF2MalletInstances.convertRDFWithLabels(
-                rdf, CLASSIFICATION_PROPERTY.getURI());
+                rdf, CLASSIFICATION_PROPERTY.getURI(), null);
         ByteArrayInputStream bis = new ByteArrayInputStream(bos.toByteArray());
         ObjectInputStream ois = new ObjectInputStream(bis);
 
