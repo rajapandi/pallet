@@ -49,7 +49,7 @@ public class RDF2MalletInstancesTest extends TestCase {
     }
 
     /*
-     * (non-Javadoc) * @see junit.framework.TestCase#tearDown()
+     * (non-Javadoc) @see junit.framework.TestCase#tearDown()
      */
 
     protected void tearDown() throws Exception {
