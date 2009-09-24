@@ -1,6 +1,7 @@
 package utd.pallet.classification;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import utd.pallet.classification.MalletTextDataTrainer.TrainerObject;
 import utd.pallet.data.MalletAccuracyVector;
@@ -91,7 +92,7 @@ public class BlackBookSimulator {
         return trnObject;
     }
 
-    private static int getTrainingAlgo(String algorithm) {
+    public static int getTrainingAlgo(String algorithm) {
 
         int trainingAlgorithm = -1;
 
@@ -235,77 +236,35 @@ public class BlackBookSimulator {
         }
     }
 
-    private static void processCommand(int cmd, ArrayList<Object> optionList)
+    private static void processCommand(int cmd, commandLineParser optionList)
             throws IllegalArgumentException, NullPointerException, Exception {
         switch (cmd) {
         case BB_TRAIN:
-            try {
-                validateTrainCmd(optionList);
-            } catch (Exception e) {
-                throw e;
-            }
-            ArrayList<String> dataSet = (ArrayList) optionList.get(0);
-            int trainingAlgorithm = getTrainingAlgo((String) optionList.get(1));
-            if (trainingAlgorithm == -1)
-                throw new Exception("Incorrect format for train command");
-            String opFilename = (String) optionList.get(2);
-            processTrainCommand(dataSet, trainingAlgorithm, opFilename);
-
-            break;
+                      
+            Train  train=(Train)optionList;
+            processTrainCommand(train.getDataSet(),train.getTrainingAlgorithm(),train.getOutputFileName());
+                          
+             break;
         case BB_INC_TRAIN:
-            try {
-                validateIncTrainCmd(optionList);
-            } catch (Exception e) {
-                throw e;
-            }
-            dataSet = (ArrayList) optionList.get(0);
-            TrainerObject trainObj = null;
-            try {
-                trainObj = BlackbookSimUtils
-                        .fetchTrainerObject((String) optionList.get(1));
-            } catch (Exception e) {
-                e.printStackTrace();
-                throw e;
-            }
-            opFilename = (String) optionList.get(2);
-            processIncTrainCommand(trainObj.getTrainer(), dataSet, opFilename,
-                    trainObj);
+            
+            incrementalTraining it=(incrementalTraining)optionList;
+            processIncTrainCommand(it.getTrainingObject().getTrainer(),it.getDataSet(),it.getOutputFileName(),it.getTrainingObject());
             break;
         case BB_CLASSIFY_STANDALONE:
-            try {
-                validateClassifyStandAloneCmd(optionList);
-            } catch (Exception e) {
-                throw e;
-            }
-            dataSet = (ArrayList) optionList.get(0);
-            processClassifyStandAloneCommand((String) optionList.get(1),
-                    dataSet);
+            
+            classifyStandAlone csa=(classifyStandAlone)optionList;
+            processClassifyStandAloneCommand(csa.getTrainerObjectFileName(),csa.getDataSource());
             break;
         case BB_CLASSIFY_WITH_CURR_TRAINED_DATA:
-            try {
-                validateClassifyWithTrainCmd(optionList);
-            } catch (Exception e) {
-                throw e;
-            }
-            dataSet = (ArrayList) optionList.get(0);
-            trainingAlgorithm = getTrainingAlgo((String) optionList.get(1));
-            if (trainingAlgorithm == -1)
-                throw new Exception("Incorrect format for train command");
-            processClassifyWithTraining((ArrayList) optionList.get(0),
-                    trainingAlgorithm, (String) optionList.get(2),
-                    (ArrayList) optionList.get(3));
-
+        	
+           
+            classifyWithCurrentTrainedData cwctd=(classifyWithCurrentTrainedData)optionList;
+            processClassifyWithTraining(cwctd.getTestDataSrcs(),cwctd.getTrainingAlgorithm(),cwctd.getTrainerDestFile(),cwctd.getTestDataSrcs());
             break;
         case BB_CLASSIFY_WITH_INC_TRAINED_DATA:
-            try {
-                validateClassifyWithIncTrainCmd(optionList);
-            } catch (Exception e) {
-                throw e;
-            }
-
-            processClassifyWithIncTraining((String) optionList.get(1),
-                    (ArrayList) optionList.get(0), (String) optionList.get(2),
-                    (ArrayList) optionList.get(3));
+            
+            classifyWithIncrementalTrainedData cwitd=(classifyWithIncrementalTrainedData)optionList;
+            processClassifyWithIncTraining(cwitd.getTrainerSrcFile(),cwitd.getTrainDataSrcs(),cwitd.getOutputFile(),cwitd.getTestDataSrcs());
             break;
         case BB_VALIDATE:
             break;
@@ -339,7 +298,24 @@ public class BlackBookSimulator {
         optionList.add("./testnew.rdf");
 
         try {
-            BlackBookSimulator.processCommand(BB_TRAIN, optionList);
+        	ArrayList<commandLineParser> commands=commandLineParser.argumentParser(args);
+        	Iterator <commandLineParser> it=commands.iterator();
+        	while(it.hasNext())
+        	{
+        		commandLineParser clp=it.next();
+        		if(clp instanceof Train)
+            BlackBookSimulator.processCommand(BB_TRAIN, clp);
+        		if(clp instanceof incrementalTraining)
+        			BlackBookSimulator.processCommand(BB_INC_TRAIN, clp);
+        	    if(clp instanceof classifyStandAlone)
+        	    	BlackBookSimulator.processCommand(BB_CLASSIFY_STANDALONE, clp);  
+        	    if(clp instanceof classifyWithCurrentTrainedData)
+        	    	BlackBookSimulator.processCommand(BB_CLASSIFY_WITH_CURR_TRAINED_DATA, clp);
+        	    if(clp instanceof classifyWithIncrementalTrainedData)
+        	    	BlackBookSimulator.processCommand(BB_CLASSIFY_WITH_INC_TRAINED_DATA, clp);
+        	    if(clp instanceof classifyWithIncrementalTrainedData)
+        	    	BlackBookSimulator.processCommand(BB_CLASSIFY_WITH_INC_TRAINED_DATA, clp);
+        	}
         } catch (IllegalArgumentException e1) {
             // TODO Auto-generated catch block
             e1.printStackTrace();
