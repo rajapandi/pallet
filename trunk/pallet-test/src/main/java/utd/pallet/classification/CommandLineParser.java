@@ -10,11 +10,15 @@ class Train extends CommandLineParser {
     public ArrayList<String> dataSet = new ArrayList<String>();
     public Integer trainingAlgorithm;
     public String outputFileName;
+    public String classificationProperty;
 
     public ArrayList<String> getDataSet() {
         return dataSet;
     }
-
+    public String getClassificationProperty()
+    {
+    	return classificationProperty;
+    }
     public Integer getTrainingAlgorithm() {
         return trainingAlgorithm;
     }
@@ -28,7 +32,11 @@ class IncrementalTraining extends CommandLineParser {
     public TrainerObject trainingObject;
     public ArrayList<String> dataSet = new ArrayList<String>();
     public String outputFileName;
-
+    public String classificationProperty;
+    public String getClassificationProperty()
+    {
+    	return classificationProperty;
+    }
     public TrainerObject getTrainingObject() {
         return trainingObject;
     }
@@ -194,7 +202,7 @@ public class CommandLineParser {
 
             String cmd = completeCommand.nextToken();
             if (cmd.equals("TRAIN")) {
-                if (size != 4) {
+                if (size != 5) {
                     throw new Exception("Incorrect format for training command");
                 }
                 Train train = new Train();
@@ -212,10 +220,12 @@ public class CommandLineParser {
                     throw new Exception("Incorrect Training Algorithm");
                 String s2 = completeCommand.nextToken();
                 train.outputFileName = s2;
+                String s3 = completeCommand.nextToken();
+                train.classificationProperty = s3;
                 commandParser.add(train);
                 continue;
             } else if (cmd.equals("INC_TRAIN")) {
-                if (size != 4) {
+                if (size != 5) {
                     throw new Exception(
                             "Incorrect format for incremental training");
                 }
@@ -232,11 +242,13 @@ public class CommandLineParser {
                     it.trainingObject = BlackbookSimUtils
                             .fetchTrainerObject(s1);
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    
                     throw e;
                 }
                 String s2 = completeCommand.nextToken();
                 it.outputFileName = s2;
+                String s3 = completeCommand.nextToken();
+                it.classificationProperty = s3;
                 commandParser.add(it);
                 continue;
             } else if (cmd.equals("CLASSIFY_SD")) {
