@@ -81,7 +81,7 @@ public class BlackbookSimUtils {
 
     }
 
-    public static TrainerObject trainMalletModel(InstanceList iList) {
+    public static TrainerObject trainMalletModel(InstanceList iList)throws Exception {
         MalletTextDataTrainer bTrainer = new MalletTextDataTrainer();
 
         TrainerObject trnObj = null;
@@ -89,7 +89,7 @@ public class BlackbookSimUtils {
             trnObj = bTrainer.train(iList, MalletTextDataTrainer.NAIVE_BAYES);
         } catch (Exception e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+            throw e;
         }
 
         return trnObj;
@@ -176,7 +176,7 @@ public class BlackbookSimUtils {
             reader = new FileReader(file);
         } catch (FileNotFoundException e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+            
             throw e;
         }
         BufferedReader bReader = new BufferedReader(reader);
@@ -196,7 +196,7 @@ public class BlackbookSimUtils {
             ois = new ObjectInputStream(ios);
         } catch (IOException e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+            
             throw e;
         }
 
@@ -205,11 +205,11 @@ public class BlackbookSimUtils {
             trnObj = (TrainerObject) ois.readObject();
         } catch (IOException e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+            
             throw e;
         } catch (ClassNotFoundException e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+            
             throw e;
         }
 
@@ -226,7 +226,7 @@ public class BlackbookSimUtils {
             fileReader = new FileReader(file);
         } catch (FileNotFoundException e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+           
             throw e;
         }
 
@@ -240,7 +240,7 @@ public class BlackbookSimUtils {
             }
         } catch (IOException e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+           
             throw e;
         }
 
@@ -248,7 +248,7 @@ public class BlackbookSimUtils {
             classifier = convertRDFToClassifier(rdfData);
         } catch (Exception e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+            
             throw e;
         }
 
