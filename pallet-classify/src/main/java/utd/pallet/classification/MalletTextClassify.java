@@ -107,10 +107,10 @@ public class MalletTextClassify implements Serializable {
 			try {
 				accuracyVector.setAccuracy(cl);
 			} catch (NullPointerException e) {				
-				e.printStackTrace();
+				
 				throw (e);
 			} catch (Exception e) {
-				e.printStackTrace();
+				
 				throw (e);
 			}
 	
