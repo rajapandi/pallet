@@ -41,16 +41,17 @@ public class BlackBookSimulator {
      */
     private static TrainerObject processTrainCommand(
             ArrayList<String> trainDataSrcs, int trainingAlgorithm,
-            String opFilename) {
+            String opFilename,String classificationPredicate)throws Exception {
 
         String OpResourceName;
 
         BlackbookTrainingSimulator bbTrainer = new BlackbookTrainingSimulator();
 
         try {
-            bbTrainer.fetchData(trainDataSrcs, null);
+            bbTrainer.fetchData(trainDataSrcs, null,classificationPredicate);
         } catch (Exception e) {
-            e.printStackTrace();
+           
+            throw e;
         }
 
         TrainerObject trainerObj = null;
@@ -58,14 +59,17 @@ public class BlackBookSimulator {
             trainerObj = bbTrainer.train(trainingAlgorithm);
         } catch (Exception e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+        	
+            
+            throw e;
         }
 
         try {
             bbTrainer.saveTrainer(opFilename);
         } catch (Exception e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+           
+            throw e;
         }
 
         return trainerObj;
@@ -74,15 +78,15 @@ public class BlackBookSimulator {
     private static TrainerObject processIncTrainCommand(
             ClassifierTrainer classifierTrainer,
             ArrayList<String> trainDataSrcs, String opFilename,
-            TrainerObject trainerObject) {
+            TrainerObject trainerObject,String classificationProperty) throws Exception{
 
         BlackbookIncTrainerSim incTrainer = new BlackbookIncTrainerSim();
 
         try {
-            incTrainer.fetchData(trainDataSrcs, trainerObject);
+            incTrainer.fetchData(trainDataSrcs, trainerObject,classificationProperty);
         } catch (Exception e2) {
             // TODO Auto-generated catch block
-            e2.printStackTrace();
+           throw e2;
         }
 
         TrainerObject trnObject = null;
@@ -90,14 +94,15 @@ public class BlackBookSimulator {
             trnObject = incTrainer.bbIncTrain(classifierTrainer);
         } catch (Exception e1) {
             // TODO Auto-generated catch block
-            e1.printStackTrace();
+            
+            throw e1;
         }
 
         try {
             incTrainer.SaveClassifier(opFilename);
         } catch (Exception e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+            throw e;
         }
 
         return trnObject;
@@ -196,7 +201,7 @@ try
        
 }catch(Exception e)
 {
-	e.printStackTrace();
+	
 	throw e;
 }
 }
@@ -212,13 +217,13 @@ try
                     .fetchTrainerObject(trainerObjectFilename);
         } catch (Exception e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+           
             throw e;
         }
 
         FetchDirData fetchdata = new FetchDirData(dataSrc);
 
-        InstanceList dataList = fetchdata.ParseDirectoryList(trainerObject);
+        InstanceList dataList = fetchdata.ParseDirectoryList(trainerObject,classificationProperty);
         MalletTextClassify classifier = new MalletTextClassify();
         ArrayList<Classification> cl = classifier.classify(trainerObject
                 .getClassifier(), dataList);
@@ -233,7 +238,7 @@ try
             String trainerDestFile, ArrayList<String> testDataSrc,
             String validationDataSrc,String classificationProperty) throws Exception {
 
-        processTrainCommand(trainDataSrcs, trainingAlgorithm, trainerDestFile);
+        processTrainCommand(trainDataSrcs, trainingAlgorithm, trainerDestFile,classificationProperty);
 
         return processClassifyStandAloneCommand(trainerDestFile, testDataSrc,
                 validationDataSrc,classificationProperty);
@@ -250,12 +255,12 @@ try
                     .fetchTrainerObject(trainerObjSrcFile);
         } catch (Exception e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+            
             throw e;
         }
 
         trainerObject = processIncTrainCommand(trainerObject.getTrainer(),
-                trainDataSrcs, opFilename, trainerObject);
+                trainDataSrcs, opFilename, trainerObject,classificationProperty);
 
         return processClassifyStandAloneCommand(opFilename, testDataSrc,
                 validationDataSrc,classificationProperty);
@@ -271,7 +276,8 @@ try
 
     private static void processCommand(CommandLineParser optionList)
             throws Exception {
-
+try
+{
         int cmd = optionList.getCommand();
         switch (cmd) {
         case CommandLineParser.BB_TRAIN:
@@ -280,7 +286,7 @@ try
 
             Train train = (Train) optionList;
             processTrainCommand(train.getDataSet(), train
-                    .getTrainingAlgorithm(), train.getOutputFileName());
+                    .getTrainingAlgorithm(), train.getOutputFileName(),train.getClassificationProperty());
 
             break;
         case CommandLineParser.BB_INC_TRAIN:
@@ -291,7 +297,7 @@ try
             IncrementalTraining it = (IncrementalTraining) optionList;
             processIncTrainCommand(it.getTrainingObject().getTrainer(), it
                     .getDataSet(), it.getOutputFileName(), it
-                    .getTrainingObject());
+                    .getTrainingObject(),it.getClassificationProperty());
             break;
         case CommandLineParser.BB_CLASSIFY_STANDALONE:
 
@@ -318,6 +324,10 @@ try
         default:
             break;
         }
+}catch(Exception e)
+{
+	throw e;
+}
     }
 
     /**
@@ -338,7 +348,10 @@ try
                 processCommand(clp);
             }
         } catch (Exception e) {
-            e.printStackTrace();
+        	
+          
+             throw e;
+            
         }
     }
 }
