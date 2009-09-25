@@ -31,15 +31,15 @@ public class BlackbookSimClassifier {
             classifier = BlackbookSimUtils.getClassifier(SourceName);
         } catch (FileNotFoundException e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+            
             throw e;
         } catch (IOException e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+            
             throw e;
         } catch (Exception e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+            
             throw e;
         }
     }
@@ -52,15 +52,15 @@ public class BlackbookSimClassifier {
             this.getClassifier(classifierSrc);
         } catch (FileNotFoundException e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+            
             throw e;
         } catch (IOException e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+            
             throw e;
         } catch (Exception e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+            
             throw e;
         }
         MalletTextClassify pClassifier = new MalletTextClassify();
@@ -102,7 +102,7 @@ public class BlackbookSimClassifier {
                     .convertClassifierToRDF(classifier);
         } catch (Exception e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+          
             throw e;
         }
 
@@ -112,7 +112,7 @@ public class BlackbookSimClassifier {
             writer = new FileWriter(file);
         } catch (IOException e1) {
             // TODO Auto-generated catch block
-            e1.printStackTrace();
+           
             throw e1;
         }
         BufferedWriter buffWriter = new BufferedWriter(writer);
@@ -121,7 +121,7 @@ public class BlackbookSimClassifier {
             buffWriter.write(strClassifier);
         } catch (IOException e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+            
             throw e;
         }
 
@@ -135,7 +135,7 @@ public class BlackbookSimClassifier {
             answerModel = JenaModelFactory.rdf2Model(validationDataSrc);
         } catch (Exception e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+          
             throw e;
         }
     }
