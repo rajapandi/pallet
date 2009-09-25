@@ -18,10 +18,10 @@ import com.hp.hpl.jena.rdf.model.Resource;
 
 public class RDFUtils {
 
-    public static Model createModelWithClassifications(
+    public static Model createModelWithClassifications (
             ArrayList<MalletAccuracyVector> accVector,
 
-            ArrayList<Classification> classificationList) {
+            ArrayList<Classification> classificationList) throws Exception {
         @SuppressWarnings("unused")
         Model rdfModel = ModelFactory.createDefaultModel();
         try {
@@ -78,10 +78,10 @@ public class RDFUtils {
             }
             return rdfModel;
         } catch (Exception e) {
-            System.out.println(e);
+           throw e;
         }
 
-        return rdfModel;
+        
     }
 
     private static final Property CLASSIFICATION_PROPERTY = ModelFactory
@@ -89,26 +89,26 @@ public class RDFUtils {
                     "http://blackbook.com/terms#STAT_EVENT");
 
     public static InstanceList convertRDFToInstanceList(String rdf,
-            Classifier prevClassifier) throws Exception {
-        // get converter
-
-        // RDF2MalletInstances conv = new RDF2MalletInstances();
-        System.out.println(CLASSIFICATION_PROPERTY.getURI());
-        ByteArrayOutputStream bos = null;
-        if (rdf.contains("STAT_EVENT")) {
-            // get converted data
+            Classifier prevClassifier,String classificationProperty) throws Exception {
+    	ByteArrayOutputStream bos = null;
+    	try{
+        
+       
             bos = RDF2MalletInstances.convertRDFWithLabels(rdf,
-                    CLASSIFICATION_PROPERTY.getURI(), prevClassifier);
-        } else {
-
-        }
-
+                    classificationProperty, prevClassifier);
+       
+    	}
+            catch(Exception e)
+            {
+            	
+            	throw e;
+            }
         ByteArrayInputStream bis = new ByteArrayInputStream(bos.toByteArray());
         ObjectInputStream ois = new ObjectInputStream(bis);
-
+          
         InstanceList iList = (InstanceList) ois.readObject();
-        // log.error("number of instances retrieved from RDF: " + iList.size());
-
+        
+    	
         return iList;
     }
 }
