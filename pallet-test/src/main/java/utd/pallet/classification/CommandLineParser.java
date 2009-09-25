@@ -47,6 +47,7 @@ class ClassifyStandAlone extends CommandLineParser {
     public ArrayList<String> dataSrc = new ArrayList<String>();
     public String trainerObjectFileName;
     public String validationDataSrc;
+    public String classificationProperty;
 
     public ArrayList<String> getDataSource() {
         return dataSrc;
@@ -59,6 +60,10 @@ class ClassifyStandAlone extends CommandLineParser {
     public String getValidationDataSrc() {
         return validationDataSrc;
     }
+    public String getClassificationProperty()
+    {
+    	return classificationProperty;
+    }
 }
 
 class ClassifyWithCurrentTrainedData extends CommandLineParser {
@@ -67,11 +72,14 @@ class ClassifyWithCurrentTrainedData extends CommandLineParser {
     public String trainerDestFile;
     public ArrayList<String> testDataSrcs = new ArrayList<String>();
     public String validationDataSrc;
-
+    public String classificationProperty;
     public ArrayList<String> getTrainDataSrcs() {
         return trainDataSrcs;
     }
-
+    public String getClassificationProperty()
+    {
+    	return classificationProperty;
+    }
     public String getValidationDataSrc() {
         return validationDataSrc;
     }
@@ -95,11 +103,14 @@ class ClassifyWithIncrementalTrainedData extends CommandLineParser {
     public ArrayList<String> trainDataSrcs = new ArrayList<String>();
     public String outputFile;
     public String validationDataSrc;
-
+    public String classificationProperty;
     public String getValidationDataSrc() {
         return validationDataSrc;
     }
-
+    public String getClassificationProperty()
+    {
+    	return classificationProperty;
+    }
     public ArrayList<String> getTestDataSrcs() {
         return testDataSrcs;
     }
@@ -229,7 +240,7 @@ public class CommandLineParser {
                 commandParser.add(it);
                 continue;
             } else if (cmd.equals("CLASSIFY_SD")) {
-                if (size != 4) {
+                if (size != 5) {
                     throw new Exception(
                             "Incorrect format for classifying standalone");
                 }
@@ -245,10 +256,12 @@ public class CommandLineParser {
                 commandParser.add(csa);
                 String s2 = completeCommand.nextToken();
                 csa.validationDataSrc = s2;
+                String s3 = completeCommand.nextToken();
+                csa.classificationProperty = s3;
                 continue;
 
             } else if (cmd.equals("CLASSIFY")) {
-                if (size != 6) {
+                if (size != 7) {
                     throw new Exception(
                             "Incorrect format for classify with current trained data");
                 }
@@ -273,6 +286,8 @@ public class CommandLineParser {
                 cwctd.trainerDestFile = s2;
                 String s3 = completeCommand.nextToken();
                 cwctd.validationDataSrc = s3;
+                String s4 = completeCommand.nextToken();
+                cwctd.classificationProperty = s4;
                 commandParser.add(cwctd);
             } else if (cmd.equals("CLASSIFY_INC")) {
                 if (size != 6) {
@@ -297,7 +312,10 @@ public class CommandLineParser {
                 cwitd.outputFile = s2;
                 String s3 = completeCommand.nextToken();
                 cwitd.validationDataSrc = s3;
+                String s4 = completeCommand.nextToken();
+                cwitd.classificationProperty = s4;
                 commandParser.add(cwitd);
+                
                 continue;
             } else {
                 throw new IllegalArgumentException("Invalid Command");
