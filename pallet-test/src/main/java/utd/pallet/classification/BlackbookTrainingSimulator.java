@@ -17,16 +17,17 @@ public class BlackbookTrainingSimulator {
     }
 
     // trainer == null for first time training
-    public void fetchData(ArrayList<String> sourceName, TrainerObject trainerObj)
-            throws NullPointerException, IllegalArgumentException {
+    public void fetchData(ArrayList<String> sourceName, TrainerObject trainerObj,String classificationPredicate)
+            throws Exception {
 
         dataToMallet = new FetchDirData(sourceName);
 
         try {
-            iList = dataToMallet.ParseDirectoryList(trainerObj);
+            iList = dataToMallet.ParseDirectoryList(trainerObj,classificationPredicate);
         } catch (FileNotFoundException e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+           
+            throw e;
         }
     }
 
@@ -49,11 +50,11 @@ public class BlackbookTrainingSimulator {
             this.trainerObject = trainer.train(iList, trainingAlgorithm);
         } catch (NullPointerException e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+            
             throw e;
         } catch (Exception e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+           
             throw e;
         }
 
