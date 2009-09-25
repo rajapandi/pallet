@@ -32,7 +32,7 @@ public class DataImport {
      * @param args
      * 
      */
-    public static void main(String[] args) {
+    public static void main(String[] args)throws Exception {
 
         /**
          * Training data provided by the user.
@@ -90,7 +90,7 @@ public class DataImport {
                     new FeatureSequence2AugmentableFeatureVector(false),
                     new AugmentableFeatureVectorLogScale(), true);
         } catch (IOException e) {
-
+throw e;
         }
 
         /**
