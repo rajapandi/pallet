@@ -665,7 +665,7 @@ public class BlackbookWorkflowSimulator {
             str = JenaModelFactory.serializeModel(model, "RDF/XML");
 
         } catch (Exception e) {
-            System.out.println(e);
+          System.out.println(e);
         }
         return str;
     }
