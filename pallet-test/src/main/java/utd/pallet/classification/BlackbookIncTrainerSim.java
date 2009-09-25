@@ -16,17 +16,16 @@ public class BlackbookIncTrainerSim {
 
     }
 
-    public void fetchData(ArrayList<String> sourceName, TrainerObject trainerObj)
-            throws NullPointerException, IllegalArgumentException,
-            FileNotFoundException {
+    public void fetchData(ArrayList<String> sourceName, TrainerObject trainerObj,String classificationPredicate)
+            throws Exception  {
 
         FetchDirData dataToMallet = new FetchDirData(sourceName);
 
         try {
-            iList = dataToMallet.ParseDirectoryList(trainerObj);
-        } catch (FileNotFoundException e) {
+            iList = dataToMallet.ParseDirectoryList(trainerObj,classificationPredicate);
+        } catch (Exception e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+            
             throw e;
         }
     }
@@ -40,7 +39,7 @@ public class BlackbookIncTrainerSim {
             trnObj = dataTrainer.trainIncremental(prevTrainer, iList);
         } catch (NullPointerException ne) {
             // TODO Auto-generated catch block
-            ne.printStackTrace();
+            
             throw ne;
         } catch (Exception e) {
             throw e;
