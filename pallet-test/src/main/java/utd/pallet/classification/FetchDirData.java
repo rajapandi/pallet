@@ -69,18 +69,18 @@ public class FetchDirData {
      * @throws Exception
      */
     private InstanceList FetchDatafromFile(File file,
-            TrainerObject trainerObject) throws Exception, NullPointerException {
+            TrainerObject trainerObject,String classificationPredicate) throws Exception, NullPointerException {
 
         InstanceList iList = null;
         // System.out.println(file.toString());
-
+try{
         String fileContents = null;
         try {
             fileContents = org.apache.commons.io.FileUtils
                     .readFileToString(file);
         } catch (IOException e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+          throw e;
         }
 
         Classifier prevClassifier = null;
@@ -88,7 +88,12 @@ public class FetchDirData {
         if (trainerObject != null)
             prevClassifier = (Classifier) trainerObject.getClassifier();
 
-        iList = RDFUtils.convertRDFToInstanceList(fileContents, prevClassifier);
+        iList = RDFUtils.convertRDFToInstanceList(fileContents, prevClassifier,classificationPredicate);
+}catch(Exception e)
+{
+	
+	throw e;
+}
         return iList;
     }
 
@@ -99,8 +104,8 @@ public class FetchDirData {
      * @throws Exception
      */
     private InstanceList ParseDirectory(File directory,
-            TrainerObject prevTrainerObj) throws IllegalArgumentException,
-            FileNotFoundException {
+            TrainerObject prevTrainerObj,String classificationPredicate) throws IllegalArgumentException,
+            FileNotFoundException,Exception {
 
         File[] dirContents = directory.listFiles();
 
@@ -108,10 +113,11 @@ public class FetchDirData {
         for (File filesinDir : dirContents) {
             if (filesinDir.isFile()) {
                 try {
-                    iList = FetchDatafromFile(filesinDir, prevTrainerObj);
+                    iList = FetchDatafromFile(filesinDir, prevTrainerObj,classificationPredicate);
                 } catch (Exception e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
+                    
+                	throw e;
+                    
                 }
             } else {
                 try {
@@ -121,8 +127,12 @@ public class FetchDirData {
                 } catch (FileNotFoundException e) {
                     throw e;
                 }
+                catch(Exception e)
+                {
+                	throw e;
+                }
 
-                iList = ParseDirectory(filesinDir, prevTrainerObj);
+                iList = ParseDirectory(filesinDir, prevTrainerObj,classificationPredicate);
                 // iList.addAll(tList);
             }
         }
@@ -137,8 +147,8 @@ public class FetchDirData {
      * @return
      */
     // trainer = null for first time training
-    public InstanceList ParseDirectoryList(TrainerObject trainer)
-            throws IllegalArgumentException, FileNotFoundException {
+    public InstanceList ParseDirectoryList(TrainerObject trainer,String classificationPredicate)
+            throws Exception {
         InstanceList iList = null;
 
         // Parse thru all directories in the list
@@ -149,13 +159,14 @@ public class FetchDirData {
                 InstanceList tList = null;
                 try {
                     iList = FetchDatafromFile((File) this.rootDirFileList
-                            .get(i), trainer);
+                            .get(i), trainer,classificationPredicate);
 
                     File fl = (File) this.rootDirFileList.get(i);
 
                 } catch (Exception e) {
                     // TODO Auto-generated catch block
-                    e.printStackTrace();
+                    
+                    throw e;
                 }
 
             } else {
@@ -167,15 +178,23 @@ public class FetchDirData {
                 } catch (FileNotFoundException e) {
                     throw e;
                 }
+                catch(Exception e)
+                {
+                	throw e;
+                }
 
                 InstanceList tList = null;
                 try {
                     tList = ParseDirectory((File) this.rootDirFileList.get(i),
-                            trainer);
+                            trainer,classificationPredicate);
                 } catch (IllegalArgumentException e) {
                     throw e;
                 } catch (FileNotFoundException e) {
                     throw e;
+                }
+                catch(Exception e)
+                {
+                	throw e;
                 }
 
                 if (iList == null)
@@ -188,22 +207,22 @@ public class FetchDirData {
         return iList;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception  {
 
         ArrayList<String> dirList = new ArrayList<String>();
         dirList.add("/home/sharath/websemantic_lab/data");
 
         FetchDirData fd = new FetchDirData(dirList);
-
+          String classificationPredicate=null;
         InstanceList iList = null;
         try {
-            iList = fd.ParseDirectoryList(null);
+            iList = fd.ParseDirectoryList(null,classificationPredicate);
         } catch (IllegalArgumentException e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (FileNotFoundException e) {
+            throw e;
+        } catch (Exception e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+            throw e;
         }
 
         System.out.println("Size - " + iList.size());
