@@ -2,6 +2,8 @@ package utd.pallet.classification;
 
 import java.util.ArrayList;
 
+import org.apache.log4j.Logger;
+
 import utd.pallet.classification.MalletTextDataTrainer.TrainerObject;
 import utd.pallet.data.JenaModelFactory;
 import utd.pallet.data.MalletAccuracyVector;
@@ -11,9 +13,25 @@ import cc.mallet.classify.ClassifierTrainer;
 import cc.mallet.types.InstanceList;
 
 import com.hp.hpl.jena.rdf.model.Model;
+import com.hp.hpl.jena.rdf.model.ModelFactory;
+import com.hp.hpl.jena.rdf.model.NodeIterator;
+import com.hp.hpl.jena.rdf.model.Property;
+import com.hp.hpl.jena.rdf.model.RDFNode;
+import com.hp.hpl.jena.rdf.model.ResIterator;
+import com.hp.hpl.jena.rdf.model.Resource;
+import com.hp.hpl.jena.util.FileUtils;
 
 public class BlackBookSimulator {
-
+	 private static org.apache.log4j.Logger log = Logger
+     .getLogger(BlackBookSimulator.class);
+	 private static final Property BEST_LABEL = ModelFactory
+     .createDefaultModel()
+     .createProperty(
+             "http://marathonminds.com//MalletClassification//#hasBestLabel");
+	 private static final Property HAS_VALUE = ModelFactory
+     .createDefaultModel()
+     .createProperty(
+             "http://marathonminds.com//MalletClassification//#hasValue");
     public BlackBookSimulator() {
 
     }
@@ -89,31 +107,31 @@ public class BlackBookSimulator {
 
         int trainingAlgorithm = MalletTextDataTrainer.ALGO_UNASSIGNED;
 
-        if (algorithm == CommandLineParser.NAIVE_BAYES)
+        if (algorithm.equals(CommandLineParser.NAIVE_BAYES))
             trainingAlgorithm = MalletTextDataTrainer.NAIVE_BAYES;
 
-        else if (algorithm == CommandLineParser.MAX_ENT)
+        else if (algorithm.equals(CommandLineParser.MAX_ENT))
             trainingAlgorithm = MalletTextDataTrainer.MAX_ENT;
 
-        else if (algorithm == CommandLineParser.DECISION_TREES)
+        else if (algorithm.equals(CommandLineParser.DECISION_TREES))
             trainingAlgorithm = MalletTextDataTrainer.DECISION_TREES;
 
-        else if (algorithm == CommandLineParser.C_45)
+        else if (algorithm.equals(CommandLineParser.C_45))
             trainingAlgorithm = MalletTextDataTrainer.C_45;
 
-        else if (algorithm == CommandLineParser.BALANCED_WINNOW)
+        else if (algorithm.equals(CommandLineParser.BALANCED_WINNOW))
             trainingAlgorithm = MalletTextDataTrainer.BALANCED_WINNOW;
 
-        else if (algorithm == CommandLineParser.RANK_MAX_ENT)
+        else if (algorithm.equals(CommandLineParser.RANK_MAX_ENT))
             trainingAlgorithm = MalletTextDataTrainer.RANK_MAX_ENT;
 
-        else if (algorithm == CommandLineParser.NAIVE_BAYES_EM)
+        else if (algorithm.equals(CommandLineParser.NAIVE_BAYES_EM))
             trainingAlgorithm = MalletTextDataTrainer.NAIVE_BAYES_EM;
 
-        else if (algorithm == CommandLineParser.MAX_ENT_GE)
+        else if (algorithm.equals(CommandLineParser.MAX_ENT_GE))
             trainingAlgorithm = MalletTextDataTrainer.MAX_ENT_GE;
 
-        else if (algorithm == CommandLineParser.MC_MAX_ENT)
+        else if (algorithm.equals(CommandLineParser.MC_MAX_ENT))
             trainingAlgorithm = MalletTextDataTrainer.MC_MAX_ENT;
         else
             throw new Exception("Invalid Training Algorithm Specified");
@@ -122,24 +140,71 @@ public class BlackBookSimulator {
     }
 
     private static void ValidateClassification(MalletTextClassify classifier,
-            String validationDataSrc, ArrayList<Classification> clList)
+            String validationDataSrc, ArrayList<Classification> clList,String classificationProperty)
             throws Exception {
-
+    	Model model=null;
+    	int numberOfCorrectlyClassifiedInstances=0;
         try {
-            Model model = RDFUtils.createModelWithClassifications(classifier
+            model = RDFUtils.createModelWithClassifications(classifier
                     .getAccuracyVectors(), clList);
+            log.error("model of classifications is: "
+                    + JenaModelFactory.serializeModel(model,
+                            FileUtils.langNTriple));
         } catch (Exception e) {
             throw e;
         }
-
+try
+{
         Model answerModel = JenaModelFactory.rdf2Model(validationDataSrc);
-
-    }
+        ResIterator rts = answerModel.listSubjects();
+        Property ClassificationProperty=ModelFactory.createDefaultModel().createProperty(classificationProperty);
+       while(rts.hasNext())
+       {
+    	Resource res =rts.next();
+    	if (res.hasProperty(ClassificationProperty)) 
+    	{
+    		String originalLabel=res.getProperty(ClassificationProperty)
+            .getObject().toString();
+    		 NodeIterator stmt = model.listObjectsOfProperty(res,
+                     BEST_LABEL);
+    		 RDFNode bestLabel = stmt.next();
+    		 Resource resourceBestLabel = ModelFactory.createDefaultModel()
+             .createResource(bestLabel.toString());
+    		 if (model.contains(resourceBestLabel, HAS_VALUE, originalLabel))
+    		 {
+    			 log.error(res +" is correctly classified to " + originalLabel);
+    			 numberOfCorrectlyClassifiedInstances++;
+    		 }
+    		 else
+    		 {
+    			 log.error(res + " is incorrectly classified to " + bestLabel.toString());
+    		 }
+    		
+    	}
+    	
+       }
+       ResIterator rts1 = answerModel.listSubjects();
+   	int numberOfTotalInstances=0;
+   	while(rts1.hasNext())
+   	{
+   		Resource r=rts1.next();
+   		if(r.hasProperty(ClassificationProperty))
+   			numberOfTotalInstances++;
+   	}
+      log.error("Number of Correctly Classsified Instances are "+ numberOfCorrectlyClassifiedInstances);
+      log.error("Total number of Instances are "+ numberOfTotalInstances);
+       
+}catch(Exception e)
+{
+	e.printStackTrace();
+	throw e;
+}
+}
 
     // Classifier Stand Alone
     private static ArrayList<MalletAccuracyVector> processClassifyStandAloneCommand(
             String trainerObjectFilename, ArrayList<String> dataSrc,
-            String validationDataSrc) throws Exception {
+            String validationDataSrc,String classificationProperty) throws Exception {
 
         TrainerObject trainerObject = null;
         try {
@@ -158,7 +223,7 @@ public class BlackBookSimulator {
         ArrayList<Classification> cl = classifier.classify(trainerObject
                 .getClassifier(), dataList);
 
-        ValidateClassification(classifier, validationDataSrc, cl);
+        ValidateClassification(classifier, validationDataSrc, cl,classificationProperty);
 
         return classifier.getAccuracyVectors();
     }
@@ -166,18 +231,18 @@ public class BlackBookSimulator {
     private static ArrayList<MalletAccuracyVector> processClassifyWithTraining(
             ArrayList<String> trainDataSrcs, int trainingAlgorithm,
             String trainerDestFile, ArrayList<String> testDataSrc,
-            String validationDataSrc) throws Exception {
+            String validationDataSrc,String classificationProperty) throws Exception {
 
         processTrainCommand(trainDataSrcs, trainingAlgorithm, trainerDestFile);
 
         return processClassifyStandAloneCommand(trainerDestFile, testDataSrc,
-                validationDataSrc);
+                validationDataSrc,classificationProperty);
     }
 
     private static ArrayList<MalletAccuracyVector> processClassifyWithIncTraining(
             String trainerObjSrcFile, ArrayList<String> trainDataSrcs,
             String opFilename, ArrayList<String> testDataSrc,
-            String validationDataSrc) throws Exception {
+            String validationDataSrc,String classificationProperty) throws Exception {
 
         TrainerObject trainerObject = null;
         try {
@@ -193,7 +258,7 @@ public class BlackBookSimulator {
                 trainDataSrcs, opFilename, trainerObject);
 
         return processClassifyStandAloneCommand(opFilename, testDataSrc,
-                validationDataSrc);
+                validationDataSrc,classificationProperty);
 
     }
 
@@ -232,21 +297,21 @@ public class BlackBookSimulator {
 
             ClassifyStandAlone csa = (ClassifyStandAlone) optionList;
             processClassifyStandAloneCommand(csa.getTrainerObjectFileName(),
-                    csa.getDataSource(), csa.getValidationDataSrc());
+                    csa.getDataSource(), csa.getValidationDataSrc(),csa.getClassificationProperty());
             break;
         case CommandLineParser.BB_CLASSIFY_WITH_CURR_TRAINED_DATA:
 
             ClassifyWithCurrentTrainedData cwctd = (ClassifyWithCurrentTrainedData) optionList;
             processClassifyWithTraining(cwctd.getTestDataSrcs(), cwctd
                     .getTrainingAlgorithm(), cwctd.getTrainerDestFile(), cwctd
-                    .getTestDataSrcs(), cwctd.getValidationDataSrc());
+                    .getTestDataSrcs(), cwctd.getValidationDataSrc(),cwctd.getClassificationProperty());
             break;
         case CommandLineParser.BB_CLASSIFY_WITH_INC_TRAINED_DATA:
 
             ClassifyWithIncrementalTrainedData cwitd = (ClassifyWithIncrementalTrainedData) optionList;
             processClassifyWithIncTraining(cwitd.getTrainerSrcFile(), cwitd
                     .getTrainDataSrcs(), cwitd.getOutputFile(), cwitd
-                    .getTestDataSrcs(), cwitd.getValidationDataSrc());
+                    .getTestDataSrcs(), cwitd.getValidationDataSrc(),cwitd.getClassificationProperty());
             break;
         case CommandLineParser.BB_VALIDATE:
             break;
