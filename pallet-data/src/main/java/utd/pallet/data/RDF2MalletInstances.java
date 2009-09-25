@@ -92,7 +92,7 @@ public class RDF2MalletInstances {
             log.addAppender(appender);
             log.setLevel((Level) Level.DEBUG);
         } catch (Exception e) {
-
+           
         }
     }
 
