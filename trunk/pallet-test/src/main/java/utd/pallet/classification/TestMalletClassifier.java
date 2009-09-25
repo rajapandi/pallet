@@ -22,7 +22,7 @@ public class TestMalletClassifier {
      * @param args
      *            Command line arguments .
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
 
         /**
          * The data is provided with the labels(on the basis of which
@@ -63,7 +63,7 @@ public class TestMalletClassifier {
                     new TokenSequence2FeatureSequence(), new Target2Label(),
                     new FeatureSequence2FeatureVector(false), true);
         } catch (IOException e) {
-
+throw e;
         }
 
         /**
@@ -77,6 +77,7 @@ public class TestMalletClassifier {
                         trainingdata[i][1][0]));
 
             } catch (Exception e) {
+            	throw e;
             }
         }
 
