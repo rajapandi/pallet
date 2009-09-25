@@ -156,7 +156,7 @@ public class MalletTextDataTrainer implements Serializable {
         try {
             trainer = this.CreateTrainer(trainerAlgo);
         } catch (Exception e) {
-            e.printStackTrace();
+           
             throw new Exception("Failed to create Trainer");
         }
         Classifier cl = trainer.train(listToTrain);
@@ -167,7 +167,7 @@ public class MalletTextDataTrainer implements Serializable {
         try {
             trnObject.setTrainerObject(trainer, cl);
         } catch (Exception e) {
-            e.printStackTrace();
+            
             throw new Exception("Failed to create TrainerObject");
         }
 
@@ -220,7 +220,7 @@ public class MalletTextDataTrainer implements Serializable {
         try {
             trnObject.setTrainerObject(prevTrainer, cl);
         } catch (Exception e) {
-            e.printStackTrace();
+            
             throw new Exception("Failed to create TrainerObject");
         }
 
