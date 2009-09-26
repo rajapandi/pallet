@@ -1,4 +1,4 @@
-#summary This page describes the different command line arguments which can be used to executes the algorithm
+#summary This page describes the different command line arguments which can be used to executes the BlackBookSimulator
 
 = Introduction =
 The BlackBookSimulator need different types of command line arguments in order to execute it.
