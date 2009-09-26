@@ -59,7 +59,7 @@ CLASSIFY_INC <test data set> <trained data Set> <trainer source file> <output fi
  * User can use above stated option simultaneously. For e.g. if user want to use train and classify stand alone option simultaneously then 
 {{{
 TRAIN C:\Users\pralabh\workspace2\Mallet1\Montery2RDF.rdf NaiveBayes C:\Users\pralabh
-\workspace2\Mallet1\MonteryTrainer2 http://blackbook.com/terms#STAT_EVENT2@CLASSIFY_SD 
+\workspace2\Mallet1\MonteryTrainer2 http://blackbook.com/terms#STAT_EVENT@CLASSIFY_SD 
 C:\Users\pralabh\workspace2\Mallet\Montery2RDF.rdf C:\Users\pralabh\workspace2\Mallet1
 \MonteryTrainer2 C:\Users\pralabh\workspace2\Mallet1\Montery2RDF.rdf http://blackbook.com
 /terms#STAT_EVENT
