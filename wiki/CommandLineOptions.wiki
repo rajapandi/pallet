@@ -41,4 +41,23 @@ CLASSIFY_SD C:\Users\pralabh\workspace2\Mallet\Montery2RDF.rdf C:\Users\pralabh\
  * C:\Users\pralabh\workspace2\Mallet1\Montery2RDF.rdf : The Validation model which contains then classification of the unclassified data.(This is to compare the results of Mallet classification with actual classification)
  * http://blackbook.com/terms#STAT_EVENT: The classification Property on the basis of which classification occurred.
 
+===Classifying with Current Trained Data=== 
+CLASSIFY <Training data Set> <test data set> <Training algorithm> <Trainer Destination File> <Validation data src> <Classification Property> 
+
+ * Note: In the option ,training the classifier,storing it into the file ,classifying the test data and validating the final classified data all these things happening simultaneously.
+
+===Classifying with Incremental Trained Data=== 
+CLASSIFY_INC <test data set> <trained data Set> <trainer source file> <output file> <validating data source> <classification Property>
+
+ * Note: In this option the already trained classifier is incrementally trained ,stored in a new position, classifying the test data and validating it with validating data source.       
+
+=== Important Points===
+
+* If your test data set and trained data set contains multiple files or folders then you can use them by seperating them with ,.  for eg 
+  * If your test data set contains two files from different location then specified them as path_of_filename1,path_of_filename2(C:/user/abc.rdf,d:/user/cba.edf)
+
+* User can use above stated option simultenously. For eg if user want to train and classify stand alone 
+ 
+  
+
   
