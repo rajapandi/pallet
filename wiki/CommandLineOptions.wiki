@@ -53,11 +53,17 @@ CLASSIFY_INC <test data set> <trained data Set> <trainer source file> <output fi
 
 === Important Points===
 
-* If your test data set and trained data set contains multiple files or folders then you can use them by seperating them with ,.  for eg 
+ * If your test data set and trained data set contains multiple files or folders then you can use them by seperating them with ,.  for eg 
   * If your test data set contains two files from different location then specified them as path_of_filename1,path_of_filename2(C:/user/abc.rdf,d:/user/cba.edf)
 
-* User can use above stated option simultenously. For eg if user want to train and classify stand alone 
- 
+ * User can use above stated option simultaneously. For e.g. if user want to use train and classify stand alone option simultaneously then 
+{{{
+TRAIN C:\Users\pralabh\workspace2\Mallet1\Montery2RDF.rdf NaiveBayes C:\Users\pralabh
+\workspace2\Mallet1\MonteryTrainer2 http://blackbook.com/terms#STAT_EVENT2@CLASSIFY_SD 
+C:\Users\pralabh\workspace2\Mallet\Montery2RDF.rdf C:\Users\pralabh\workspace2\Mallet1
+\MonteryTrainer2 C:\Users\pralabh\workspace2\Mallet1\Montery2RDF.rdf http://blackbook.com
+/terms#STAT_EVENT
+}}} 
   
-
+* Note : The two options are seperated by @ symbol.
   
