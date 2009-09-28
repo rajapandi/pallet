@@ -8,17 +8,18 @@ import utd.pallet.classification.MalletTextDataTrainer.TrainerObject;
 class Train extends CommandLineParser {
 
     public ArrayList<String> dataSet = new ArrayList<String>();
-    public Integer trainingAlgorithm;
+    public int trainingAlgorithm;
     public String outputFileName;
     public String classificationProperty;
 
     public ArrayList<String> getDataSet() {
         return dataSet;
     }
-    public String getClassificationProperty()
-    {
-    	return classificationProperty;
+
+    public String getClassificationProperty() {
+        return classificationProperty;
     }
+
     public Integer getTrainingAlgorithm() {
         return trainingAlgorithm;
     }
@@ -33,10 +34,11 @@ class IncrementalTraining extends CommandLineParser {
     public ArrayList<String> dataSet = new ArrayList<String>();
     public String outputFileName;
     public String classificationProperty;
-    public String getClassificationProperty()
-    {
-    	return classificationProperty;
+
+    public String getClassificationProperty() {
+        return classificationProperty;
     }
+
     public TrainerObject getTrainingObject() {
         return trainingObject;
     }
@@ -68,9 +70,9 @@ class ClassifyStandAlone extends CommandLineParser {
     public String getValidationDataSrc() {
         return validationDataSrc;
     }
-    public String getClassificationProperty()
-    {
-    	return classificationProperty;
+
+    public String getClassificationProperty() {
+        return classificationProperty;
     }
 }
 
@@ -81,13 +83,15 @@ class ClassifyWithCurrentTrainedData extends CommandLineParser {
     public ArrayList<String> testDataSrcs = new ArrayList<String>();
     public String validationDataSrc;
     public String classificationProperty;
+
     public ArrayList<String> getTrainDataSrcs() {
         return trainDataSrcs;
     }
-    public String getClassificationProperty()
-    {
-    	return classificationProperty;
+
+    public String getClassificationProperty() {
+        return classificationProperty;
     }
+
     public String getValidationDataSrc() {
         return validationDataSrc;
     }
@@ -112,13 +116,15 @@ class ClassifyWithIncrementalTrainedData extends CommandLineParser {
     public String outputFile;
     public String validationDataSrc;
     public String classificationProperty;
+
     public String getValidationDataSrc() {
         return validationDataSrc;
     }
-    public String getClassificationProperty()
-    {
-    	return classificationProperty;
+
+    public String getClassificationProperty() {
+        return classificationProperty;
     }
+
     public ArrayList<String> getTestDataSrcs() {
         return testDataSrcs;
     }
@@ -242,7 +248,7 @@ public class CommandLineParser {
                     it.trainingObject = BlackbookSimUtils
                             .fetchTrainerObject(s1);
                 } catch (Exception e) {
-                    
+
                     throw e;
                 }
                 String s2 = completeCommand.nextToken();
@@ -327,7 +333,7 @@ public class CommandLineParser {
                 String s4 = completeCommand.nextToken();
                 cwitd.classificationProperty = s4;
                 commandParser.add(cwitd);
-                
+
                 continue;
             } else {
                 throw new IllegalArgumentException("Invalid Command");
