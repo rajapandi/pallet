@@ -18,7 +18,12 @@ import com.hp.hpl.jena.rdf.model.Resource;
 
 public class RDFUtils {
 
-    public static Model createModelWithClassifications (
+    public static String dummyURI = "http://localhost:8443/blackbook/malletModel";
+    public static final Property CLASSIFICATION_PROPERTY = ModelFactory
+            .createDefaultModel().createProperty(
+                    "http://blackbook.com/terms#STAT_EVENT");
+
+    public static Model createModelWithClassifications(
             ArrayList<MalletAccuracyVector> accVector,
 
             ArrayList<Classification> classificationList) throws Exception {
@@ -78,37 +83,29 @@ public class RDFUtils {
             }
             return rdfModel;
         } catch (Exception e) {
-           throw e;
+            throw e;
         }
 
-        
     }
 
-    private static final Property CLASSIFICATION_PROPERTY = ModelFactory
-            .createDefaultModel().createProperty(
-                    "http://blackbook.com/terms#STAT_EVENT");
-
     public static InstanceList convertRDFToInstanceList(String rdf,
-            Classifier prevClassifier,String classificationProperty) throws Exception {
-    	ByteArrayOutputStream bos = null;
-    	try{
-        
-       
+            Classifier prevClassifier, String classificationProperty)
+            throws Exception {
+        ByteArrayOutputStream bos = null;
+        try {
+
             bos = RDF2MalletInstances.convertRDFWithLabels(rdf,
                     classificationProperty, prevClassifier);
-       
-    	}
-            catch(Exception e)
-            {
-            	
-            	throw e;
-            }
+
+        } catch (Exception e) {
+
+            throw e;
+        }
         ByteArrayInputStream bis = new ByteArrayInputStream(bos.toByteArray());
         ObjectInputStream ois = new ObjectInputStream(bis);
-          
+
         InstanceList iList = (InstanceList) ois.readObject();
-        
-    	
+
         return iList;
     }
 }
