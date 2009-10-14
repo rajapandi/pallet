@@ -1,181 +1,168 @@
 package pallet.algorithm.blackbook;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.net.URL;
-
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import security.ejb.client.User;
 import utd.pallet.classification.MalletTextDataTrainer;
+import utd.pallet.classification.MalletUtils;
 import utd.pallet.classification.MalletTextDataTrainer.TrainerObject;
-import utd.pallet.data.RDF2MalletInstances;
-
+import utd.pallet.data.RDFUtils;
 import workflow.ejb.client.annotations.Execute;
 import blackbook.algorithm.api.Algorithm;
-
 import blackbook.algorithm.api.DataSourceRequest;
 import blackbook.algorithm.api.DataSourceResponse;
-
 import blackbook.algorithm.api.VoidParameter;
 import blackbook.exception.BlackbookSystemException;
 import blackbook.jena.factory.JenaModelFactory;
 import blackbook.metadata.manager.MetadataManagerFactory;
-
-import cc.mallet.classify.Classifier;
 import cc.mallet.types.InstanceList;
 
-import com.hp.hpl.jena.rdf.model.Literal;
 import com.hp.hpl.jena.rdf.model.Model;
-import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.Property;
-import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.Statement;
-import com.hp.hpl.jena.vocabulary.OWL;
-
 
 /**
  * This class trains a mallet model from rdf data.
  */
-public class PalletTrain
-		implements
-		Algorithm<DataSourceRequest<VoidParameter>, DataSourceResponse> {
-	/** logger */
-	private static Log logger = LogFactory.getLog(PalletTrain.class);
-	private static final Property CLASSIFICATION_PROPERTY = ModelFactory
-    .createDefaultModel().createProperty(
-            "http://blackbook.com/terms#STAT_EVENT");
-	private static InstanceList getMalletInstances(Model sourceModel)throws Exception
-	{   
-		String stringSourceModel=utd.pallet.data.JenaModelFactory.serializeModel(sourceModel, "RDF/XML");
-		ByteArrayOutputStream bos = RDF2MalletInstances.convertRDFWithLabels(
-                stringSourceModel, CLASSIFICATION_PROPERTY.getURI(), null);
-        ByteArrayInputStream bis = new ByteArrayInputStream(bos.toByteArray());
-        ObjectInputStream ois = new ObjectInputStream(bis);
+public class PalletTrain implements
+        Algorithm<DataSourceRequest<VoidParameter>, DataSourceResponse> {
 
-        InstanceList iList = (InstanceList) ois.readObject();
-        logger.error("number of instances retrieved from RDF: " + iList.size());
-        return iList;
-	}
-private static TrainerObject getClassifierModel(InstanceList iList)throws Exception
-{
-	 MalletTextDataTrainer bTrainer = new MalletTextDataTrainer();
+    // To be fetched from the request parameter
+    private static String dummyURI = RDFUtils.dummyURI;
+    private static Property dummyClassificationProperty = RDFUtils.CLASSIFICATION_PROPERTY;
+    private static String dummyModelLang = "RDF/XML";
+    private static int dummyAlgo = MalletTextDataTrainer.NAIVE_BAYES;
 
-     TrainerObject trnObj = null;
-     
-         trnObj = bTrainer.train(iList, MalletTextDataTrainer.NAIVE_BAYES);
-    return trnObj;
-}
-private static String convertClassifierToRDF(Classifier classifier)throws Exception
-{
-	 Model model = ModelFactory.createDefaultModel();
-     Resource res = model.createResource(new URL(
-             "http://localhost:8443/blackbook/malletModel_"
-                     + System.currentTimeMillis()).toString());
-     Property prop = OWL.hasValue;
+    /** logger */
+    private static Log logger = LogFactory.getLog(PalletTrain.class);
 
-     ByteArrayOutputStream bos1 = new ByteArrayOutputStream();
-     ObjectOutputStream oos = new ObjectOutputStream(bos1);
-     oos.writeObject(classifier);
+    private static TrainerObject trainModel(Model sourceModel,
+            Property classificationProperty, String modelLang,
+            int trainingAlgorithm) throws BlackbookSystemException {
 
-     Literal obj = model.createTypedLiteral(bos1.toByteArray());
+        TrainerObject trnObj = null;
 
-     Statement stmt = model.createLiteralStatement(res, prop, obj);
-     model.add(stmt);
+        if (sourceModel == null)
+            throw new BlackbookSystemException("Source Model cannot be null");
 
-     String ret = utd.pallet.data.JenaModelFactory.serializeModel(model, "RDF/XML");
-     return ret;
-}
+        if (classificationProperty == null)
+            throw new BlackbookSystemException(
+                    "Classification Property cannot be null");
 
+        if (trainingAlgorithm == MalletTextDataTrainer.ALGO_UNASSIGNED)
+            throw new BlackbookSystemException("Invaled Training Algorithm");
 
-	/**
-	 * @param user
-	 * @param request
-	 * @return DataSourceResponse
-	 * @throws BlackbookSystemException
-	 * @see blackbook.algorithm.api.Algorithm#execute(security.ejb.client.User,
-	 *      blackbook.algorithm.api.AlgorithmRequest)
-	 */
-	@Execute
-	public DataSourceResponse execute(User user,
-			DataSourceRequest<VoidParameter> request)
-			throws BlackbookSystemException {
-		
-		
-		if (user == null) {
-			throw new BlackbookSystemException("'user' cannot be null.");
-		}
+        // Convert data Model to string.
+        String rdfDataAsString = null;
+        try {
+            rdfDataAsString = utd.pallet.data.JenaModelFactory.serializeModel(
+                    sourceModel, modelLang);
+        } catch (Exception e) {
+            throw new BlackbookSystemException(e.getMessage());
+        }
 
-		if (request == null) {
-			throw new BlackbookSystemException("'parameters' cannot be null.");
-		}
+        // Convert the data in string format to instance list.
+        InstanceList iList = null;
+        try {
+            iList = RDFUtils.convertRDFToInstanceList(rdfDataAsString, null,
+                    classificationProperty.getURI());
+        } catch (Exception e) {
+            throw new BlackbookSystemException(e.getMessage());
+        }
 
-		request.validate();
+        MalletTextDataTrainer trainer = new MalletTextDataTrainer();
+        // Algorithm to be fetched from Request
+        try {
+            trnObj = trainer.train(iList, trainingAlgorithm);
+        } catch (NullPointerException e) {
+            throw new BlackbookSystemException(e.getMessage());
+        } catch (Exception e) {
+            throw new BlackbookSystemException(e.getMessage());
+        }
 
-		String destinationDataSource = MetadataManagerFactory
-				.getUpdatableInstance().createTemporaryDS(
-						request.getDestinationDataSource(), true);
+        return trnObj;
+    }
 
-		// open destination model.
-		Model destinationModel = null;
-		Model sourceModel = null;
+    /*
+     * @param user
+     * 
+     * @param request
+     * 
+     * @return DataSourceResponse
+     * 
+     * @throws BlackbookSystemException
+     * 
+     * @see blackbook.algorithm.api.Algorithm#execute(security.ejb. client.User,
+     * blackbook.algorithm.api.AlgorithmRequest)
+     */
+    @Execute
+    public DataSourceResponse execute(User user,
+            DataSourceRequest<VoidParameter> request)
+            throws BlackbookSystemException {
+        if (user == null) {
+            throw new BlackbookSystemException("'user' cannot be null.");
+        }
 
-		try {
-			destinationModel = JenaModelFactory.openModelByName(
-					destinationDataSource, user);
+        if (request == null) {
+            throw new BlackbookSystemException("'parameters' cannot be null.");
+        }
 
-			/*
-			 * get mallet instances from sourceModel
-			 */
-			
-			String sourceDS = request.getSourceDataSource();
-			sourceModel = JenaModelFactory.openModelByName(sourceDS, user);
-            InstanceList iList=getMalletInstances(sourceModel);
-			
-	        /*
-	         * create classifier model from mallet instances
-	         */
-            TrainerObject trnObj=getClassifierModel(iList);
-	       
-           /*
-            * write classifier to the destinationModel. 
-            */
-	       String classifierToPersistAsRDF=convertClassifierToRDF(trnObj.getClassifier());
-	       InputStream is = new ByteArrayInputStream(classifierToPersistAsRDF
-                   .getBytes("UTF-8"));
-	       destinationModel.read(is, "");
-	        logger.error("converted classifier to rdf:");
-			
-			
-			
-			sourceModel.close();
-			
+        request.validate();
 
-			// null out closed model so an additional close is not attempted
-			// via finally.
-			sourceModel = null;
+        String destinationDataSource = MetadataManagerFactory
+                .getUpdatableInstance().createTemporaryDS(
+                        request.getDestinationDataSource(), true);
 
-		} catch (BlackbookSystemException e) {
-			throw e;
-		} catch (Exception e) {
-			logger.error("Unable to execute algorithm.", e);
-			throw new BlackbookSystemException("Unable to execute algorithm.");
-		} finally {
-			if (destinationModel != null) {
-				destinationModel.close();
-			}
+        // open destination model.
+        Model destinationModel = null;
+        Model sourceModel = null;
 
-			if (sourceModel != null) {
-				sourceModel.close();
-			}
-			
-		}
+        try {
+            destinationModel = JenaModelFactory.openModelByName(
+                    destinationDataSource, user);
 
-		return new DataSourceResponse(destinationDataSource);
-	}
+            // get data to train on.
+            String sourceDS = request.getSourceDataSource();
+            // request.
+            sourceModel = JenaModelFactory.openModelByName(sourceDS, user);
+
+            // TODO get mallet instances from sourceModel
+            // dummy Property and dummy lang to be replaced by the one fetched
+            // from request.
+            TrainerObject trnObj = trainModel(sourceModel,
+                    dummyClassificationProperty, dummyModelLang, dummyAlgo);
+
+            // TODO write classifier to the destinationModel
+            Statement stmt = MalletUtils.convertTrainertoRDFStatement(
+                    destinationModel, trnObj, dummyClassificationProperty
+                            .getURI());
+            destinationModel.add(stmt);
+
+            sourceModel.close();
+            // null out closed model so an additional close is not attempted
+            // via finally.
+            sourceModel = null;
+
+            destinationModel.close();
+            destinationModel = null;
+
+        } catch (BlackbookSystemException e) {
+            throw e;
+        } catch (Exception e) {
+            logger.error("Unable to execute algorithm.", e);
+            throw new BlackbookSystemException("Unable to execute algorithm.");
+        } finally {
+            if (destinationModel != null) {
+                destinationModel.close();
+            }
+
+            if (sourceModel != null) {
+                sourceModel.close();
+            }
+
+        }
+
+        return new DataSourceResponse(destinationDataSource);
+    }
 }
