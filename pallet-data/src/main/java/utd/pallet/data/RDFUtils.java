@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
+import utd.pallet.data.MalletAccuracyVector;
+import utd.pallet.data.RDF2MalletInstances;
 import cc.mallet.classify.Classification;
 import cc.mallet.classify.Classifier;
 import cc.mallet.types.InstanceList;
@@ -16,18 +18,37 @@ import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.Resource;
 
+/**
+ * This class is used to display the final classifying Model.
+ * 
+ */
 public class RDFUtils {
 
+    /**
+     * dummyURI is used to provide the default URI to all the resources and
+     * properties of the final classified Model.
+     */
     public static String dummyURI = "http://localhost:8443/blackbook/malletModel";
+    /**
+     * The property on the basis of which classification is done.
+     */
     public static final Property CLASSIFICATION_PROPERTY = ModelFactory
             .createDefaultModel().createProperty(
                     "http://blackbook.com/terms#STAT_EVENT");
 
+    /**
+     * @param accVector
+     *            : It represents accuracy vector.
+     * @param classificationList
+     *            : It contains the classification Instances.
+     * @return : It returns the final classified Model.
+     * @throws Exception
+     */
     public static Model createModelWithClassifications(
             ArrayList<MalletAccuracyVector> accVector,
 
             ArrayList<Classification> classificationList) throws Exception {
-        @SuppressWarnings("unused")
+
         Model rdfModel = ModelFactory.createDefaultModel();
         try {
 
@@ -88,6 +109,16 @@ public class RDFUtils {
 
     }
 
+    /**
+     * @param rdf
+     *            :The model in the rdf format.
+     * @param prevClassifier
+     *            : The instances of already trained Classifier.
+     * @param classificationProperty
+     *            : The Classification Property.
+     * @return : It returns the InstanceList.
+     * @throws Exception
+     */
     public static InstanceList convertRDFToInstanceList(String rdf,
             Classifier prevClassifier, String classificationProperty)
             throws Exception {
