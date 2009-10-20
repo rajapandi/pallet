@@ -246,7 +246,7 @@ public class RDF2MalletInstances {
      *            Jena Model
      * @param classificationPredicate
      *            : The Predicate on the basis of which classification done.
-     * @param trainer
+     * @param prevClassifier
      *            : null for general training, previously trained instance of
      *            ClassifierTrainer on incremental training.
      * @return This method returns InstanceList
