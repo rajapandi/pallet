@@ -22,7 +22,8 @@ import cc.mallet.types.Instance;
 import cc.mallet.types.InstanceList;
 
 /**
- * @author pralabh
+ * It is class which also shows the some of the most important pipes of the
+ * MALLET.
  * 
  */
 public class BuildPipeDiffPipe {
@@ -123,7 +124,8 @@ public class BuildPipeDiffPipe {
 
     /**
      * @param iterator
-     *            It adds the instances to the Instance list.
+     *            : It is used to iterate through the InstanceList
+     * 
      */
     public void addThruPipe(Iterator<Instance> iterator) {
         this.instancelist.addThruPipe(iterator);
