@@ -18,7 +18,8 @@ import cc.mallet.types.Instance;
 import cc.mallet.types.InstanceList;
 
 /**
- * @author Sharath
+ * BuildPipe class is demonstrating the working of some of the most important
+ * pipes of the MALLET. It shows the data Import functionality of the MALLET
  * 
  */
 public class BuildPipe {
@@ -40,7 +41,8 @@ public class BuildPipe {
      * @param tokenseq
      *            An instance of CharSequence2TokenSequence Pipe
      * @param tokenseq2lowercase
-     *            Boolean value.
+     *            Boolean value.: It shows whether user needs
+     *            tokenseq2seqlowercase pipe or not.
      * @param removestopwards
      *            An instance of TokenSequenceRemoveStopwords Pipe
      * @param tokenseq2featureseq
@@ -105,13 +107,15 @@ public class BuildPipe {
 
     /**
      * @param iterator
+     *            : Iterator which is used to iterate through InstanceList
      */
     public void addThruPipe(Iterator<Instance> iterator) {
         this.instancelist.addThruPipe(iterator);
     }
 
     /**
-     * @return InstanceList
+     * @return InstanceList : Returns InstanceList which contains the MALLET
+     *         Instances
      */
     public InstanceList getInstanceList() {
         return this.instancelist;
