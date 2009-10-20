@@ -16,7 +16,7 @@ import cc.mallet.pipe.TokenSequenceRemoveStopwords;
 import cc.mallet.types.Instance;
 
 /**
- * @author Pralabh
+ * This class creates an instance of BuildPipeDiffPipe.
  * 
  */
 public class MalletDataImport {
@@ -70,6 +70,7 @@ public class MalletDataImport {
 
     /**
      * @param iterator
+     *            : Iterator is used to iterate through Mallet Instances.
      * @throws Exception
      */
     public void addThruPipe(Iterator<Instance> iterator)
