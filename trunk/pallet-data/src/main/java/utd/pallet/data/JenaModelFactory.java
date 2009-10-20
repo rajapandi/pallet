@@ -9,7 +9,10 @@ import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 
 /**
- * 
+ * This is a utility class which contains two important static methods
+ * 1)serializeModel(Model model, String format) : It returns the serialized form
+ * of Jena Model in String format 2)rdf2Model(String fileName) : It returns the
+ * Jena Model taking in input as the RDF/XML file.
  * 
  */
 public class JenaModelFactory {
@@ -19,7 +22,7 @@ public class JenaModelFactory {
      *            : It receives the Model which is to be converted into String
      * @param format
      *            : It receives the format of the jena Model
-     * @return : It returns the jena model in String form.
+     * @return : It returns the Jena model in String form.
      * @throws Exception
      *             : It throws an exception
      */
@@ -35,10 +38,12 @@ public class JenaModelFactory {
         } catch (Exception e) {
             throw e;
         }
-     
+
     }
+
     /**
-     * @param fileName Name of the input RDF file name
+     * @param fileName
+     *            Name of the input RDF file name
      * @return It returns Jena model
      * @throws Exception
      */
