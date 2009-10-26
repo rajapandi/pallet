@@ -14,9 +14,11 @@ import cc.mallet.classify.RankMaxEntTrainer;
  * Factory to create specified Mallet Trainer.
  * 
  */
-@SuppressWarnings("unused")
 public class MalletTrainerFactory {
 
+    /**
+     * 
+     */
     MalletTrainerFactory() {
     }
 
