@@ -1,35 +1,68 @@
 package utd.pallet.classification;
 
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import utd.pallet.classification.MalletTextDataTrainer.TrainerObject;
 import cc.mallet.classify.ClassifierTrainer;
 import cc.mallet.types.InstanceList;
 
+/**
+ * Class that simulates Incremental Training.
+ * 
+ */
 public class BlackbookIncTrainerSim {
 
+    /**
+     * Instance List that is used for training the classifier.
+     */
     InstanceList iList = null;
+    /**
+     * Wrapper for Classifier
+     */
     TrainerObject trnObj = null;
 
+    /**
+     * 
+     */
     public BlackbookIncTrainerSim() {
 
     }
 
-    public void fetchData(ArrayList<String> sourceName, TrainerObject trainerObj,String classificationPredicate)
-            throws Exception  {
+    /**
+     * @param sourceName
+     *            Source folder from which the training data is fetched for
+     *            training.
+     * @param trainerObj
+     *            Trainer Object on which the data is to be trained.
+     * @param classificationPredicate
+     *            classificationPredicate that needs to be searched in the
+     *            files.
+     * @throws Exception
+     */
+    public void fetchData(ArrayList<String> sourceName,
+            TrainerObject trainerObj, String classificationPredicate)
+            throws Exception {
 
         FetchDirData dataToMallet = new FetchDirData(sourceName);
 
         try {
-            iList = dataToMallet.ParseDirectoryList(trainerObj,classificationPredicate);
+            iList = dataToMallet.ParseDirectoryList(trainerObj,
+                    classificationPredicate);
         } catch (Exception e) {
             // TODO Auto-generated catch block
-            
+
             throw e;
         }
     }
 
+    /**
+     * @param prevTrainer
+     *            Trainer that needs to be incrementally trained.
+     * @return New instance of TrainerObject
+     * @throws NullPointerException
+     * @throws Exception
+     */
+    @SuppressWarnings("unchecked")
     public TrainerObject bbIncTrain(ClassifierTrainer prevTrainer)
             throws NullPointerException, Exception {
 
@@ -39,7 +72,7 @@ public class BlackbookIncTrainerSim {
             trnObj = dataTrainer.trainIncremental(prevTrainer, iList);
         } catch (NullPointerException ne) {
             // TODO Auto-generated catch block
-            
+
             throw ne;
         } catch (Exception e) {
             throw e;
@@ -48,9 +81,12 @@ public class BlackbookIncTrainerSim {
         return trnObj;
     }
 
+    /**
+     * @param filename
+     *            Filename to be used to persist the data.
+     * @throws Exception
+     */
     public void SaveClassifier(String filename) throws Exception {
-
-        int size;
 
         if (filename == null || this.trnObj == null)
             throw new NullPointerException(
