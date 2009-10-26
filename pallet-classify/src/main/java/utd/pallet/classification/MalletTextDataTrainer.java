@@ -15,15 +15,54 @@ import cc.mallet.types.InstanceList;
  */
 public class MalletTextDataTrainer implements Serializable {
 
-    public static final int ALGO_UNASSIGNED = 0x00;
+    /**
+     * Used when no training algorithm is specified.
+     */
+    private static final int ALGO_UNASSIGNED = 0x00;
+
+    /**
+     * Naive Bayes Algorithm as trainer algorithm.
+     */
     public static final int NAIVE_BAYES = 0x01;
+
+    /**
+     * Maximum Entropy Algorithm as trainer algorithm.
+     */
     public static final int MAX_ENT = 0x02;
+
+    /**
+     * Decision trees as algorithm.
+     */
     public static final int DECISION_TREES = 0x03;
+
+    /**
+     * Decision Trees with C4.5 as algorithm.
+     */
     public static final int C_45 = 0x04;
+
+    /**
+     * BalancedWinnowing as algorithm.
+     */
     public static final int BALANCED_WINNOW = 0x06;
+
+    /**
+     * Ranked Maximum Entropy as algorithm.
+     */
     public static final int RANK_MAX_ENT = 0x07;
+
+    /**
+     * 
+     */
     public static final int NAIVE_BAYES_EM = 0x08;
+
+    /**
+     * 
+     */
     public static final int MAX_ENT_GE = 0x09;
+
+    /**
+     * 
+     */
     public static final int MC_MAX_ENT = 0x0A;
 
     /**
@@ -37,11 +76,14 @@ public class MalletTextDataTrainer implements Serializable {
      * on the instance of previous trainer.
      * 
      * @param trainer
-     *            that used to train data earlier.
+     *            instance of ClassifierTrainer that is trained with data set
+     *            using a particular algorithm.
      * 
      * @return Training algorithm used.
      * @throws java.lang.NullPointerException
+     *             if trainer is null.
      * @throws java.lang.Exception
+     *             if training algorithm is unknown.
      */
     @SuppressWarnings("unchecked")
     private int getTrainerAlgo(ClassifierTrainer trainer)
@@ -84,7 +126,7 @@ public class MalletTextDataTrainer implements Serializable {
      * algorithm.
      * 
      * @param trainingAlgo
-     *            that needs to be used for creating trainer.
+     *            Algorithm that should be used to trainer.
      * 
      * @return Instance of ClassifierTrainer that should be used for Training.
      * @throws java.lang.Exception
@@ -142,6 +184,8 @@ public class MalletTextDataTrainer implements Serializable {
      * @return Instance of TrainerObject which contains the trainer that was
      *         trained and instance of classifier that was created by training
      *         of data.
+     * @throws NullPointerException
+     *             if InstanceList is null.
      * @throws Exception
      */
     @SuppressWarnings("unchecked")
