@@ -18,8 +18,20 @@ import com.hp.hpl.jena.rdf.model.StmtIterator;
 import com.hp.hpl.jena.vocabulary.OWL;
 
 // Not part of RDFUtils (of pallet-data) since TrainerObject is native to pallet-classify.
+/**
+ * Utility to convert RDF data to Trainer and Trainer to RDF data.
+ * 
+ */
 public class MalletUtils {
 
+    /**
+     * @param rdf
+     *            RDF data as string.
+     * @param modelLang
+     *            model language to be used in conversion.
+     * @return Trainer object that is extracted from RDF data.
+     * @throws Exception
+     */
     public static TrainerObject convertRDFToTrainerObj(String rdf,
             String modelLang) throws Exception {
 
@@ -40,6 +52,16 @@ public class MalletUtils {
 
     }
 
+    /**
+     * @param model
+     *            jena model to be used to create the Statement.
+     * @param trnObj
+     *            Object that needs to be converted to RDF statement.
+     * @param trnObjUri
+     *            Resource URI to be used.
+     * @return RDF statement created.
+     * @throws Exception
+     */
     public static Statement convertTrainertoRDFStatement(Model model,
             TrainerObject trnObj, String trnObjUri) throws Exception {
 
@@ -56,5 +78,4 @@ public class MalletUtils {
 
         return stmt;
     }
-
 }
