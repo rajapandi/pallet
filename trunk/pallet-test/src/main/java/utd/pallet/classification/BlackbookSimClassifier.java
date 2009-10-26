@@ -15,15 +15,40 @@ import cc.mallet.types.InstanceList;
 
 import com.hp.hpl.jena.rdf.model.Model;
 
+/**
+ * Classifier Simulator.
+ * 
+ */
 public class BlackbookSimClassifier {
 
+    /**
+     * 
+     */
     private Classifier classifier = null;
+    /**
+     * 
+     */
     private ArrayList<Classification> classificationList = null;
+    /**
+     * 
+     */
     private ArrayList<MalletAccuracyVector> accVectorList = null;
 
+    /**
+     * 
+     */
     BlackbookSimClassifier() {
     }
 
+    /**
+     * @param SourceName
+     *            Filename from which the classifier needs to be fetched.
+     * @throws FileNotFoundException
+     *             when specified file does not exists.
+     * @throws IOException
+     *             when specified file cannot be accessed.
+     * @throws Exception
+     */
     private void getClassifier(String SourceName) throws FileNotFoundException,
             IOException, Exception {
 
@@ -31,19 +56,29 @@ public class BlackbookSimClassifier {
             classifier = BlackbookSimUtils.getClassifier(SourceName);
         } catch (FileNotFoundException e) {
             // TODO Auto-generated catch block
-            
+
             throw e;
         } catch (IOException e) {
             // TODO Auto-generated catch block
-            
+
             throw e;
         } catch (Exception e) {
             // TODO Auto-generated catch block
-            
+
             throw e;
         }
     }
 
+    /**
+     * @param classifierSrc
+     *            filename from which the classifier is to be fetched.
+     * @param dataToBeClassified
+     *            Object of Instance List that needs to be classified.
+     * @throws FileNotFoundException
+     *             when specified file does not exists.
+     * @throws IOException
+     * @throws Exception
+     */
     public void classifyData(String classifierSrc,
             InstanceList dataToBeClassified) throws FileNotFoundException,
             IOException, Exception {
@@ -52,15 +87,15 @@ public class BlackbookSimClassifier {
             this.getClassifier(classifierSrc);
         } catch (FileNotFoundException e) {
             // TODO Auto-generated catch block
-            
+
             throw e;
         } catch (IOException e) {
             // TODO Auto-generated catch block
-            
+
             throw e;
         } catch (Exception e) {
             // TODO Auto-generated catch block
-            
+
             throw e;
         }
         MalletTextClassify pClassifier = new MalletTextClassify();
@@ -76,6 +111,11 @@ public class BlackbookSimClassifier {
 
     }
 
+    /**
+     * @return ArrayList of Classification object.
+     * @throws NullPointerException
+     *             when invoked before classifying the data.
+     */
     public ArrayList<Classification> getClassificationList()
             throws NullPointerException {
 
@@ -85,6 +125,12 @@ public class BlackbookSimClassifier {
         return this.classificationList;
     }
 
+    /**
+     * @return ArrayList of Accuracy Vector.
+     * @throws NullPointerException
+     *             when invoked before classiying data.
+     * @see MalletAccuracyVector
+     */
     public ArrayList<MalletAccuracyVector> getAccuracyVectorList()
             throws NullPointerException {
 
@@ -93,6 +139,12 @@ public class BlackbookSimClassifier {
         return accVectorList;
     }
 
+    /**
+     * @param classifiedDataId
+     *            File name to be used for persisting the classifier.
+     * @throws IOException
+     * @throws Exception
+     */
     public void persistClassifiedData(String classifiedDataId)
             throws IOException, Exception {
 
@@ -102,7 +154,7 @@ public class BlackbookSimClassifier {
                     .convertClassifierToRDF(classifier);
         } catch (Exception e) {
             // TODO Auto-generated catch block
-          
+
             throw e;
         }
 
@@ -112,7 +164,7 @@ public class BlackbookSimClassifier {
             writer = new FileWriter(file);
         } catch (IOException e1) {
             // TODO Auto-generated catch block
-           
+
             throw e1;
         }
         BufferedWriter buffWriter = new BufferedWriter(writer);
@@ -121,21 +173,28 @@ public class BlackbookSimClassifier {
             buffWriter.write(strClassifier);
         } catch (IOException e) {
             // TODO Auto-generated catch block
-            
+
             throw e;
         }
 
         // RDF2MalletInstances.
     }
 
+    /**
+     * @param validationDataSrc
+     *            Data source against which the classified data is to be
+     *            validated.
+     * @throws Exception
+     */
     public void validateData(String validationDataSrc) throws Exception {
 
+        @SuppressWarnings("unused")
         Model answerModel = null;
         try {
             answerModel = JenaModelFactory.rdf2Model(validationDataSrc);
         } catch (Exception e) {
             // TODO Auto-generated catch block
-          
+
             throw e;
         }
     }
