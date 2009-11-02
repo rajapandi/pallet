@@ -49,7 +49,6 @@ public class BlackbookIncTrainerSim {
             iList = dataToMallet.ParseDirectoryList(trainerObj,
                     classificationPredicate);
         } catch (Exception e) {
-            // TODO Auto-generated catch block
 
             throw e;
         }
@@ -62,6 +61,7 @@ public class BlackbookIncTrainerSim {
      * @throws NullPointerException
      * @throws Exception
      */
+
     @SuppressWarnings("unchecked")
     public TrainerObject bbIncTrain(ClassifierTrainer prevTrainer)
             throws NullPointerException, Exception {
@@ -71,8 +71,6 @@ public class BlackbookIncTrainerSim {
         try {
             trnObj = dataTrainer.trainIncremental(prevTrainer, iList);
         } catch (NullPointerException ne) {
-            // TODO Auto-generated catch block
-
             throw ne;
         } catch (Exception e) {
             throw e;
