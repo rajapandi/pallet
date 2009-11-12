@@ -19,10 +19,11 @@ import blackbook.algorithm.api.URISetResponse;
 import blackbook.algorithm.api.VoidParameter;
 import blackbook.exception.BlackbookDataException;
 import blackbook.exception.BlackbookSystemException;
-import blackbook.jena.factory.JenaModelFactory;
-import blackbook.jena.factory.JenaUtils;
+import blackbook.jena.util.JenaModelFactory;
+import blackbook.jena.util.JenaUtils;
+import blackbook.metadata.api.DataSourceMetadata;
+import blackbook.metadata.api.ModelType;
 import blackbook.metadata.manager.MetadataManagerFactory;
-import blackbook.metadata.object.DataSourceMetadata;
 
 import com.hp.hpl.jena.query.Query;
 import com.hp.hpl.jena.query.QueryExecution;
@@ -92,7 +93,7 @@ public class JenaKeyword implements
         // Prepare the destination data source and annotate the URIs...
         String destinationDataSource = JenaUtils.annotateSource(uris,
                 getClass().getSimpleName(), request.getDestinationDataSource(),
-                user);
+                ModelType.DEFAULT.name(),user);
 
         return new URISetResponse(uris, null, destinationDataSource);
     }

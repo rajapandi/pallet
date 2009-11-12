@@ -18,7 +18,7 @@ public class MalletTextDataTrainer implements Serializable {
     /**
      * Used when no training algorithm is specified.
      */
-    private static final int ALGO_UNASSIGNED = 0x00;
+    public static final int ALGO_UNASSIGNED = 0x00;
 
     /**
      * Naive Bayes Algorithm as trainer algorithm.

@@ -14,7 +14,7 @@ import blackbook.algorithm.api.DataSourceRequest;
 import blackbook.algorithm.api.DataSourceResponse;
 import blackbook.algorithm.api.VoidParameter;
 import blackbook.exception.BlackbookSystemException;
-import blackbook.jena.factory.JenaModelFactory;
+import blackbook.jena.util.JenaModelFactory;
 import blackbook.metadata.manager.MetadataManagerFactory;
 import cc.mallet.types.InstanceList;
 
@@ -111,8 +111,8 @@ public class PalletTrain implements
         request.validate();
 
         String destinationDataSource = MetadataManagerFactory
-                .getUpdatableInstance().createTemporaryDS(
-                        request.getDestinationDataSource(), true);
+                .getModelInstance().createTemporaryDS(
+                        request.getDestinationDataSource(), null);
 
         // open destination model.
         Model destinationModel = null;
