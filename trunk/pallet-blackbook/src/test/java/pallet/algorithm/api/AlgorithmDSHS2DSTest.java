@@ -7,7 +7,7 @@ import blackbook.algorithm.api.DataSourceHelperSourceRequest;
 import blackbook.algorithm.api.DataSourceResponse;
 import blackbook.algorithm.api.VoidParameter;
 import blackbook.exception.BlackbookSystemException;
-import blackbook.jena.factory.JenaModelFactory;
+import blackbook.jena.util.JenaModelFactory;
 import blackbook.metadata.manager.MetadataManagerFactory;
 
 import com.hp.hpl.jena.rdf.model.Model;
@@ -48,11 +48,11 @@ public abstract class AlgorithmDSHS2DSTest extends
     public void setUp() throws Exception {
         super.setUp();
 
-        modelName1 = MetadataManagerFactory.getUpdatableInstance()
-                .createTemporaryDS(null, false);
+        modelName1 = MetadataManagerFactory.getModelInstance()
+                .createTemporaryDS(null, null);
         model1 = JenaModelFactory.openModelByName(modelName1, testUser);
-        helperModelName = MetadataManagerFactory.getUpdatableInstance()
-                .createTemporaryDS(null, false);
+        helperModelName = MetadataManagerFactory.getModelInstance()
+                .createTemporaryDS(null, null);
         helperModel = JenaModelFactory.openModelByName(helperModelName,
                 testUser);
     }

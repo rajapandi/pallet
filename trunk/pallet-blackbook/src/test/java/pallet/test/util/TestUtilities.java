@@ -9,7 +9,6 @@ import java.util.Set;
 import org.junit.Ignore;
 
 import security.ejb.client.User;
-import blackbook.jena.assembler.ClassloaderModelAssembler;
 import blackbook.metadata.manager.MetadataManagerFactory;
 import blackbook.metadata.manager.MetadataManagerFromMemory;
 
@@ -249,7 +248,6 @@ public class TestUtilities {
      * MetadataManagerFromMemory.
      */
     public static void prepareForTesting() {
-        ClassloaderModelAssembler.clearCache();
         MetadataManagerFromMemory.clearCache();
         MetadataManagerFactory.setClass(MetadataManagerFromMemory.class);
     }

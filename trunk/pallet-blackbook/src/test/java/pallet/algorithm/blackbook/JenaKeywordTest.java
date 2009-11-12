@@ -13,7 +13,7 @@ import pallet.test.util.TestUtilities;
 import blackbook.algorithm.api.QueryRequest;
 import blackbook.algorithm.api.VoidParameter;
 import blackbook.exception.BlackbookSystemException;
-import blackbook.jena.factory.JenaModelFactory;
+import blackbook.jena.util.JenaModelFactory;
 
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.Resource;

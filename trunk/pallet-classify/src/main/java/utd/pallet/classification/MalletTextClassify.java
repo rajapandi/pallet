@@ -113,7 +113,7 @@ public class MalletTextClassify implements Serializable {
      *             if called before classifying the data.
      * @see MalletAccuracyVector
      */
-    ArrayList<MalletAccuracyVector> getAccuracyVectors()
+    public ArrayList<MalletAccuracyVector> getAccuracyVectors()
             throws NullPointerException {
 
         ArrayList<MalletAccuracyVector> accVectorList = new ArrayList<MalletAccuracyVector>();
@@ -125,9 +125,8 @@ public class MalletTextClassify implements Serializable {
             MalletAccuracyVector accuracyVector = new MalletAccuracyVector();
             try {
                 accuracyVector.setAccuracy(cl);
-            } catch (NullPointerException e) {
-
-                throw (e);
+            } catch (Exception e) {
+            	e.printStackTrace();
             }
 
             accVectorList.add(accuracyVector);
