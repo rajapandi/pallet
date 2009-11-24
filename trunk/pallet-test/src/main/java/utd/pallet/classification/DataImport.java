@@ -104,7 +104,7 @@ throw e;
                 mc.addThruPipe(new ArrayIterator(trainingdata[i][0],
                         trainingdata[i][1][0]));
             } catch (Exception e) {
-                System.out.println(e);
+            	e.printStackTrace();
             }
         }
 
