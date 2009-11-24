@@ -38,7 +38,7 @@ public abstract class AlgorithmTest<REQUEST extends AlgorithmRequest<?>, RESPONS
      */
     @Before
     public void setUp() throws Exception {
-        TestUtilities.prepareForTesting();
+//        TestUtilities.prepareForTesting();
         testUser = TestUtilities.getUser();
     }
 

@@ -425,7 +425,7 @@ public class CommandLineParser {
             k++;
             p1--;
         }
-        System.out.println(str);
+//        System.out.println(str);
         StringTokenizer commandLineArguments = new StringTokenizer(str, "@");
         ArrayList<CommandLineParser> commandParser = new ArrayList<CommandLineParser>();
 
@@ -433,7 +433,7 @@ public class CommandLineParser {
             StringTokenizer completeCommand = new StringTokenizer(
                     commandLineArguments.nextToken(), " ");
             int size = completeCommand.countTokens();
-            System.out.println(size);
+//            System.out.println(size);
 
             String cmd = completeCommand.nextToken();
             if (cmd.equals("TRAIN")) {
