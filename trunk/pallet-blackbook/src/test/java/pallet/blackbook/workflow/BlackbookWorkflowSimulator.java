@@ -140,7 +140,7 @@ public class BlackbookWorkflowSimulator {
 			throws Exception {
 
 		// get converted data
-		ByteArrayOutputStream bos = RDF2MalletInstances.convertRDFWithLabels(
+		ByteArrayOutputStream bos = RDF2MalletInstances.convertRDFWithLabelsSerializable(
 				rdf, CLASSIFICATION_PROPERTY.getURI(), null);
 		ByteArrayInputStream bis = new ByteArrayInputStream(bos.toByteArray());
 		ObjectInputStream ois = new ObjectInputStream(bis);
@@ -157,7 +157,7 @@ public class BlackbookWorkflowSimulator {
 		// RDF2MalletInstances conv = new RDF2MalletInstances();
 
 		// get converted data
-		ByteArrayOutputStream bos = RDF2MalletInstances.convertRDFWithLabels(
+		ByteArrayOutputStream bos = RDF2MalletInstances.convertRDFWithLabelsSerializable(
 				rdf, CLASSIFICATION_PROPERTY.getURI(), null);
 		ByteArrayInputStream bis = new ByteArrayInputStream(bos.toByteArray());
 		ObjectInputStream ois = new ObjectInputStream(bis);
@@ -204,16 +204,6 @@ public class BlackbookWorkflowSimulator {
 		log.error("converted classifier to rdf:");
 
 		return ret;
-	}
-
-	// TODO should have a return type of void, not HashMap.
-	private static HashMap<String, String> persistClassifierRDF(String dsName,
-			String classifierRDF) {
-		HashMap<String, String> map = new HashMap<String, String>(1);
-		map.put(dsName, classifierRDF);
-
-		log.error("persisted classifier rdf as:");
-		return map;
 	}
 
 	private static Classifier convertRDFToClassifier(String rdf)

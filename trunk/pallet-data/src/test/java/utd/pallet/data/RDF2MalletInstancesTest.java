@@ -148,7 +148,7 @@ public class RDF2MalletInstancesTest extends TestCase {
         boolean exceptionThrown = false;
         try {
 
-            RDF2MalletInstances.convertRDFWithLabels(null, null,null);
+            RDF2MalletInstances.convertRDFWithLabelsSerializable(null, null,null);
         } catch (Exception e) {
             exceptionThrown = true;
         }
@@ -163,7 +163,7 @@ public class RDF2MalletInstancesTest extends TestCase {
         boolean exceptionThrown = false;
         try {
 
-            RDF2MalletInstances.convertRDFWithLabels("",
+            RDF2MalletInstances.convertRDFWithLabelsSerializable("",
                     "http://www.w3.org/2001/vcard-rdf/3.0#CATEGORIES",null);
         } catch (Exception e) {
             exceptionThrown = true;
@@ -184,7 +184,7 @@ public class RDF2MalletInstancesTest extends TestCase {
             resource.addProperty(VCARD.FN, "John Smith");
             String modelSerialized = JenaModelFactory.serializeModel(model,
                     "RDF/XML");
-            RDF2MalletInstances.convertRDFWithLabels(modelSerialized, "HIJK",null);
+            RDF2MalletInstances.convertRDFWithLabelsSerializable(modelSerialized, "HIJK",null);
         } catch (Exception e) {
             exceptionThrown = true;
         }
@@ -216,7 +216,7 @@ public class RDF2MalletInstancesTest extends TestCase {
 
             String modelSerialized = JenaModelFactory.serializeModel(model,
                     "RDF/XML");
-            bout = RDF2MalletInstances.convertRDFWithLabels(modelSerialized,
+            bout = RDF2MalletInstances.convertRDFWithLabelsSerializable(modelSerialized,
                     "http://www.w3.org/2001/vcard-rdf/3.0#CATEGORIES",null);
             ByteArrayInputStream bin = new ByteArrayInputStream(bout
                     .toByteArray());

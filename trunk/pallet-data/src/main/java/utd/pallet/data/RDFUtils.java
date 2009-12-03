@@ -6,6 +6,9 @@ import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
+
+import org.apache.log4j.Logger;
 
 import utd.pallet.data.MalletAccuracyVector;
 import utd.pallet.data.RDF2MalletInstances;
@@ -16,7 +19,10 @@ import cc.mallet.types.InstanceList;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.Property;
+import com.hp.hpl.jena.rdf.model.ResIterator;
 import com.hp.hpl.jena.rdf.model.Resource;
+import com.hp.hpl.jena.rdf.model.Statement;
+import com.hp.hpl.jena.rdf.model.StmtIterator;
 
 /**
  * This class is used to display the final classifying Model.
@@ -35,6 +41,8 @@ public class RDFUtils {
     public static final Property CLASSIFICATION_PROPERTY = ModelFactory
             .createDefaultModel().createProperty(
                     "http://blackbook.com/terms#STAT_EVENT");
+    
+	private static org.apache.log4j.Logger logger = Logger.getLogger(RDFUtils.class);
 
     /**
      * @param accVector
@@ -125,7 +133,7 @@ public class RDFUtils {
         ByteArrayOutputStream bos = null;
         try {
 
-            bos = RDF2MalletInstances.convertRDFWithLabels(rdf,
+            bos = RDF2MalletInstances.convertRDFWithLabelsSerializable(rdf,
                     classificationProperty, prevClassifier);
 
         } catch (Exception e) {
@@ -139,4 +147,86 @@ public class RDFUtils {
 
         return iList;
     }
+    
+    
+    /**
+     * Returns a map containing all the URI resources mapped to a space separated
+     * string with literal values.
+     */
+    public static HashMap<String,String> getResource2ObjectsMap(Model model) {
+    	
+		HashMap<String, String> resData = new HashMap<String, String>();
+		String propertyData = " ";
+		ResIterator res = model.listSubjects();
+
+		while (res.hasNext()) {
+			Resource resourceOriginal = res.next();
+			Resource newResource = null;
+			try {
+				newResource = findSuperNode(resourceOriginal, model);
+			} catch (IllegalStateException e) {
+				continue;
+			}
+
+			logger.debug("DATA OF LOCAL RESOURCE " + resourceOriginal.toString()
+					+ "IS ATTACHED TO THE DATA OF ORIGINAL RESOURCE "
+					+ newResource.toString());
+
+			StmtIterator stmtItr = resourceOriginal.listProperties();
+			propertyData = " ";
+			while (stmtItr.hasNext()) {
+				Statement s = stmtItr.next();
+				if (s.getObject().isLiteral()) {
+
+					propertyData = propertyData + " "
+							+ s.getObject().toString() + " ";
+
+				}
+			}
+			/**
+			 * If Resource already there in the Map ,then get the previous data.
+			 * and add the new data.
+			 */
+			if (resData.containsKey(newResource.toString())) {
+				String slrt = resData.get(newResource.toString());
+				slrt = slrt + " " + propertyData;
+				resData.put(newResource.toString(), slrt);
+			}
+			/**
+			 * If Resource is not already in the Map then add in the Map with
+			 * current data.
+			 */
+			else {
+				resData.put(newResource.toString(), propertyData);
+			}
+		}
+		
+		return resData;
+    }
+    
+    
+	/**
+	 * @param r
+	 *            It takes the Resource which is not URI(or Blank node)
+	 * @param model
+	 *            Jena Model
+	 * @return It return the original Resource of the passed Blank node.
+	 */
+	public static Resource findSuperNode(Resource r, Model model) {
+
+		if (r.isURIResource() && !r.isAnon()) {
+			return r;
+		}
+
+		StmtIterator stmt = model.listStatements((Resource) null,
+				(Property) null, r);
+		if (stmt.hasNext()) {
+			Statement s = stmt.next();
+			return findSuperNode(s.getSubject(), model);
+		} else {
+			throw new IllegalStateException(
+					"Model contains no statements with the resource " + r
+							+ " as an object.");
+		}
+	}
 }

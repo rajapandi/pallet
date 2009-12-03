@@ -121,6 +121,12 @@
 			<artifactId>policy</artifactId>
 			<version>1.0</version>
 		</dependency>
+		<dependency>
+			<groupId>blackbook</groupId>
+			<artifactId>blackbook-ejb</artifactId>
+			<version>3.0.0</version>
+			<type>ejb</type>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
