@@ -8,6 +8,8 @@ import java.util.Set;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import pallet.blackbook.util.BlackbookUtil;
+
 import security.ejb.client.User;
 import utd.pallet.classification.MalletTextClassify;
 import utd.pallet.data.MalletAccuracyVector;
@@ -80,14 +82,15 @@ public class MalletClassify implements
 		// URIs
 		JenaModelCache modelCache = new JenaModelCache();
 		try {
-			// this model will have the decoration info
-			Model destinationModel = modelCache.getModelByName(
-					destinationDataSource, user);
+			Model sourceModel = modelCache.getModelByName(request.getSourceDataSource()
+					, user);
 
 			Set<String> aDsNames = request.getAssertionsDataSources();
-			Model sourceModel = null;
+			Model trainedModel = null;
 			if(aDsNames != null && aDsNames.size() > 0) {
-				sourceModel = blackbook.jena.util.JenaModelFactory.openModelByName(aDsNames.iterator().next(), user);
+				String aName = aDsNames.iterator().next();
+				logger.info("opening assertions model to retrieve mallet trained model: " + aName);
+				trainedModel = modelCache.getModelByName(aName, user);
 			} else {
 				throw new IllegalStateException("no assertions data source to retrieve trained model from.");
 			}
@@ -95,14 +98,21 @@ public class MalletClassify implements
 			// convert rdf back to mallet classifier
 			logger
 					.error("Converting trained model from rdf to mallet classifier");
-			Classifier classifier = convertRDFToClassifier(sourceModel);
+			Classifier classifier = convertRDFToClassifier(trainedModel);
 
-			logger.error("Classifying data.");
-			Model classifiedModel = bbClassify(destinationModel, classifier);
+			logger.error("Classifying data of size: " + sourceModel.size());
+			Model classifiedModel = bbClassify(sourceModel, classifier);
+			logger.info("classified model size is: " + classifiedModel.size());
 			
-			destinationModel.add(classifiedModel);
+			String dsName = "MalletClassifiedModel" + System.currentTimeMillis();
+			Model assertionsModel = BlackbookUtil.persist2BlackbookAssertions(classifiedModel, dsName, user);
 
-			JenaUtils.updateLastModifiedTime(destinationModel);
+			Model destinationModel = modelCache.getModelByName(destinationDataSource, user);
+			destinationModel.add(sourceModel);
+			destinationModel.add(assertionsModel);
+			
+			assertionsModel.close();
+			
 		} catch (Exception e) {
 			throw new BlackbookSystemException("Unable to execute algorithm :"
 					+ request.getSourceDataSource(), e);

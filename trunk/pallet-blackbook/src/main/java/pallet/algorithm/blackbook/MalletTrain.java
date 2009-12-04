@@ -3,14 +3,10 @@ package pallet.algorithm.blackbook;
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectOutputStream;
 import java.net.URL;
-import java.util.HashSet;
-import java.util.Set;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import pallet.test.util.TestUtilities;
-
+import pallet.blackbook.util.BlackbookUtil;
 import security.ejb.client.User;
 import utd.pallet.classification.MalletTextDataTrainer;
 import utd.pallet.classification.MalletTextDataTrainer.TrainerObject;
@@ -18,18 +14,10 @@ import utd.pallet.data.RDF2MalletInstances;
 import workflow.ejb.client.annotations.Execute;
 import blackbook.algorithm.api.Algorithm;
 import blackbook.algorithm.api.DataSourceRequest;
-import blackbook.algorithm.api.RDFFormat;
-import blackbook.algorithm.api.RDFRequest;
 import blackbook.algorithm.api.VoidParameter;
 import blackbook.algorithm.api.VoidResponse;
-import blackbook.ejb.client.algorithm.proxy.AlgorithmManagerProxyIfc;
-import blackbook.ejb.client.metadata.proxy.MetadataManagerProxyIfc;
 import blackbook.exception.BlackbookSystemException;
 import blackbook.jena.util.JenaModelCache;
-import blackbook.jena.util.JenaModelFactory;
-import blackbook.metadata.api.AlgorithmMetadata;
-import blackbook.metadata.api.DataSourceMetadata;
-import blackbook.metadata.manager.MetadataManagerFactory;
 import cc.mallet.classify.Classifier;
 import cc.mallet.types.InstanceList;
 
@@ -101,7 +89,10 @@ public class MalletTrain implements
 
 			// save classifier in blackbook temp data source
 			logger.info("Storing trained classifier.");
-			persistTrainedModel2Blackbook(trainedModel, user);
+			String dsName = "MalletTrainedModel" + System.currentTimeMillis();
+			Model assertionsModel = BlackbookUtil.persist2BlackbookAssertions(trainedModel, dsName, user);
+			assertionsModel.close();
+			trainedModel.close();
 
 		} catch (Exception e) {
 			throw new BlackbookSystemException("Unable to execute algorithm :"
@@ -164,38 +155,4 @@ public class MalletTrain implements
 
 		return model;
 	}
-
-	private static String persistTrainedModel2Blackbook(Model trainedModel,User user)
-			throws Exception {
-
-		String dsName = "malletTrainedModel" + System.currentTimeMillis();
-		MetadataManagerFactory.getInstance().createAssertionsDS(dsName);
-
-		DataSourceMetadata dsm = MetadataManagerFactory.getInstance()
-				.getDataSourceMetadataByName(dsName);
-
-		Set<String> namespace = new HashSet<String>();
-		namespace.add("urn:mallet:");
-		dsm.setNamespace(namespace);
-
-		AlgorithmMetadata alg = MetadataManagerFactory.getInstance()
-				.getAlgorithmMetadata("Jena Expand");
-		alg.setClassName("blackbook.algorithm.jena.JenaExpand");
-		alg.setName("Jena Expand");
-		dsm.setExpandAlgorithm(alg);
-		AlgorithmMetadata alg2 = MetadataManagerFactory.getInstance()
-				.getAlgorithmMetadata("Jena and Lucene Persist");
-		alg.setClassName("blackbook.algorithm.jena.JenaAndLucenePersist");
-		alg.setName("Jena and Lucene Persist");
-		dsm.setPersistAlgorithm(alg2);
-
-		MetadataManagerFactory.getInstance().modifyMetadataObject(dsm);
-
-		Model newModel = JenaModelFactory.openModelByName(dsName, user);
-		
-		newModel.add(trainedModel);
-
-		return dsName;
-	}
-
 }
