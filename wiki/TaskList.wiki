@@ -7,7 +7,8 @@ Any task listed here should take 1 hour to no more than 2 weeks work.  If a task
 (%) - means the task needs to be broken down into several sub-tasks
 == Not started (In order of priority) ==
 
- 
+ * Documentation of the entity extraction functionality of the Mallet
+ * Sample Application using entity extraction of Mallet 
  * Retrieve entire data source model, within Blackbook - Lance
  * Create Generalized Training Algorithm which takes an algorithm name and RDF data to train on - Sharath.
  * Wrap the generalized training algorithm as a Blackbook algorithm - Lance.
@@ -186,7 +187,8 @@ All commands can be concatenated as described above
 
 == Currently being worked on ==
      
-    
+  * Understanding the entity extraction functionality of the Mallet.
+  * Understanding the HMM and CRF algorithms on which Mallet's entity extraction is based.  
   * Maximum Entropy 
     * Code Review - Currently have paused this work and have moved onto Decision Tree
     * Documentation and Tutorials
