@@ -90,13 +90,14 @@ public class MalletTrain implements
 			// save classifier in blackbook temp data source
 			logger.info("Storing trained classifier.");
 			String dsName = "MalletTrainedModel" + System.currentTimeMillis();
-			Model assertionsModel = BlackbookUtil.persist2BlackbookAssertions(trainedModel, dsName, user);
+			Model assertionsModel = BlackbookUtil.persist2BlackbookAssertions(trainedModel, dsName, "urn:mallet:", user);
 			assertionsModel.close();
 			trainedModel.close();
 
 		} catch (Exception e) {
+			e.printStackTrace();
 			throw new BlackbookSystemException("Unable to execute algorithm :"
-					+ request.getSourceDataSource(), e);
+					+ this.getClass().getName(), e);
 		} finally {
 			modelCache.closeAll();
 		}

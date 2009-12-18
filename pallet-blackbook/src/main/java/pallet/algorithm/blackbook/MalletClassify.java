@@ -105,7 +105,7 @@ public class MalletClassify implements
 			logger.info("classified model size is: " + classifiedModel.size());
 			
 			String dsName = "MalletClassifiedModel" + System.currentTimeMillis();
-			Model assertionsModel = BlackbookUtil.persist2BlackbookAssertions(classifiedModel, dsName, user);
+			Model assertionsModel = BlackbookUtil.persist2BlackbookAssertions(classifiedModel, dsName, RDFUtils.MALLET_NAMESPACE, user);
 
 			Model destinationModel = modelCache.getModelByName(destinationDataSource, user);
 			destinationModel.add(sourceModel);

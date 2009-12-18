@@ -37,13 +37,13 @@
 			<version>0.7</version>
 		</dependency>
 		<dependency>
-			<groupId>blackbook-security</groupId>
+			<groupId>blackbook</groupId>
 			<artifactId>usermgmt-ejb</artifactId>
 			<version>3.0.0</version>
 			<type>ejb</type>
 		</dependency>
 		<dependency>
-			<groupId>blackbook-workflow</groupId>
+			<groupId>blackbook</groupId>
 			<artifactId>workflow-ejb</artifactId>
 			<version>3.0.0</version>
 			<type>ejb</type>
@@ -60,7 +60,7 @@
 			<version>4.5</version>
 		</dependency>
 		<dependency>
-			<groupId>blackbook-security</groupId>
+			<groupId>blackbook</groupId>
 			<artifactId>authorization-plugins</artifactId>
 			<version>3.0.0</version>
 		</dependency>
