@@ -23,6 +23,7 @@ import com.hp.hpl.jena.rdf.model.ResIterator;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
+import com.hp.hpl.jena.vocabulary.RDFS;
 
 /**
  * This class is used to display the final classifying Model.
@@ -30,131 +31,124 @@ import com.hp.hpl.jena.rdf.model.StmtIterator;
  */
 public class RDFUtils {
 
-    /**
-     * dummyURI is used to provide the default URI to all the resources and
-     * properties of the final classified Model.
-     */
-    public static String dummyURI = "http://localhost:8443/blackbook/malletModel";
-    /**
-     * The property on the basis of which classification is done.
-     */
-    public static final Property CLASSIFICATION_PROPERTY = ModelFactory
-            .createDefaultModel().createProperty(
-                    "http://blackbook.com/terms#STAT_EVENT");
-    
-	private static org.apache.log4j.Logger logger = Logger.getLogger(RDFUtils.class);
+	/**
+	 * dummyURI is used to provide the default URI to all the resources and
+	 * properties of the final classified Model.
+	 */
+	public static String dummyURI = "http://localhost:8443/blackbook/malletModel";
+	/**
+	 * The property on the basis of which classification is done.
+	 */
+	public static final Property CLASSIFICATION_PROPERTY = ModelFactory
+			.createDefaultModel().createProperty(
+					"http://blackbook.com/terms#STAT_EVENT");
 
-    /**
-     * @param accVector
-     *            : It represents accuracy vector.
-     * @param classificationList
-     *            : It contains the classification Instances.
-     * @return : It returns the final classified Model.
-     * @throws Exception
-     */
-    public static Model createModelWithClassifications(
-            ArrayList<MalletAccuracyVector> accVector,
+	public static final String MALLET_NAMESPACE = "http://marathonminds.com/MalletClassification/";
 
-            ArrayList<Classification> classificationList) throws Exception {
+	private static org.apache.log4j.Logger logger = Logger
+			.getLogger(RDFUtils.class);
 
-        Model rdfModel = ModelFactory.createDefaultModel();
-        try {
+	/**
+	 * @param accVector
+	 *            : It represents accuracy vector.
+	 * @param classificationList
+	 *            : It contains the classification Instances.
+	 * @return : It returns the final classified Model.
+	 * @throws Exception
+	 */
+	public static Model createModelWithClassifications(
+			ArrayList<MalletAccuracyVector> accVector,
+			ArrayList<Classification> classificationList) throws Exception {
 
-            String uriAddress = "http://marathonminds.com//MalletClassification//";
+		Model rdfModel = ModelFactory.createDefaultModel();
+		try {
 
-            int i = 0;
-            for (MalletAccuracyVector av : accVector) {
-                String name = (String) av.getName();
-                HashMap<String, Double> labelVector = av.getAccuracyVector();
-                Iterator<String> iterator = labelVector.keySet().iterator();
-                String bestLabel = av.getBestLabel();
-                double accuracy = av.getAccuracy();
-                String sAccuracy = "" + accuracy;
+			int i = 0;
+			for (MalletAccuracyVector av : accVector) {
 
-                Resource originalResource = rdfModel.createResource(name);
+				// original resource that was classified.
+				String name = (String) av.getName();
+				Resource origRes = rdfModel.createResource(name);
 
-                // Best label to which the test data was classified
-                Resource bestLabelResource = rdfModel.createResource(uriAddress
-                        + bestLabel + i);
-                Property bestLabelProperty = rdfModel.createProperty(uriAddress
-                        + "#hasBestLabel");
-                originalResource.addProperty(bestLabelProperty,
-                        bestLabelResource);
+				// Best label to which the test data was classified
+				String bestLabel = av.getBestLabel();
+				String bestAccuracy = av.getAccuracy() + "";
+				Resource malletClassEvent = rdfModel
+						.createResource(MALLET_NAMESPACE
+								+ "malletClassifcation" + System.nanoTime() + "" + i);
+				Property bestLabelProperty = rdfModel
+						.createProperty(MALLET_NAMESPACE
+								+ "#hasBestClassification");
+				rdfModel.add(addMalletClassification(origRes, malletClassEvent,
+						bestLabelProperty, bestLabel, bestAccuracy));
 
-                // Accuracy for best
-                Resource bestAccResource = rdfModel.createResource(uriAddress
-                        + sAccuracy + i);
-                Property bestAccuracy = rdfModel.createProperty(uriAddress
-                        + "#hasAccuracy");
-                originalResource.addProperty(bestAccuracy, bestAccResource);
+				// add information/scores of other classifications for
+				// comparison
+				HashMap<String, Double> labelVector = av.getAccuracyVector();
+				Iterator<String> iterator = labelVector.keySet().iterator();
+				while (iterator.hasNext()) {
+					String label = iterator.next();
 
-                while (iterator.hasNext()) {
-                    String Label = iterator.next();
-                    Double confidencValue = labelVector.get(Label);
-                    Property malletConfidenceValue = rdfModel
-                            .createProperty(uriAddress
-                                    + "#MalletConfidenceValue");
-                    Resource labelResource = rdfModel.createResource(uriAddress
-                            + Label + i);
-                    Property associatedWith = rdfModel
-                            .createProperty(uriAddress + "#associatedWith");
-                    Property hasValue = rdfModel.createProperty(uriAddress
-                            + "#hasValue");
-                    labelResource.addProperty(malletConfidenceValue,
-                            confidencValue.toString());
+					String confidenceValue = labelVector.get(label).toString();
+					Resource classRes = rdfModel
+							.createResource(MALLET_NAMESPACE
+									+ "malletClassifcation" + System.nanoTime() + "" + i);
+					Property hasClassProp = rdfModel
+							.createProperty(MALLET_NAMESPACE
+									+ "#hasOtherClassification");
 
-                    labelResource.addProperty(associatedWith, originalResource);
-                    labelResource.addProperty(hasValue, Label);
-                }
+					rdfModel.add(addMalletClassification(malletClassEvent,
+							classRes, hasClassProp, label, confidenceValue));
 
-                i++;
+				}
 
-            }
-            return rdfModel;
-        } catch (Exception e) {
-            throw e;
-        }
+				i++;
 
-    }
+			}
+			return rdfModel;
+		} catch (Exception e) {
+			throw e;
+		}
 
-    /**
-     * @param rdf
-     *            :The model in the rdf format.
-     * @param prevClassifier
-     *            : The instances of already trained Classifier.
-     * @param classificationProperty
-     *            : The Classification Property.
-     * @return : It returns the InstanceList.
-     * @throws Exception
-     */
-    public static InstanceList convertRDFToInstanceList(String rdf,
-            Classifier prevClassifier, String classificationProperty)
-            throws Exception {
-        ByteArrayOutputStream bos = null;
-        try {
+	}
 
-            bos = RDF2MalletInstances.convertRDFWithLabelsSerializable(rdf,
-                    classificationProperty, prevClassifier);
+	/**
+	 * @param rdf
+	 *            :The model in the rdf format.
+	 * @param prevClassifier
+	 *            : The instances of already trained Classifier.
+	 * @param classificationProperty
+	 *            : The Classification Property.
+	 * @return : It returns the InstanceList.
+	 * @throws Exception
+	 */
+	public static InstanceList convertRDFToInstanceList(String rdf,
+			Classifier prevClassifier, String classificationProperty)
+			throws Exception {
+		ByteArrayOutputStream bos = null;
+		try {
 
-        } catch (Exception e) {
+			bos = RDF2MalletInstances.convertRDFWithLabelsSerializable(rdf,
+					classificationProperty, prevClassifier);
 
-            throw e;
-        }
-        ByteArrayInputStream bis = new ByteArrayInputStream(bos.toByteArray());
-        ObjectInputStream ois = new ObjectInputStream(bis);
+		} catch (Exception e) {
 
-        InstanceList iList = (InstanceList) ois.readObject();
+			throw e;
+		}
+		ByteArrayInputStream bis = new ByteArrayInputStream(bos.toByteArray());
+		ObjectInputStream ois = new ObjectInputStream(bis);
 
-        return iList;
-    }
-    
-    
-    /**
-     * Returns a map containing all the URI resources mapped to a space separated
-     * string with literal values.
-     */
-    public static HashMap<String,String> getResource2ObjectsMap(Model model) {
-    	
+		InstanceList iList = (InstanceList) ois.readObject();
+
+		return iList;
+	}
+
+	/**
+	 * Returns a map containing all the URI resources mapped to a space
+	 * separated string with literal values.
+	 */
+	public static HashMap<String, String> getResource2ObjectsMap(Model model) {
+
 		HashMap<String, String> resData = new HashMap<String, String>();
 		String propertyData = " ";
 		ResIterator res = model.listSubjects();
@@ -168,7 +162,8 @@ public class RDFUtils {
 				continue;
 			}
 
-			logger.debug("DATA OF LOCAL RESOURCE " + resourceOriginal.toString()
+			logger.debug("DATA OF LOCAL RESOURCE "
+					+ resourceOriginal.toString()
 					+ "IS ATTACHED TO THE DATA OF ORIGINAL RESOURCE "
 					+ newResource.toString());
 
@@ -200,11 +195,10 @@ public class RDFUtils {
 				resData.put(newResource.toString(), propertyData);
 			}
 		}
-		
+
 		return resData;
-    }
-    
-    
+	}
+
 	/**
 	 * @param r
 	 *            It takes the Resource which is not URI(or Blank node)
@@ -228,5 +222,30 @@ public class RDFUtils {
 					"Model contains no statements with the resource " + r
 							+ " as an object.");
 		}
+	}
+
+	private static Model addMalletClassification(Resource origRes,
+			Resource malletRes, Property malletProperty, String classification,
+			String accuracy) {
+		Model model = ModelFactory.createDefaultModel();
+
+		// add classification
+		model.add(malletRes, malletProperty, classification);
+		// and make this the label of this resource
+		model.add(malletRes, RDFS.label, "Mallet Classified: " + classification);
+
+		// add accuracy for classification
+		Property accuracyProp = model.createProperty(MALLET_NAMESPACE
+				+ "#hasAccuracy");
+		model.add(malletRes, accuracyProp, accuracy);
+		//and make this the description of this resource
+		model.add(malletRes, RDFS.comment, accuracy);
+
+		// associate to original resource
+		Property malletClassProp = model.createProperty(MALLET_NAMESPACE
+				+ "#malletClassified");
+		model.add(origRes, malletClassProp, malletRes);
+
+		return model;
 	}
 }

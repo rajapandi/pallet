@@ -60,11 +60,6 @@ public class BlackbookWorkflowSimulator {
 	/** the RDF retrieval algorithm */
 	private static final String JENA_RETRIEVE = "Jena Retrieve";
 
-	/**
-	 * charset encoding for getbytes
-	 */
-	private static final String CHARSET = "UTF8";
-
 	private static final Property BEST_LABEL = ModelFactory
 			.createDefaultModel()
 			.createProperty(
