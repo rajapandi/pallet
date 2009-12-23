@@ -11,10 +11,11 @@ import security.ejb.client.User;
 import utd.pallet.classification.MalletTextDataTrainer;
 import utd.pallet.classification.MalletTextDataTrainer.TrainerObject;
 import utd.pallet.data.RDF2MalletInstances;
+import utd.pallet.data.RDFUtils;
 import workflow.ejb.client.annotations.Execute;
 import blackbook.algorithm.api.Algorithm;
 import blackbook.algorithm.api.DataSourceRequest;
-import blackbook.algorithm.api.VoidParameter;
+import blackbook.algorithm.api.TestParameter;
 import blackbook.algorithm.api.VoidResponse;
 import blackbook.exception.BlackbookSystemException;
 import blackbook.jena.util.JenaModelCache;
@@ -35,14 +36,10 @@ import com.hp.hpl.jena.vocabulary.OWL;
  * supplied model.
  */
 public class MalletTrain implements
-		Algorithm<DataSourceRequest<VoidParameter>, VoidResponse> {
+		Algorithm<DataSourceRequest<TestParameter>, VoidResponse> {
 
 	/** logger */
 	private static Log logger = LogFactory.getLog(MalletTrain.class);
-
-	private static final Property CLASSIFICATION_PROPERTY = ModelFactory
-			.createDefaultModel().createProperty(
-					"http://blackbook.com/terms#STAT_EVENT");
 
 	/**
 	 * @param user
@@ -54,7 +51,7 @@ public class MalletTrain implements
 	 */
 	@Execute
 	public VoidResponse execute(User user,
-			DataSourceRequest<VoidParameter> request)
+			DataSourceRequest<TestParameter> request)
 			throws BlackbookSystemException {
 		if (user == null) {
 			throw new BlackbookSystemException("'user' cannot be null.");
@@ -76,7 +73,8 @@ public class MalletTrain implements
 
 			// get converted data
 			logger.info("Creating mallet instance list from data.");
-			InstanceList trainingList = convertRDFToInstanceList(sourceModel);
+			Property classProp = sourceModel.createProperty(request.getParameters().getParameter());
+			InstanceList trainingList = convertRDFToInstanceList(sourceModel, classProp);
 
 			// train mallet model
 			logger.info("Getting trained model using instance list.");
@@ -105,17 +103,17 @@ public class MalletTrain implements
 		return VoidResponse.getInstance();
 	}
 
-	private static InstanceList convertRDFToInstanceList(Model rdf)
+	private static InstanceList convertRDFToInstanceList(Model rdf, Property classProp)
 			throws Exception {
 		// get converter
 		// RDF2MalletInstances conv = new RDF2MalletInstances();
 
 		// get converted data
-		logger.info("	converting rdf with labels " + CLASSIFICATION_PROPERTY
+		logger.info("	converting rdf with labels " + classProp
 				+ " to instance list.");
 		InstanceList iList = RDF2MalletInstances
 				.trainingDataIntoMalletInstanceList(rdf,
-						CLASSIFICATION_PROPERTY, null);
+						classProp, null);
 		logger.info("	number of instances retrieved from RDF: " + iList.size());
 
 		return iList;
@@ -135,12 +133,10 @@ public class MalletTrain implements
 		return trnObj;
 	}
 
-	private static Model convertClassifierToRDF(Classifier classifier)
+	public static Model convertClassifierToRDF(Classifier classifier)
 			throws Exception {
 		Model model = ModelFactory.createDefaultModel();
-		Resource res = model.createResource(new URL(
-				"http://localhost:8443/blackbook/malletModel_"
-						+ System.currentTimeMillis()).toString());
+		Resource res = RDFUtils.createMalletTrainedModelResource(model, 0);
 		Property prop = OWL.hasValue;
 
 		ByteArrayOutputStream bos = new ByteArrayOutputStream();

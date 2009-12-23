@@ -28,9 +28,6 @@ import com.hp.hpl.jena.rdf.model.Statement;
 public class PalletTrain implements
         Algorithm<DataSourceRequest<VoidParameter>, DataSourceResponse> {
 
-    // To be fetched from the request parameter
-    private static String dummyURI = RDFUtils.dummyURI;
-    private static Property dummyClassificationProperty = RDFUtils.CLASSIFICATION_PROPERTY;
     private static String dummyModelLang = "RDF/XML";
     private static int dummyAlgo = MalletTextDataTrainer.NAIVE_BAYES;
 
@@ -131,11 +128,11 @@ public class PalletTrain implements
             // dummy Property and dummy lang to be replaced by the one fetched
             // from request.
             TrainerObject trnObj = trainModel(sourceModel,
-                    dummyClassificationProperty, dummyModelLang, dummyAlgo);
+                    RDFUtils.getMalletClassificationProperty(sourceModel), dummyModelLang, dummyAlgo);
 
             // TODO write classifier to the destinationModel
             Statement stmt = MalletUtils.convertTrainertoRDFStatement(
-                    destinationModel, trnObj, dummyClassificationProperty
+                    destinationModel, trnObj, RDFUtils.getMalletClassificationProperty(sourceModel)
                             .getURI());
             destinationModel.add(stmt);
 
