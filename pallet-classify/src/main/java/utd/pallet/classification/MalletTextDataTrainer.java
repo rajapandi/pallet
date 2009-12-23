@@ -290,7 +290,7 @@ public class MalletTextDataTrainer implements Serializable {
          *            Instance of classifier that was created due to training.
          * @throws java.lang.Exception
          */
-        void setTrainerObject(ClassifierTrainer trainerCreated, Classifier cl)
+        public void setTrainerObject(ClassifierTrainer trainerCreated, Classifier cl)
                 throws java.lang.Exception {
 
             if (trainerCreated == null || cl == null)

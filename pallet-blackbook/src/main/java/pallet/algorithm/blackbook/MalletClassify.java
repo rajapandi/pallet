@@ -19,18 +19,15 @@ import workflow.ejb.client.annotations.Execute;
 import blackbook.algorithm.api.Algorithm;
 import blackbook.algorithm.api.DataSourceRequest;
 import blackbook.algorithm.api.DataSourceResponse;
-import blackbook.algorithm.api.VoidParameter;
+import blackbook.algorithm.api.TestParameter;
 import blackbook.exception.BlackbookSystemException;
 import blackbook.jena.util.JenaModelCache;
-import blackbook.jena.util.JenaUtils;
 import blackbook.metadata.manager.MetadataManagerFactory;
 import cc.mallet.classify.Classification;
 import cc.mallet.classify.Classifier;
 import cc.mallet.types.InstanceList;
 
 import com.hp.hpl.jena.rdf.model.Model;
-import com.hp.hpl.jena.rdf.model.ModelFactory;
-import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.RDFNode;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.Statement;
@@ -43,14 +40,10 @@ import com.hp.hpl.jena.vocabulary.OWL;
  * supplied model.
  */
 public class MalletClassify implements
-		Algorithm<DataSourceRequest<VoidParameter>, DataSourceResponse> {
+		Algorithm<DataSourceRequest<TestParameter>, DataSourceResponse> {
 
 	/** logger */
 	private static Log logger = LogFactory.getLog(MalletClassify.class);
-
-	private static final Property CLASSIFICATION_PROPERTY = ModelFactory
-			.createDefaultModel().createProperty(
-					"http://blackbook.com/terms#STAT_EVENT");
 
 	/**
 	 * @param user
@@ -62,7 +55,7 @@ public class MalletClassify implements
 	 */
 	@Execute
 	public DataSourceResponse execute(User user,
-			DataSourceRequest<VoidParameter> request)
+			DataSourceRequest<TestParameter> request)
 			throws BlackbookSystemException {
 		if (user == null) {
 			throw new BlackbookSystemException("'user' cannot be null.");
@@ -123,7 +116,7 @@ public class MalletClassify implements
 		return new DataSourceResponse(destinationDataSource);
 	}
 
-	private static Classifier convertRDFToClassifier(Model model)
+	public static Classifier convertRDFToClassifier(Model model)
 			throws Exception {
 
 		StmtIterator stmtItr = model.listStatements((Resource) null,

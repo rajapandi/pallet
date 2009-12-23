@@ -4,7 +4,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import security.ejb.client.User;
-import utd.pallet.data.RDFUtils;
 import blackbook.jena.util.JenaModelFactory;
 import blackbook.metadata.api.AlgorithmMetadata;
 import blackbook.metadata.api.DataSourceMetadata;

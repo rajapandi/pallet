@@ -31,19 +31,7 @@ import com.hp.hpl.jena.vocabulary.RDFS;
  */
 public class RDFUtils {
 
-	/**
-	 * dummyURI is used to provide the default URI to all the resources and
-	 * properties of the final classified Model.
-	 */
-	public static String dummyURI = "http://localhost:8443/blackbook/malletModel";
-	/**
-	 * The property on the basis of which classification is done.
-	 */
-	public static final Property CLASSIFICATION_PROPERTY = ModelFactory
-			.createDefaultModel().createProperty(
-					"http://blackbook.com/terms#STAT_EVENT");
-
-	public static final String MALLET_NAMESPACE = "http://marathonminds.com/MalletClassification/";
+	public static final String MALLET_NAMESPACE = "http://marathonminds.com/Mallet/";
 
 	private static org.apache.log4j.Logger logger = Logger
 			.getLogger(RDFUtils.class);
@@ -75,7 +63,8 @@ public class RDFUtils {
 				String bestAccuracy = av.getAccuracy() + "";
 				Resource malletClassEvent = rdfModel
 						.createResource(MALLET_NAMESPACE
-								+ "malletClassifcation" + System.nanoTime() + "" + i);
+								+ "malletClassifcation" + System.nanoTime()
+								+ "" + i);
 				Property bestLabelProperty = rdfModel
 						.createProperty(MALLET_NAMESPACE
 								+ "#hasBestClassification");
@@ -90,9 +79,7 @@ public class RDFUtils {
 					String label = iterator.next();
 
 					String confidenceValue = labelVector.get(label).toString();
-					Resource classRes = rdfModel
-							.createResource(MALLET_NAMESPACE
-									+ "malletClassifcation" + System.nanoTime() + "" + i);
+					Resource classRes = createMalletResource(rdfModel,i);
 					Property hasClassProp = rdfModel
 							.createProperty(MALLET_NAMESPACE
 									+ "#hasOtherClassification");
@@ -232,20 +219,38 @@ public class RDFUtils {
 		// add classification
 		model.add(malletRes, malletProperty, classification);
 		// and make this the label of this resource
-		model.add(malletRes, RDFS.label, "Mallet Classified: " + classification);
+		model
+				.add(malletRes, RDFS.label, "Mallet Classified: "
+						+ classification);
 
 		// add accuracy for classification
-		Property accuracyProp = model.createProperty(MALLET_NAMESPACE
-				+ "#hasAccuracy");
+		Property accuracyProp = getMalletAccuracyProperty(model);
 		model.add(malletRes, accuracyProp, accuracy);
-		//and make this the description of this resource
+		// and make this the description of this resource
 		model.add(malletRes, RDFS.comment, accuracy);
 
 		// associate to original resource
-		Property malletClassProp = model.createProperty(MALLET_NAMESPACE
-				+ "#malletClassified");
+		Property malletClassProp = getMalletClassificationProperty(model);
 		model.add(origRes, malletClassProp, malletRes);
 
 		return model;
+	}
+
+	public static Property getMalletClassificationProperty(Model model) {
+		return model.createProperty(MALLET_NAMESPACE + "#malletClassificationEvent");
+	}
+
+	public static Property getMalletAccuracyProperty(Model model) {
+		return model.createProperty(MALLET_NAMESPACE + "#hasAccuracy");
+	}
+
+	public static Resource createMalletResource(Model model, int index) {
+		return model.createResource(MALLET_NAMESPACE + "malletClassifcation"
+				+ System.nanoTime() + "" + index);
+	}
+	
+	public static Resource createMalletTrainedModelResource(Model model, int index) {
+		return model.createResource(MALLET_NAMESPACE + "malletTrainedModel"
+				+ System.nanoTime() + "" + index);
 	}
 }
