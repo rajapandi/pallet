@@ -1,8 +1,5 @@
 package pallet.algorithm.blackbook;
 
-import java.io.ByteArrayOutputStream;
-import java.io.ObjectOutputStream;
-import java.net.URL;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -10,7 +7,6 @@ import pallet.blackbook.util.BlackbookUtil;
 import security.ejb.client.User;
 import utd.pallet.classification.MalletTextDataTrainer;
 import utd.pallet.classification.MalletTextDataTrainer.TrainerObject;
-import utd.pallet.data.RDF2MalletInstances;
 import utd.pallet.data.RDFUtils;
 import workflow.ejb.client.annotations.Execute;
 import blackbook.algorithm.api.Algorithm;
@@ -19,16 +15,10 @@ import blackbook.algorithm.api.TestParameter;
 import blackbook.algorithm.api.VoidResponse;
 import blackbook.exception.BlackbookSystemException;
 import blackbook.jena.util.JenaModelCache;
-import cc.mallet.classify.Classifier;
 import cc.mallet.types.InstanceList;
 
-import com.hp.hpl.jena.rdf.model.Literal;
 import com.hp.hpl.jena.rdf.model.Model;
-import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.Property;
-import com.hp.hpl.jena.rdf.model.Resource;
-import com.hp.hpl.jena.rdf.model.Statement;
-import com.hp.hpl.jena.vocabulary.OWL;
 
 /**
  * Remove all materialized results that are isolated. This is accomplished by
@@ -72,9 +62,9 @@ public class MalletTrain implements
 					.getSourceDataSource(), user);
 
 			// get converted data
-			logger.info("Creating mallet instance list from data.");
+			logger.info("Creating mallet instance list from data, using classification parameter: " + request.getParameters().getParameter());
 			Property classProp = sourceModel.createProperty(request.getParameters().getParameter());
-			InstanceList trainingList = convertRDFToInstanceList(sourceModel, classProp);
+			InstanceList trainingList = RDFUtils.convertRDFToInstanceList(sourceModel, classProp);
 
 			// train mallet model
 			logger.info("Getting trained model using instance list.");
@@ -82,7 +72,7 @@ public class MalletTrain implements
 
 			// get classifier as rdf
 			logger.info("Converting trained model to rdf for storage.");
-			Model trainedModel = convertClassifierToRDF(trnObj
+			Model trainedModel = RDFUtils.convertClassifierToRDF(trnObj
 					.getClassifier());
 
 			// save classifier in blackbook temp data source
@@ -103,21 +93,7 @@ public class MalletTrain implements
 		return VoidResponse.getInstance();
 	}
 
-	private static InstanceList convertRDFToInstanceList(Model rdf, Property classProp)
-			throws Exception {
-		// get converter
-		// RDF2MalletInstances conv = new RDF2MalletInstances();
 
-		// get converted data
-		logger.info("	converting rdf with labels " + classProp
-				+ " to instance list.");
-		InstanceList iList = RDF2MalletInstances
-				.trainingDataIntoMalletInstanceList(rdf,
-						classProp, null);
-		logger.info("	number of instances retrieved from RDF: " + iList.size());
-
-		return iList;
-	}
 
 	private static TrainerObject trainMalletModel(InstanceList iList) {
 		MalletTextDataTrainer bTrainer = new MalletTextDataTrainer();
@@ -131,25 +107,5 @@ public class MalletTrain implements
 		}
 
 		return trnObj;
-	}
-
-	public static Model convertClassifierToRDF(Classifier classifier)
-			throws Exception {
-		Model model = ModelFactory.createDefaultModel();
-		Resource res = RDFUtils.createMalletTrainedModelResource(model, 0);
-		Property prop = OWL.hasValue;
-
-		ByteArrayOutputStream bos = new ByteArrayOutputStream();
-		ObjectOutputStream oos = new ObjectOutputStream(bos);
-		oos.writeObject(classifier);
-
-		Literal obj = model.createTypedLiteral(bos.toByteArray());
-
-		Statement stmt = model.createLiteralStatement(res, prop, obj);
-		model.add(stmt);
-
-		logger.info("converted classifier to rdf:");
-
-		return model;
 	}
 }

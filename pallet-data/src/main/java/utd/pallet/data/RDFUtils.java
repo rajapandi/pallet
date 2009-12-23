@@ -3,6 +3,8 @@ package utd.pallet.data;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -16,13 +18,16 @@ import cc.mallet.classify.Classification;
 import cc.mallet.classify.Classifier;
 import cc.mallet.types.InstanceList;
 
+import com.hp.hpl.jena.rdf.model.Literal;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.Property;
+import com.hp.hpl.jena.rdf.model.RDFNode;
 import com.hp.hpl.jena.rdf.model.ResIterator;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
+import com.hp.hpl.jena.vocabulary.OWL;
 import com.hp.hpl.jena.vocabulary.RDFS;
 
 /**
@@ -79,7 +84,7 @@ public class RDFUtils {
 					String label = iterator.next();
 
 					String confidenceValue = labelVector.get(label).toString();
-					Resource classRes = createMalletResource(rdfModel,i);
+					Resource classRes = createMalletResource(rdfModel, i);
 					Property hasClassProp = rdfModel
 							.createProperty(MALLET_NAMESPACE
 									+ "#hasOtherClassification");
@@ -126,6 +131,18 @@ public class RDFUtils {
 		ObjectInputStream ois = new ObjectInputStream(bis);
 
 		InstanceList iList = (InstanceList) ois.readObject();
+
+		return iList;
+	}
+
+	public static InstanceList convertRDFToInstanceList(Model rdf,
+			Property classProp) throws Exception {
+		// get converted data
+		logger.info("	converting rdf with labels " + classProp
+				+ " to instance list.");
+		InstanceList iList = RDF2MalletInstances
+				.trainingDataIntoMalletInstanceList(rdf, classProp, null);
+		logger.info("	number of instances retrieved from RDF: " + iList.size());
 
 		return iList;
 	}
@@ -237,7 +254,8 @@ public class RDFUtils {
 	}
 
 	public static Property getMalletClassificationProperty(Model model) {
-		return model.createProperty(MALLET_NAMESPACE + "#malletClassificationEvent");
+		return model.createProperty(MALLET_NAMESPACE
+				+ "#malletClassificationEvent");
 	}
 
 	public static Property getMalletAccuracyProperty(Model model) {
@@ -248,9 +266,46 @@ public class RDFUtils {
 		return model.createResource(MALLET_NAMESPACE + "malletClassifcation"
 				+ System.nanoTime() + "" + index);
 	}
-	
-	public static Resource createMalletTrainedModelResource(Model model, int index) {
+
+	public static Resource createMalletTrainedModelResource(Model model,
+			int index) {
 		return model.createResource(MALLET_NAMESPACE + "malletTrainedModel"
 				+ System.nanoTime() + "" + index);
+	}
+
+	public static Model convertClassifierToRDF(Classifier classifier)
+			throws Exception {
+		Model model = ModelFactory.createDefaultModel();
+		Resource res = RDFUtils.createMalletTrainedModelResource(model, 0);
+		Property prop = OWL.hasValue;
+
+		ByteArrayOutputStream bos = new ByteArrayOutputStream();
+		ObjectOutputStream oos = new ObjectOutputStream(bos);
+		oos.writeObject(classifier);
+
+		Literal obj = model.createTypedLiteral(bos.toByteArray());
+
+		Statement stmt = model.createLiteralStatement(res, prop, obj);
+		model.add(stmt);
+
+		logger.info("converted classifier to rdf");
+
+		return model;
+	}
+
+	public static Classifier convertRDFToClassifier(Model model)
+			throws Exception {
+
+		StmtIterator stmtItr = model.listStatements((Resource) null,
+				OWL.hasValue, (RDFNode) null);
+		Statement onlyStmt = stmtItr.nextStatement();
+
+		ByteArrayInputStream bisLiteral = new ByteArrayInputStream(
+				(byte[]) onlyStmt.getLiteral().getValue());
+		ObjectInputStream ois = new ObjectInputStream(bisLiteral);
+		Classifier classifier = (Classifier) ois.readObject();
+
+		return classifier;
+
 	}
 }
