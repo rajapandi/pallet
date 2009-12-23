@@ -1,7 +1,5 @@
 package pallet.algorithm.blackbook;
 
-import java.io.ByteArrayInputStream;
-import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.Set;
 
@@ -19,7 +17,7 @@ import workflow.ejb.client.annotations.Execute;
 import blackbook.algorithm.api.Algorithm;
 import blackbook.algorithm.api.DataSourceRequest;
 import blackbook.algorithm.api.DataSourceResponse;
-import blackbook.algorithm.api.TestParameter;
+import blackbook.algorithm.api.VoidParameter;
 import blackbook.exception.BlackbookSystemException;
 import blackbook.jena.util.JenaModelCache;
 import blackbook.metadata.manager.MetadataManagerFactory;
@@ -28,11 +26,6 @@ import cc.mallet.classify.Classifier;
 import cc.mallet.types.InstanceList;
 
 import com.hp.hpl.jena.rdf.model.Model;
-import com.hp.hpl.jena.rdf.model.RDFNode;
-import com.hp.hpl.jena.rdf.model.Resource;
-import com.hp.hpl.jena.rdf.model.Statement;
-import com.hp.hpl.jena.rdf.model.StmtIterator;
-import com.hp.hpl.jena.vocabulary.OWL;
 
 /**
  * Remove all materialized results that are isolated. This is accomplished by
@@ -40,7 +33,7 @@ import com.hp.hpl.jena.vocabulary.OWL;
  * supplied model.
  */
 public class MalletClassify implements
-		Algorithm<DataSourceRequest<TestParameter>, DataSourceResponse> {
+		Algorithm<DataSourceRequest<VoidParameter>, DataSourceResponse> {
 
 	/** logger */
 	private static Log logger = LogFactory.getLog(MalletClassify.class);
@@ -55,7 +48,7 @@ public class MalletClassify implements
 	 */
 	@Execute
 	public DataSourceResponse execute(User user,
-			DataSourceRequest<TestParameter> request)
+			DataSourceRequest<VoidParameter> request)
 			throws BlackbookSystemException {
 		if (user == null) {
 			throw new BlackbookSystemException("'user' cannot be null.");
@@ -91,7 +84,7 @@ public class MalletClassify implements
 			// convert rdf back to mallet classifier
 			logger
 					.error("Converting trained model from rdf to mallet classifier");
-			Classifier classifier = convertRDFToClassifier(trainedModel);
+			Classifier classifier = RDFUtils.convertRDFToClassifier(trainedModel);
 
 			logger.error("Classifying data of size: " + sourceModel.size());
 			Model classifiedModel = bbClassify(sourceModel, classifier);
@@ -114,22 +107,6 @@ public class MalletClassify implements
 		}
 
 		return new DataSourceResponse(destinationDataSource);
-	}
-
-	public static Classifier convertRDFToClassifier(Model model)
-			throws Exception {
-
-		StmtIterator stmtItr = model.listStatements((Resource) null,
-				OWL.hasValue, (RDFNode) null);
-		Statement onlyStmt = stmtItr.nextStatement();
-
-		ByteArrayInputStream bisLiteral = new ByteArrayInputStream(
-				(byte[]) onlyStmt.getLiteral().getValue());
-		ObjectInputStream ois = new ObjectInputStream(bisLiteral);
-		Classifier classifier = (Classifier) ois.readObject();
-
-		return classifier;
-
 	}
 
 	private static Model bbClassify(Model model, Classifier classifier)
