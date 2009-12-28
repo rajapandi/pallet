@@ -1,12 +1,11 @@
 package pallet.algorithm.blackbook;
 
+import java.util.Set;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import pallet.blackbook.util.BlackbookUtil;
 import security.ejb.client.User;
-import utd.pallet.classification.MalletTextDataTrainer;
-import utd.pallet.classification.MalletTextDataTrainer.TrainerObject;
 import utd.pallet.data.RDFUtils;
 import workflow.ejb.client.annotations.Execute;
 import blackbook.algorithm.api.Algorithm;
@@ -15,17 +14,19 @@ import blackbook.algorithm.api.StringParameter;
 import blackbook.algorithm.api.VoidResponse;
 import blackbook.exception.BlackbookSystemException;
 import blackbook.jena.util.JenaModelCache;
+import cc.mallet.classify.Classifier;
+import cc.mallet.classify.Trial;
 import cc.mallet.types.InstanceList;
 
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.Property;
 
 
-public class MalletTrain implements
+public class MalletTrial implements
 		Algorithm<DataSourceRequest<StringParameter>, VoidResponse> {
 
 	/** logger */
-	private static Log logger = LogFactory.getLog(MalletTrain.class);
+	private static Log logger = LogFactory.getLog(MalletTrial.class);
 
 	/**
 	 * @param user
@@ -56,27 +57,30 @@ public class MalletTrain implements
 
 			Model sourceModel = modelCache.getModelByName(request
 					.getSourceDataSource(), user);
+			
+			Set<String> prevTrainedModels = request.getAssertionsDataSources();
+			Classifier prevClassifier = null;
+			if(prevTrainedModels.size() == 0) {
+				throw new BlackbookSystemException("must provide at least one assertions data source name that contains a trained model, in order for me to incrementally train it.");
+			} else {
+				for(String tModel : prevTrainedModels) {
+					logger.info("	retrieving previously trained model: " + tModel);
+					Model currentModel = modelCache.getModelByName(tModel, user);
+					prevClassifier = RDFUtils.convertRDFToClassifier(currentModel);
+					break;
+				}
+			}
 
 			// get converted data
-			logger.info("Creating mallet instance list from data, using classification parameter: " + request.getParameters().getParameter());
+			logger.info("Creating mallet instance list from data.");
 			Property classProp = sourceModel.createProperty(request.getParameters().getParameter());
-			InstanceList trainingList = RDFUtils.convertRDFToInstanceList(sourceModel, classProp, null);
+			InstanceList trialList = RDFUtils.convertRDFToInstanceList(sourceModel, classProp, prevClassifier);
 
-			// train mallet model
-			logger.info("Getting trained model using instance list.");
-			TrainerObject trnObj = trainMalletModel(trainingList);
-
-			// get classifier as rdf
-			logger.info("Converting trained model to rdf for storage.");
-			Model trainedModel = RDFUtils.convertClassifierToRDF(trnObj
-					.getClassifier());
-
-			// save classifier in blackbook temp data source
-			logger.info("Storing trained classifier.");
-			String dsName = "MalletTrainedModel" + System.currentTimeMillis();
-			Model assertionsModel = BlackbookUtil.persist2BlackbookAssertions(trainedModel, dsName, "urn:mallet:", user);
-			assertionsModel.close();
-			trainedModel.close();
+			// trial
+			logger.info("running trial report.");
+			Trial trial = new Trial(prevClassifier,trialList);
+			String report = produceReport(trial, trialList);
+			logger.info("report being returned is: " + report);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -88,20 +92,20 @@ public class MalletTrain implements
 		
 		return VoidResponse.getInstance();
 	}
-
-
-
-	private static TrainerObject trainMalletModel(InstanceList iList) {
-		MalletTextDataTrainer bTrainer = new MalletTextDataTrainer();
-
-		TrainerObject trnObj = null;
-		try {
-			trnObj = bTrainer.train(iList, MalletTextDataTrainer.NAIVE_BAYES);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	
+	public static String produceReport(Trial trial, InstanceList trialList) {
+		String report = "";
+		
+		report = report + "\nAccuracy: " + trial.getAccuracy();
+		report = report + "\nAvg. Rank: " + trial.getAverageRank();
+		
+		for(int i = 0; i < trialList.size(); i++) {
+			report = report + "\nReviewing instance: " + i;
+			report = report + "\n\tF1: " + trial.getF1(trialList.get(i).getLabeling());
+			report = report + "\n\tPrecision: " + trial.getPrecision(trialList.get(i).getLabeling());
+			report = report + "\n\tRecall: " + trial.getRecall(trialList.get(i).getLabeling());
 		}
 
-		return trnObj;
+		return report;
 	}
 }

@@ -160,7 +160,7 @@ public class MalletTextDataTrainerTest extends TestCase {
 				incTestData[0][1][0]));
                 
 		try {
-			trnObj = trainer.trainIncremental(trner, incList);
+			trnObj = trainer.trainIncremental((NaiveBayesTrainer)trner, incList);
 		} catch (NullPointerException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
