@@ -1,5 +1,7 @@
 package pallet.algorithm.blackbook;
 
+import java.util.Set;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -15,17 +17,21 @@ import blackbook.algorithm.api.StringParameter;
 import blackbook.algorithm.api.VoidResponse;
 import blackbook.exception.BlackbookSystemException;
 import blackbook.jena.util.JenaModelCache;
+import cc.mallet.classify.Classifier;
+import cc.mallet.classify.ClassifierTrainer;
+import cc.mallet.classify.NaiveBayes;
+import cc.mallet.classify.NaiveBayesTrainer;
 import cc.mallet.types.InstanceList;
 
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.Property;
 
 
-public class MalletTrain implements
+public class MalletTrainIncremental implements
 		Algorithm<DataSourceRequest<StringParameter>, VoidResponse> {
 
 	/** logger */
-	private static Log logger = LogFactory.getLog(MalletTrain.class);
+	private static Log logger = LogFactory.getLog(MalletTrainIncremental.class);
 
 	/**
 	 * @param user
@@ -56,15 +62,30 @@ public class MalletTrain implements
 
 			Model sourceModel = modelCache.getModelByName(request
 					.getSourceDataSource(), user);
+			
+			Set<String> prevTrainedModels = request.getAssertionsDataSources();
+			Classifier prevClassifier = null;
+			if(prevTrainedModels.size() == 0) {
+				throw new BlackbookSystemException("must provide at least one assertions data source name that contains a trained model, in order for me to incrementally train it.");
+			} else {
+				for(String tModel : prevTrainedModels) {
+					logger.info("	retrieving previously trained model: " + tModel);
+					Model currentModel = modelCache.getModelByName(tModel, user);
+					prevClassifier = RDFUtils.convertRDFToClassifier(currentModel);
+					break;
+				}
+			}
 
 			// get converted data
-			logger.info("Creating mallet instance list from data, using classification parameter: " + request.getParameters().getParameter());
+			logger.info("Creating mallet instance list from data.");
 			Property classProp = sourceModel.createProperty(request.getParameters().getParameter());
-			InstanceList trainingList = RDFUtils.convertRDFToInstanceList(sourceModel, classProp, null);
+			InstanceList trainingList = RDFUtils.convertRDFToInstanceList(sourceModel, classProp, prevClassifier);
 
 			// train mallet model
-			logger.info("Getting trained model using instance list.");
-			TrainerObject trnObj = trainMalletModel(trainingList);
+			logger.info("incrementally training model using instance list.");
+			NaiveBayes nbClassifier = (NaiveBayes) prevClassifier;
+			NaiveBayesTrainer naiveBayesTrainer = new NaiveBayesTrainer(nbClassifier);
+			TrainerObject trnObj = incrementallyTrainMalletModel(naiveBayesTrainer, trainingList);
 
 			// get classifier as rdf
 			logger.info("Converting trained model to rdf for storage.");
@@ -88,15 +109,13 @@ public class MalletTrain implements
 		
 		return VoidResponse.getInstance();
 	}
-
-
-
-	private static TrainerObject trainMalletModel(InstanceList iList) {
+	
+	public static TrainerObject incrementallyTrainMalletModel(NaiveBayesTrainer prevTrainer, InstanceList listToTrain) {
 		MalletTextDataTrainer bTrainer = new MalletTextDataTrainer();
 
 		TrainerObject trnObj = null;
 		try {
-			trnObj = bTrainer.train(iList, MalletTextDataTrainer.NAIVE_BAYES);
+			trnObj = bTrainer.trainIncremental(prevTrainer, listToTrain);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

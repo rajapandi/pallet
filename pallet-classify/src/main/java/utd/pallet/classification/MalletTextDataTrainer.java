@@ -2,8 +2,12 @@ package utd.pallet.classification;
 
 import java.io.Serializable;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import cc.mallet.classify.Classifier;
 import cc.mallet.classify.ClassifierTrainer;
+import cc.mallet.classify.NaiveBayes;
 import cc.mallet.classify.NaiveBayesTrainer;
 import cc.mallet.types.InstanceList;
 
@@ -64,6 +68,9 @@ public class MalletTextDataTrainer implements Serializable {
      * 
      */
     public static final int MC_MAX_ENT = 0x0A;
+    
+    /** logger */
+    private static Log logger = LogFactory.getLog(MalletTextDataTrainer.class);
 
     /**
      * Creates Trainer instance
@@ -90,7 +97,7 @@ public class MalletTextDataTrainer implements Serializable {
             throws java.lang.NullPointerException, java.lang.Exception {
 
         if (trainer == null)
-            throw new NullPointerException("Trainer not initialized");
+            throw new IllegalArgumentException("Trainer not initialized because it is null");
 
         int trainerAlgo = ALGO_UNASSIGNED;
 
@@ -230,32 +237,31 @@ public class MalletTextDataTrainer implements Serializable {
      * @throws NullPointerException
      */
     @SuppressWarnings("unchecked")
-    public TrainerObject trainIncremental(ClassifierTrainer prevTrainer,
+    public TrainerObject trainIncremental(ClassifierTrainer<NaiveBayes> prevTrainer,
             InstanceList listToTrain) throws NullPointerException, Exception {
 
         if (prevTrainer == null)
-            throw new NullPointerException("prev Trainer is null pointer");
+            throw new IllegalArgumentException("cannot call incremental train on a null trainer");
 
-        if (listToTrain == null)
-            throw new NullPointerException(
-                    "Instance list to be trained is null pointer");
+        if (listToTrain == null) {
+        	logger.warn("instance list was null, returning orginal trained model");
+        }
 
         int trainerAlgo;
         try {
-            trainerAlgo = this.getTrainerAlgo(prevTrainer);
-        } catch (NullPointerException ne) {
-            throw ne;
+            trainerAlgo = getTrainerAlgo(prevTrainer);
         } catch (Exception e) {
-            throw e;
+        	throw new IllegalArgumentException("cannot call incremental train on a classifier trainer with no training algorithm");
         }
 
         Classifier cl = null;
         if (trainerAlgo == NAIVE_BAYES) {
             NaiveBayesTrainer nbTrainer = (NaiveBayesTrainer) prevTrainer;
             cl = nbTrainer.trainIncremental(listToTrain);
-        } else
-            throw new NullPointerException(
-                    "Trainer needs to be Naive bayes for incremental training");
+        } else {
+            throw new IllegalArgumentException(
+                    "Currently only Naive Bayes algorithm can be used for incremental training");
+        }
 
         TrainerObject trnObject = new TrainerObject();
 

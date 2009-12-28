@@ -114,7 +114,7 @@ public class RDFUtils {
 	 * @return : It returns the InstanceList.
 	 * @throws Exception
 	 */
-	public static InstanceList convertRDFToInstanceList(String rdf,
+	public static InstanceList convertSerializedRDFToInstanceList(String rdf,
 			Classifier prevClassifier, String classificationProperty)
 			throws Exception {
 		ByteArrayOutputStream bos = null;
@@ -136,12 +136,12 @@ public class RDFUtils {
 	}
 
 	public static InstanceList convertRDFToInstanceList(Model rdf,
-			Property classProp) throws Exception {
+			Property classProp, Classifier prevClassifier) throws Exception {
 		// get converted data
 		logger.info("	converting rdf with labels " + classProp
 				+ " to instance list.");
 		InstanceList iList = RDF2MalletInstances
-				.trainingDataIntoMalletInstanceList(rdf, classProp, null);
+				.trainingDataIntoMalletInstanceList(rdf, classProp, prevClassifier);
 		logger.info("	number of instances retrieved from RDF: " + iList.size());
 
 		return iList;

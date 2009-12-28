@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import utd.pallet.classification.MalletTextDataTrainer.TrainerObject;
 import cc.mallet.classify.ClassifierTrainer;
+import cc.mallet.classify.NaiveBayesTrainer;
 import cc.mallet.types.InstanceList;
 
 /**
@@ -69,7 +70,7 @@ public class BlackbookIncTrainerSim {
         MalletTextDataTrainer dataTrainer = new MalletTextDataTrainer();
 
         try {
-            trnObj = dataTrainer.trainIncremental(prevTrainer, iList);
+            trnObj = dataTrainer.trainIncremental((NaiveBayesTrainer)prevTrainer, iList);
         } catch (NullPointerException ne) {
             throw ne;
         } catch (Exception e) {

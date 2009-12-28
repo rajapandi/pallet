@@ -88,7 +88,7 @@ try{
         if (trainerObject != null)
             prevClassifier = (Classifier) trainerObject.getClassifier();
 
-        iList = RDFUtils.convertRDFToInstanceList(fileContents, prevClassifier,classificationPredicate);
+        iList = RDFUtils.convertSerializedRDFToInstanceList(fileContents, prevClassifier,classificationPredicate);
 }catch(Exception e)
 {
 	
