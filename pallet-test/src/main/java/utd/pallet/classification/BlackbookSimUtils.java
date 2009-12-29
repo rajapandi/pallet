@@ -14,7 +14,7 @@ import java.io.ObjectOutputStream;
 import java.net.URL;
 
 import utd.pallet.classification.MalletTextDataTrainer.TrainerObject;
-import utd.pallet.data.JenaModelFactory;
+import utd.pallet.data.RDFUtils;
 import cc.mallet.classify.Classifier;
 import cc.mallet.types.InstanceList;
 
@@ -110,7 +110,7 @@ public class BlackbookSimUtils {
         Statement stmt = model.createLiteralStatement(res, prop, obj);
         model.add(stmt);
 
-        String ret = JenaModelFactory.serializeModel(model, "RDF/XML");
+        String ret = RDFUtils.serializeJenaModel(model, "RDF/XML");
 
         // log.error("converted classifier to rdf:");
 
@@ -134,7 +134,7 @@ public class BlackbookSimUtils {
         Statement stmt = model.createLiteralStatement(res, prop, obj);
         model.add(stmt);
 
-        String ret = JenaModelFactory.serializeModel(model, "RDF/XML");
+        String ret = RDFUtils.serializeJenaModel(model, "RDF/XML");
 
         return ret;
     }

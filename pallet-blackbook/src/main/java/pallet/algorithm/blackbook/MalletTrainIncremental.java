@@ -18,7 +18,6 @@ import blackbook.algorithm.api.VoidResponse;
 import blackbook.exception.BlackbookSystemException;
 import blackbook.jena.util.JenaModelCache;
 import cc.mallet.classify.Classifier;
-import cc.mallet.classify.ClassifierTrainer;
 import cc.mallet.classify.NaiveBayes;
 import cc.mallet.classify.NaiveBayesTrainer;
 import cc.mallet.types.InstanceList;
@@ -71,7 +70,7 @@ public class MalletTrainIncremental implements
 				for(String tModel : prevTrainedModels) {
 					logger.info("	retrieving previously trained model: " + tModel);
 					Model currentModel = modelCache.getModelByName(tModel, user);
-					prevClassifier = RDFUtils.convertRDFToClassifier(currentModel);
+					prevClassifier = RDFUtils.convertJenaModelToClassifier(currentModel);
 					break;
 				}
 			}
@@ -79,7 +78,7 @@ public class MalletTrainIncremental implements
 			// get converted data
 			logger.info("Creating mallet instance list from data.");
 			Property classProp = sourceModel.createProperty(request.getParameters().getParameter());
-			InstanceList trainingList = RDFUtils.convertRDFToInstanceList(sourceModel, classProp, prevClassifier);
+			InstanceList trainingList = RDFUtils.convertJenaModelToInstanceList(sourceModel, classProp, prevClassifier);
 
 			// train mallet model
 			logger.info("incrementally training model using instance list.");
@@ -89,7 +88,7 @@ public class MalletTrainIncremental implements
 
 			// get classifier as rdf
 			logger.info("Converting trained model to rdf for storage.");
-			Model trainedModel = RDFUtils.convertClassifierToRDF(trnObj
+			Model trainedModel = RDFUtils.convertClassifierToJenaModel(trnObj
 					.getClassifier());
 
 			// save classifier in blackbook temp data source

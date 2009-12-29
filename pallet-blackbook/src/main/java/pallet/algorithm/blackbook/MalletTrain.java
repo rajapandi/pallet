@@ -60,7 +60,7 @@ public class MalletTrain implements
 			// get converted data
 			logger.info("Creating mallet instance list from data, using classification parameter: " + request.getParameters().getParameter());
 			Property classProp = sourceModel.createProperty(request.getParameters().getParameter());
-			InstanceList trainingList = RDFUtils.convertRDFToInstanceList(sourceModel, classProp, null);
+			InstanceList trainingList = RDFUtils.convertJenaModelToInstanceList(sourceModel, classProp, null);
 
 			// train mallet model
 			logger.info("Getting trained model using instance list.");
@@ -68,7 +68,7 @@ public class MalletTrain implements
 
 			// get classifier as rdf
 			logger.info("Converting trained model to rdf for storage.");
-			Model trainedModel = RDFUtils.convertClassifierToRDF(trnObj
+			Model trainedModel = RDFUtils.convertClassifierToJenaModel(trnObj
 					.getClassifier());
 
 			// save classifier in blackbook temp data source

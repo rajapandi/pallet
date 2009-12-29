@@ -84,7 +84,7 @@ public class MalletClassify implements
 			// convert rdf back to mallet classifier
 			logger
 					.error("Converting trained model from rdf to mallet classifier");
-			Classifier classifier = RDFUtils.convertRDFToClassifier(trainedModel);
+			Classifier classifier = RDFUtils.convertJenaModelToClassifier(trainedModel);
 
 			logger.error("Classifying data of size: " + sourceModel.size());
 			Model classifiedModel = bbClassify(sourceModel, classifier);
@@ -112,8 +112,8 @@ public class MalletClassify implements
 	private static Model bbClassify(Model model, Classifier classifier)
 			throws Exception {
 
-		InstanceList iList = RDF2MalletInstances
-				.convertModel2InstanceList(model, classifier);
+		InstanceList iList = RDFUtils
+				.convertJenaModel2InstanceList(model, classifier);
 		 
 		MalletTextClassify malletClassifier = new MalletTextClassify();
 
@@ -122,7 +122,7 @@ public class MalletClassify implements
 		ArrayList<MalletAccuracyVector> mAccVectorList = malletClassifier
 				.getAccuracyVectors();
 
-		model = RDFUtils.createModelWithClassifications(mAccVectorList,
+		model = RDFUtils.createJenaModelWithClassifications(mAccVectorList,
 				classifications);
 
 		return model;

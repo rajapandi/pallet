@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.hp.hpl.jena.rdf.model.Model;
+
 import utd.pallet.classification.MalletTextDataTrainer.TrainerObject;
 import utd.pallet.data.RDFUtils;
 import cc.mallet.classify.Classifier;
@@ -88,7 +90,8 @@ try{
         if (trainerObject != null)
             prevClassifier = (Classifier) trainerObject.getClassifier();
 
-        iList = RDFUtils.convertSerializedRDFToInstanceList(fileContents, prevClassifier,classificationPredicate);
+        Model model = RDFUtils.deserializeJenaModel(fileContents);
+        iList = RDFUtils.convertJenaModelToInstanceList(model, model.createProperty(classificationPredicate), prevClassifier);
 }catch(Exception e)
 {
 	
