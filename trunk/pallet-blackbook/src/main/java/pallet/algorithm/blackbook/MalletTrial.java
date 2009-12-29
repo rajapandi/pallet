@@ -66,7 +66,7 @@ public class MalletTrial implements
 				for(String tModel : prevTrainedModels) {
 					logger.info("	retrieving previously trained model: " + tModel);
 					Model currentModel = modelCache.getModelByName(tModel, user);
-					prevClassifier = RDFUtils.convertRDFToClassifier(currentModel);
+					prevClassifier = RDFUtils.convertJenaModelToClassifier(currentModel);
 					break;
 				}
 			}
@@ -74,7 +74,7 @@ public class MalletTrial implements
 			// get converted data
 			logger.info("Creating mallet instance list from data.");
 			Property classProp = sourceModel.createProperty(request.getParameters().getParameter());
-			InstanceList trialList = RDFUtils.convertRDFToInstanceList(sourceModel, classProp, prevClassifier);
+			InstanceList trialList = RDFUtils.convertJenaModelToInstanceList(sourceModel, classProp, prevClassifier);
 
 			// trial
 			logger.info("running trial report.");

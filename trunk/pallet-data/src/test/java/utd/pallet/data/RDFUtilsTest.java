@@ -22,13 +22,13 @@ import com.hp.hpl.jena.vocabulary.VCARD;
  * RDF2MalletInstances.
  * 
  */
-public class RDF2MalletInstancesTest extends TestCase {
+public class RDFUtilsTest extends TestCase {
 
     /**
      * @return Instance of TestSuite
      */
     static Test suite() {
-        return new TestSuite(RDF2MalletInstancesTest.class);
+        return new TestSuite(RDFUtilsTest.class);
     }
 
     /*
@@ -65,7 +65,7 @@ public class RDF2MalletInstancesTest extends TestCase {
     public void testExecuteAlgorithmNullModel() {
         boolean exceptionThrown = false;
         try {
-            RDF2MalletInstances.trainingDataIntoMalletInstanceList(null, null,null);
+        	RDFUtils.convertJenaModelToInstanceList(null, null,null);
         } catch (Exception e) {
             exceptionThrown = true;
 
@@ -83,7 +83,7 @@ public class RDF2MalletInstancesTest extends TestCase {
             Model model = ModelFactory.createDefaultModel();
             Property sampleProperty = model
                     .createProperty("http://www.w3.org/2001/vcard-rdf/3.0#CATEGORIES");
-            RDF2MalletInstances.trainingDataIntoMalletInstanceList(model,
+            RDFUtils.convertJenaModelToInstanceList(model,
                     sampleProperty,null);
         } catch (Exception e) {
             exceptionThrown = true;
@@ -104,7 +104,7 @@ public class RDF2MalletInstancesTest extends TestCase {
                     .createResource("http://somewhere/JohnSmith");
             resource.addProperty(VCARD.FN, "John Smith");
 
-            RDF2MalletInstances.trainingDataIntoMalletInstanceList(model, null,null);
+            RDFUtils.convertJenaModelToInstanceList(model, null,null);
 
         } catch (Exception e) {
 
@@ -131,7 +131,7 @@ public class RDF2MalletInstancesTest extends TestCase {
 
             Property p = model
                     .createProperty("http://www.w3.org/2001/vcard-rdf/3.0#CATEGORIES");
-            RDF2MalletInstances.trainingDataIntoMalletInstanceList(model, p,null);
+            RDFUtils.convertJenaModelToInstanceList(model, p,null);
         } catch (Exception e) {
             exceptionThrown = true;
 
@@ -139,64 +139,13 @@ public class RDF2MalletInstancesTest extends TestCase {
         assertTrue(exceptionThrown);
     }
 
-    /**
-     * This function checks executeAlgorithmSerializable when both model(in
-     * String) form and classification predicate in String form are null.
-     */
-
-    public void testExecuteAlgorithmSerializableNullModelString() {
-        boolean exceptionThrown = false;
-        try {
-
-            RDF2MalletInstances.convertRDFWithLabelsSerializable(null, null,null);
-        } catch (Exception e) {
-            exceptionThrown = true;
-        }
-        assertTrue(exceptionThrown);
-    }
-
-    /**
-     * The function checks executeAlgorithmSerializable when the model is Empty
-     */
-
-    public void testExecuteAlgorithmSerializableEmptyModelString() {
-        boolean exceptionThrown = false;
-        try {
-
-            RDF2MalletInstances.convertRDFWithLabelsSerializable("",
-                    "http://www.w3.org/2001/vcard-rdf/3.0#CATEGORIES",null);
-        } catch (Exception e) {
-            exceptionThrown = true;
-        }
-        assertTrue(exceptionThrown);
-    }
-
-    /**
-     * The function checks executeAlgorithmSerializable when the predicate is
-     * not in correct URI form.
-     */
-    public void testExecuteAlgorithmSerializableMalformedString() {
-        boolean exceptionThrown = false;
-        try {
-            Model model = ModelFactory.createDefaultModel();
-            Resource resource = model
-                    .createResource("http://somewhere/JohnSmith");
-            resource.addProperty(VCARD.FN, "John Smith");
-            String modelSerialized = JenaModelFactory.serializeModel(model,
-                    "RDF/XML");
-            RDF2MalletInstances.convertRDFWithLabelsSerializable(modelSerialized, "HIJK",null);
-        } catch (Exception e) {
-            exceptionThrown = true;
-        }
-        assertTrue(exceptionThrown);
-    }
 
     /**
      * This function checks for the correct functionality of RDF2MalletInstances
      * class. executeAlgorithmSerializableis checked when all the input is
      * correct.
      */
-    public void testExecuteAlgorithmSerializableCorrectModel() {
+    public void testExecuteAlgorithmCorrectModel() {
         ByteArrayOutputStream bout = null;
 
         try {
@@ -214,15 +163,9 @@ public class RDF2MalletInstancesTest extends TestCase {
             paulKit.addProperty(VCARD.N, model.createResource().addProperty(
                     VCARD.Given, "Paul").addProperty(VCARD.Family, "Kit"));
 
-            String modelSerialized = JenaModelFactory.serializeModel(model,
-                    "RDF/XML");
-            bout = RDF2MalletInstances.convertRDFWithLabelsSerializable(modelSerialized,
-                    "http://www.w3.org/2001/vcard-rdf/3.0#CATEGORIES",null);
-            ByteArrayInputStream bin = new ByteArrayInputStream(bout
-                    .toByteArray());
-            ObjectInputStream oos = new ObjectInputStream(bin);
-            Object o = oos.readObject();
-            InstanceList instances = (InstanceList) o;
+            InstanceList instances = RDFUtils.convertJenaModelToInstanceList(model,
+                    model.createProperty("http://www.w3.org/2001/vcard-rdf/3.0#CATEGORIES"),null);
+
             Iterator<Instance> ipc = instances.iterator();
             Instance io = ipc.next();
             /**

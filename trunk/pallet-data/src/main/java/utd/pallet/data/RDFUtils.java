@@ -1,21 +1,31 @@
 package utd.pallet.data;
 
+import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileReader;
+import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.StringWriter;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 
 import utd.pallet.data.MalletAccuracyVector;
 import utd.pallet.data.RDF2MalletInstances;
 import cc.mallet.classify.Classification;
 import cc.mallet.classify.Classifier;
+import cc.mallet.pipe.Noop;
+import cc.mallet.pipe.Pipe;
+import cc.mallet.types.Instance;
 import cc.mallet.types.InstanceList;
 
 import com.hp.hpl.jena.rdf.model.Literal;
@@ -27,6 +37,7 @@ import com.hp.hpl.jena.rdf.model.ResIterator;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
+import com.hp.hpl.jena.shared.BadURIException;
 import com.hp.hpl.jena.vocabulary.OWL;
 import com.hp.hpl.jena.vocabulary.RDFS;
 
@@ -49,7 +60,7 @@ public class RDFUtils {
 	 * @return : It returns the final classified Model.
 	 * @throws Exception
 	 */
-	public static Model createModelWithClassifications(
+	public static Model createJenaModelWithClassifications(
 			ArrayList<MalletAccuracyVector> accVector,
 			ArrayList<Classification> classificationList) throws Exception {
 
@@ -105,46 +116,66 @@ public class RDFUtils {
 	}
 
 	/**
-	 * @param rdf
-	 *            :The model in the rdf format.
+	 * convert the rdf model into a list of instances that does have the correct
+	 * label (specified literal associated with the classProp).
+	 * 
+	 * @param model
+	 *            - the model to convert.
+	 * @param classProp
+	 *            - the property marking the correct label
 	 * @param prevClassifier
-	 *            : The instances of already trained Classifier.
-	 * @param classificationProperty
-	 *            : The Classification Property.
-	 * @return : It returns the InstanceList.
+	 *            - the classifier which has the pipe we need for processing.
+	 * @return
 	 * @throws Exception
 	 */
-	public static InstanceList convertSerializedRDFToInstanceList(String rdf,
-			Classifier prevClassifier, String classificationProperty)
-			throws Exception {
-		ByteArrayOutputStream bos = null;
-		try {
-
-			bos = RDF2MalletInstances.convertRDFWithLabelsSerializable(rdf,
-					classificationProperty, prevClassifier);
-
-		} catch (Exception e) {
-
-			throw e;
-		}
-		ByteArrayInputStream bis = new ByteArrayInputStream(bos.toByteArray());
-		ObjectInputStream ois = new ObjectInputStream(bis);
-
-		InstanceList iList = (InstanceList) ois.readObject();
-
-		return iList;
-	}
-
-	public static InstanceList convertRDFToInstanceList(Model rdf,
+	public static InstanceList convertJenaModelToInstanceList(Model model,
 			Property classProp, Classifier prevClassifier) throws Exception {
 		// get converted data
 		logger.info("	converting rdf with labels " + classProp
 				+ " to instance list.");
-		InstanceList iList = RDF2MalletInstances
-				.trainingDataIntoMalletInstanceList(rdf, classProp, prevClassifier);
-		logger.info("	number of instances retrieved from RDF: " + iList.size());
+		try {
 
-		return iList;
+			if (model == null || model.isEmpty()) {
+				throw new IllegalArgumentException(
+						"model cannot be blank or null");
+			}
+		} catch (Exception e) {
+
+			logger.error(e.toString());
+
+			throw e;
+		}
+
+		if (classProp != null) {
+			try {
+				new URL(classProp.toString());
+			} catch (Exception e) {
+
+				logger.error(e.toString() + "   " + classProp
+						+ " is not in the proper format of the RDF predicate");
+
+				throw new BadURIException(classProp
+						+ " is not in the proper format of the RDF predicate");
+
+			}
+		}
+
+		logger.info("Getting resource 2 object map");
+		HashMap<String, String> resData = RDFUtils
+				.getResource2ObjectsMap(model);
+
+		logger.info("getting instances from resource object map");
+		List<Instance> instBeforeProcessing = RDF2MalletInstances
+				.getInstancesFromResourceObjectMap(resData, model, classProp);
+
+		logger.info("processing all instances");
+		InstanceList instances = RDF2MalletInstances.getProcessedInstances(
+				instBeforeProcessing, prevClassifier);
+
+		logger.info("	number of instances retrieved from RDF: "
+				+ instances.size());
+
+		return instances;
 	}
 
 	/**
@@ -273,7 +304,7 @@ public class RDFUtils {
 				+ System.nanoTime() + "" + index);
 	}
 
-	public static Model convertClassifierToRDF(Classifier classifier)
+	public static Model convertClassifierToJenaModel(Classifier classifier)
 			throws Exception {
 		Model model = ModelFactory.createDefaultModel();
 		Resource res = RDFUtils.createMalletTrainedModelResource(model, 0);
@@ -293,7 +324,7 @@ public class RDFUtils {
 		return model;
 	}
 
-	public static Classifier convertRDFToClassifier(Model model)
+	public static Classifier convertJenaModelToClassifier(Model model)
 			throws Exception {
 
 		StmtIterator stmtItr = model.listStatements((Resource) null,
@@ -308,4 +339,130 @@ public class RDFUtils {
 		return classifier;
 
 	}
+
+	/**
+	 * @param modelAsString
+	 *            : The classifying data as model
+	 * @param classifier
+	 *            : The trained classifier
+	 * @return : ByteArrayOutputStream Serialized InstanceList containing
+	 *         classifying data
+	 * @throws Exception
+	 */
+	public final static InstanceList convertJenaModel2InstanceList(
+			Model incomingModel, Classifier classifier) throws Exception {
+
+		InstanceList classifyingDataIntoMalletInstances = new InstanceList(
+				new Noop());
+		Pipe newPipe = null;
+
+		try {
+			if (classifier == null)
+				throw new IllegalArgumentException(
+						"classifier cannot be blank or null");
+		} catch (Exception e) {
+			logger.error(e.toString());
+			throw e;
+		}
+
+		HashMap<String, String> resData = RDFUtils
+				.getResource2ObjectsMap(incomingModel);
+
+		Instance i = null;
+		Iterator<String> resItr = resData.keySet().iterator();
+		newPipe = classifier.getInstancePipe();
+		while (resItr.hasNext()) {
+			Resource re = incomingModel.createResource(resItr.next());
+			String str = resData.get(re.toString());
+			if (str == null)
+				continue;
+			i = newPipe.instanceFrom(new Instance(str, newPipe
+					.getTargetAlphabet().lookupObject(0).toString(), re
+					.toString(), "RDF/XML"));
+			logger.debug("NAME:: " + i.getName().toString());
+			logger.debug("DATA::\n" + i.getData().toString());
+			logger.debug("TARGET:: " + i.getTarget().toString());
+			logger.debug("SOURCE:: " + i.getSource().toString());
+
+			classifyingDataIntoMalletInstances.add(i);
+		}
+
+		return classifyingDataIntoMalletInstances;
+
+	}
+
+	
+    /**
+     * @param model
+     *            : It receives the Model which is to be converted into String
+     * @param format
+     *            : It receives the format of the jena Model
+     * @return : It returns the Jena model in String form.
+     * @throws Exception
+     *             : It throws an exception
+     */
+    static public String serializeJenaModel(Model model, String format)
+            throws Exception {
+        try {
+
+            StringWriter sw = new StringWriter();
+            model.write(sw, format);
+            String rdf = sw.toString();
+            return rdf;
+
+        } catch (Exception e) {
+            throw e;
+        }
+
+    }
+    
+    /**
+     * @param model
+     *            : It receives the Model which is to be converted into String
+     * @param format
+     *            : It receives the format of the jena Model
+     * @return : It returns the Jena model in String form.
+     * @throws Exception
+     *             : It throws an exception
+     */
+    static public Model deserializeJenaModel(String rdf)
+            throws Exception {
+		Model model = null;
+		try {
+			if (StringUtils.isBlank(rdf))
+				throw new IllegalArgumentException(
+						"model cannot be blank or null");
+			InputStream is = new ByteArrayInputStream(rdf
+					.getBytes("UTF-8"));
+			model = ModelFactory.createDefaultModel();
+			model.read(is, "");
+		} catch (Exception e) {
+			logger.error(e.toString());
+			throw e;
+		}
+
+		return model;
+    }
+
+    /**
+     * @param fileName
+     *            Name of the input RDF file name
+     * @return It returns Jena model
+     * @throws Exception
+     */
+    static public Model rdf2JenaModel(String fileName) throws Exception {
+        Model model = null;
+        try {
+
+            File fread = new File(fileName);
+            FileReader fr = new FileReader(fread);
+            BufferedReader br = new BufferedReader(fr);
+            model = ModelFactory.createDefaultModel();
+            model.read(br, null, "RDF/XML");
+        } catch (Exception e) {
+            throw e;
+        }
+        return model;
+    }
+
 }

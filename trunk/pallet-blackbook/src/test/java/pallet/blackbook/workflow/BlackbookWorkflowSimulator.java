@@ -19,7 +19,6 @@ import pallet.test.util.TestUtilities;
 import utd.pallet.classification.MalletTextClassify;
 import utd.pallet.classification.MalletTextDataTrainer;
 import utd.pallet.classification.MalletTextDataTrainer.TrainerObject;
-import utd.pallet.data.JenaModelFactory;
 import utd.pallet.data.MalletAccuracyVector;
 import utd.pallet.data.RDF2MalletInstances;
 import utd.pallet.data.RDFUtils;
@@ -90,7 +89,9 @@ public class BlackbookWorkflowSimulator {
 
 		// get converted data
 		log.error("Creating mallet instance list from data.");
-		InstanceList trainingList = convertRDFToInstanceList(rdfTrainString);
+		InstanceList trainingList = RDFUtils.convertJenaModelToInstanceList(RDFUtils
+				.deserializeJenaModel(rdfTrainString), CLASSIFICATION_PROPERTY,
+				null);
 
 		// train mallet model
 		log.error("Getting trained model using instance list.");
@@ -131,38 +132,6 @@ public class BlackbookWorkflowSimulator {
 		produceReport(classifiedModel, answerModel);
 	}
 
-	private static InstanceList convertRDFToMalletData(String rdf)
-			throws Exception {
-
-		// get converted data
-		ByteArrayOutputStream bos = RDF2MalletInstances.convertRDFWithLabelsSerializable(
-				rdf, CLASSIFICATION_PROPERTY.getURI(), null);
-		ByteArrayInputStream bis = new ByteArrayInputStream(bos.toByteArray());
-		ObjectInputStream ois = new ObjectInputStream(bis);
-
-		InstanceList iList = (InstanceList) ois.readObject();
-		log.error("number of instances retrieved from RDF: " + iList.size());
-
-		return iList;
-	}
-
-	private static InstanceList convertRDFToInstanceList(String rdf)
-			throws Exception {
-		// get converter
-		// RDF2MalletInstances conv = new RDF2MalletInstances();
-
-		// get converted data
-		ByteArrayOutputStream bos = RDF2MalletInstances.convertRDFWithLabelsSerializable(
-				rdf, CLASSIFICATION_PROPERTY.getURI(), null);
-		ByteArrayInputStream bis = new ByteArrayInputStream(bos.toByteArray());
-		ObjectInputStream ois = new ObjectInputStream(bis);
-
-		InstanceList iList = (InstanceList) ois.readObject();
-		log.error("number of instances retrieved from RDF: " + iList.size());
-
-		return iList;
-	}
-
 	private static TrainerObject trainMalletModel(InstanceList iList) {
 		MalletTextDataTrainer bTrainer = new MalletTextDataTrainer();
 
@@ -194,7 +163,7 @@ public class BlackbookWorkflowSimulator {
 		Statement stmt = model.createLiteralStatement(res, prop, obj);
 		model.add(stmt);
 
-		String ret = JenaModelFactory.serializeModel(model, "RDF/XML");
+		String ret = RDFUtils.serializeJenaModel(model, "RDF/XML");
 
 		log.error("converted classifier to rdf:");
 
@@ -224,12 +193,10 @@ public class BlackbookWorkflowSimulator {
 	private static Model bbClassify(String rdf, Classifier classifier)
 			throws Exception {
 
-		ByteArrayOutputStream bos = RDF2MalletInstances
-				.convertRDFWithoutLabels(rdf, classifier);
-		ByteArrayInputStream bis = new ByteArrayInputStream(bos.toByteArray());
-		ObjectInputStream ois = new ObjectInputStream(bis);
+		Model model = RDFUtils.deserializeJenaModel(rdf);
+		InstanceList iList = RDFUtils.convertJenaModel2InstanceList(model,
+				classifier);
 
-		InstanceList iList = (InstanceList) ois.readObject();
 		MalletTextClassify malletClassifier = new MalletTextClassify();
 
 		ArrayList<Classification> classifications = malletClassifier.classify(
@@ -240,10 +207,10 @@ public class BlackbookWorkflowSimulator {
 		// FIXME needs confidence values as well - Created an empty static
 		// method in RDFUtils(in pallet-data)
 		// project. - sj
-		Model model = RDFUtils.createModelWithClassifications(mAccVectorList,
+		Model cModel = RDFUtils.createJenaModelWithClassifications(mAccVectorList,
 				classifications);
 
-		return model;
+		return cModel;
 	}
 
 	private static String getRDFFromBlackbook(boolean testData)
@@ -395,10 +362,10 @@ public class BlackbookWorkflowSimulator {
 	private static void produceReport(Model classifiedModel, Model answerModel)
 			throws Exception {
 		log.error("model of classifications is: "
-				+ JenaModelFactory.serializeModel(classifiedModel,
+				+ RDFUtils.serializeJenaModel(classifiedModel,
 						FileUtils.langNTriple).substring(0, 1000));
 		log.error("model of answers is: "
-				+ JenaModelFactory.serializeModel(answerModel,
+				+ RDFUtils.serializeJenaModel(answerModel,
 						FileUtils.langNTriple).substring(0, 1000));
 
 		StmtIterator stmts = classifiedModel.listStatements((Resource) null,
@@ -415,11 +382,11 @@ public class BlackbookWorkflowSimulator {
 			String labeledAs = null;
 			if (nItr.hasNext()) {
 				labeledAs = nItr.next().asNode().getLiteralValue().toString();
-//				log.error("labeled as: " + labeledAs);
+				// log.error("labeled as: " + labeledAs);
 			}
 
-			NodeIterator objItr = answerModel.listObjectsOfProperty(stmt.getSubject(),
-					CLASSIFICATION_PROPERTY);
+			NodeIterator objItr = answerModel.listObjectsOfProperty(stmt
+					.getSubject(), CLASSIFICATION_PROPERTY);
 
 			if (objItr.hasNext()) {
 				String actualValue = objItr.next().asNode().getLiteralValue()
@@ -428,7 +395,9 @@ public class BlackbookWorkflowSimulator {
 				if (actualValue.equalsIgnoreCase(labeledAs)) {
 					numCorrect++;
 				} else {
-					log.error("for uri: " + r.getURI() + " thought it was " + labeledAs + " but actual value is: " + actualValue);
+					log.error("for uri: " + r.getURI() + " thought it was "
+							+ labeledAs + " but actual value is: "
+							+ actualValue);
 					numIncorrect++;
 				}
 			} else {

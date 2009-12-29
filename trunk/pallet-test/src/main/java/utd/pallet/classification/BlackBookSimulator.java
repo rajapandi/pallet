@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import org.apache.log4j.Logger;
 
 import utd.pallet.classification.MalletTextDataTrainer.TrainerObject;
-import utd.pallet.data.JenaModelFactory;
 import utd.pallet.data.MalletAccuracyVector;
 import utd.pallet.data.RDFUtils;
 import cc.mallet.classify.Classification;
@@ -150,17 +149,17 @@ public class BlackBookSimulator {
     	Model model=null;
     	int numberOfCorrectlyClassifiedInstances=0;
         try {
-            model = RDFUtils.createModelWithClassifications(classifier
+            model = RDFUtils.createJenaModelWithClassifications(classifier
                     .getAccuracyVectors(), clList);
             log.error("model of classifications is: "
-                    + JenaModelFactory.serializeModel(model,
+                    + RDFUtils.serializeJenaModel(model,
                             FileUtils.langNTriple));
         } catch (Exception e) {
             throw e;
         }
 try
 {
-        Model answerModel = JenaModelFactory.rdf2Model(validationDataSrc);
+        Model answerModel = RDFUtils.rdf2JenaModel(validationDataSrc);
         ResIterator rts = answerModel.listSubjects();
         Property ClassificationProperty=ModelFactory.createDefaultModel().createProperty(classificationProperty);
        while(rts.hasNext())

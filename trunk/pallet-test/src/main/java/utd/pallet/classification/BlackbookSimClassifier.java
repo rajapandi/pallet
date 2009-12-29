@@ -7,8 +7,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import utd.pallet.data.JenaModelFactory;
 import utd.pallet.data.MalletAccuracyVector;
+import utd.pallet.data.RDFUtils;
 import cc.mallet.classify.Classification;
 import cc.mallet.classify.Classifier;
 import cc.mallet.types.InstanceList;
@@ -191,7 +191,7 @@ public class BlackbookSimClassifier {
         @SuppressWarnings("unused")
         Model answerModel = null;
         try {
-            answerModel = JenaModelFactory.rdf2Model(validationDataSrc);
+            answerModel = RDFUtils.rdf2JenaModel(validationDataSrc);
         } catch (Exception e) {
             // TODO Auto-generated catch block
 
