@@ -11,7 +11,6 @@ import pallet.blackbook.util.BlackbookUtil;
 import security.ejb.client.User;
 import utd.pallet.classification.MalletTextClassify;
 import utd.pallet.data.MalletAccuracyVector;
-import utd.pallet.data.RDF2MalletInstances;
 import utd.pallet.data.RDFUtils;
 import workflow.ejb.client.annotations.Execute;
 import blackbook.algorithm.api.Algorithm;
@@ -28,9 +27,10 @@ import cc.mallet.types.InstanceList;
 import com.hp.hpl.jena.rdf.model.Model;
 
 /**
- * Remove all materialized results that are isolated. This is accomplished by
- * checking for outgoing and incoming references to each resource in the
- * supplied model.
+ * A Blackbook/Mallet algorithm for classifying a data set.
+ * All of the triples in the data source request will be used to
+ * determine the classification.
+ * NaiveBayes is the only currently supported algorithm.
  */
 public class MalletClassify implements
 		Algorithm<DataSourceRequest<VoidParameter>, DataSourceResponse> {
@@ -50,6 +50,7 @@ public class MalletClassify implements
 	public DataSourceResponse execute(User user,
 			DataSourceRequest<VoidParameter> request)
 			throws BlackbookSystemException {
+		long startTime = System.currentTimeMillis();
 		if (user == null) {
 			throw new BlackbookSystemException("'user' cannot be null.");
 		}
@@ -71,31 +72,41 @@ public class MalletClassify implements
 			Model sourceModel = modelCache.getModelByName(request.getSourceDataSource()
 					, user);
 
+			long t1 = System.currentTimeMillis();
 			Set<String> aDsNames = request.getAssertionsDataSources();
 			Model trainedModel = null;
 			if(aDsNames != null && aDsNames.size() > 0) {
 				String aName = aDsNames.iterator().next();
-				logger.info("opening assertions model to retrieve mallet trained model: " + aName);
+				logger.info("\topening assertions model to retrieve mallet trained model: " + aName);
 				trainedModel = modelCache.getModelByName(aName, user);
 			} else {
 				throw new IllegalStateException("no assertions data source to retrieve trained model from.");
 			}
+			logger.info("\tretrieving trained model rdf from assertions took: " + (System.currentTimeMillis()-t1)/1000 + " sec.");
 
 			// convert rdf back to mallet classifier
 			logger
-					.error("Converting trained model from rdf to mallet classifier");
+					.error("\tconverting trained model from rdf to mallet classifier");
+			long t2 = System.currentTimeMillis();
 			Classifier classifier = RDFUtils.convertJenaModelToClassifier(trainedModel);
+			logger.info("\tconversion of rdf to trained model took: " + (System.currentTimeMillis()-t2)/1000 + " sec.");
 
-			logger.error("Classifying data of size: " + sourceModel.size());
+			logger.error("\tclassifying data of size: " + sourceModel.size());
+			long t3 = System.currentTimeMillis();
 			Model classifiedModel = bbClassify(sourceModel, classifier);
-			logger.info("classified model size is: " + classifiedModel.size());
+			logger.info("\tclassified model size is: " + classifiedModel.size());
+			logger.info("\tclassifying took: " + (System.currentTimeMillis()-t3)/1000 + " sec.");
 			
 			String dsName = "MalletClassifiedModel" + System.currentTimeMillis();
+			long t4 = System.currentTimeMillis();
 			Model assertionsModel = BlackbookUtil.persist2BlackbookAssertions(classifiedModel, dsName, RDFUtils.MALLET_NAMESPACE, user);
+			logger.info("\tpersisting classification results into blackbook took: " + (System.currentTimeMillis()-t4)/1000 + " sec.");
 
+			long t5 = System.currentTimeMillis();
 			Model destinationModel = modelCache.getModelByName(destinationDataSource, user);
 			destinationModel.add(sourceModel);
 			destinationModel.add(assertionsModel);
+			logger.info("\tpersisting combined (traditional and classifications) into a temp ds took: " + (System.currentTimeMillis()-t5)/1000 + " sec.");
 			
 			assertionsModel.close();
 			
@@ -106,6 +117,7 @@ public class MalletClassify implements
 			modelCache.closeAll();
 		}
 
+		logger.info("Mallet classification algorithm took: " + (System.currentTimeMillis()-startTime)/1000 + " sec.");
 		return new DataSourceResponse(destinationDataSource);
 	}
 

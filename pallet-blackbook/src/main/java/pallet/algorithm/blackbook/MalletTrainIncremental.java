@@ -25,7 +25,12 @@ import cc.mallet.types.InstanceList;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.Property;
 
-
+/**
+ * A Blackbook/Mallet algorithm for incrementally training a pre-existing
+ * mallet model.  The StringParameter should contain the predicate to use
+ * to retrieve the "label" or "classification" of each entity.
+ * NaiveBayes is the only currently supported algorithm.
+ */
 public class MalletTrainIncremental implements
 		Algorithm<DataSourceRequest<StringParameter>, VoidResponse> {
 
@@ -44,6 +49,7 @@ public class MalletTrainIncremental implements
 	public VoidResponse execute(User user,
 			DataSourceRequest<StringParameter> request)
 			throws BlackbookSystemException {
+		long startTime = System.currentTimeMillis();
 		if (user == null) {
 			throw new BlackbookSystemException("'user' cannot be null.");
 		}
@@ -62,39 +68,50 @@ public class MalletTrainIncremental implements
 			Model sourceModel = modelCache.getModelByName(request
 					.getSourceDataSource(), user);
 			
+			long t1 = System.currentTimeMillis();
 			Set<String> prevTrainedModels = request.getAssertionsDataSources();
 			Classifier prevClassifier = null;
 			if(prevTrainedModels.size() == 0) {
 				throw new BlackbookSystemException("must provide at least one assertions data source name that contains a trained model, in order for me to incrementally train it.");
 			} else {
 				for(String tModel : prevTrainedModels) {
-					logger.info("	retrieving previously trained model: " + tModel);
+					logger.info("\tretrieving previously trained model: " + tModel);
 					Model currentModel = modelCache.getModelByName(tModel, user);
 					prevClassifier = RDFUtils.convertJenaModelToClassifier(currentModel);
 					break;
 				}
 			}
+			logger.info("\tretrieving original trained model from blackbook took: " + (System.currentTimeMillis()-t1)/1000 + " sec.");
 
 			// get converted data
-			logger.info("Creating mallet instance list from data.");
+			logger.info("\tcreating mallet instance list from data.");
+			long t2 = System.currentTimeMillis();
 			Property classProp = sourceModel.createProperty(request.getParameters().getParameter());
 			InstanceList trainingList = RDFUtils.convertJenaModelToInstanceList(sourceModel, classProp, prevClassifier);
+			logger.info("\tcreation of instance list took: " + (System.currentTimeMillis()-t2)/1000 + " sec.");
 
 			// train mallet model
-			logger.info("incrementally training model using instance list.");
+			logger.info("\tincrementally training model using instance list.");
+			long t3 = System.currentTimeMillis();
 			NaiveBayes nbClassifier = (NaiveBayes) prevClassifier;
 			NaiveBayesTrainer naiveBayesTrainer = new NaiveBayesTrainer(nbClassifier);
 			TrainerObject trnObj = incrementallyTrainMalletModel(naiveBayesTrainer, trainingList);
+			logger.info("\tincremental training took: " + (System.currentTimeMillis()-t3)/1000 + " sec.");
 
 			// get classifier as rdf
-			logger.info("Converting trained model to rdf for storage.");
+			logger.info("\tconverting trained model to rdf for storage.");
+			long t4 = System.currentTimeMillis();
 			Model trainedModel = RDFUtils.convertClassifierToJenaModel(trnObj
 					.getClassifier());
+			logger.info("\tconversion of classifier to rdf took: " + (System.currentTimeMillis()-t4)/1000 + " sec.");
 
 			// save classifier in blackbook temp data source
-			logger.info("Storing trained classifier.");
+			logger.info("\tstoring trained classifier.");
+			long t5 = System.currentTimeMillis();
 			String dsName = "MalletTrainedModel" + System.currentTimeMillis();
 			Model assertionsModel = BlackbookUtil.persist2BlackbookAssertions(trainedModel, dsName, "urn:mallet:", user);
+			logger.info("\tstoring of classifier took: " + (System.currentTimeMillis()-t5)/1000 + " sec.");
+			
 			assertionsModel.close();
 			trainedModel.close();
 
@@ -106,6 +123,7 @@ public class MalletTrainIncremental implements
 			modelCache.closeAll();
 		}
 		
+		logger.info("Mallet incremental training took: " + (System.currentTimeMillis()-startTime)/1000 + " sec.");
 		return VoidResponse.getInstance();
 	}
 	
