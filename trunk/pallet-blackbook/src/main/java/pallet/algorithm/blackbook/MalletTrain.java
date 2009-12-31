@@ -20,7 +20,12 @@ import cc.mallet.types.InstanceList;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.Property;
 
-
+/**
+ * A Blackbook/Mallet algorithm for training a mallet model.
+ * The StringParameter should contain the predicate to use to retrieve
+ * the "label" or "classification" of each entity.
+ * NaiveBayes is the only currently supported algorithm.
+ */
 public class MalletTrain implements
 		Algorithm<DataSourceRequest<StringParameter>, VoidResponse> {
 
@@ -39,6 +44,7 @@ public class MalletTrain implements
 	public VoidResponse execute(User user,
 			DataSourceRequest<StringParameter> request)
 			throws BlackbookSystemException {
+		long startTime = System.currentTimeMillis();
 		if (user == null) {
 			throw new BlackbookSystemException("'user' cannot be null.");
 		}
@@ -58,26 +64,36 @@ public class MalletTrain implements
 					.getSourceDataSource(), user);
 
 			// get converted data
-			logger.info("Creating mallet instance list from data, using classification parameter: " + request.getParameters().getParameter());
+			logger.info("\tcreating mallet instance list from data, using classification parameter: " + request.getParameters().getParameter());
+			long t1 = System.currentTimeMillis();
 			Property classProp = sourceModel.createProperty(request.getParameters().getParameter());
 			InstanceList trainingList = RDFUtils.convertJenaModelToInstanceList(sourceModel, classProp, null);
+			logger.info("\tmallet instance list creation took: " + (System.currentTimeMillis()-t1)/1000 + " sec.");
 
 			// train mallet model
-			logger.info("Getting trained model using instance list.");
+			logger.info("\tgetting trained model using instance list.");
+			long t2 = System.currentTimeMillis();
 			TrainerObject trnObj = trainMalletModel(trainingList);
+			logger.info("\ttraining took: " + (System.currentTimeMillis()-t2)/1000 + " sec.");
 
 			// get classifier as rdf
-			logger.info("Converting trained model to rdf for storage.");
+			logger.info("\tconverting trained model to rdf for storage.");
+			long t3 = System.currentTimeMillis();
 			Model trainedModel = RDFUtils.convertClassifierToJenaModel(trnObj
 					.getClassifier());
+			logger.info("\tconverting classifier to rdf took: " + (System.currentTimeMillis()-t3)/1000 + " sec.");
 
 			// save classifier in blackbook temp data source
-			logger.info("Storing trained classifier.");
+			logger.info("\tstoring trained classifier.");
+			long t4 = System.currentTimeMillis();
 			String dsName = "MalletTrainedModel" + System.currentTimeMillis();
 			Model assertionsModel = BlackbookUtil.persist2BlackbookAssertions(trainedModel, dsName, "urn:mallet:", user);
+			logger.info("\tpersisting trained model as rdf into blackbook took: " + (System.currentTimeMillis()-t4)/1000 + " sec.");
+			
 			assertionsModel.close();
 			trainedModel.close();
 
+			logger.info("\tmallet train algorithm took: " + (System.currentTimeMillis()-startTime)/1000 + " sec.");
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new BlackbookSystemException("Unable to execute algorithm :"
