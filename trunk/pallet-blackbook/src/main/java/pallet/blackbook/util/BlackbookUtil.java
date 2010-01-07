@@ -14,6 +14,16 @@ import com.hp.hpl.jena.rdf.model.Model;
 
 public class BlackbookUtil {
 
+	/**
+	 * persists the model provided to Blackbook using the data source name provided.
+	 * the namespace will be set to the one provided.
+	 * @param model
+	 * @param dsName
+	 * @param namespace
+	 * @param user
+	 * @return
+	 * @throws Exception
+	 */
 	public static Model persist2BlackbookAssertions(Model model,
 			String dsName, String namespace, User user) throws Exception {
 
