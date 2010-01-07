@@ -121,6 +121,14 @@ public class MalletClassify implements
 		return new DataSourceResponse(destinationDataSource);
 	}
 
+	/**
+	 * Classify the content in the model provided, using the classifier provided.
+	 * The model returned is the full model (original and classification content.
+	 * @param model
+	 * @param classifier
+	 * @return
+	 * @throws Exception
+	 */
 	private static Model bbClassify(Model model, Classifier classifier)
 			throws Exception {
 
